@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <!-- ============ SEO ============ -->
+  <title>Devpulse | Bespoke iOS &amp; Android App Development Agency</title>
+  <meta name="description" content="Devpulse is a UK agency crafting bespoke iOS and Android apps for enterprises and startups. We care about quality, design, performance, security, and reliability.">
+  <meta name="author" content="Devpulse">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devpulse.co.uk/">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#05070f">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Devpulse">
+  <meta property="og:title" content="Devpulse | Bespoke iOS &amp; Android App Development">
+  <meta property="og:description" content="Bespoke iOS and Android apps engineered for performance, security, and reliability, with design your users will love.">
+  <meta property="og:url" content="https://devpulse.co.uk/">
+  <meta property="og:locale" content="en_GB">
+  <!-- og.png (1200x630) must be uploaded alongside this file -->
+  <meta property="og:image" content="https://devpulse.co.uk/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Devpulse, bespoke iOS and Android apps your users will love">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Devpulse | Bespoke iOS &amp; Android App Development">
+  <meta name="twitter:description" content="Bespoke iOS and Android apps engineered for performance, security, and reliability, with design your users will love.">
+  <meta name="twitter:image" content="https://devpulse.co.uk/og.png">
+
+  <!-- Favicon (inline, no extra request) + iOS home-screen icon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305070f'/%3E%3Cpath d='M8 32h12l6-14 10 28 8-20 4 6h8' fill='none' stroke='%2333ff77' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Devpulse",
+    "description": "Bespoke iOS and Android mobile app development agency. Quality, design, performance, security, and reliability.",
+    "url": "https://devpulse.co.uk/",
+    "image": "https://devpulse.co.uk/og.png",
+    "email": "hello@devpulse.co.uk",
+    "areaServed": "GB",
+    "priceRange": "££££",
+    "knowsAbout": ["iOS Development", "Android Development", "Mobile App Design", "Swift", "Kotlin", "App Security"]
+  }
+  </script>
+
+  <style>
+    /* ============ RESET & TOKENS ============ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #05070f;
+      --bg-soft: #0a0e1c;
+      --surface: rgba(255,255,255,0.03);
+      --surface-hover: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.08);
+      --border-bright: rgba(255,255,255,0.16);
+      --text: #eef1f8;
+      --text-dim: #98a0b5;
+      --text-faint: #6d7690;
+      /* Brand accents - change these to retheme the whole site.
+         The -rgb triplets exist so alpha variants can reference the same colour. */
+      --accent: #f87171;         --accent-rgb: 248, 113, 113;  /* red */
+      --accent-2: #dc2626;       --accent-2-rgb: 220, 38, 38;  /* deep crimson */
+      --accent-3: #fb923c;       --accent-3-rgb: 251, 146, 60; /* warm orange */
+      --grad: linear-gradient(120deg, var(--accent-2), var(--accent-3));
+      /* horizontal variant for pill buttons - a tilted gradient bands visibly on their rounded caps */
+      --grad-btn: linear-gradient(90deg, var(--accent-2), var(--accent-3));
+      --grad-text: #05070f;              /* text on gradient buttons */
+      --grid-line: rgba(255,255,255,0.025);
+      --nav-bg: rgba(5,7,15,0.72);
+      --menu-bg: rgba(5,7,15,0.96);
+      --track: rgba(255,255,255,0.07);   /* pulse baseline */
+      --pulse-rgb: 51, 255, 119;         /* ECG trace - classic monitor phosphor green */
+      /* metallic hover ring */
+      --ring-1: rgba(203,213,225,0.55);
+      --ring-2: #f8fafc;
+      --ring-3: #ffe9a8;
+      --ring-4: rgba(212,175,55,0.9);
+      color-scheme: dark;
+      --radius: 20px;
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: rgba(var(--accent-rgb),0.3); color: #fff; }
+
+    img, svg { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .wrap { width: min(1180px, 92%); margin-inline: auto; }
+
+    .skip-link {
+      position: absolute; top: -60px; left: 16px;
+      z-index: 200;
+      padding: 12px 20px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border-bright);
+      border-radius: 10px;
+      font-weight: 600;
+      transition: top .2s ease;
+    }
+    .skip-link:focus { top: 16px; }
+
+    /* ============ CUSTOM CURSOR ============ */
+    @media (hover: hover) and (pointer: fine) {
+      .cursor-dot, .cursor-ring {
+        position: fixed; top: 0; left: 0;
+        pointer-events: none;
+        z-index: 9999;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        will-change: transform;
+      }
+      .cursor-dot {
+        width: 7px; height: 7px;
+        background: var(--accent);
+        box-shadow: 0 0 12px rgba(var(--accent-rgb),0.9);
+      }
+      .cursor-ring {
+        width: 38px; height: 38px;
+        border: 1.5px solid rgba(var(--accent-rgb),0.5);
+        transition: width .25s var(--ease), height .25s var(--ease),
+                    border-color .25s var(--ease), background .25s var(--ease);
+      }
+      .cursor-ring.is-hover {
+        width: 62px; height: 62px;
+        border-color: rgba(var(--accent-3-rgb),0.75);
+        background: rgba(var(--accent-rgb),0.08);
+      }
+      .cursor-ring.is-down { width: 26px; height: 26px; }
+    }
+    @media (hover: none), (pointer: coarse) {
+      .cursor-dot, .cursor-ring { display: none; }
+    }
+
+    /* ============ BACKGROUND FX ============ */
+    .bg-fx {
+      position: fixed; inset: 0;
+      z-index: -2;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(var(--accent-2-rgb),0.12), transparent 60%),
+        var(--bg);
+    }
+    .bg-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 20%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 20%, transparent 80%);
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: .35;
+    }
+    /* Each orb wanders the screen on its own long, multi-waypoint path,
+       breathing in size and gently shifting hue. Staggered negative delays
+       keep the five out of sync so the background never repeats visibly. */
+    .orb-1 { width: 520px; height: 520px; background: #7f1d1d; top: -180px; left: -140px; animation: orb-a 48s ease-in-out infinite alternate; }
+    .orb-2 { width: 460px; height: 460px; background: #164e63; top: 30%; right: -180px; animation: orb-b 62s ease-in-out -12s infinite alternate; }
+    .orb-3 { width: 380px; height: 380px; background: #4c1d95; bottom: -140px; left: 30%; animation: orb-c 55s ease-in-out -25s infinite alternate; }
+    .orb-4 { width: 440px; height: 440px; background: #831843; top: 52%; left: -180px; opacity: .18; animation: orb-b 70s ease-in-out -34s infinite alternate; }
+    .orb-5 { width: 380px; height: 380px; background: #78350f; top: 8%; right: 22%; opacity: .16; animation: orb-c 66s ease-in-out -48s infinite alternate; }
+    @keyframes orb-a {
+      0%   { transform: translate(0, 0) scale(1);           filter: blur(90px)  hue-rotate(0deg); }
+      30%  { transform: translate(16vw, 14vh) scale(1.22);  filter: blur(102px) hue-rotate(32deg); }
+      60%  { transform: translate(28vw, 2vh) scale(0.92);   filter: blur(84px)  hue-rotate(-18deg); }
+      100% { transform: translate(8vw, 24vh) scale(1.12);   filter: blur(94px)  hue-rotate(18deg); }
+    }
+    @keyframes orb-b {
+      0%   { transform: translate(0, 0) scale(1);            filter: blur(90px)  hue-rotate(0deg); }
+      35%  { transform: translate(-14vw, 16vh) scale(1.28);  filter: blur(104px) hue-rotate(-28deg); }
+      70%  { transform: translate(-26vw, -6vh) scale(0.88);  filter: blur(82px)  hue-rotate(24deg); }
+      100% { transform: translate(-6vw, -18vh) scale(1.15);  filter: blur(96px)  hue-rotate(-12deg); }
+    }
+    @keyframes orb-c {
+      0%   { transform: translate(0, 0) scale(1);            filter: blur(90px)  hue-rotate(0deg); }
+      40%  { transform: translate(12vw, -14vh) scale(1.2);   filter: blur(100px) hue-rotate(38deg); }
+      75%  { transform: translate(-10vw, -22vh) scale(0.9);  filter: blur(84px)  hue-rotate(-26deg); }
+      100% { transform: translate(4vw, 10vh) scale(1.08);    filter: blur(92px)  hue-rotate(12deg); }
+    }
+
+    /* ============ NAV ============ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 102;  /* above the mobile-menu overlay so the burger/X stays clickable */
+      transition: background .35s ease, border-color .35s ease, backdrop-filter .35s ease;
+      border-bottom: 1px solid transparent;
+    }
+    .nav.scrolled {
+      background: var(--nav-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom-color: var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em;
+    }
+    .logo svg { width: 34px; height: 34px; }
+    .logo svg path { stroke: rgb(var(--pulse-rgb)); }
+    .logo svg rect { fill: var(--surface); stroke: var(--border-bright); }
+    .logo .pulse-path {
+      stroke-dasharray: 120;
+      stroke-dashoffset: 0;
+      animation: logopulse 3.2s ease-in-out infinite;
+    }
+    @keyframes logopulse {
+      0% { stroke-dashoffset: 120; opacity: 0; }
+      25% { opacity: 1; }
+      55% { stroke-dashoffset: 0; opacity: 1; }
+      80% { opacity: 1; }
+      100% { stroke-dashoffset: 0; opacity: 0; }
+    }
+    .nav-links { display: flex; align-items: center; gap: 34px; list-style: none; }
+    .nav-links a {
+      font-size: 0.92rem; font-weight: 500; color: var(--text-dim);
+      transition: color .2s ease;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      padding: 10px 22px;
+      border-radius: 99px;
+      background: var(--grad-btn) no-repeat border-box;
+      color: var(--grad-text) !important;
+      font-weight: 700 !important;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+    }
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(var(--accent-rgb),0.35);
+    }
+    .burger {
+      display: none;
+      background: none; border: 0;
+      width: 44px; height: 44px;
+      position: relative;
+      z-index: 102;
+    }
+    .burger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--text);
+      margin: 6px auto;
+      border-radius: 2px;
+      transition: transform .3s var(--ease), opacity .3s ease;
+    }
+    .burger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed; inset: 0;
+      z-index: 101;
+      background: var(--menu-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px;
+      opacity: 0; visibility: hidden;
+      transition: opacity .35s ease, visibility .35s ease;
+    }
+    .mobile-menu.open { opacity: 1; visibility: visible; }
+    .mobile-menu a {
+      font-size: 1.7rem; font-weight: 700;
+      padding: 12px 24px;
+      color: var(--text-dim);
+      transform: translateY(14px); opacity: 0;
+      transition: transform .4s var(--ease), opacity .4s ease, color .2s ease;
+    }
+    .mobile-menu.open a { transform: translateY(0); opacity: 1; }
+    .mobile-menu a:hover { color: var(--accent); }
+    .mobile-menu.open a:nth-child(1) { transition-delay: .05s; }
+    .mobile-menu.open a:nth-child(2) { transition-delay: .1s; }
+    .mobile-menu.open a:nth-child(3) { transition-delay: .15s; }
+    .mobile-menu.open a:nth-child(4) { transition-delay: .2s; }
+    .mobile-menu.open a:nth-child(5) { transition-delay: .25s; }
+
+    /* ============ HERO ============ */
+    .hero {
+      min-height: 100vh;  /* fallback for browsers without svh units */
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 130px 0 60px;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 16px;
+      border: 1px solid var(--border-bright);
+      border-radius: 99px;
+      font-size: 0.8rem; font-weight: 600;
+      color: var(--text-dim);
+      background: var(--surface);
+      backdrop-filter: blur(8px);
+      width: fit-content;
+      margin-bottom: 28px;
+    }
+    .hero-badge .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent);
+      animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes blink { 50% { opacity: .3; box-shadow: 0 0 0 4px rgba(var(--accent-rgb),0.12); } }
+
+    h1 {
+      font-size: clamp(2.6rem, 6.5vw, 5.2rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      max-width: 15ch;
+    }
+    .grad-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-sub {
+      margin-top: 26px;
+      font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+      color: var(--text-dim);
+      max-width: 54ch;
+    }
+    .hero-ctas {
+      display: flex; flex-wrap: wrap; gap: 16px;
+      margin-top: 40px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 15px 32px;
+      border-radius: 99px;
+      font-weight: 700; font-size: 1rem;
+      border: 1px solid transparent;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease),
+                  background .25s ease, border-color .25s ease;
+    }
+    .btn-primary {
+      /* no-repeat + border-box: the gradient must span the full border box,
+         otherwise it either wraps (end-colour sliver) or leaves the 1px
+         transparent border rim unpainted (flattened caps) */
+      background: var(--grad-btn) no-repeat border-box;
+      color: var(--grad-text);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(var(--accent-rgb),0.35);
+    }
+    .btn-ghost {
+      border-color: var(--border-bright);
+      color: var(--text);
+      background: var(--surface);
+      backdrop-filter: blur(8px);
+    }
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      background: var(--surface-hover);
+    }
+    .btn svg { width: 18px; height: 18px; transition: transform .25s var(--ease); }
+    .btn:hover svg { transform: translateX(4px); }
+
+    /* Hero pulse line */
+    .hero-pulse {
+      margin-top: 70px;
+      width: 100%;
+      height: 90px;
+      opacity: .9;
+    }
+    /* The pulse is a live ECG monitor drawn on a <canvas> - see the script at the bottom. */
+
+    .scroll-hint {
+      position: absolute; bottom: 28px; left: 50%;
+      transform: translateX(-50%);
+      color: var(--text-faint);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+    }
+    .scroll-hint::after {
+      content: "";
+      width: 1px; height: 36px;
+      background: linear-gradient(var(--accent), transparent);
+      animation: scrollhint 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollhint { 50% { transform: translateY(6px); opacity: .4; } }
+
+    /* ============ SECTIONS ============ */
+    section { padding: 110px 0; position: relative; }
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      max-width: 22ch;
+    }
+    .section-sub {
+      margin-top: 18px;
+      color: var(--text-dim);
+      max-width: 58ch;
+      font-size: 1.08rem;
+    }
+
+    /* ============ STATS ============ */
+    .stats {
+      padding: 0 0 30px;
+    }
+    .stats-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .stat {
+      background: var(--bg-soft);
+      padding: 36px 28px;
+      text-align: center;
+    }
+    .stat b {
+      display: block;
+      font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .stat span { color: var(--text-dim); font-size: 0.9rem; }
+
+    /* ============ CARDS ============ */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 56px;
+    }
+    .card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 34px 30px;
+      overflow: hidden;
+      transition: transform .35s var(--ease), border-color .35s ease, background .35s ease;
+    }
+    .card::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(var(--accent-rgb),0.09), transparent 45%);
+      opacity: 0;
+      transition: opacity .35s ease;
+      pointer-events: none;
+    }
+    .card:hover { transform: translateY(-6px); border-color: var(--border-bright); }
+    .card:hover::before { opacity: 1; }
+    .card-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, rgba(var(--accent-rgb),0.15), rgba(var(--accent-2-rgb),0.1));
+      border: 1px solid var(--border-bright);
+      margin-bottom: 22px;
+    }
+    .card-icon svg { width: 26px; height: 26px; stroke: var(--accent); }
+    .card h3 { font-size: 1.22rem; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 10px; }
+    .card p { color: var(--text-dim); font-size: 0.96rem; }
+
+    /* ============ WORK ============ */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .work-card {
+      position: relative;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      padding: 32px 30px;
+      display: flex; flex-direction: column;
+      transition: transform .4s var(--ease), border-color .4s ease;
+      isolation: isolate;
+      color: #eef1f8;
+    }
+    .work-card .work-tag { color: rgba(238,241,248,0.85); }
+    .work-card::after {
+      content: "";
+      position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(180deg, rgba(5,7,15,0.12), rgba(5,7,15,0.5));
+    }
+    /* Animated silver/gold border on hover */
+    @property --wa {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+    .work-card::before,
+    .card::after,
+    .stats-grid::after,
+    .cta-panel::after {
+      content: "";
+      position: absolute; inset: 0; z-index: 1;
+      border-radius: inherit;
+      padding: 2px;
+      background: conic-gradient(from var(--wa),
+        transparent 0deg 288deg,
+        var(--ring-1) 312deg,
+        var(--ring-2) 328deg,
+        var(--ring-3) 342deg,
+        var(--ring-4) 352deg,
+        transparent 360deg);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity .4s ease;
+      pointer-events: none;
+      animation: borderspin 3.5s linear infinite;
+      animation-play-state: paused;
+    }
+    .work-card:hover::before,
+    .card:hover::after,
+    .stats-grid:hover::after,
+    .cta-panel:hover::after {
+      opacity: 1;
+      animation-play-state: running;
+    }
+    @keyframes borderspin { to { --wa: 360deg; } }
+    .work-head {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 20px;
+    }
+    .work-mark {
+      flex-shrink: 0;
+      width: 54px; height: 54px;
+      border-radius: 14px;
+      display: grid; place-items: center;
+      font-weight: 800; font-size: 0.95rem; letter-spacing: 0.02em;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.18);
+    }
+    .wm-jlr   { background: linear-gradient(135deg, #16a34a, #14532d); }
+    .wm-je    { background: linear-gradient(135deg, #fb923c, #ea580c); }
+    .wm-now   { background: linear-gradient(135deg, #10b981, #0284c7); }
+    .wm-uktv  { background: linear-gradient(135deg, #818cf8, #4338ca); }
+    .wm-sugar { background: linear-gradient(135deg, #fde047, #d97706); color: #422006; }
+    .wm-hayah { background: linear-gradient(135deg, #f472b6, #be185d); }
+    .work-card:hover {
+      transform: translateY(-6px);
+      border-color: transparent;
+    }
+    .work-bg {
+      position: absolute; inset: 0; z-index: -2;
+      transition: transform .6s var(--ease);
+    }
+    .work-card:hover .work-bg { transform: scale(1.05); }
+    .wb-jlr   { background: radial-gradient(120% 110% at 0% 0%, rgba(74,222,128,0.4), transparent 55%),  linear-gradient(135deg, #15803d, #064e3b 75%); }  /* JLR racing green (brand colour, not theme accent) */
+    .wb-je    { background: radial-gradient(120% 110% at 0% 0%, rgba(253,186,116,0.5), transparent 55%), linear-gradient(135deg, #ea580c, #7c2d12 75%); }  /* vivid orange */
+    .wb-now   { background: radial-gradient(120% 110% at 0% 0%, rgba(45,212,191,0.45), transparent 55%), linear-gradient(135deg, #0d9488, #075985 75%); }  /* teal → blue */
+    .wb-uktv  { background: radial-gradient(120% 110% at 0% 0%, rgba(165,180,252,0.45), transparent 55%),linear-gradient(135deg, #4f46e5, #1e1b4b 75%); }  /* electric indigo */
+    .wb-sugar { background: radial-gradient(120% 110% at 0% 0%, rgba(253,224,71,0.5), transparent 55%),  linear-gradient(135deg, #d3a107, #92400e 75%); }  /* sunny yellow/amber */
+    .wb-hayah { background: radial-gradient(120% 110% at 0% 0%, rgba(249,168,212,0.5), transparent 55%), linear-gradient(135deg, #db2777, #831843 75%); }  /* warm pink */
+    .work-card.more {
+      grid-column: 1 / -1;
+      border-style: dashed;
+      border-color: var(--border-bright);
+      background: var(--surface);
+      align-items: center;
+      text-align: center;
+      padding: 48px 30px;
+      color: var(--text);   /* sits on the page surface, not a dark gradient */
+    }
+    .work-card.more::after { display: none; }
+    .work-card.more .work-tag { color: var(--accent); margin-bottom: 14px; }
+    .work-card.more p { color: var(--text-dim); max-width: 52ch; }
+    .work-card.more .btn { margin-top: 26px; }
+    .work-bg::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.14) 1px, transparent 1px);
+      background-size: 22px 22px;
+      opacity: .35;
+      mask-image: linear-gradient(200deg, black, transparent 65%);
+      -webkit-mask-image: linear-gradient(200deg, black, transparent 65%);
+    }
+    .work-tag {
+      font-family: var(--mono);
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0;
+    }
+    .work-card h3 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 10px; }
+    .work-card p { color: rgba(230,235,245,0.82); font-size: 0.95rem; max-width: 44ch; }
+    .work-card .chip { border-color: rgba(255,255,255,0.28); color: rgba(238,241,248,0.9); }
+    .work-meta {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .chip {
+      font-size: 0.74rem; font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 99px;
+      border: 1px solid var(--border-bright);
+      color: var(--text-dim);
+      background: rgba(5,7,15,0.4);
+      backdrop-filter: blur(6px);
+    }
+
+    /* ============ PROCESS ============ */
+    .process-list {
+      margin-top: 60px;
+      display: grid;
+      gap: 0;
+      list-style: none;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 28px;
+      padding: 34px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .step:first-child { border-top: 1px solid var(--border); }
+    .step-num {
+      font-family: var(--mono);
+      font-size: 1rem; font-weight: 700;
+      color: var(--accent);
+      padding-top: 4px;
+    }
+    .step h3 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 8px; }
+    .step p { color: var(--text-dim); max-width: 62ch; }
+
+    /* ============ CTA ============ */
+    .cta-panel {
+      position: relative;
+      border-radius: 28px;
+      border: 1px solid var(--border-bright);
+      padding: clamp(48px, 7vw, 90px) clamp(28px, 6vw, 80px);
+      text-align: center;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 70% 90% at 50% 120%, rgba(var(--accent-2-rgb),0.2), transparent 60%),
+        radial-gradient(ellipse 50% 60% at 50% -20%, rgba(var(--accent-3-rgb),0.12), transparent 60%),
+        var(--bg-soft);
+    }
+    .cta-panel h2 { margin-inline: auto; }
+    .cta-panel .section-sub { margin-inline: auto; }
+    .cta-panel .btn { margin-top: 38px; }
+    .cta-email {
+      display: block;
+      margin-top: 22px;
+      color: var(--text-faint);
+      font-size: 0.92rem;
+    }
+    .cta-email a { color: var(--text-dim); border-bottom: 1px solid var(--border-bright); transition: color .2s; }
+    .cta-email a:hover { color: var(--accent); }
+
+    /* ============ FOOTER ============ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 44px 0;
+      text-align: center;
+    }
+    .footer-copy {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+    .footer-legal {
+      color: var(--text-faint);
+      font-size: 0.78rem;
+      line-height: 1.7;
+      max-width: 90ch;
+      margin-inline: auto;
+    }
+
+    /* ============ REVEAL ANIMATIONS ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+      transition-delay: var(--d, 0s);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (min-width: 901px) {
+      .mobile-menu { display: none; }
+    }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .burger { display: block; }
+      section { padding: 80px 0; }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .work-grid { grid-template-columns: 1fr; }
+      .hero-pulse { margin-top: 50px; height: 70px; }
+    }
+    @media (max-width: 600px) {
+      .grid-3 { grid-template-columns: 1fr; }
+      .step { grid-template-columns: 1fr; gap: 8px; padding: 28px 0; }
+      .hero { padding-top: 110px; }
+      .hero-ctas .btn { width: 100%; justify-content: center; }
+      .scroll-hint { display: none; }
+    }
+
+    /* ============ REDUCED MOTION ============ */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+      .cursor-dot, .cursor-ring { display: none; }
+    }
+  </style>
+  <noscript>
+    <style>
+      /* Without JS the reveal animation never fires - show everything */
+      .reveal { opacity: 1; transform: none; }
+      .cursor-dot, .cursor-ring { display: none; }
+      .hero-pulse { display: none; }
+    </style>
+  </noscript>
+</head>
+<body>
+
+  <a class="skip-link" href="#top">Skip to content</a>
+
+  <!-- Custom cursor -->
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- Ambient background -->
+  <div class="bg-fx" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+    <div class="orb orb-5"></div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="logo" aria-label="Devpulse home">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.14)"/>
+          <path class="pulse-path" d="M10 32h11l5-12 9 24 7-17 4 5h8" stroke="#33ff77" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Devpulse
+      </a>
+      <nav aria-label="Main">
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#values">Why us</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#contact" class="nav-cta">Start a project</a></li>
+        </ul>
+      </nav>
+      <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#values">Why us</a>
+    <a href="#work">Work</a>
+    <a href="#process">Process</a>
+    <a href="#contact">Start a project</a>
+  </div>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-label="Introduction">
+      <div class="wrap">
+        <div class="hero-badge reveal"><span class="dot"></span> Bespoke mobile app studio, UK</div>
+        <h1 class="reveal" style="--d:.08s">
+          Apps your users will <span class="grad-text">love to open.</span>
+        </h1>
+        <p class="hero-sub reveal" style="--d:.16s">
+          Devpulse designs and builds bespoke iOS and Android apps for enterprises and
+          ambitious brands. Every app is engineered for performance, security, and
+          reliability, with the kind of simplicity that keeps people coming back.
+        </p>
+        <div class="hero-ctas reveal" style="--d:.24s">
+          <a href="#contact" class="btn btn-primary" data-hover>
+            Start a project
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#work" class="btn btn-ghost" data-hover>See our work</a>
+        </div>
+
+        <canvas class="hero-pulse reveal" style="--d:.32s" id="pulseCanvas" aria-hidden="true"></canvas>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">Scroll</div>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section class="stats" aria-label="Track record">
+      <div class="wrap">
+        <div class="stats-grid reveal">
+          <div class="stat"><b data-count="10">10+</b><span>Apps shipped</span></div>
+          <div class="stat"><b data-count="12">12+</b><span>Years of experience</span></div>
+          <div class="stat"><b data-count="4.5" data-decimal="1" data-suffix="+">4.5+</b><span>Avg. store rating</span></div>
+          <div class="stat"><b data-count="98">98+</b><span>% crash-free sessions</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section id="services" aria-label="Services">
+      <div class="wrap">
+        <p class="eyebrow reveal">What we do</p>
+        <h2 class="reveal" style="--d:.06s">End-to-end mobile, done properly.</h2>
+        <p class="section-sub reveal" style="--d:.12s">
+          From first sketch to App Store feature, one senior team owns strategy,
+          design, engineering, and support.
+        </p>
+        <div class="grid-3">
+          <article class="card reveal" data-hover>
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
+            </div>
+            <h3>Native iOS</h3>
+            <p>Swift and SwiftUI apps that feel at home on iPhone and iPad. Fast, fluid, and polished to Apple's standards.</p>
+          </article>
+          <article class="card reveal" style="--d:.08s" data-hover>
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5C4 5.9 7.6 3 12 3s8 2.9 8 6.5V17a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M9 8.5h.01M15 8.5h.01"/><path d="m6 3 1.5 2M18 3l-1.5 2"/></svg>
+            </div>
+            <h3>Native Android</h3>
+            <p>Kotlin and Jetpack Compose builds tuned for the whole Android ecosystem. Every screen size, every price point, no compromises.</p>
+          </article>
+          <article class="card reveal" style="--d:.16s" data-hover>
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M12 22V12M3 7l9 5 9-5"/></svg>
+            </div>
+            <h3>Product design</h3>
+            <p>Research, UX, and pixel-perfect UI. We prototype early, test with real users, and design flows that make the complex feel effortless.</p>
+          </article>
+          <article class="card reveal" data-hover>
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+            </div>
+            <h3>APIs &amp; backends</h3>
+            <p>Secure, scalable cloud backends purpose-built for mobile. Realtime sync, offline-first data, and infrastructure that stays up.</p>
+          </article>
+          <article class="card reveal" style="--d:.08s" data-hover>
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s8 2 8 6v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V8c0-4 8-6 8-6z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3>Security &amp; compliance</h3>
+            <p>Pen-tested builds, encrypted data at rest and in transit, and compliance support for regulated industries, from banking to healthcare.</p>
+          </article>
+          <article class="card reveal" style="--d:.16s" data-hover>
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+            </div>
+            <h3>Launch &amp; growth</h3>
+            <p>App Store optimisation, analytics, crash monitoring, and continuous releases. We stay on the pulse long after launch day.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VALUES ============ -->
+    <section id="values" aria-label="Our values">
+      <div class="wrap">
+        <p class="eyebrow reveal">Why Devpulse</p>
+        <h2 class="reveal" style="--d:.06s">Six things we refuse to compromise on.</h2>
+        <div class="grid-3">
+          <article class="card reveal" data-hover>
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 16.9 5.9 20.4l1.5-6.8L2.2 9l6.9-.7z"/></svg></div>
+            <h3>Quality</h3>
+            <p>Code-reviewed, fully tested, zero-shortcut engineering. We ship apps we'd be proud to put our own name on.</p>
+          </article>
+          <article class="card reveal" style="--d:.08s" data-hover>
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18c1.5 0 2-1 1.5-2s0-2 1.5-2h2.5c1.5 0 2.5-1.5 2.5-3"/><circle cx="8" cy="10" r="1.2"/><circle cx="12" cy="7.5" r="1.2"/><circle cx="16" cy="10" r="1.2"/></svg></div>
+            <h3>Design</h3>
+            <p>Beautiful is the baseline. Every interaction is considered, every animation earns its place, every screen feels intentional.</p>
+          </article>
+          <article class="card reveal" style="--d:.16s" data-hover>
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></div>
+            <h3>Performance</h3>
+            <p>Sixty frames per second, instant cold starts, tiny bundles. Speed is a feature your users feel in the first second.</p>
+          </article>
+          <article class="card reveal" data-hover>
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14v3"/></svg></div>
+            <h3>Security</h3>
+            <p>Security by design, not as an afterthought. Hardened auth, encrypted storage, and OWASP-aligned practice on every build.</p>
+          </article>
+          <article class="card reveal" style="--d:.08s" data-hover>
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7 9.5 17.5 4 12"/></svg></div>
+            <h3>Reliability</h3>
+            <p>Crash-free sessions above 98%, observability from day one, and releases your ops team can actually sleep through.</p>
+          </article>
+          <article class="card reveal" style="--d:.16s" data-hover>
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></div>
+            <h3>Simplicity</h3>
+            <p>We fight complexity on your users' behalf. Fewer taps, clearer flows, apps that need no manual. Simple is hard, and worth it.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section id="work" aria-label="Selected work">
+      <div class="wrap">
+        <p class="eyebrow reveal">Experience</p>
+        <h2 class="reveal" style="--d:.06s">Our team's pulse runs through apps you already use.</h2>
+        <p class="section-sub reveal" style="--d:.12s">
+          Our engineers and designers have been embedded in the teams behind some of the
+          UK's best-known apps, and we have founded and shipped our own. That experience,
+          at enterprise scale and to millions of users, is what we bring to every project.
+        </p>
+        <div class="work-grid">
+          <article class="work-card reveal" data-hover>
+            <div class="work-bg wb-jlr" aria-hidden="true"></div>
+            <div class="work-head">
+              <div class="work-mark wm-jlr" aria-hidden="true">JLR</div>
+              <p class="work-tag">Automotive · Connected car</p>
+            </div>
+            <h3>Jaguar Land Rover</h3>
+            <p>Time inside JLR's digital teams working on premium connected-car experiences, where craft and reliability carry a luxury badge.</p>
+            <div class="work-meta"><span class="chip">Connected car</span><span class="chip">Remote control</span><span class="chip">Luxury UX</span></div>
+          </article>
+          <article class="work-card reveal" style="--d:.1s" data-hover>
+            <div class="work-bg wb-je" aria-hidden="true"></div>
+            <div class="work-head">
+              <div class="work-mark wm-je" aria-hidden="true">JE</div>
+              <p class="work-tag">Food delivery · Consumer</p>
+            </div>
+            <h3>Just Eat</h3>
+            <p>Hands-on experience building consumer ordering journeys at national scale, with high-traffic releases serving millions of hungry customers.</p>
+            <div class="work-meta"><span class="chip">Ordering</span><span class="chip">Payments</span><span class="chip">Live tracking</span></div>
+          </article>
+          <article class="work-card reveal" data-hover>
+            <div class="work-bg wb-now" aria-hidden="true"></div>
+            <div class="work-head">
+              <div class="work-mark wm-now" aria-hidden="true">NOW</div>
+              <p class="work-tag">Streaming · Entertainment</p>
+            </div>
+            <h3>NOW (Sky)</h3>
+            <p>Work on Sky's streaming service, where smooth playback, instant browsing, and rock-solid reliability are non-negotiable at prime time.</p>
+            <div class="work-meta"><span class="chip">Video streaming</span><span class="chip">Live TV</span><span class="chip">Prime-time scale</span></div>
+          </article>
+          <article class="work-card reveal" style="--d:.1s" data-hover>
+            <div class="work-bg wb-uktv" aria-hidden="true"></div>
+            <div class="work-head">
+              <div class="work-mark wm-uktv" aria-hidden="true">UKTV</div>
+              <p class="work-tag">Streaming · On-demand TV</p>
+            </div>
+            <h3>UKTV Play</h3>
+            <p>Experience across UKTV's on-demand catch-up platform, covering content discovery, playback, and the details that keep viewers watching.</p>
+            <div class="work-meta"><span class="chip">Catch-up TV</span><span class="chip">Discovery</span><span class="chip">Playback</span></div>
+          </article>
+          <article class="work-card reveal" data-hover>
+            <div class="work-bg wb-sugar" aria-hidden="true"></div>
+            <div class="work-head">
+              <div class="work-mark wm-sugar" aria-hidden="true">SS</div>
+              <p class="work-tag">Health · Public sector</p>
+            </div>
+            <h3>SugarSmart</h3>
+            <p>Contribution to the public-health campaign app that let families scan food barcodes and see the sugar inside. Simple, and used by millions.</p>
+            <div class="work-meta"><span class="chip">Barcode scanning</span><span class="chip">Public health</span><span class="chip">Family-friendly</span></div>
+          </article>
+          <article class="work-card reveal" style="--d:.1s" data-hover>
+            <div class="work-bg wb-hayah" aria-hidden="true"></div>
+            <div class="work-head">
+              <div class="work-mark wm-hayah" aria-hidden="true">HYH</div>
+              <p class="work-tag">Social · Founded in-house</p>
+            </div>
+            <h3>Hayah</h3>
+            <p>A values-led matchmaking app built by Devpulse's founder, taken from first idea, to launch, to a devoted community over several years.</p>
+            <div class="work-meta"><span class="chip">Matchmaking</span><span class="chip">Privacy-first</span><span class="chip">Community</span></div>
+          </article>
+          <article class="work-card more reveal" data-hover>
+            <p class="work-tag">And many more</p>
+            <h3>Your app could be next</h3>
+            <p>Our team has shipped across fintech, retail, media, and automotive. Let's talk about what we'd bring to yours.</p>
+            <a href="#contact" class="btn btn-ghost" data-hover>Start a project</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section id="process" aria-label="Our process">
+      <div class="wrap">
+        <p class="eyebrow reveal">How we work</p>
+        <h2 class="reveal" style="--d:.06s">A simple process. A steady pulse.</h2>
+        <ol class="process-list">
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">01</span>
+            <div>
+              <h3>Discover</h3>
+              <p>We dig into your users, your goals, and your constraints. You get a sharp product strategy and a plan you can hold us to, before a line of code is written.</p>
+            </div>
+          </li>
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">02</span>
+            <div>
+              <h3>Design</h3>
+              <p>Interactive prototypes in your hands within weeks. We test with real users, iterate fast, and only build what's proven to work.</p>
+            </div>
+          </li>
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">03</span>
+            <div>
+              <h3>Build</h3>
+              <p>Senior engineers, weekly demos on real devices, and automated testing from day one. No black boxes. You see the pulse of progress constantly.</p>
+            </div>
+          </li>
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">04</span>
+            <div>
+              <h3>Launch</h3>
+              <p>Store submissions handled, release candidates hardened, analytics wired. Launch day is calm because everything before it wasn't left to chance.</p>
+            </div>
+          </li>
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">05</span>
+            <div>
+              <h3>Support &amp; grow</h3>
+              <p>Monitoring, rapid fixes, and a data-informed roadmap. The best apps aren't finished at launch. They compound.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT / CTA ============ -->
+    <section id="contact" aria-label="Contact">
+      <div class="wrap">
+        <div class="cta-panel reveal">
+          <p class="eyebrow">Start a project</p>
+          <h2>Got an idea with a heartbeat?<br><span class="grad-text">Let's give it a pulse.</span></h2>
+          <p class="section-sub">
+            Tell us what you're building. We'll come back within one working day
+            with honest thoughts, and no hard sell.
+          </p>
+          <a class="btn btn-primary" href="mailto:hello@devpulse.co.uk?subject=New%20project%20enquiry" data-hover>
+            hello@devpulse.co.uk
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <span class="cta-email">Prefer a call? Just say so in your email and we'll set one up.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="wrap">
+      <p class="footer-copy">© <span id="year">2026</span> Devpulse | Crafted with care in the UK.</p>
+      <p class="footer-legal">
+        Third-party apps referenced on this site reflect the prior professional experience
+        of individual Devpulse team members, gained while contracted to the companies behind
+        those apps. Except where stated otherwise, those apps are not Devpulse products, and
+        the companies named are not clients or partners of Devpulse. No affiliation,
+        sponsorship, or endorsement is implied. All trademarks and brand names are the
+        property of their respective owners.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      /* ---------- Custom cursor ---------- */
+      var fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (fine && !reduced) {
+        var dot = document.querySelector(".cursor-dot");
+        var ring = document.querySelector(".cursor-ring");
+        var mx = -100, my = -100, rx = -100, ry = -100;
+
+        document.addEventListener("mousemove", function (e) {
+          mx = e.clientX; my = e.clientY;
+          dot.style.transform = "translate(" + (mx - 3.5) + "px," + (my - 3.5) + "px)";
+        }, { passive: true });
+
+        (function loop() {
+          if (Math.abs(mx - rx) > 0.1 || Math.abs(my - ry) > 0.1) {
+            rx += (mx - rx) * 0.16;
+            ry += (my - ry) * 0.16;
+            ring.style.transform = "translate(" + (rx - ring.offsetWidth / 2) + "px," + (ry - ring.offsetHeight / 2) + "px)";
+          }
+          requestAnimationFrame(loop);
+        })();
+
+        document.addEventListener("mousedown", function () { ring.classList.add("is-down"); });
+        document.addEventListener("mouseup", function () { ring.classList.remove("is-down"); });
+
+        var hoverables = "a, button, [data-hover]";
+        document.addEventListener("mouseover", function (e) {
+          if (e.target.closest(hoverables)) ring.classList.add("is-hover");
+        });
+        document.addEventListener("mouseout", function (e) {
+          if (e.target.closest(hoverables)) ring.classList.remove("is-hover");
+        });
+      }
+
+      /* ---------- Card spotlight follows mouse ---------- */
+      if (fine) {
+        document.querySelectorAll(".card").forEach(function (card) {
+          card.addEventListener("mousemove", function (e) {
+            var r = card.getBoundingClientRect();
+            card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+            card.style.setProperty("--my", (e.clientY - r.top) + "px");
+          }, { passive: true });
+        });
+      }
+
+      /* ---------- Sticky nav state ---------- */
+      var nav = document.getElementById("nav");
+      var onScroll = function () {
+        nav.classList.toggle("scrolled", window.scrollY > 24);
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      /* ---------- Mobile menu ---------- */
+      var burger = document.getElementById("burger");
+      var menu = document.getElementById("mobileMenu");
+      var toggleMenu = function (open) {
+        burger.classList.toggle("open", open);
+        menu.classList.toggle("open", open);
+        burger.setAttribute("aria-expanded", open);
+        document.body.style.overflow = open ? "hidden" : "";
+      };
+      burger.addEventListener("click", function () {
+        toggleMenu(!menu.classList.contains("open"));
+      });
+      menu.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () { toggleMenu(false); });
+      });
+      /* close the menu if the viewport grows past the mobile breakpoint,
+         otherwise the scroll lock would persist with no way to undo it */
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 900 && menu.classList.contains("open")) toggleMenu(false);
+      }, { passive: true });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && menu.classList.contains("open")) toggleMenu(false);
+      });
+
+      /* ---------- Reveal on scroll ---------- */
+      var revealables = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window && !reduced) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in");
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+        revealables.forEach(function (el) { io.observe(el); });
+      } else {
+        revealables.forEach(function (el) { el.classList.add("in"); });
+      }
+
+      /* ---------- Animated counters ---------- */
+      var counters = document.querySelectorAll("[data-count]");
+      var animateCount = function (el) {
+        var target = parseFloat(el.getAttribute("data-count"));
+        var decimals = parseInt(el.getAttribute("data-decimal") || "0", 10);
+        var suffix = el.getAttribute("data-suffix") || (decimals ? "" : "+");
+        if (reduced) { el.textContent = target.toFixed(decimals) + suffix; return; }
+        var start = null, dur = 1600;
+        var tick = function (ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = (target * eased).toFixed(decimals) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+      if ("IntersectionObserver" in window) {
+        var cio = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              animateCount(entry.target);
+              cio.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.6 });
+        counters.forEach(function (el) { cio.observe(el); });
+      } else {
+        counters.forEach(animateCount);
+      }
+
+      /* ---------- Live ECG pulse monitor ---------- */
+      (function () {
+        var canvas = document.getElementById("pulseCanvas");
+        if (!canvas || !canvas.getContext) return;
+        var ctx = canvas.getContext("2d");
+        var w = 0, h = 0;
+
+        var s = getComputedStyle(document.documentElement);
+        var accentRgb = s.getPropertyValue("--pulse-rgb").trim() || "34, 211, 238";
+        var trackColor = s.getPropertyValue("--track").trim() || "rgba(255,255,255,0.07)";
+
+        var resize = function () {
+          var dpr = Math.min(window.devicePixelRatio || 1, 2);
+          w = canvas.clientWidth; h = canvas.clientHeight;
+          canvas.width = Math.round(w * dpr);
+          canvas.height = Math.round(h * dpr);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        };
+        resize();
+
+        /* Randomised ECG: every heartbeat gets fresh parameters, so the
+           trace never repeats - varying rhythm, spike height and wave shapes. */
+        var rnd = function (a, b) { return a + Math.random() * (b - a); };
+        var beatStart = null, beatParams = null;
+        var newBeat = function () {
+          return {
+            dur: rnd(0.8, 1.6),          /* beat-to-beat rhythm varies */
+            pW: rnd(0.06, 0.22),         /* P wave height */
+            qW: rnd(-0.18, -0.06),       /* Q dip */
+            rW: rnd(0.55, 1.05),         /* R spike height */
+            rPos: rnd(0.27, 0.34),
+            sW: rnd(-0.42, -0.16),       /* S dip */
+            tW: rnd(0.14, 0.38),         /* T wave height */
+            tPos: rnd(0.48, 0.62)
+          };
+        };
+        var signal = function (t) {
+          if (beatStart === null) { beatStart = t; beatParams = newBeat(); }
+          while (t - beatStart >= beatParams.dur) {
+            beatStart += beatParams.dur;
+            beatParams = newBeat();
+          }
+          var p = (t - beatStart) / beatParams.dur, b = beatParams;
+          var g = function (c, sd, a) { var d = p - c; return a * Math.exp(-(d * d) / (2 * sd * sd)); };
+          return g(0.16, 0.035, b.pW) + g(b.rPos - 0.04, 0.012, b.qW) + g(b.rPos, 0.013, b.rW)
+               + g(b.rPos + 0.045, 0.014, b.sW) + g(b.tPos, 0.055, b.tW);
+        };
+
+        var SPEED = 150;   /* px per second */
+        var ys = [], phase = 0, last, running = true, rafActive = false;
+
+        var drawTrace = function () {
+          ctx.clearRect(0, 0, w, h);
+          var base = h * 0.58, amp = h * 0.36;
+          ctx.strokeStyle = trackColor;
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(0, base); ctx.lineTo(w, base); ctx.stroke();
+          if (!ys.length) return;
+          var grad = ctx.createLinearGradient(0, 0, w, 0);
+          grad.addColorStop(0, "rgba(" + accentRgb + ",0)");
+          grad.addColorStop(0.45, "rgba(" + accentRgb + ",0.28)");
+          grad.addColorStop(0.85, "rgba(" + accentRgb + ",0.9)");
+          grad.addColorStop(1, "rgba(" + accentRgb + ",1)");
+          ctx.beginPath();
+          var x0 = w - ys.length;
+          for (var i = 0; i < ys.length; i++) {
+            var y = base - ys[i] * amp;
+            i ? ctx.lineTo(x0 + i, y) : ctx.moveTo(x0 + i, y);
+          }
+          ctx.strokeStyle = grad;
+          ctx.lineJoin = "round";
+          ctx.lineCap = "round";
+          ctx.shadowColor = "rgba(" + accentRgb + ",0.8)";
+          ctx.shadowBlur = 14;
+          ctx.lineWidth = 2.2;
+          ctx.stroke();
+          /* glowing dot at the leading edge */
+          ctx.beginPath();
+          ctx.arc(x0 + ys.length - 1, base - ys[ys.length - 1] * amp, 3, 0, Math.PI * 2);
+          ctx.fillStyle = "#fff";
+          ctx.shadowBlur = 12;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        };
+
+        var drawStatic = function () {
+          ys = [];
+          for (var i = 0; i < w; i++) ys.push(signal(i / SPEED));
+          drawTrace();
+        };
+
+        window.addEventListener("resize", function () {
+          resize();
+          if (reduced) drawStatic();
+        }, { passive: true });
+
+        if (reduced) { drawStatic(); return; }
+
+        var frame = function (ts) {
+          if (!running) { rafActive = false; return; }
+          if (last === undefined) { last = ts; requestAnimationFrame(frame); return; }
+          var dt = Math.min((ts - last) / 1000, 0.05);
+          last = ts;
+          phase += dt;
+          var n = Math.max(1, Math.round(dt * SPEED));
+          for (var i = n - 1; i >= 0; i--) {
+            ys.push(signal(phase - i / SPEED) + (Math.random() - 0.5) * 0.012);
+          }
+          if (ys.length > w) ys.splice(0, ys.length - w);
+          drawTrace();
+          requestAnimationFrame(frame);
+        };
+        var start = function () {
+          if (!rafActive) { rafActive = true; last = undefined; requestAnimationFrame(frame); }
+        };
+
+        /* only animate while on screen */
+        if ("IntersectionObserver" in window) {
+          new IntersectionObserver(function (entries) {
+            running = entries[0].isIntersecting;
+            if (running) start();
+          }).observe(canvas);
+        }
+        start();
+      })();
+
+      /* ---------- Footer year ---------- */
+      document.getElementById("year").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
