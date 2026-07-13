@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 96" width="560" height="96">
+  <g transform="translate(0 4)">
+    <defs><clipPath id="wsq"><rect width="88" height="88" rx="19"/></clipPath></defs>
+    <g clip-path="url(#wsq)" transform="scale(0.9167)">
+      <rect width="96" height="96" fill="#0b5c3f"/>
+      <path d="M48 40 C42 40 39 48 37 60 C35.5 70 34 78 31 84 L48 96 L65 84 C62 78 60.5 70 59 60 C57 48 54 40 48 40 Z" fill="#f5822a" stroke="#12211a" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M31 84 L65 84 L68 96 L28 96 Z" fill="#f5822a" stroke="#12211a" stroke-width="3.5"/>
+      <path d="M34 76 Q48 81 62 76 L65 88 Q48 93 31 88 Z" fill="#fff" stroke="#12211a" stroke-width="2.5"/>
+      <circle cx="41" cy="60" r="8" fill="#fff" stroke="#12211a" stroke-width="3"/>
+      <circle cx="43" cy="61.5" r="3.5" fill="#12211a"/>
+      <circle cx="57" cy="60" r="8" fill="#fff" stroke="#12211a" stroke-width="3"/>
+      <circle cx="59" cy="61.5" r="3.5" fill="#12211a"/>
+      <path d="M33 53 l14 3 M65 53 l-14 3" stroke="#12211a" stroke-width="3" stroke-linecap="round"/>
+      <path d="M58 68 l6 3.5 l-7 3.5 z" fill="#f0a11a" stroke="#12211a" stroke-width="2.5" stroke-linejoin="round"/>
+      <g transform="rotate(-8 48 38)">
+        <path d="M37 36 Q48 31 59 36 L61 44 Q48 40 35 44 Z" fill="#12211a"/>
+        <path d="M28 43 Q48 37 68 43 Q69 47.5 64.5 48 Q48 43.5 31.5 48 Q27 47.5 28 43 Z" fill="#12211a"/>
+        <path d="M34 42 Q48 38 62 42" stroke="#12a66b" stroke-width="3" fill="none"/>
+      </g>
+    </g>
+  </g>
+  <text x="108" y="62" font-family="'Avenir Next','Helvetica Neue','Segoe UI',system-ui,sans-serif" font-size="46" font-weight="700" letter-spacing="-1" fill="#0b5c3f">Drive<tspan fill="#f5822a">By</tspan>Theory</text>
+</svg>

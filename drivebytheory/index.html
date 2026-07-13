@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="DriveByTheory by DevPulse Limited, a premium, offline-first revision app for the GB car driving theory test. Product and business overview.">
+<meta property="og:title" content="DriveByTheory: Product &amp; Business Overview">
+<meta property="og:description" content="Official DVSA revision content, a hazard perception coach, and a personal study plan. By DevPulse Limited.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<title>DriveByTheory: Product &amp; Business Pack (DVSA Licensing)</title>
+<style>
+  :root {
+    --paper: #f8f7f4;
+    --ink: #1a2420;
+    --ink-soft: #4a5751;
+    --ink-faint: #75827b;
+    --line: #e0e0d8;
+    --card: #ffffff;
+    --green: #0b5c3f;
+    --green-bright: #12a66b;
+    --green-deep: #073826;
+    --mint: #e8f1ec;
+    --orange: #f5822a;
+    --amber: #f0a11a;
+    --red: #d7263d;
+    --serif: "Iowan Old Style", Charter, "Bitstream Charter", Georgia, serif;
+    --sans: "Avenir Next", "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #131917; --ink: #e8ece9; --ink-soft: #b2bdb6; --ink-faint: #808d86;
+      --line: #2a332e; --card: #1b2320; --mint: #1a2c24; --green-deep: #0a2c1f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #131917; --ink: #e8ece9; --ink-soft: #b2bdb6; --ink-faint: #808d86;
+    --line: #2a332e; --card: #1b2320; --mint: #1a2c24; --green-deep: #0a2c1f;
+  }
+  :root[data-theme="light"] {
+    --paper: #f8f7f4; --ink: #1a2420; --ink-soft: #4a5751; --ink-faint: #75827b;
+    --line: #e0e0d8; --card: #ffffff; --mint: #e8f1ec; --green-deep: #073826;
+  }
+  html { background: var(--paper); }
+  body { margin: 0; font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.62; font-size: 1rem; }
+  .page { max-width: 47rem; margin: 0 auto; padding: 0 1.4rem 5rem; }
+  .wide { max-width: 66rem; margin: 0 auto; padding: 0 1.4rem; }
+
+  /* ---------- Cover ---------- */
+  .cover {
+    background: linear-gradient(168deg, var(--green-deep), #0b5c3f 70%, #0e6b49);
+    color: #f2f7f4; margin: 0 0 3.5rem; padding: 4.5rem 1.4rem 4rem;
+  }
+  .cover-inner { max-width: 47rem; margin: 0 auto; }
+  .cover .k {
+    font-family: var(--sans); font-size: .72rem; letter-spacing: .22em; text-transform: uppercase;
+    color: #8fd4b8; font-weight: 600; margin: 0 0 2.2rem;
+  }
+  .wordmark { display: flex; align-items: center; gap: 1.1rem; margin-bottom: 2rem; }
+  .wordmark h1 { font-size: clamp(2rem, 5.5vw, 2.9rem); margin: 0; letter-spacing: -0.02em; line-height: 1.05; font-weight: 700; }
+  .wordmark h1 em { font-style: normal; color: #ffb066; }
+  .cover .sub { font-size: 1.16rem; color: #cfe5da; max-width: 34rem; margin: 0 0 2.6rem; line-height: 1.55; }
+  .cover .metaline { font-family: var(--sans); font-size: .82rem; color: #9db8ab; display: flex; gap: 2rem; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.16); padding-top: 1.3rem; }
+  .cover .metaline b { color: #f2f7f4; font-weight: 600; display: block; font-size: .9rem; }
+
+  /* ---------- Typography ---------- */
+  .secnum {
+    font-family: var(--sans); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--green-bright); font-weight: 700; margin: 4rem 0 .4rem;
+  }
+  h2 { font-size: 1.65rem; margin: 0 0 1.1rem; letter-spacing: -0.015em; line-height: 1.2; text-wrap: balance; }
+  h3 { font-family: var(--sans); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); font-weight: 700; margin: 2rem 0 .6rem; }
+  p { margin: 0 0 1.05rem; }
+  a { color: var(--green-bright); }
+  .lede { font-size: 1.14rem; color: var(--ink-soft); }
+
+  .statrow { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin: 1.6rem 0; }
+  .stat { background: var(--card); padding: 1rem 1.1rem; }
+  .stat .k { font-family: var(--sans); font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); font-weight: 700; margin-bottom: .35rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .stat .v { font-family: var(--sans); font-weight: 700; font-size: 1.15rem; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+  .stat .s { font-family: var(--sans); font-size: .74rem; color: var(--ink-faint); margin-top: .15rem; }
+
+  .tablebox { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; margin: 1.3rem 0; }
+  table { border-collapse: collapse; width: 100%; font-family: var(--sans); font-size: .88rem; min-width: 34rem; }
+  th { text-align: left; font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 700; padding: .75rem .9rem; border-bottom: 2px solid var(--line); background: var(--card); }
+  td { padding: .72rem .9rem; border-bottom: 1px solid var(--line); vertical-align: top; background: var(--card); }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr:last-child td { border-bottom: none; }
+
+  ul.clean { padding-left: 1.15rem; margin: 0 0 1.1rem; }
+  ul.clean li { margin-bottom: .6rem; }
+  .check { list-style: none; padding: 0; }
+  .check li { padding-left: 1.7rem; position: relative; margin-bottom: .65rem; }
+  .check li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--green-bright); font-weight: 700; font-family: var(--sans); }
+
+  .callout { border: 1px solid var(--line); border-left: 4px solid var(--green-bright); background: var(--card); border-radius: 0 10px 10px 0; padding: 1.15rem 1.35rem; margin: 1.7rem 0; }
+  .callout .c-h { font-family: var(--sans); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--green-bright); margin-bottom: .45rem; }
+  .callout p:last-child { margin-bottom: 0; }
+  .attr { font-family: var(--mono); font-size: .84rem; background: var(--mint); border-radius: 8px; padding: .9rem 1.1rem; line-height: 1.55; }
+
+  /* ---------- Brand panel ---------- */
+  .brandpanel { display: flex; gap: 2.2rem; align-items: center; flex-wrap: wrap; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1.6rem; margin: 1.6rem 0; }
+  .swatchrow { display: flex; gap: .55rem; flex-wrap: wrap; margin-top: .9rem; }
+  .sw { width: 58px; }
+  .sw .c { height: 40px; border-radius: 8px; border: 1px solid rgba(0,0,0,.08); }
+  .sw .n { font-family: var(--mono); font-size: .6rem; color: var(--ink-faint); margin-top: .3rem; }
+
+  /* ---------- Phones ---------- */
+  .shelf { display: flex; flex-wrap: wrap; gap: 1.8rem; justify-content: center; margin: 2.2rem 0 1rem; }
+  figure.ph { margin: 0; width: 250px; }
+  figcaption { font-family: var(--sans); font-size: .78rem; color: var(--ink-faint); margin-top: .75rem; line-height: 1.5; }
+  figcaption b { color: var(--ink); font-weight: 650; display: block; }
+  .phone {
+    width: 250px; height: 528px; border-radius: 34px; background: #fbfcfa;
+    border: 5px solid #171d1a; box-shadow: 0 16px 36px rgba(7,40,27,.16);
+    overflow: hidden; display: flex; flex-direction: column;
+  }
+  .sbar { flex: none; display: flex; justify-content: space-between; align-items: center; padding: 7px 18px 3px; font-family: var(--sans); font-size: 9.5px; font-weight: 700; color: #1a2420; }
+  .sbar .pill { width: 66px; height: 14px; background: #171d1a; border-radius: 9px; }
+  .sbar .r { display: flex; gap: 3px; align-items: center; }
+  .sbar .r i { display: block; width: 12px; height: 7px; background: #1a2420; border-radius: 2px; }
+  .scr { flex: 1; padding: 8px 15px 0; display: flex; flex-direction: column; overflow: hidden; font-family: var(--sans); font-size: 11.5px; color: #1a2420; }
+  .tb { flex: none; display: flex; justify-content: space-around; align-items: flex-start; padding: 7px 4px 14px; border-top: 1px solid #e7eae5; background: #fff; font-family: var(--sans); }
+  .tab { font-size: 8px; color: #8b968f; text-align: center; font-weight: 650; width: 40px; }
+  .tab .ic { display: block; width: 17px; height: 17px; border-radius: 5px; background: #d8ded9; margin: 0 auto 3px; }
+  .tab.on { color: #0b5c3f; }
+  .tab.on .ic { background: #0b5c3f; }
+  .greet { font-size: 15.5px; font-weight: 750; letter-spacing: -.015em; }
+  .hrow { display: flex; justify-content: space-between; align-items: center; margin: 5px 0 9px; }
+  .flame { display: flex; align-items: center; gap: 3px; font-weight: 750; color: #e08a12; font-size: 12.5px; }
+  .hero { background: linear-gradient(150deg, #073826, #0b5c3f); color: #fff; border-radius: 16px; padding: 13px 13px 11px; margin-bottom: 9px; position: relative; overflow: hidden; }
+  .hero .k { font-size: 8px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; font-weight: 750; }
+  .hero .v { font-size: 21px; font-weight: 800; letter-spacing: -.02em; margin: 1px 0; }
+  .hero .s { font-size: 9.5px; opacity: .82; }
+  .hero .chip { display: inline-block; background: rgba(255,255,255,.16); border-radius: 99px; padding: 2px 8px; font-size: 8.5px; font-weight: 700; margin-top: 6px; }
+  .card { background: #fff; border: 1px solid #e7eae5; border-radius: 13px; padding: 10px 11px; margin-bottom: 7px; box-shadow: 0 1px 2px rgba(20,40,30,.04); }
+  .row { display: flex; align-items: center; gap: 8px; }
+  .done { width: 17px; height: 17px; border-radius: 50%; background: #12a66b; flex: none; position: relative; }
+  .done::after { content: "✓"; color: #fff; font-size: 9px; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .todo { width: 17px; height: 17px; border-radius: 50%; border: 2px solid #d8ded9; flex: none; box-sizing: border-box; }
+  .t { font-weight: 700; font-size: 11.5px; }
+  .d { color: #75827b; font-size: 9.5px; }
+  .cta { background: #0b5c3f; color: #fff; border-radius: 12px; text-align: center; font-weight: 750; padding: 10px; font-size: 12px; margin-top: auto; margin-bottom: 10px; box-shadow: 0 3px 8px rgba(11,92,63,.3); }
+  .pbar { height: 4px; border-radius: 99px; background: #e7eae5; margin: 7px 0 11px; overflow: hidden; }
+  .pbar i { display: block; height: 100%; background: #12a66b; border-radius: 99px; }
+  .qtxt { font-size: 12.5px; font-weight: 650; line-height: 1.45; margin: 3px 0 9px; }
+  .opt { border: 1.5px solid #e7eae5; border-radius: 11px; padding: 8px 10px; margin-bottom: 6px; font-size: 10.5px; font-weight: 550; background: #fff; }
+  .opt.ok { border-color: #12a66b; background: #e8f5ee; color: #0b5c3f; font-weight: 700; }
+  .opt.ok::after { content: "  ✓"; }
+  .ai { background: #e8f1ec; border-radius: 11px; padding: 9px 11px; font-size: 9.8px; line-height: 1.5; color: #23483a; }
+  .ai .h { display: flex; gap: 5px; align-items: center; font-size: 8px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #0b5c3f; margin-bottom: 3px; }
+  .vid { border-radius: 13px; overflow: hidden; margin-bottom: 7px; position: relative; height: 136px; background: linear-gradient(#a7c8dc 0 52%, #83938a 52% 58%, #59685f 58% 100%); }
+  .vid .road { position: absolute; left: 45%; top: 58%; bottom: 0; width: 10%; background: repeating-linear-gradient(180deg, #e8e8e0 0 9px, transparent 9px 20px); }
+  .vid .van { position: absolute; left: 16%; top: 62%; width: 42px; height: 24px; background: #e6e8e5; border-radius: 4px 6px 2px 2px; box-shadow: inset -11px 0 #c9cdc8; }
+  .vid .tap { position: absolute; right: 8px; bottom: 7px; background: rgba(0,0,0,.55); color: #fff; padding: 3px 7px; border-radius: 99px; font-size: 8px; font-weight: 700; }
+  .tl { position: relative; height: 24px; background: #fff; border: 1px solid #e7eae5; border-radius: 99px; margin: 3px 0 8px; }
+  .tl .win { position: absolute; left: 38%; width: 26%; top: 3px; bottom: 3px; background: #e8f5ee; border: 1.5px solid #12a66b; border-radius: 99px; }
+  .tl .u1 { position: absolute; left: 30%; top: -3px; bottom: -3px; width: 3px; border-radius: 2px; background: #d7263d; }
+  .tl .u2 { position: absolute; left: 47%; top: -3px; bottom: -3px; width: 3px; border-radius: 2px; background: #0b5c3f; }
+  .ring { width: 106px; height: 106px; border-radius: 50%; margin: 8px auto 5px; display: flex; align-items: center; justify-content: center; background: conic-gradient(#12a66b 0 92%, #e7eae5 92% 100%); }
+  .ring .in { width: 82px; height: 82px; border-radius: 50%; background: #fbfcfa; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .ring .sc { font-size: 20px; font-weight: 800; letter-spacing: -.02em; }
+  .ring .pl { font-size: 8px; font-weight: 800; letter-spacing: .13em; color: #12a66b; }
+  .mini { display: flex; align-items: center; gap: 7px; margin-bottom: 5px; font-size: 9.5px; }
+  .mini .nm { width: 84px; flex: none; color: #75827b; }
+  .mini .bar { flex: 1; height: 4.5px; border-radius: 99px; background: #e7eae5; overflow: hidden; }
+  .mini .bar i { display: block; height: 100%; background: #12a66b; }
+  .mini .pc { width: 24px; text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .paylist { list-style: none; padding: 0; margin: 7px 0; }
+  .paylist li { display: flex; gap: 7px; align-items: flex-start; font-size: 10.5px; margin-bottom: 7px; font-weight: 570; }
+  .paylist li::before { content: "✓"; color: #12a66b; font-weight: 800; }
+  .price { text-align: center; margin: 4px 0 2px; }
+  .price .p { font-size: 27px; font-weight: 800; letter-spacing: -.02em; }
+  .price .s { font-size: 9.5px; color: #75827b; }
+
+  .foot { margin-top: 4.5rem; padding-top: 1.4rem; border-top: 1px solid var(--line); font-family: var(--sans); font-size: .78rem; color: var(--ink-faint); }
+</style>
+
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-inner">
+    <p class="k">Product &amp; business overview · For DVSA Crown Copyright licensing review</p>
+    <div class="wordmark">
+      <svg width="76" height="76" viewBox="0 0 96 96" aria-label="DriveByTheory app icon">
+        <defs><clipPath id="cvsq"><rect width="96" height="96" rx="21"/></clipPath></defs>
+        <g clip-path="url(#cvsq)">
+          <rect width="96" height="96" fill="#0e6b49"/>
+          <path d="M48 40 C42 40 39 48 37 60 C35.5 70 34 78 31 84 L48 96 L65 84 C62 78 60.5 70 59 60 C57 48 54 40 48 40 Z" fill="#f5822a" stroke="#12211a" stroke-width="3.5" stroke-linejoin="round"/>
+          <path d="M31 84 L65 84 L68 96 L28 96 Z" fill="#f5822a" stroke="#12211a" stroke-width="3.5"/>
+          <path d="M34 76 Q48 81 62 76 L65 88 Q48 93 31 88 Z" fill="#fff" stroke="#12211a" stroke-width="2.5"/>
+          <circle cx="41" cy="60" r="8" fill="#fff" stroke="#12211a" stroke-width="3"/>
+          <circle cx="43" cy="61.5" r="3.5" fill="#12211a"/><circle cx="44" cy="60.5" r="1.2" fill="#fff"/>
+          <circle cx="57" cy="60" r="8" fill="#fff" stroke="#12211a" stroke-width="3"/>
+          <circle cx="59" cy="61.5" r="3.5" fill="#12211a"/><circle cx="60" cy="60.5" r="1.2" fill="#fff"/>
+          <path d="M33 53 l14 3 M65 53 l-14 3" stroke="#12211a" stroke-width="3" stroke-linecap="round"/>
+          <path d="M58 68 l6 3.5 l-7 3.5 z" fill="#f0a11a" stroke="#12211a" stroke-width="2.5" stroke-linejoin="round"/>
+          <g transform="rotate(-8 48 38)">
+            <path d="M37 36 Q48 31 59 36 L61 44 Q48 40 35 44 Z" fill="#12211a"/>
+            <path d="M28 43 Q48 37 68 43 Q69 47.5 64.5 48 Q48 43.5 31.5 48 Q27 47.5 28 43 Z" fill="#12211a"/>
+            <path d="M34 42 Q48 38 62 42" stroke="#12a66b" stroke-width="3" fill="none"/>
+          </g>
+        </g>
+      </svg>
+      <h1>Drive<em>By</em>Theory</h1>
+    </div>
+    <p class="sub">A premium, offline-first revision app for the GB car theory test, combining official DVSA revision material, a hazard perception coach that explains <em>why</em> a click scored, and a personal study plan that gets learners test-ready in two weeks.</p>
+    <div class="metaline">
+      <span><b>Applicant</b>DevPulse Limited (devpulse.co.uk)</span>
+      <span><b>Platforms</b>iOS &amp; Android (phones + tablets)</span>
+      <span><b>Model</b>Free download · £5.99 one-time unlock</span>
+      <span><b>Status</b>Design started · development awaiting content licence</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+<p class="secnum">01 · Overview</p>
+<h2>What DriveByTheory is</h2>
+<p class="lede">Nearly 2.8 million car theory tests were conducted in Great Britain in 2024 to 2025, and fewer than half resulted in a pass (<a href="https://www.gov.uk/government/statistical-data-sets/driving-test-and-theory-test-data-cars">44.9%, DVSA statistical data set, table DRT111C</a>). Each failed attempt costs the learner £23 and, with practical test waiting lists at record lengths, months of delay. DriveByTheory exists to get learners through first time.</p>
+<p>The app combines three things no current product offers together: <strong>complete official revision content</strong> licensed from DVSA, <strong>a hazard perception trainer that coaches timing</strong>, replaying every clip against its scoring window and explaining exactly why a response was too early, too late, or just right, and <strong>a personal countdown plan</strong> built backwards from the learner's booked test date, with daily sessions, spaced-repetition review, and an honest readiness meter.</p>
+<p>The product is fully offline after download: no account, no advertising, and a single one-time price. It is aimed at learners aged 17 to 24 and designed, visually and tonally, to feel premium, calm, and encouraging, with a friendly traffic cone brand character ("Don Coneleone") providing personality in celebrations and study reminders.</p>
+
+<div class="statrow">
+  <div class="stat"><div class="k">GB theory tests</div><div class="v">2.79M</div><div class="s">DVSA statistics, 2024 to 2025</div></div>
+  <div class="stat"><div class="k">Pass rate</div><div class="v">44.9%</div><div class="s">1.54M attempts did not pass</div></div>
+  <div class="stat"><div class="k">Cost per attempt</div><div class="v">£23</div><div class="s">Plus months of delay on retake</div></div>
+  <div class="stat"><div class="k">Price to learner</div><div class="v">£5.99</div><div class="s">Once. No subscription.</div></div>
+</div>
+
+<p class="secnum">02 · Licensed content</p>
+<h2>How DVSA material is used</h2>
+<p>DriveByTheory requests a standard licence for the <strong>car revision question bank</strong> and <strong>hazard perception clips</strong>. Licensed material is used respectfully, completely, and only inside the app:</p>
+<ul class="check">
+  <li><strong>Revision questions</strong> are presented verbatim, each accompanied by its official knowledge-and-understanding text, displayed with every question as the licence requires. Our original study aids (plain-English explanations, notes on why each incorrect option is wrong, and memory hooks) appear alongside the official text, clearly separated from it, and never replacing it.</li>
+  <li><strong>Hazard perception clips</strong> (MPEG-4, with official scoring-window timeframes) power both full mock tests scored to the real scheme (5-4-3-2-1 within the window) and our training mode, which replays the learner's taps on a timeline against the scoring window with coaching feedback. The clips themselves are never altered; our overlay graphics render on top during replay only.</li>
+  <li><strong>The Highway Code and traffic sign images</strong> are included under the Open Government Licence with attribution.</li>
+  <li><strong>Content protection:</strong> all licensed material ships inside the app package in a non-user-accessible format and is viewable only through the app. The app provides no facility to export, copy, share, or print licensed content, and there is no API and no web version.</li>
+  <li><strong>Honesty to learners:</strong> the app describes questions as official DVSA <em>revision</em> questions and clips as official <em>practice</em> clips. It never claims to contain the live test bank, and never implies DVSA endorsement.</li>
+</ul>
+<div class="callout">
+  <div class="c-h">Required attribution, included in the app's About screen and on both store listings</div>
+  <p class="attr">The Driver and Vehicle Standards Agency (DVSA) has given permission for the reproduction of Crown copyright material. DVSA is not responsible for the accuracy of the reproduction.</p>
+</div>
+
+<p class="secnum">03 · Product</p>
+<h2>Features and learner journey</h2>
+<div class="tablebox"><table>
+  <thead><tr><th>Module</th><th>What it does</th><th>Content basis</th></tr></thead>
+  <tbody>
+    <tr><td><b>Learn &amp; Practice</b></td><td>Revision by DVSA topic, by personal weakness, or smart mix; spaced-repetition review resurfaces past mistakes at the right moment</td><td class="num">Licensed + original aids</td></tr>
+    <tr><td><b>Hazard Trainer</b></td><td>Watch, tap, and replay against the scoring window, with coaching for early, late, and over-clicked responses; freeze-frame study mode</td><td class="num">Licensed clips + windows</td></tr>
+    <tr><td><b>Mock Tests</b></td><td>Full simulation: 50 questions / 57 minutes / pass mark 43; HP mocks scored to the official scheme</td><td class="num">Licensed</td></tr>
+    <tr><td><b>Study Plan</b></td><td>Built backwards from the booked test date; daily sessions, streaks, gentle reminders, and an exam countdown</td><td class="num">Original</td></tr>
+    <tr><td><b>Readiness Meter</b></td><td>Per-topic mastery + mock performance → an honest "ready / nearly / not yet" with reasons</td><td class="num">Original</td></tr>
+    <tr><td><b>Signs &amp; Highway Code</b></td><td>Searchable reference library, free for all users</td><td class="num">OGL</td></tr>
+  </tbody>
+</table></div>
+<p><strong>Free tier:</strong> 50 questions, 2 hazard clips with full coaching, 1 mini mock, the complete signs library, and the study plan, which is enough to evaluate quality honestly. A single £5.99 purchase unlocks everything permanently. <strong>No subscription and no ads.</strong> The app works entirely offline after download, including on tablets.</p>
+
+</div>
+
+<div class="wide">
+<h3 style="text-align:center;margin-top:1rem">Core screens</h3>
+<div class="shelf">
+
+  <figure class="ph">
+    <div class="phone">
+      <div class="sbar"><span>9:41</span><span class="pill"></span><span class="r"><i></i></span></div>
+      <div class="scr">
+        <div class="hrow"><div class="greet">Evening, Sam</div><div class="flame">🔥 6</div></div>
+        <div class="hero">
+          <div class="k">Theory test</div>
+          <div class="v">14 days away</div>
+          <div class="s">Tue 28 July · Manchester</div>
+          <div class="chip">On track · Readiness 64%</div>
+          <svg width="46" height="52" viewBox="0 0 96 110" style="position:absolute;right:8px;bottom:-4px;opacity:.95">
+            <path d="M48 26 C42 26 39 34 37 46 C35.5 56 34 64 31 70 L48 82 L65 70 C62 64 60.5 56 59 46 C57 34 54 26 48 26 Z" fill="#f5822a" stroke="#0a2c1f" stroke-width="3.5"/>
+            <path d="M31 70 L65 70 L68 82 L28 82 Z" fill="#f5822a" stroke="#0a2c1f" stroke-width="3.5"/>
+            <path d="M34 62 Q48 67 62 62 L65 74 Q48 79 31 74 Z" fill="#fff" stroke="#0a2c1f" stroke-width="2.5"/>
+            <circle cx="41" cy="46" r="8" fill="#fff" stroke="#0a2c1f" stroke-width="3"/><circle cx="43" cy="47.5" r="3.5" fill="#0a2c1f"/>
+            <circle cx="57" cy="46" r="8" fill="#fff" stroke="#0a2c1f" stroke-width="3"/><circle cx="59" cy="47.5" r="3.5" fill="#0a2c1f"/>
+            <path d="M33 39 l14 3 M65 39 l-14 3" stroke="#0a2c1f" stroke-width="3" stroke-linecap="round"/>
+            <path d="M58 54 l6 3.5 l-7 3.5 z" fill="#f0a11a" stroke="#0a2c1f" stroke-width="2.5"/>
+            <g transform="rotate(-8 48 24)"><path d="M37 22 Q48 17 59 22 L61 30 Q48 26 35 30 Z" fill="#0a2c1f"/><path d="M28 29 Q48 23 68 29 Q69 33.5 64.5 34 Q48 29.5 31.5 34 Q27 33.5 28 29 Z" fill="#0a2c1f"/><path d="M34 28 Q48 24 62 28" stroke="#12a66b" stroke-width="3" fill="none"/></g>
+          </svg>
+        </div>
+        <div class="card"><div class="row"><div class="done"></div><div><div class="t">15 new questions</div><div class="d">Road &amp; traffic signs</div></div></div></div>
+        <div class="card"><div class="row"><div class="todo"></div><div><div class="t">Review 8 due</div><div class="d">Spaced repetition · 6 min</div></div></div></div>
+        <div class="card"><div class="row"><div class="todo"></div><div><div class="t">2 hazard clips</div><div class="d">Country roads · scored</div></div></div></div>
+        <div class="cta">Continue today's session</div>
+      </div>
+      <div class="tb">
+        <div class="tab on"><span class="ic"></span>Today</div>
+        <div class="tab"><span class="ic"></span>Learn</div>
+        <div class="tab"><span class="ic"></span>Hazard</div>
+        <div class="tab"><span class="ic"></span>Mock</div>
+        <div class="tab"><span class="ic"></span>Progress</div>
+      </div>
+    </div>
+    <figcaption><b>Today</b> Countdown, streak, daily plan, and readiness in one calm view, with Don Coneleone keeping watch from the corner.</figcaption>
+  </figure>
+
+  <figure class="ph">
+    <div class="phone">
+      <div class="sbar"><span>9:41</span><span class="pill"></span><span class="r"><i></i></span></div>
+      <div class="scr">
+        <div class="hrow" style="margin-bottom:2px"><div style="font-size:9px;color:#75827b;font-weight:700">ROAD &amp; TRAFFIC SIGNS · 7 OF 15</div><div style="font-size:10px;color:#75827b">✕</div></div>
+        <div class="pbar"><i style="width:47%"></i></div>
+        <div class="qtxt">You're on a motorway. What does it mean when a red X shows above the hard shoulder?</div>
+        <div class="opt">Use it as a normal running lane</div>
+        <div class="opt ok">Do not drive on the hard shoulder</div>
+        <div class="opt">Stop only for breakdowns</div>
+        <div class="opt">National speed limit applies</div>
+        <div class="ai">
+          <div class="h"><span style="width:9px;height:9px;border-radius:3px;background:#12a66b;display:inline-block"></span>In plain English</div>
+          A red X means the lane is closed, often for an obstruction you can't see yet. Driving in it is dangerous and carries a fine.
+          <b style="display:block;margin-top:3px;color:#0b5c3f">Official DVSA note · Why the others are wrong ›</b>
+        </div>
+      </div>
+      <div class="tb">
+        <div class="tab"><span class="ic"></span>Today</div>
+        <div class="tab on"><span class="ic"></span>Learn</div>
+        <div class="tab"><span class="ic"></span>Hazard</div>
+        <div class="tab"><span class="ic"></span>Mock</div>
+        <div class="tab"><span class="ic"></span>Progress</div>
+      </div>
+    </div>
+    <figcaption><b>Practice</b> Licensed question and official knowledge text, with our plain-English layer clearly separated below.</figcaption>
+  </figure>
+
+  <figure class="ph">
+    <div class="phone">
+      <div class="sbar"><span>9:41</span><span class="pill"></span><span class="r"><i></i></span></div>
+      <div class="scr">
+        <div class="hrow" style="margin-bottom:3px"><div style="font-size:9px;color:#75827b;font-weight:700">HAZARD CLIP 4 · COUNTRY ROAD</div><div style="font-size:10px;color:#75827b">✕</div></div>
+        <div class="vid"><div class="road"></div><div class="van"></div><div class="tap">TAP when a hazard develops</div></div>
+        <div class="tl"><div class="win"></div><div class="u1"></div><div class="u2"></div></div>
+        <div class="ai" style="flex:none">
+          <div class="h"><span style="width:9px;height:9px;border-radius:3px;background:#12a66b;display:inline-block"></span>Coach · Score 3/5</div>
+          Your first tap was <b>too early</b>. The van had appeared but wasn't yet a <i>developing</i> hazard. The window opens as it pulls out: watch the front wheels. Your second tap scored. One clean tap beats two nervous ones.
+        </div>
+        <div class="card" style="margin-top:7px"><div class="row"><div class="todo"></div><div><div class="t">Replay with freeze-frames</div><div class="d">See the exact moment the window opens</div></div></div></div>
+      </div>
+      <div class="tb">
+        <div class="tab"><span class="ic"></span>Today</div>
+        <div class="tab"><span class="ic"></span>Learn</div>
+        <div class="tab on"><span class="ic"></span>Hazard</div>
+        <div class="tab"><span class="ic"></span>Mock</div>
+        <div class="tab"><span class="ic"></span>Progress</div>
+      </div>
+    </div>
+    <figcaption><b>Hazard Trainer</b> The differentiator: taps replayed against the official scoring window (green), with timing coaching. Clips are shown unaltered; graphics overlay during replay only.</figcaption>
+  </figure>
+
+  <figure class="ph">
+    <div class="phone">
+      <div class="sbar"><span>9:41</span><span class="pill"></span><span class="r"><i></i></span></div>
+      <div class="scr" style="text-align:center">
+        <div style="font-size:9px;color:#75827b;font-weight:700;margin-top:2px">MOCK TEST 3 · FULL SIMULATION</div>
+        <div class="ring"><div class="in"><div class="sc">46/50</div><div class="pl">PASS</div></div></div>
+        <div style="font-size:10px;color:#75827b;margin-bottom:9px">Pass mark 43 · 41 minutes used</div>
+        <div style="text-align:left">
+          <div class="mini"><div class="nm">Alertness</div><div class="bar"><i style="width:95%"></i></div><div class="pc">95</div></div>
+          <div class="mini"><div class="nm">Motorway rules</div><div class="bar"><i style="width:70%;background:#f0a11a"></i></div><div class="pc">70</div></div>
+          <div class="mini"><div class="nm">Vulnerable users</div><div class="bar"><i style="width:92%"></i></div><div class="pc">92</div></div>
+          <div class="mini"><div class="nm">Documents</div><div class="bar"><i style="width:88%"></i></div><div class="pc">88</div></div>
+        </div>
+        <div class="card" style="text-align:left;margin-top:5px"><div class="t" style="color:#0b5c3f">Fix motorway rules in ~12 min ›</div><div class="d">6 questions queued for tomorrow's review</div></div>
+        <div class="cta" style="margin-top:auto">Share result card</div>
+      </div>
+      <div class="tb">
+        <div class="tab"><span class="ic"></span>Today</div>
+        <div class="tab"><span class="ic"></span>Learn</div>
+        <div class="tab"><span class="ic"></span>Hazard</div>
+        <div class="tab on"><span class="ic"></span>Mock</div>
+        <div class="tab"><span class="ic"></span>Progress</div>
+      </div>
+    </div>
+    <figcaption><b>Mock result</b> Real exam conditions, per-topic truth, and the single most useful next action.</figcaption>
+  </figure>
+
+  <figure class="ph">
+    <div class="phone">
+      <div class="sbar"><span>9:41</span><span class="pill"></span><span class="r"><i></i></span></div>
+      <div class="scr">
+        <div style="display:flex;justify-content:center;margin:6px 0 2px">
+          <svg width="64" height="58" viewBox="0 0 96 88">
+            <path d="M48 18 C42 18 39 26 37 38 C35.5 48 34 56 31 62 L48 74 L65 62 C62 56 60.5 48 59 38 C57 26 54 18 48 18 Z" fill="#f5822a" stroke="#1a2420" stroke-width="3.5"/>
+            <path d="M31 62 L65 62 L68 74 L28 74 Z" fill="#f5822a" stroke="#1a2420" stroke-width="3.5"/>
+            <path d="M34 54 Q48 59 62 54 L65 66 Q48 71 31 66 Z" fill="#fff" stroke="#1a2420" stroke-width="2.5"/>
+            <circle cx="41" cy="38" r="8" fill="#fff" stroke="#1a2420" stroke-width="3"/><circle cx="43" cy="39.5" r="3.5" fill="#1a2420"/>
+            <circle cx="57" cy="38" r="8" fill="#fff" stroke="#1a2420" stroke-width="3"/><circle cx="59" cy="39.5" r="3.5" fill="#1a2420"/>
+            <path d="M33 31 l14 3 M65 31 l-14 3" stroke="#1a2420" stroke-width="3" stroke-linecap="round"/>
+            <path d="M58 46 l6 3.5 l-7 3.5 z" fill="#f0a11a" stroke="#1a2420" stroke-width="2.5"/>
+            <g transform="rotate(-8 48 16)"><path d="M37 14 Q48 9 59 14 L61 22 Q48 18 35 22 Z" fill="#1a2420"/><path d="M28 21 Q48 15 68 21 Q69 25.5 64.5 26 Q48 21.5 31.5 26 Q27 25.5 28 21 Z" fill="#1a2420"/><path d="M34 20 Q48 16 62 20" stroke="#12a66b" stroke-width="3" fill="none"/></g>
+          </svg>
+        </div>
+        <div class="greet" style="text-align:center;margin-bottom:2px">Unlock everything</div>
+        <div style="font-size:10px;color:#75827b;margin-bottom:5px;text-align:center">You've finished the free preview. Here is all of it.</div>
+        <ul class="paylist">
+          <li>Every official DVSA revision question, explained</li>
+          <li>All hazard clips + timing coach</li>
+          <li>Unlimited full mock tests</li>
+          <li>Personal plan, streaks &amp; widgets</li>
+          <li>Offline · no account · no ads</li>
+        </ul>
+        <div class="price"><div class="p">£5.99</div><div class="s">One payment. Yours forever. No subscription.</div></div>
+        <div class="cta" style="margin-top:7px">Unlock DriveByTheory</div>
+        <div style="text-align:center;font-size:9px;color:#75827b;margin-bottom:10px">Restore purchase</div>
+      </div>
+    </div>
+    <figcaption><b>Unlock</b> Shown only after the free preview delivers value. One price, stated plainly.</figcaption>
+  </figure>
+
+</div>
+</div>
+
+<div class="page">
+
+<p class="secnum">04 · Brand &amp; compliance</p>
+<h2>A distinct, non-official identity</h2>
+<div class="brandpanel">
+  <svg width="120" height="120" viewBox="0 0 96 96">
+    <defs><clipPath id="bpsq"><rect width="96" height="96" rx="21"/></clipPath></defs>
+    <g clip-path="url(#bpsq)">
+      <rect width="96" height="96" fill="#0b5c3f"/>
+      <path d="M48 40 C42 40 39 48 37 60 C35.5 70 34 78 31 84 L48 96 L65 84 C62 78 60.5 70 59 60 C57 48 54 40 48 40 Z" fill="#f5822a" stroke="#12211a" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M31 84 L65 84 L68 96 L28 96 Z" fill="#f5822a" stroke="#12211a" stroke-width="3.5"/>
+      <path d="M34 76 Q48 81 62 76 L65 88 Q48 93 31 88 Z" fill="#fff" stroke="#12211a" stroke-width="2.5"/>
+      <circle cx="41" cy="60" r="8" fill="#fff" stroke="#12211a" stroke-width="3"/>
+      <circle cx="43" cy="61.5" r="3.5" fill="#12211a"/><circle cx="44" cy="60.5" r="1.2" fill="#fff"/>
+      <circle cx="57" cy="60" r="8" fill="#fff" stroke="#12211a" stroke-width="3"/>
+      <circle cx="59" cy="61.5" r="3.5" fill="#12211a"/><circle cx="60" cy="60.5" r="1.2" fill="#fff"/>
+      <path d="M33 53 l14 3 M65 53 l-14 3" stroke="#12211a" stroke-width="3" stroke-linecap="round"/>
+      <path d="M58 68 l6 3.5 l-7 3.5 z" fill="#f0a11a" stroke="#12211a" stroke-width="2.5" stroke-linejoin="round"/>
+      <g transform="rotate(-8 48 38)">
+        <path d="M37 36 Q48 31 59 36 L61 44 Q48 40 35 44 Z" fill="#12211a"/>
+        <path d="M28 43 Q48 37 68 43 Q69 47.5 64.5 48 Q48 43.5 31.5 48 Q27 47.5 28 43 Z" fill="#12211a"/>
+        <path d="M34 42 Q48 38 62 42" stroke="#12a66b" stroke-width="3" fill="none"/>
+      </g>
+    </g>
+  </svg>
+  <div style="flex:1;min-width:15rem">
+    <p style="margin-bottom:.3rem"><strong>App icon and brand character.</strong> DriveByTheory's identity is a friendly cartoon traffic cone in a fedora, known as "Don Coneleone", rendered in the app's own racing-green and cone-orange palette. The character brings warmth and personality to studying, appearing in celebrations, reminders, and coaching moments, for a young audience.</p>
+    <div class="swatchrow">
+      <div class="sw"><div class="c" style="background:#0b5c3f"></div><div class="n">#0B5C3F</div></div>
+      <div class="sw"><div class="c" style="background:#12a66b"></div><div class="n">#12A66B</div></div>
+      <div class="sw"><div class="c" style="background:#f5822a"></div><div class="n">#F5822A</div></div>
+      <div class="sw"><div class="c" style="background:#f0a11a"></div><div class="n">#F0A11A</div></div>
+      <div class="sw"><div class="c" style="background:#f8f7f4"></div><div class="n">#F8F7F4</div></div>
+      <div class="sw"><div class="c" style="background:#1a2420"></div><div class="n">#1A2420</div></div>
+    </div>
+  </div>
+</div>
+<ul class="check">
+  <li>The product does not resemble any official DVSA product; visual identity, name, and character are entirely original.</li>
+  <li>The DVSA logo is not used anywhere; no wording implies DVSA recommendation, endorsement, or approval.</li>
+  <li>The required Crown copyright attribution statement appears in-app and on both store listings (section 02).</li>
+  <li>All artwork will be submitted to DVSA for approval before release, and on any subsequent material change.</li>
+  <li>Content is factual and safety-positive: the brand's light humour never touches road-safety messaging, and licensed material is always presented straight.</li>
+</ul>
+
+<p class="secnum">05 · Business plan</p>
+<h2>Model, forecast, and royalty handling</h2>
+<p><strong>Model:</strong> free download with a substantial free preview; a single £5.99 in-app purchase unlocks all content permanently. No subscription, no advertising, no in-app promotion of third parties. This pricing follows the category's established norm and keeps the product affordable for young learners.</p>
+<div class="tablebox"><table>
+  <thead><tr><th>Year-1 scenario</th><th>Downloads / month</th><th>Conversion</th><th>Unlocks / month</th><th>Gross revenue / month</th></tr></thead>
+  <tbody>
+    <tr><td>Conservative</td><td class="num">6,000</td><td class="num">8%</td><td class="num">480</td><td class="num">~£2,900</td></tr>
+    <tr><td>Expected</td><td class="num">12,000</td><td class="num">10%</td><td class="num">1,200</td><td class="num">~£7,200</td></tr>
+    <tr><td>Strong</td><td class="num">25,000</td><td class="num">12%</td><td class="num">3,000</td><td class="num">~£18,000</td></tr>
+  </tbody>
+</table></div>
+<p><strong>Royalties:</strong> we budget at the full 13%-of-net-sales rate, remitted quarterly with VAT as applicable, with clean per-quarter sales reporting from the app stores' financial exports. We're glad to discuss the licensed-material proportion assessment on the call, as the app contains substantial original content (study planning, coaching, explanations, and reference design) alongside the licensed material.</p>
+<p><strong>Distribution:</strong> organic app-store search and word of mouth, supported by the app's own share features (mock-result cards learners choose to share). No paid acquisition is planned at launch. <strong>Roadmap:</strong> motorcycle, LGV/PCV, and ADI Part 1 editions using the same engine, subject to licence extensions.</p>
+
+<p class="secnum">06 · Delivery</p>
+<h2>Timeline and contact</h2>
+<div class="tablebox"><table>
+  <thead><tr><th>Milestone</th><th>Timing</th></tr></thead>
+  <tbody>
+    <tr><td>Licence application &amp; this review</td><td class="num">Now</td></tr>
+    <tr><td>App development complete (built and tested with placeholder content)</td><td class="num">~10 weeks from content receipt</td></tr>
+    <tr><td>Artwork submitted to DVSA for approval</td><td class="num">~2 weeks before release</td></tr>
+    <tr><td>Release on the App Store and Google Play</td><td class="num">Within the licence's first quarter</td></tr>
+  </tbody>
+</table></div>
+<p>Applicant: <strong>DevPulse Limited</strong> · <a href="https://devpulse.co.uk">devpulse.co.uk</a> · junaid@devpulse.co.uk<br>DriveByTheory will be developed and published by DevPulse Limited.</p>
+
+<div class="foot">
+  <p>DriveByTheory Product and Business Overview, prepared July 2026. Test volumes and pass rates are from the DVSA statistical data set linked in section 01 (table DRT111C, financial year April 2024 to March 2025, published 14 August 2025), and waiting times are from National Audit Office reporting. This document accompanies the online licence application for the car revision question bank and hazard perception clips.</p>
+</div>
+
+</div>
+
+</body>
+</html>
