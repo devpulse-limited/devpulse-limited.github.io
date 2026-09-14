@@ -78,3 +78,7 @@ Banner stars rotate and pulse with varied randomly selected speeds and phases. T
 ## DevPulse feature link
 
 The parent `Website/apps/index.html` includes the Kids Paint feature card. The homepage has no Kids Paint card and links to the app listing at `apps/`. Copy the updated parent `index.html`, the new `apps` directory, and the lowercase `kidspaint` directory to the destination repository. Remove its old standalone `apps.html`. App listing assets and downloads use relative paths back to the website root. The Mac utility privacy claims are explicitly separate from Kids Paint.
+
+## Selected brand icon
+
+Colour Crew is the approved icon. All website headers, footers, favicon links, Apple touch icons, and the parent Apps card use the new PNG derivatives in `assets/`. The app master and regeneration instructions are documented in `design/brand-icon.md` in the app repository. The former three stroke SVG logo has been removed.
