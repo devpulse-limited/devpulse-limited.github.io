@@ -957,26 +957,40 @@
     .kids-art img:last-child { transform:rotate(5deg) translateY(12px); }
     @media(max-width:700px) { .kids-feature { grid-template-columns:1fr; gap:24px; } .kids-art { max-width:390px; margin:auto; } }
     @media(prefers-reduced-motion:reduce) { .kids-link { transition:none; } }
-    /* TwinFin keeps the studio card layout in the game's own colours: the jungle above the waterline, the sea below. */
+    /* TwinFin's card is the game's own world: the jungle layers stand on the waterline, the sea layers on the seabed,
+       each drifting at its in-game parallax speed (sizes are game px × --k; the art is ../twinfin/assets/scenery). */
     @font-face { font-family: TwinFinDisplay; src: url('../twinfin/assets/fonts/Grandstander-Variable.ttf') format('truetype'); font-weight: 100 900; font-display: swap; }
-    .twin-feature { --pad:clamp(24px,5vw,60px); position:relative; overflow:hidden; display:grid; grid-template-columns:1.15fr 1fr; grid-template-rows:auto 1fr; column-gap:48px; margin-top:28px; border:1px solid #9fe6f040; border-radius:var(--radius,24px); background:linear-gradient(#0c6a9e,#062650); }
-    .twin-sky { grid-row:1; grid-column:1 / -1; background:radial-gradient(ellipse 60% 120% at 85% 0,#ffffff1f,transparent 70%),linear-gradient(#2F7A2C,#1E5A26); border-bottom:3px solid #cff7ff; box-shadow:0 0 14px #cff7ffaa; }
-    .twin-top { grid-row:1; grid-column:1; z-index:1; padding:var(--pad) 0 22px var(--pad); }
-    .twin-bottom { grid-row:2; grid-column:1; z-index:1; padding:22px 0 var(--pad) var(--pad); }
-    .twin-feature .twin-brand { display:flex; align-items:center; gap:12px; margin:14px 0 0; font-family:TwinFinDisplay,sans-serif; font-size:clamp(38px,5vw,58px); font-weight:900; line-height:1.1; }
-    .twin-word { color:#fff; -webkit-text-stroke:.14em #10202a; paint-order:stroke fill; text-shadow:0 .08em 0 #10202a; }
+    .twin-feature { --pad:clamp(24px,5vw,56px); --k:.5; position:relative; overflow:hidden; isolation:isolate; display:grid; grid-template-columns:1.15fr 1fr; grid-template-rows:auto 1fr; column-gap:40px; margin-top:28px; border:1px solid #cff7ff40; border-radius:var(--radius,24px); background:#062650; }
+    .twin-sky, .twin-sea { position:relative; overflow:hidden; grid-column:1 / -1; z-index:0; }
+    .twin-sky { grid-row:1; background:radial-gradient(circle at 78% 92%,#fffdea 0 14px,#fff4be99 16px,transparent 120px),linear-gradient(#eef8d8 0%,#e3f1c2 50%,#f2eeb4 82%,#e6e4a2 100%); }
+    .twin-sea { grid-row:2; background:radial-gradient(ellipse 260px 90px at 22% 0,#ffffff52,transparent 70%),repeating-linear-gradient(100deg,transparent 0 46px,#e6ffff14 46px 58px),linear-gradient(#7cebef 0%,#22b4d4 24%,#0c6a9e 62%,#062650 100%); }
+    .tf-strip { position:absolute; left:0; right:0; bottom:calc(var(--b,0) * 1px * var(--k)); height:calc(var(--h) * 1px * var(--k)); background:var(--img) repeat-x 0 0 / auto 100%; animation:tf-drift linear infinite; animation-duration:calc(1s * var(--w) / (var(--p) * 30)); }
+    .tf-strip.top { top:0; bottom:auto; }
+    .tf-wave { position:absolute; left:0; right:0; top:0; height:calc(32px * var(--k)); translate:0 -50%; z-index:2; background:url('../twinfin/assets/scenery/divider_wave.png') repeat-x 0 0 / auto 100%; filter:drop-shadow(0 0 6px #ffffffcc); animation:tf-drift linear infinite 9s; --w:419; }
+    @keyframes tf-drift { to { background-position-x:calc(var(--w) * -1px * var(--k)); } }
+    .twin-top { grid-row:1; grid-column:1; z-index:1; position:relative; padding:var(--pad) 0 calc(var(--pad) * .9) var(--pad); }
+    .twin-bottom { grid-row:2; grid-column:1; z-index:1; position:relative; padding:calc(var(--pad) * .7) 0 var(--pad) var(--pad); }
+    .twin-glass { max-width:440px; padding:20px 22px 22px; border-radius:20px; background:rgba(14,26,38,.52); border:1.5px solid rgba(255,255,255,.22); -webkit-backdrop-filter:blur(10px) saturate(1.2); backdrop-filter:blur(10px) saturate(1.2); box-shadow:0 14px 30px #0003; }
+    .twin-feature .twin-label { display:inline-block; margin:0; padding:6px 14px; border-radius:99px; background:rgba(14,26,38,.6); border:1.5px solid rgba(255,255,255,.24); color:#ffd77e; font-size:12px; font-weight:700; letter-spacing:.06em; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); }
+    .twin-feature .twin-brand { display:flex; align-items:center; gap:12px; margin:16px 0 0; font-family:TwinFinDisplay,sans-serif; font-size:clamp(40px,5vw,60px); font-weight:900; line-height:1.1; }
+    .twin-word { color:#fff; -webkit-text-stroke:.15em #10202a; paint-order:stroke fill; text-shadow:0 .09em 0 #10202a; }
     .twin-word .fin { color:#ffc24a; }
-    .twin-brand img { border-radius:10px; width:46px; height:46px; border:2px solid #10202a; }
-    .twin-feature p { max-width:480px; margin:0; color:#d6e6ee; line-height:1.75; }
-    .twin-feature .twin-label { color:#ffd77e; font-size:13px; font-weight:700; letter-spacing:.06em; }
-    .twin-feature .twin-link { display:inline-flex; align-items:center; margin-top:24px; padding:13px 23px; border-radius:99px; border:3px solid #10202a; background:#ffc24a; color:#10202a; font-weight:800; text-decoration:none; box-shadow:0 4px 0 #10202a; transition:background .2s,transform .2s; }
+    .twin-brand img { border-radius:12px; width:50px; height:50px; border:3px solid #10202a; box-shadow:0 3px 0 #10202a; }
+    .twin-feature p { margin:0; color:#e6f3f8; line-height:1.7; }
+    .twin-feature .twin-link { display:inline-flex; align-items:center; margin-top:18px; padding:12px 22px; border-radius:99px; border:3px solid #10202a; background:#ffc24a; color:#10202a; font-weight:800; text-decoration:none; box-shadow:0 4px 0 #10202a; transition:background .2s,transform .2s; }
     .twin-link:hover { background:#ffd77e; transform:translateY(-2px); }
     .twin-link:focus-visible { outline:3px solid #cff7ff; outline-offset:5px; }
-    .twin-art { grid-row:1 / 3; grid-column:2; z-index:1; align-self:center; display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:center; width:100%; max-width:360px; margin:var(--pad) auto; padding:10px; }
-    .twin-art img { width:100%; height:auto; border-radius:20px; border:4px solid #10202a; box-shadow:0 14px 30px #0005; transform:rotate(-5deg); }
+    .tf-twin { position:absolute; z-index:1; left:calc(var(--pad) + 470px); translate:-50% 0; width:calc(var(--tw) * 1px * var(--k) * 2.2); height:auto; filter:drop-shadow(0 4px 6px #0003); animation:tf-bob 3.4s ease-in-out infinite; pointer-events:none; }
+    .tf-macaw { --tw:66; bottom:22%; }
+    .tf-fish { --tw:52; top:22%; animation-name:tf-bob-mirror; }
+    @keyframes tf-bob { 50% { transform:translateY(-9px) rotate(-.06rad); } }
+    @keyframes tf-bob-mirror { 50% { transform:translateY(9px) rotate(.06rad); } }
+    .twin-art { grid-row:1 / 3; grid-column:2; z-index:1; align-self:center; display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:center; width:100%; max-width:340px; margin:var(--pad) auto; padding:10px; }
+    .twin-art img { width:100%; height:auto; border-radius:20px; border:4px solid #10202a; box-shadow:0 16px 32px #0006; transform:rotate(-5deg); }
     .twin-art img:last-child { transform:rotate(5deg) translateY(12px); }
-    @media(max-width:700px) { .twin-feature { grid-template-columns:1fr; grid-template-rows:auto auto auto; } .twin-sky { grid-column:1; } .twin-top { padding-right:var(--pad); } .twin-bottom { padding-right:var(--pad); padding-bottom:8px; } .twin-art { grid-row:3; grid-column:1; max-width:300px; margin-top:0; } }
-    @media(prefers-reduced-motion:reduce) { .twin-link { transition:none; } }
+    @media(max-width:1180px) { .tf-twin { display:none; } } /* below this the text column has no room beside the panel */
+    @media(max-width:700px) { .twin-feature { --k:.42; grid-template-columns:1fr; grid-template-rows:auto auto auto; } .twin-sea { grid-row:2 / 4; } .twin-top { padding-right:var(--pad); } .twin-bottom { padding-right:var(--pad); padding-bottom:8px; } .twin-art { grid-row:3; grid-column:1; max-width:280px; margin:8px auto var(--pad); } }
+    @media(prefers-reduced-motion:reduce) { .twin-link { transition:none; } .tf-strip, .tf-wave, .tf-twin { animation:none; } }
   </style>
   <noscript>
     <style>
@@ -1067,14 +1081,35 @@
           </div>
         </article>
         <article class="twin-feature reveal" id="twinfin">
-          <div class="twin-sky" aria-hidden="true"></div>
+          <div class="twin-sky" aria-hidden="true">
+            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/jungle_clouds.png);--w:840;--h:212;--p:0.015;--b:160"></div>
+            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/jungle_mountains.png);--w:900;--h:366;--p:0.03"></div>
+            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/jungle_ridge.png);--w:900;--h:152;--p:0.06"></div>
+            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/jungle_canopy.png);--w:1050;--h:282;--p:0.12"></div>
+            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/jungle_trees.png);--w:1350;--h:307;--p:0.25"></div>
+            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/jungle_near.png);--w:1536;--h:122;--p:0.45"></div>
+            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/jungle_front.png);--w:1836;--h:52;--p:0.7"></div>
+          </div>
+          <div class="twin-sea" aria-hidden="true">
+            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/sea_far.png);--w:1140;--h:279;--p:0.04"></div>
+            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/sea_kelp.png);--w:900;--h:234;--p:0.1"></div>
+            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/sea_rocks.png);--w:1190;--h:169;--p:0.2"></div>
+            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/sea_reef.png);--w:1440;--h:159;--p:0.4"></div>
+            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/sea_front.png);--w:1840;--h:74;--p:0.7"></div>
+            <div class="tf-strip top" style="--img:url(../twinfin/assets/scenery/sea_roots.png);--w:1750;--h:44;--p:0.7"></div>
+            <div class="tf-wave"></div>
+          </div>
           <div class="twin-top">
             <p class="twin-label">Made by Devpulse. Coming soon to iPhone, then Android.</p>
-            <h3 class="twin-brand"><img src="../twinfin/assets/app-icon.png" width="46" height="46" alt=""><span class="twin-word">Twin<span class="fin">Fin</span></span></h3>
+            <h3 class="twin-brand"><img src="../twinfin/assets/app-icon.png" width="50" height="50" alt=""><span class="twin-word">Twin<span class="fin">Fin</span></span></h3>
+            <img class="tf-twin tf-macaw" src="../twinfin/assets/images/parrot.png" width="198" height="120" alt="">
           </div>
           <div class="twin-bottom">
-            <p>One thumb. Two worlds. Hold to fly, let go to fall: a scarlet macaw above the waterline and a clownfish below it move as one. A brutally hard, totally fair new level every day, the same for every player in the world.</p>
-            <a class="twin-link" href="../twinfin/">Explore TwinFin <span aria-hidden="true">&nbsp;↗</span></a>
+            <img class="tf-twin tf-fish" src="../twinfin/assets/images/fish.png" width="156" height="120" alt="">
+            <div class="twin-glass">
+              <p>One thumb. Two worlds. Hold to fly, let go to fall: a scarlet macaw above the waterline and a clownfish below it move as one. A brutally hard, totally fair new level every day, the same for every player in the world.</p>
+              <a class="twin-link" href="../twinfin/">Explore TwinFin <span aria-hidden="true">&nbsp;↗</span></a>
+            </div>
           </div>
           <div class="twin-art">
             <img src="../twinfin/assets/images/shot-hero.jpg" width="508" height="1100" loading="lazy" alt="TwinFin mid-run: the macaw flies between ruin pillars above the waterline while the clownfish swims between coral below.">
