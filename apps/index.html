@@ -964,10 +964,13 @@
     .twin-sky, .twin-sea { position:relative; overflow:hidden; grid-column:1 / -1; z-index:0; }
     .twin-sky { grid-row:1; background:radial-gradient(circle at 78% 92%,#fffdea 0 14px,#fff4be99 16px,transparent 120px),linear-gradient(#eef8d8 0%,#e3f1c2 50%,#f2eeb4 82%,#e6e4a2 100%); }
     .twin-sea { grid-row:2; background:radial-gradient(ellipse 260px 90px at 22% 0,#ffffff52,transparent 70%),repeating-linear-gradient(100deg,transparent 0 46px,#e6ffff14 46px 58px),linear-gradient(#7cebef 0%,#22b4d4 24%,#0c6a9e 62%,#062650 100%); }
-    .tf-strip { position:absolute; left:0; right:0; bottom:calc(var(--b,0) * 1px * var(--k)); height:calc(var(--h) * 1px * var(--k)); background:var(--img) repeat-x 0 0 / auto 100%; animation:tf-drift linear infinite; animation-duration:calc(1s * var(--w) / (var(--p) * 30)); }
-    .tf-strip.top { top:0; bottom:auto; }
-    .tf-wave { position:absolute; left:0; right:0; top:0; height:calc(32px * var(--k)); translate:0 -50%; z-index:2; background:url('../twinfin/assets/scenery/divider_wave.png') repeat-x 0 0 / auto 100%; filter:drop-shadow(0 0 6px #ffffffcc); animation:tf-drift linear infinite 9s; --w:419; }
-    @keyframes tf-drift { to { background-position-x:calc(var(--w) * -1px * var(--k)); } }
+    /* Each PNG has a transparent margin of 8/3 game px above and below the art, drawn outside the strip's box. --tile is one
+       tile's width in whole px (w × k; --k stays .5 so every tile is whole) and the drift moves exactly one tile, so the
+       loop restarts on an identical frame. */
+    .tf-strip { --m:2.6667; --tile:calc(var(--w) * var(--k)); position:absolute; left:0; right:0; bottom:calc((var(--b,0) - var(--m)) * 1px * var(--k)); height:calc((var(--h) + 2 * var(--m)) * 1px * var(--k)); background:var(--img) repeat-x 0 0 / calc(var(--tile) * 1px) 100%; animation:tf-drift linear infinite; animation-duration:calc(1s * var(--w) / (var(--p) * 30)); }
+    .tf-strip.top { top:calc(var(--m) * -1px * var(--k)); bottom:auto; }
+    .tf-wave { --tile:210; position:absolute; left:0; right:0; top:0; height:calc(33.33px * var(--k)); translate:0 -50%; z-index:2; background:url('../twinfin/assets/scenery/divider_wave.png') repeat-x 0 0 / 210px 100%; filter:drop-shadow(0 0 6px #ffffffcc); animation:tf-drift linear infinite 8s; }
+    @keyframes tf-drift { from { background-position-x:0; } to { background-position-x:calc(var(--tile) * -1px); } }
     .twin-top { grid-row:1; grid-column:1; z-index:1; position:relative; padding:var(--pad) 0 calc(var(--pad) * .9) var(--pad); }
     .twin-bottom { grid-row:2; grid-column:1; z-index:1; position:relative; padding:calc(var(--pad) * .7) 0 var(--pad) var(--pad); }
     .twin-glass { max-width:440px; padding:20px 22px 22px; border-radius:20px; background:rgba(14,26,38,.52); border:1.5px solid rgba(255,255,255,.22); -webkit-backdrop-filter:blur(10px) saturate(1.2); backdrop-filter:blur(10px) saturate(1.2); box-shadow:0 14px 30px #0003; }
@@ -979,6 +982,7 @@
     .twin-feature p { margin:0; color:#e6f3f8; line-height:1.7; }
     .twin-feature .twin-link { display:inline-flex; align-items:center; margin-top:18px; padding:12px 22px; border-radius:99px; border:3px solid #10202a; background:#ffc24a; color:#10202a; font-weight:800; text-decoration:none; box-shadow:0 4px 0 #10202a; transition:background .2s,transform .2s; }
     .twin-link:hover { background:#ffd77e; transform:translateY(-2px); }
+    .twin-arrow { width:16px; height:16px; margin-left:8px; }
     .twin-link:focus-visible { outline:3px solid #cff7ff; outline-offset:5px; }
     .tf-twin { position:absolute; z-index:1; left:calc(var(--pad) + 470px); translate:-50% 0; width:calc(var(--tw) * 1px * var(--k) * 2.2); height:auto; filter:drop-shadow(0 4px 6px #0003); animation:tf-bob 3.4s ease-in-out infinite; pointer-events:none; }
     .tf-macaw { --tw:66; bottom:22%; }
@@ -989,7 +993,7 @@
     .twin-art img { width:100%; height:auto; border-radius:20px; border:4px solid #10202a; box-shadow:0 16px 32px #0006; transform:rotate(-5deg); }
     .twin-art img:last-child { transform:rotate(5deg) translateY(12px); }
     @media(max-width:1180px) { .tf-twin { display:none; } } /* below this the text column has no room beside the panel */
-    @media(max-width:700px) { .twin-feature { --k:.42; grid-template-columns:1fr; grid-template-rows:auto auto auto; } .twin-sea { grid-row:2 / 4; } .twin-top { padding-right:var(--pad); } .twin-bottom { padding-right:var(--pad); padding-bottom:8px; } .twin-art { grid-row:3; grid-column:1; max-width:280px; margin:8px auto var(--pad); } }
+    @media(max-width:700px) { .twin-feature { grid-template-columns:1fr; grid-template-rows:auto auto auto; } .twin-sea { grid-row:2 / 4; } .twin-top { padding-right:var(--pad); } .twin-bottom { padding-right:var(--pad); padding-bottom:8px; } .twin-art { grid-row:3; grid-column:1; max-width:280px; margin:8px auto var(--pad); } }
     @media(prefers-reduced-motion:reduce) { .twin-link { transition:none; } .tf-strip, .tf-wave, .tf-twin { animation:none; } }
   </style>
   <noscript>
@@ -1082,21 +1086,21 @@
         </article>
         <article class="twin-feature reveal" id="twinfin">
           <div class="twin-sky" aria-hidden="true">
-            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/jungle_clouds.png);--w:840;--h:212;--p:0.015;--b:160"></div>
-            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/jungle_mountains.png);--w:900;--h:366;--p:0.03"></div>
-            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/jungle_ridge.png);--w:900;--h:152;--p:0.06"></div>
-            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/jungle_canopy.png);--w:1050;--h:282;--p:0.12"></div>
-            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/jungle_trees.png);--w:1350;--h:307;--p:0.25"></div>
-            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/jungle_near.png);--w:1536;--h:122;--p:0.45"></div>
-            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/jungle_front.png);--w:1836;--h:52;--p:0.7"></div>
+            <div class="tf-strip" style="--img:url(/twinfin/assets/scenery/jungle_clouds.png);--w:840;--h:212;--p:0.015;--b:160"></div>
+            <div class="tf-strip" style="--img:url(/twinfin/assets/scenery/jungle_mountains.png);--w:900;--h:366;--p:0.03"></div>
+            <div class="tf-strip" style="--img:url(/twinfin/assets/scenery/jungle_ridge.png);--w:900;--h:152;--p:0.06"></div>
+            <div class="tf-strip" style="--img:url(/twinfin/assets/scenery/jungle_canopy.png);--w:1050;--h:282;--p:0.12"></div>
+            <div class="tf-strip" style="--img:url(/twinfin/assets/scenery/jungle_trees.png);--w:1350;--h:307;--p:0.25"></div>
+            <div class="tf-strip" style="--img:url(/twinfin/assets/scenery/jungle_near.png);--w:1536;--h:122;--p:0.45"></div>
+            <div class="tf-strip" style="--img:url(/twinfin/assets/scenery/jungle_front.png);--w:1836;--h:52;--p:0.7"></div>
           </div>
           <div class="twin-sea" aria-hidden="true">
-            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/sea_far.png);--w:1140;--h:279;--p:0.04"></div>
-            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/sea_kelp.png);--w:900;--h:234;--p:0.1"></div>
-            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/sea_rocks.png);--w:1190;--h:169;--p:0.2"></div>
-            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/sea_reef.png);--w:1440;--h:159;--p:0.4"></div>
-            <div class="tf-strip" style="--img:url(../twinfin/assets/scenery/sea_front.png);--w:1840;--h:74;--p:0.7"></div>
-            <div class="tf-strip top" style="--img:url(../twinfin/assets/scenery/sea_roots.png);--w:1750;--h:44;--p:0.7"></div>
+            <div class="tf-strip" style="--img:url(/twinfin/assets/scenery/sea_far.png);--w:1140;--h:279;--p:0.04"></div>
+            <div class="tf-strip" style="--img:url(/twinfin/assets/scenery/sea_kelp.png);--w:900;--h:234;--p:0.1"></div>
+            <div class="tf-strip" style="--img:url(/twinfin/assets/scenery/sea_rocks.png);--w:1190;--h:169;--p:0.2"></div>
+            <div class="tf-strip" style="--img:url(/twinfin/assets/scenery/sea_reef.png);--w:1440;--h:159;--p:0.4"></div>
+            <div class="tf-strip" style="--img:url(/twinfin/assets/scenery/sea_front.png);--w:1840;--h:74;--p:0.7"></div>
+            <div class="tf-strip top" style="--img:url(/twinfin/assets/scenery/sea_roots.png);--w:1750;--h:44;--p:0.7"></div>
             <div class="tf-wave"></div>
           </div>
           <div class="twin-top">
@@ -1107,13 +1111,13 @@
           <div class="twin-bottom">
             <img class="tf-twin tf-fish" src="../twinfin/assets/images/fish.png" width="156" height="120" alt="">
             <div class="twin-glass">
-              <p>One thumb. Two worlds. Hold to fly, let go to fall: a scarlet macaw above the waterline and a clownfish below it move as one. A brutally hard, totally fair new level every day, the same for every player in the world.</p>
-              <a class="twin-link" href="../twinfin/">Explore TwinFin <span aria-hidden="true">&nbsp;↗</span></a>
+              <p>One thumb. Two worlds. Hold to fly, let go to fall. A scarlet macaw above the waterline and a clownfish below it move as one. A brutally hard, totally fair new level every day, the same for every player in the world.</p>
+              <a class="twin-link" href="../twinfin/">Explore TwinFin <svg class="twin-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             </div>
           </div>
           <div class="twin-art">
-            <img src="../twinfin/assets/images/shot-hero.jpg" width="508" height="1100" loading="lazy" alt="TwinFin mid-run: the macaw flies between ruin pillars above the waterline while the clownfish swims between coral below.">
-            <img src="../twinfin/assets/images/shot-card.jpg" width="508" height="1100" loading="lazy" alt="The TwinFin score card: 52 and a gold medal.">
+            <img src="../twinfin/assets/images/shot-hero.jpg" width="508" height="1100" loading="lazy" alt="TwinFin mid run. The macaw flies between ruin pillars above the waterline while the clownfish swims between coral below.">
+            <img src="../twinfin/assets/images/shot-card.jpg" width="508" height="1100" loading="lazy" alt="The TwinFin score card, showing 52 and a gold medal.">
           </div>
         </article>
       </div>

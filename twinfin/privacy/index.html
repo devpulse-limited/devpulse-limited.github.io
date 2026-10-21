@@ -1,138 +1,168 @@
 <!doctype html>
 <html lang="en-GB">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TwinFin Privacy Policy</title>
-<meta name="description" content="Privacy policy for TwinFin, a one-thumb arcade game by DevPulse: what the banner ad (Google AdMob) and the Remove Ads purchase (RevenueCat) collect, and your choices.">
-<link rel="canonical" href="https://devpulse.co.uk/twinfin/privacy/">
-<link rel="icon" type="image/png" href="../assets/favicon.png">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<style>
-:root{
-  --ink:#10202A; --paper:#FFFCF6; --muted:rgba(16,32,42,.66); --line:rgba(16,32,42,.14);
-  --gold:#FFC24A; --green:#2F7A2C; --green-d:#1E5A26; --card:#F3EDE2; --link:#1F6FB2;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --ink:#EEF3F6; --paper:#0E1A24; --muted:rgba(238,243,246,.68); --line:rgba(255,255,255,.14);
-    --card:#16252F; --link:#8FC9FF;
-  }
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-header{background:linear-gradient(160deg,var(--green),var(--green-d));color:#fff;padding:36px 16px 30px;border-bottom:3px solid #10202A}
-.wrap{max-width:720px;margin:0 auto;padding:0 16px}
-header .wrap{padding:0}
-.eyebrow a{color:inherit;text-decoration:none}
-.eyebrow{margin:0;color:var(--gold);font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
-h1{margin:6px 0 4px;font-size:clamp(28px,6vw,38px);line-height:1.15}
-header p{margin:0;opacity:.85}
-main{padding:28px 0 40px}
-h2{font-size:21px;margin:32px 0 8px;line-height:1.3}
-p,li{max-width:68ch}
-ul{padding-left:22px}
-li{margin:4px 0}
-a{color:var(--link)}
-.summary{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin:0}
-.summary p{margin:6px 0}
-.summary strong{font-size:18px}
-h3{font-size:18px;margin:22px 0 6px}
-footer{border-top:1px dashed var(--line);color:var(--muted);font-size:15px;padding:18px 0 40px}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1E5A26">
+  <title>TwinFin Privacy Policy</title>
+  <meta name="description" content="The TwinFin privacy policy. What the game keeps on your phone, what Google AdMob and RevenueCat process, and your choices.">
+  <link rel="canonical" href="https://devpulse.co.uk/twinfin/privacy/">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="preload" href="../assets/fonts/Grandstander-Variable.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="../assets/fonts/Outfit-Variable.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../script.js" defer></script>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <p class="eyebrow"><a href="../">← TwinFin</a></p>
-    <h1>Privacy Policy</h1>
-    <p>Last updated: 21 October 2026 · applies to TwinFin 1.0 on iPhone</p>
-  </div>
-</header>
-<main class="wrap">
-  <section class="summary" aria-label="Summary">
-    <p><strong>The short version</strong></p>
-    <p>TwinFin is free with one small banner ad. The ad comes from Google AdMob, which collects some device and usage data to show and measure ads. You choose whether ads can be personalised, and whether apps may track you, and the game plays exactly the same either way.</p>
-    <p>If you buy <strong>Remove Ads</strong>, the ad is gone and Google's ad software never starts. The purchase is handled by Apple and recorded by RevenueCat under an anonymous ID.</p>
-    <p>We (DevPulse) don't run servers for TwinFin and don't receive personal data about you. Your scores and settings stay on your phone. No account, no analytics.</p>
-  </section>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  </defs></svg>
 
-  <h2>Who we are</h2>
-  <p>TwinFin is made by DevPulse (Devpulse Limited, <a href="https://devpulse.co.uk">devpulse.co.uk</a>), based in the United Kingdom. In this policy "we" and "us" mean DevPulse. For the data the banner ad and the purchase involve, Google and RevenueCat process it as described below and in their own policies.</p>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="../" aria-label="TwinFin home"><img src="../assets/app-icon.png" width="40" height="40" alt=""><span>TwinFin</span></a>
+      <nav aria-label="Main navigation">
+        <a class="nav-link" href="../">Home</a>
+        <a class="nav-link" href="../privacy/" aria-current="page">Privacy</a>
+        <a class="nav-link" href="../support/">Support</a>
+        <a class="pill-button" href="../#get">Get TwinFin</a>
+      </nav>
+    </div>
+  </header>
 
-  <h2>What stays on your phone</h2>
-  <p>The game keeps a small save file <strong>on your device only</strong>:</p>
-  <ul>
-    <li>your best score for each daily level, your all-time best, how many tries you made each day and the medals you earned;</li>
-    <li>your settings (sound, music and vibration on or off);</li>
-    <li>whether you bought Remove Ads, so the ad stays off when you're offline.</li>
-  </ul>
-  <p>This file is never sent to us. Deleting the app deletes it. Your device's own backup (for example iCloud) may include it, under Apple's terms.</p>
-  <p>The daily level is worked out on your phone from today's date (UTC). The game needs no internet connection for that.</p>
+  <main id="main">
+    <section class="page-hero" data-scale="0.62" data-scale-phone="0.62" aria-labelledby="page-title">
+      <div class="scene" aria-hidden="true">
+        <div class="sky"><span class="sun"></span></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_clouds.png);--w:840;--h:212;--y:50;--p:0.015"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_mountains.png);--w:900;--h:366;--y:56;--p:0.03"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_ridge.png);--w:900;--h:152;--y:270;--p:0.06"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_canopy.png);--w:1050;--h:282;--y:140;--p:0.12"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_trees.png);--w:1350;--h:307;--y:115;--p:0.25"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_near.png);--w:1536;--h:122;--y:300;--p:0.45"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_vines.png);--w:1560;--h:210;--y:0;--p:0.45"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_front.png);--w:1836;--h:52;--y:370;--p:0.7"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_fringe.png);--w:2720;--h:92;--y:0;--p:0.7"></div>
+        <div class="water"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/sea_far.png);--w:1140;--h:279;--y:565;--p:0.04"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/sea_kelp.png);--w:900;--h:234;--y:610;--p:0.1"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/sea_rocks.png);--w:1190;--h:169;--y:675;--p:0.2"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/sea_reef.png);--w:1440;--h:159;--y:685;--p:0.4"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/sea_front.png);--w:1840;--h:74;--y:770;--p:0.7"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/sea_roots.png);--w:1750;--h:44;--y:422;--p:0.7"></div>
+        <div class="waterline"></div>
+        <img class="twin macaw still-twin" style="--ty:345" src="../assets/images/parrot.png" width="198" height="120" alt="">
+        <img class="twin fish still-twin" style="--ty:499" src="../assets/images/fish.png" width="156" height="120" alt="">
+      </div>
+      <div class="wrap page-hero-copy">
+        <h1 class="page-title" id="page-title">Privacy <span class="gold">Policy</span></h1>
+        <p class="glass-pill">Last updated 21 October 2026</p>
+      </div>
+    </section>
 
-  <h2>The banner ad (Google AdMob)</h2>
-  <p>Unless you've bought Remove Ads, TwinFin shows one banner ad at the bottom of the screen, provided by <strong>Google AdMob</strong> through the Google Mobile Ads SDK. To choose, show and measure ads, and to prevent fraud, Google's software in the app collects:</p>
-  <ul>
-    <li><strong>device identifiers</strong>: Apple's advertising identifier (IDFA) only if you allow tracking (see below), plus identifiers scoped to the app or to us;</li>
-    <li><strong>approximate location</strong>, estimated from your IP address (never GPS);</li>
-    <li><strong>advertising and usage data</strong>: which ads were shown, taps on them, app launches;</li>
-    <li><strong>diagnostics</strong>: crash and performance data of the ad software.</li>
-  </ul>
-  <p>Google acts as an independent controller of this data. How Google uses it: <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from sites or apps that use our services</a>, and Google's privacy policy at <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.</p>
-  <p>TwinFin asks Google for ads suitable for a general audience only.</p>
+    <section class="band deep doc-band">
+      <div class="wrap">
+        <article class="glass-card doc">
+          <section class="doc-summary" aria-label="Summary">
+            <p class="doc-summary-title">The short version</p>
+            <p>TwinFin is free with one small banner ad. The ad comes from Google AdMob, which collects some device and usage data to show and measure ads. You choose whether ads can be personalised, and whether apps may track you, and the game plays exactly the same either way.</p>
+            <p>If you buy <strong>Remove Ads</strong>, the ad is gone and the ad software from Google never starts. Apple handles the purchase, and RevenueCat records it under an anonymous ID.</p>
+            <p>We, DevPulse, do not run servers for TwinFin and do not receive personal data about you. Your scores and settings stay on your phone. No account, no analytics.</p>
+          </section>
 
-  <h3>Your choices: consent and tracking</h3>
-  <ul>
-    <li><strong>Consent (UK, EEA and Switzerland).</strong> Before any ad is requested, Google's consent form (Google's User Messaging Platform) asks whether Google and its partners may use your data for personalised ads and the other purposes listed there. You can change your answer at any time in TwinFin under <strong>Settings → Ad privacy choices</strong>.</li>
-    <li><strong>App Tracking Transparency (all countries).</strong> iOS then asks whether TwinFin may track you across other companies' apps and websites. If you choose <em>Ask App Not to Track</em>, the advertising identifier is not shared and TwinFin asks Google for <strong>non-personalised ads only</strong>. You can change this later in the iPhone's Settings → Privacy &amp; Security → Tracking.</li>
-    <li>Neither question ever interrupts a run, and saying no doesn't change the game.</li>
-    <li>You can also reset your advertising identifier or turn off personalised ads from Apple under Settings → Privacy &amp; Security → Apple Advertising.</li>
-  </ul>
+          <h2>Who we are</h2>
+          <p>TwinFin is made by DevPulse, the trading name of Devpulse Limited, based in the United Kingdom, at <a href="https://devpulse.co.uk">devpulse.co.uk</a>. In this policy, we and us mean DevPulse. For the data that the banner ad and the purchase involve, Google and RevenueCat process it as described below and in their own policies.</p>
 
-  <h2>Remove Ads (in-app purchase, RevenueCat)</h2>
-  <p>Remove Ads is a one-time purchase. <strong>Apple</strong> takes the payment; we never see your card or Apple ID details. To check the purchase and restore it on your other devices, TwinFin uses <strong>RevenueCat</strong>, which receives the purchase receipt and keeps a purchase record (the product, its date and the store's transaction details) under an <strong>anonymous ID</strong> it creates for the app. We don't give RevenueCat your name, email or any account. RevenueCat's privacy policy: <a href="https://www.revenuecat.com/privacy">revenuecat.com/privacy</a>.</p>
-  <p>After you buy Remove Ads, the consent form and the tracking prompt are no longer shown and Google's ad software is not started.</p>
+          <h2>What stays on your phone</h2>
+          <p>The game keeps a small save file <strong>on your device only</strong>. It holds</p>
+          <ul>
+            <li>your best score for each daily level, your all time best, how many tries you made each day and the medals you earned,</li>
+            <li>your settings for sound, music and vibration,</li>
+            <li>whether you bought Remove Ads, so the ad stays off when you are offline.</li>
+          </ul>
+          <p>This file is never sent to us. Deleting the app deletes it. The backup of your device, for example iCloud, may include it, under the terms of Apple.</p>
+          <p>The daily level is worked out on your phone from the date in UTC. The game needs no internet connection for that.</p>
 
-  <h2>Game Center leaderboards</h2>
-  <p>If you're signed in to Apple Game Center, TwinFin can post your daily score to its leaderboards and show you how you rank. This is provided by Apple, not by us: Apple receives your score and your player profile (such as your nickname) under its own privacy policy, and the leaderboards show your nickname and score to other players. We don't receive your Game Center account details. Apple: <a href="https://www.apple.com/legal/privacy/">apple.com/legal/privacy</a>. You can turn Game Center off, or change who can see you, in the Settings app under Game Center. You can play TwinFin fully without it.</p>
+          <h2>The banner ad, from Google AdMob</h2>
+          <p>Unless you have bought Remove Ads, TwinFin shows one banner ad at the bottom of the screen, provided by <strong>Google AdMob</strong> through the Google Mobile Ads SDK. To choose, show and measure ads, and to prevent fraud, the Google software in the app collects</p>
+          <ul>
+            <li><strong>device identifiers</strong>, which means the advertising identifier of Apple, called the IDFA, only if you allow tracking as described below, plus identifiers limited to the app or to us,</li>
+            <li><strong>approximate location</strong>, estimated from your IP address and never from GPS,</li>
+            <li><strong>advertising and usage data</strong>, such as which ads were shown, taps on them and app launches,</li>
+            <li><strong>diagnostics</strong>, which means crash and performance data of the ad software.</li>
+          </ul>
+          <p>Google acts as an independent controller of this data. To see how Google uses it, read <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from sites or apps that use our services</a>, and the Google privacy policy at <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.</p>
+          <p>TwinFin asks Google for ads suitable for a general audience only.</p>
 
-  <h2>Sharing your score</h2>
-  <p>The Share button opens the iPhone's own share sheet with a picture of your score card. Nothing is sent unless you choose where to share it.</p>
+          <h3>Your choices for consent and tracking</h3>
+          <ul>
+            <li><strong>Consent in the UK, the EEA and Switzerland.</strong> Before any ad is requested, the consent form from Google, called the User Messaging Platform, asks whether Google and its partners may use your data for personalised ads and the other purposes listed there. You can change your answer at any time in TwinFin. Open <strong>Settings</strong> and tap <strong>Ad privacy choices</strong>.</li>
+            <li><strong>App Tracking Transparency in all countries.</strong> iOS then asks whether TwinFin may track you across apps and websites of other companies. If you choose <em>Ask App Not to Track</em>, the advertising identifier is not shared and TwinFin asks Google for <strong>non personalised ads only</strong>. You can change this later in the Settings app of your iPhone, under Privacy and Security, then Tracking.</li>
+            <li>Neither question ever interrupts a run, and saying no does not change the game.</li>
+            <li>You can also reset your advertising identifier, or turn off personalised ads from Apple, in the Settings app under Privacy and Security, then Apple Advertising.</li>
+          </ul>
 
-  <h2>What we don't do</h2>
-  <ul>
-    <li>We don't collect, store on our servers or sell personal data, and there is no analytics or crash-reporting software of our own in the game.</li>
-    <li>TwinFin doesn't ask for your camera, microphone, photos, contacts or precise location. (The iPhone may list some of these because the game engine includes them; the game never uses them.)</li>
-  </ul>
+          <h2>Remove Ads, an in app purchase through RevenueCat</h2>
+          <p>Remove Ads is a one time purchase. <strong>Apple</strong> takes the payment, and we never see your card or Apple ID details. To check the purchase and restore it on your other devices, TwinFin uses <strong>RevenueCat</strong>, which receives the purchase receipt and keeps a purchase record, with the product, its date and the transaction details from the store, under an <strong>anonymous ID</strong> it creates for the app. We do not give RevenueCat your name, email or any account. The RevenueCat privacy policy is at <a href="https://www.revenuecat.com/privacy">revenuecat.com/privacy</a>.</p>
+          <p>After you buy Remove Ads, the consent form and the tracking prompt are no longer shown and the Google ad software is not started.</p>
 
-  <h2>App Store</h2>
-  <p>Apple handles downloads and updates and may collect data about that under its own policies. We see the anonymous, aggregated statistics Apple shows every developer (for example downloads per country), which don't identify you.</p>
+          <h2>Game Center leaderboards</h2>
+          <p>If you are signed in to Apple Game Center, TwinFin can post your daily score to its leaderboards and show you how you rank. This is provided by Apple, not by us. Apple receives your score and your player profile, such as your nickname, under its own privacy policy, and the leaderboards show your nickname and score to other players. We do not receive your Game Center account details. The Apple privacy policy is at <a href="https://www.apple.com/legal/privacy/">apple.com/legal/privacy</a>. You can turn Game Center off, or change who can see you, in the Settings app under Game Center. You can play TwinFin fully without it.</p>
 
-  <h2>Legal bases (UK GDPR / GDPR)</h2>
-  <ul>
-    <li>Personalised ads and the advertising identifier: your <strong>consent</strong>, through the consent form and the tracking prompt; you can withdraw it at any time as described above.</li>
-    <li>Non-personalised ads, ad measurement and fraud prevention: our <strong>legitimate interest</strong> in funding a free game, and Google's, as described in Google's policies.</li>
-    <li>The Remove Ads purchase record: to <strong>perform the contract</strong> of the purchase (so it works on your devices and can be restored).</li>
-  </ul>
+          <h2>Sharing your score</h2>
+          <p>The Share button opens the share sheet of your iPhone with a picture of your score card. Nothing is sent unless you choose where to share it.</p>
 
-  <h2>Children</h2>
-  <p>TwinFin is rated for all ages. It doesn't knowingly collect personal data from children, asks Google for ads suitable for a general audience only, and the purchase goes through Apple's own controls (for example Ask to Buy for family accounts).</p>
+          <h2>What we do not do</h2>
+          <ul>
+            <li>We do not collect, store on our servers or sell personal data, and there is no analytics or crash reporting software of our own in the game.</li>
+            <li>TwinFin does not ask for your camera, microphone, photos, contacts or precise location. The iPhone may list some of these because the game engine includes them, but the game never uses them.</li>
+          </ul>
 
-  <h2>How long data is kept</h2>
-  <p>The save file stays on your phone until you delete the app. Google and RevenueCat keep the data described above for the periods set out in their policies.</p>
+          <h2>App Store</h2>
+          <p>Apple handles downloads and updates and may collect data about that under its own policies. We see the anonymous, aggregated statistics that Apple shows every developer, for example downloads per country, which do not identify you.</p>
 
-  <h2>Your rights</h2>
-  <p>Under UK and EU data protection law you can ask for access to, correction of or deletion of your personal data, object to its use and withdraw consent. We hold no personal data about you ourselves; for ad data, use Google's tools (<a href="https://myadcenter.google.com">myadcenter.google.com</a>) or contact Google, and for the purchase record write to us and we'll ask RevenueCat to delete it (Apple keeps its own record of your purchases). You can also complain to the UK Information Commissioner's Office (<a href="https://ico.org.uk">ico.org.uk</a>) or your local data protection authority.</p>
+          <h2>Legal bases under UK GDPR and GDPR</h2>
+          <ul>
+            <li>For personalised ads and the advertising identifier, the basis is your <strong>consent</strong>, given through the consent form and the tracking prompt. You can withdraw it at any time as described above.</li>
+            <li>For non personalised ads, ad measurement and fraud prevention, the basis is our <strong>legitimate interest</strong> in funding a free game, and that of Google, as described in the Google policies.</li>
+            <li>For the Remove Ads purchase record, the basis is the <strong>performance of the contract</strong> of the purchase, so that it works on your devices and can be restored.</li>
+          </ul>
 
-  <h2>Changes to this policy</h2>
-  <p>If a future version of TwinFin changes what is collected, we'll update this page and the "Last updated" date before that version is released, and the App Store privacy details will change with it.</p>
+          <h2>Children</h2>
+          <p>TwinFin is rated for all ages. It does not knowingly collect personal data from children, it asks Google for ads suitable for a general audience only, and the purchase goes through the controls of Apple, for example Ask to Buy for family accounts.</p>
 
-  <h2>Contact</h2>
-  <p>Questions about privacy in TwinFin: <a href="mailto:support@devpulse.co.uk">support@devpulse.co.uk</a>.</p>
-</main>
-<footer>
-  <div class="wrap">© 2026 DevPulse · <a href="../">TwinFin</a> · <a href="../support/">Support</a> · <a href="https://devpulse.co.uk/">devpulse.co.uk</a></div>
-</footer>
+          <h2>How long data is kept</h2>
+          <p>The save file stays on your phone until you delete the app. Google and RevenueCat keep the data described above for the periods set out in their policies.</p>
+
+          <h2>Your rights</h2>
+          <p>Under UK and EU data protection law you can ask for access to, correction of or deletion of your personal data, object to its use and withdraw consent. We hold no personal data about you ourselves. For ad data, use the tools from Google at <a href="https://myadcenter.google.com">myadcenter.google.com</a> or contact Google. For the purchase record, write to us and we will ask RevenueCat to delete it. Apple keeps its own record of your purchases. You can also complain to the UK Information Commissioner at <a href="https://ico.org.uk">ico.org.uk</a>, or to your local data protection authority.</p>
+
+          <h2>Changes to this policy</h2>
+          <p>If a future version of TwinFin changes what is collected, we will update this page and its date before that version is released, and the App Store privacy details will change with it.</p>
+
+          <h2>Contact</h2>
+          <p>For questions about privacy in TwinFin, email <a href="mailto:support@devpulse.co.uk">support@devpulse.co.uk</a>.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <a class="brand" href="../" aria-label="TwinFin home"><img src="../assets/app-icon.png" width="40" height="40" alt=""><span>TwinFin</span></a>
+      <p>One thumb. Two worlds. Made in the UK.</p>
+      <div class="footer-links"><a href="../privacy/">Privacy</a><a href="../support/">Support</a><a href="https://devpulse.co.uk/">Made by DevPulse</a><button class="footer-link" type="button" data-open-credits>Font credits</button></div>
+    </div>
+  </footer>
+
+  <dialog id="font-credits" aria-labelledby="credits-title">
+    <button class="dialog-close" type="button" aria-label="Close" data-close-dialog><svg aria-hidden="true"><use href="#close"/></svg></button>
+    <h2 id="credits-title">Fonts</h2>
+    <p>The logo uses Grandstander and the text uses Outfit, both licensed under the SIL Open Font License 1.1, the same fonts as in the game.</p>
+    <p><a href="../assets/licences/Grandstander-OFL.txt">Grandstander licence</a>. <a href="../assets/licences/Outfit-OFL.txt">Outfit licence</a>.</p>
+    <button class="pill-button" type="button" data-close-dialog>Lovely</button>
+  </dialog>
 </body>
 </html>

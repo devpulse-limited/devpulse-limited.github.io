@@ -1,85 +1,119 @@
 <!doctype html>
 <html lang="en-GB">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TwinFin Support</title>
-<meta name="description" content="Help with TwinFin, the one-thumb arcade game by DevPulse: how to play, Remove Ads and restoring purchases, leaderboards, ad privacy choices and how to contact us.">
-<link rel="canonical" href="https://devpulse.co.uk/twinfin/support/">
-<link rel="icon" type="image/png" href="../assets/favicon.png">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<style>
-:root{
-  --ink:#10202A; --paper:#FFFCF6; --muted:rgba(16,32,42,.66); --line:rgba(16,32,42,.14);
-  --gold:#FFC24A; --green:#2F7A2C; --green-d:#1E5A26; --card:#F3EDE2; --link:#1F6FB2;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --ink:#EEF3F6; --paper:#0E1A24; --muted:rgba(238,243,246,.68); --line:rgba(255,255,255,.14);
-    --card:#16252F; --link:#8FC9FF;
-  }
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-header{background:linear-gradient(160deg,var(--green),var(--green-d));color:#fff;padding:36px 16px 30px;border-bottom:3px solid #10202A}
-.wrap{max-width:720px;margin:0 auto;padding:0 16px}
-header .wrap{padding:0}
-.eyebrow a{color:inherit;text-decoration:none}
-.eyebrow{margin:0;color:var(--gold);font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
-h1{margin:6px 0 4px;font-size:clamp(28px,6vw,38px);line-height:1.15}
-header p{margin:0;opacity:.85}
-main{padding:28px 0 40px}
-h2{font-size:21px;margin:32px 0 8px;line-height:1.3}
-p,li{max-width:68ch}
-ul{padding-left:22px}
-li{margin:4px 0}
-a{color:var(--link)}
-.summary{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin:0}
-.summary p{margin:6px 0}
-.summary strong{font-size:18px}
-h3{font-size:18px;margin:22px 0 6px}
-footer{border-top:1px dashed var(--line);color:var(--muted);font-size:15px;padding:18px 0 40px}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1E5A26">
+  <title>TwinFin Support</title>
+  <meta name="description" content="Help with TwinFin, the one thumb arcade game by DevPulse. How to play, the daily level, medals, leaderboards and how to contact us.">
+  <link rel="canonical" href="https://devpulse.co.uk/twinfin/support/">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="preload" href="../assets/fonts/Grandstander-Variable.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="../assets/fonts/Outfit-Variable.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../script.js" defer></script>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <p class="eyebrow"><a href="../">← TwinFin</a></p>
-    <h1>Support</h1>
-    <p>Help with TwinFin on iPhone</p>
-  </div>
-</header>
-<main class="wrap">
-  <section class="summary" aria-label="Contact">
-    <p><strong>Need a hand?</strong></p>
-    <p>Email <a href="mailto:support@devpulse.co.uk?subject=TwinFin">support@devpulse.co.uk</a>. Tell us your iPhone model, the iOS version and what happened, and we'll get back to you, usually within two working days.</p>
-  </section>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  </defs></svg>
 
-  <h2>How do I play?</h2>
-  <p>Hold anywhere on the screen to fly up, let go to fall. The macaw above the waterline and the clownfish below it mirror each other, so one thumb steers both. Touch anything and the run ends; tap to try again.</p>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="../" aria-label="TwinFin home"><img src="../assets/app-icon.png" width="40" height="40" alt=""><span>TwinFin</span></a>
+      <nav aria-label="Main navigation">
+        <a class="nav-link" href="../">Home</a>
+        <a class="nav-link" href="../privacy/">Privacy</a>
+        <a class="nav-link" href="../support/" aria-current="page">Support</a>
+        <a class="pill-button" href="../#get">Get TwinFin</a>
+      </nav>
+    </div>
+  </header>
 
-  <h2>When does the daily level change?</h2>
-  <p>Every day at 00:00 UTC (midnight in London in winter, 1am in summer). Everyone plays the same level that day, so scores are comparable.</p>
+  <main id="main">
+    <section class="page-hero" data-scale="0.62" data-scale-phone="0.62" aria-labelledby="page-title">
+      <div class="scene" aria-hidden="true">
+        <div class="sky"><span class="sun"></span></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_clouds.png);--w:840;--h:212;--y:50;--p:0.015"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_mountains.png);--w:900;--h:366;--y:56;--p:0.03"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_ridge.png);--w:900;--h:152;--y:270;--p:0.06"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_canopy.png);--w:1050;--h:282;--y:140;--p:0.12"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_trees.png);--w:1350;--h:307;--y:115;--p:0.25"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_near.png);--w:1536;--h:122;--y:300;--p:0.45"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_vines.png);--w:1560;--h:210;--y:0;--p:0.45"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_front.png);--w:1836;--h:52;--y:370;--p:0.7"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/jungle_fringe.png);--w:2720;--h:92;--y:0;--p:0.7"></div>
+        <div class="water"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/sea_far.png);--w:1140;--h:279;--y:565;--p:0.04"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/sea_kelp.png);--w:900;--h:234;--y:610;--p:0.1"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/sea_rocks.png);--w:1190;--h:169;--y:675;--p:0.2"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/sea_reef.png);--w:1440;--h:159;--y:685;--p:0.4"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/sea_front.png);--w:1840;--h:74;--y:770;--p:0.7"></div>
+        <div class="strip" style="--img:url(/twinfin/assets/scenery/sea_roots.png);--w:1750;--h:44;--y:422;--p:0.7"></div>
+        <div class="waterline"></div>
+        <img class="twin macaw still-twin" style="--ty:345" src="../assets/images/parrot.png" width="198" height="120" alt="">
+        <img class="twin fish still-twin" style="--ty:499" src="../assets/images/fish.png" width="156" height="120" alt="">
+      </div>
+      <div class="wrap page-hero-copy">
+        <h1 class="page-title" id="page-title">Support</h1>
+        <p class="glass-pill">We are here to help</p>
+      </div>
+    </section>
 
-  <h2>Remove Ads and restoring it</h2>
-  <ul>
-    <li><strong>Buy:</strong> on the home screen tap the gear icon, then <strong>Remove Ads</strong>. It's a one-time purchase; the banner goes straight away.</li>
-    <li><strong>New phone or reinstalled?</strong> Tap the gear icon, then <strong>Restore Purchases</strong>, signed in with the same Apple Account you bought it with.</li>
-    <li><strong>Refunds</strong> are handled by Apple: <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</li>
-  </ul>
+    <section class="band deep doc-band">
+      <div class="wrap">
+        <article class="glass-card doc">
+          <section class="doc-summary doc-contact" aria-label="Contact">
+            <p><span class="doc-summary-title">Need a hand?</span><br>Tell us your iPhone model, the iOS version and what happened, and we will get back to you, usually within two working days.</p>
+            <a class="pill-button" href="mailto:support@devpulse.co.uk?subject=TwinFin">Email us</a>
+          </section>
+          <p>Or write to <a href="mailto:support@devpulse.co.uk?subject=TwinFin">support@devpulse.co.uk</a>.</p>
 
-  <h2>Leaderboards</h2>
-  <p>TwinFin uses Apple Game Center for its daily and all-time leaderboards. If your scores don't appear, check that you're signed in under Settings → Game Center on your iPhone. You can play without it.</p>
+          <h2>How do I play?</h2>
+          <p>Hold anywhere on the screen to fly up, and let go to fall. The macaw above the waterline and the clownfish below it mirror each other, so one thumb steers both. Touch anything and the run ends. Tap to try again straight away.</p>
 
-  <h2>Ad privacy choices</h2>
-  <p>In the UK and Europe you can change your ad consent at any time: tap the gear icon, then <strong>Ad privacy choices</strong>. Tracking can be turned on or off in the iPhone's Settings → Privacy &amp; Security → Tracking. More in the <a href="../privacy/">privacy policy</a>.</p>
+          <h2>When does the daily level change?</h2>
+          <p>Every day at midnight UTC, which is midnight in London in winter and 1am in summer. Everyone plays the same level that day, so scores are comparable. You can retry it as often as you like.</p>
 
-  <h2>Sound, music and vibration</h2>
-  <p>Each has its own switch under the gear icon on the home screen.</p>
-</main>
-<footer>
-  <div class="wrap">© 2026 DevPulse · <a href="../">TwinFin</a> · <a href="../privacy/">Privacy</a> · <a href="https://devpulse.co.uk/">devpulse.co.uk</a></div>
-</footer>
+          <h2>How do the medals work?</h2>
+          <p>Pass 10 gates in a run for Bronze, 25 for Silver, 50 for Gold and 100 for Platinum. Your best for the day and your all time best are kept on your phone.</p>
+
+          <h2>Leaderboards</h2>
+          <p>TwinFin uses Apple Game Center for its daily and all time leaderboards. If your scores do not appear, open the Settings app on your iPhone, tap <strong>Game Center</strong> and check that you are signed in. You can play without it.</p>
+
+          <h2>Sound, music and vibration</h2>
+          <p>Each has its own switch. Tap the gear icon on the home screen.</p>
+
+          <h2>Something is not right</h2>
+          <ul>
+            <li>Make sure you have the latest version from the App Store.</li>
+            <li>Close TwinFin from the app switcher and open it again.</li>
+            <li>Still stuck? <a href="mailto:support@devpulse.co.uk?subject=TwinFin">Email us</a> and we will help.</li>
+          </ul>
+
+          <h2>Privacy</h2>
+          <p>Your scores and settings stay on your phone, and there is no account to create. The <a href="../privacy/">privacy policy</a> has the details.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <a class="brand" href="../" aria-label="TwinFin home"><img src="../assets/app-icon.png" width="40" height="40" alt=""><span>TwinFin</span></a>
+      <p>One thumb. Two worlds. Made in the UK.</p>
+      <div class="footer-links"><a href="../privacy/">Privacy</a><a href="../support/">Support</a><a href="https://devpulse.co.uk/">Made by DevPulse</a><button class="footer-link" type="button" data-open-credits>Font credits</button></div>
+    </div>
+  </footer>
+
+  <dialog id="font-credits" aria-labelledby="credits-title">
+    <button class="dialog-close" type="button" aria-label="Close" data-close-dialog><svg aria-hidden="true"><use href="#close"/></svg></button>
+    <h2 id="credits-title">Fonts</h2>
+    <p>The logo uses Grandstander and the text uses Outfit, both licensed under the SIL Open Font License 1.1, the same fonts as in the game.</p>
+    <p><a href="../assets/licences/Grandstander-OFL.txt">Grandstander licence</a>. <a href="../assets/licences/Outfit-OFL.txt">Outfit licence</a>.</p>
+    <button class="pill-button" type="button" data-close-dialog>Lovely</button>
+  </dialog>
 </body>
 </html>

@@ -74,9 +74,16 @@ h3 { font-weight: 800; font-size: 21px; margin-bottom: 6px; }
   radial-gradient(ellipse calc(300px * var(--s)) calc(120px * var(--s)) at 78% 0, rgba(255, 255, 255, .32), transparent 70%),
   repeating-linear-gradient(100deg, transparent 0 calc(70px * var(--s)), rgba(230, 255, 255, .10) calc(70px * var(--s)) calc(92px * var(--s))),
   linear-gradient(var(--water-1) 0%, var(--water-2) 30%, var(--water-3) 68%, var(--water-4) 100%); }
-.strip { position: absolute; left: 0; right: 0; top: calc(var(--y) * 1px * var(--s)); height: calc(var(--h) * 1px * var(--s)); background: var(--img) repeat-x 0 0 / auto 100%; animation: drift linear infinite; animation-duration: calc(1s * var(--w) / (var(--p) * 36)); pointer-events: none; }
-@keyframes drift { to { background-position-x: calc(var(--w) * -1px * var(--s)); } }
-.waterline { position: absolute; left: 0; right: 0; top: calc(406px * var(--s)); height: calc(32px * var(--s)); background: url(assets/scenery/divider_wave.png) repeat-x 0 0 / auto 100%; animation: drift linear infinite; animation-duration: 9s; --w: 419; filter: drop-shadow(0 0 calc(10px * var(--s)) rgba(255, 255, 255, .8)); }
+.strip, .waterline {
+  /* Each PNG has a transparent margin of --m game px above and below the art (8 px in the 3x sheets), so the strip
+     is drawn that much taller and higher. --tile is the whole-pixel width of one tile (script.js; the fallback is
+     unrounded), and the drift moves exactly one tile per loop, so the restart is invisible. */
+  --m: 2.6667; --tile: calc(var(--w) * var(--s));
+  position: absolute; left: 0; right: 0; top: calc((var(--y) - var(--m)) * 1px * var(--s)); height: calc((var(--h) + 2 * var(--m)) * 1px * var(--s));
+  background: var(--img) repeat-x 0 0 / calc(var(--tile) * 1px) 100%; animation: drift linear infinite; animation-duration: calc(1s * var(--w) / (var(--p) * 36)); pointer-events: none;
+}
+@keyframes drift { from { background-position-x: 0; } to { background-position-x: calc(var(--tile) * -1px); } }
+.waterline { --img: none; background-image: url(assets/scenery/divider_wave.png); --w: 419; --h: 32; --y: 406; --m: .6667; --p: 1.4; filter: drop-shadow(0 0 calc(10px * var(--s)) rgba(255, 255, 255, .8)); }
 .twin { position: absolute; z-index: 2; width: auto; height: calc(var(--th) * 1px * var(--s) * var(--zoom, 1.9)); left: var(--tx); top: 0; translate: -50% -50%; will-change: transform; pointer-events: none; filter: drop-shadow(0 6px 8px rgba(0, 0, 0, .18)); }
 .macaw { --th: 40; --tx: 70%; }
 .fish { --th: 40; --tx: 64%; }
@@ -127,6 +134,7 @@ h3 { font-weight: 800; font-size: 21px; margin-bottom: 6px; }
 .daily-card { padding: 30px; text-align: center; }
 .daily-pill { margin: 0 0 18px; }
 .countdown-label { margin: 0; color: var(--muted); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; font-size: 13px; }
+.countdown small { font-size: .5em; margin-left: .04em; -webkit-text-stroke-width: .2em; }
 .countdown { margin: 4px 0 14px; font: 900 clamp(48px, 7vw, 68px)/1 Grandstander, sans-serif; font-variant-numeric: tabular-nums; color: var(--white); -webkit-text-stroke: .12em var(--ink); paint-order: stroke fill; text-shadow: 0 .08em 0 var(--ink); }
 .daily-note { margin: 0; color: var(--muted); font-size: 15px; }
 @media (max-width: 860px) { .daily-grid { grid-template-columns: 1fr; } }
@@ -152,17 +160,15 @@ h3 { font-weight: 800; font-size: 21px; margin-bottom: 6px; }
 .faq-list details { border-radius: 18px; background: rgba(255, 255, 255, .06); border: 1.5px solid rgba(255, 255, 255, .12); }
 .faq-list summary { display: flex; justify-content: space-between; gap: 16px; padding: 18px 22px; font-weight: 800; font-size: 18px; cursor: pointer; list-style: none; }
 .faq-list summary::-webkit-details-marker { display: none; }
-.faq-list summary span { color: var(--gold); font-size: 24px; line-height: 1; transition: transform .2s; }
-.faq-list details[open] summary span { transform: rotate(45deg); }
+.faq-list summary svg { flex: none; width: 22px; height: 22px; color: var(--gold); transition: transform .2s; }
+.faq-list details[open] summary svg { transform: rotate(45deg); }
 .faq-list p { margin: 0; padding: 0 22px 20px; color: var(--muted); }
 .faq-list p strong { color: var(--white); }
 
-/* The closing scene: the same world, standing still behind the card (the strips drift slowly). */
-.cta-band { --cs: .78; position: relative; overflow: hidden; height: calc(844px * var(--cs)); }
-.cta-band .scene { --s: var(--cs); }
+/* The closing scene: the same world behind the card (scale from data-scale, script.js). */
+.cta-band { position: relative; overflow: hidden; height: calc(844px * var(--s)); }
 .cta-band .sun { left: 78%; }
 .cta-wrap { position: relative; z-index: 2; height: 100%; display: grid; place-items: center; }
-@media (max-width: 760px) { .cta-band { --cs: .86; } }
 .cta-card { max-width: 680px; margin: 0 auto; padding: clamp(28px, 5vw, 48px); text-align: center; }
 .cta-icon { width: 120px; height: 120px; border-radius: 28px; border: 3px solid var(--ink); box-shadow: 0 6px 0 var(--ink); margin-bottom: 18px; }
 .cta-card p { color: rgba(255, 255, 255, .86); font-size: 18px; margin: 0 0 22px; }
@@ -180,11 +186,42 @@ dialog::backdrop { background: rgba(3, 14, 28, .66); -webkit-backdrop-filter: bl
 dialog h2 { font-size: 28px; }
 dialog p { color: var(--muted); }
 dialog img { margin-bottom: 10px; }
-.dialog-close { position: absolute; top: 10px; right: 12px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .08); color: var(--white); font-size: 22px; cursor: pointer; }
+.dialog-close { position: absolute; top: 10px; right: 12px; display: grid; place-items: center; width: 36px; height: 36px; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .08); color: var(--white); cursor: pointer; }
+.dialog-close svg { width: 18px; height: 18px; }
+
+/* ---- Sub-pages (privacy, support): a short scene with the title in the sky, the text on glass in the deep sea ---- */
+.page-hero { position: relative; overflow: hidden; height: calc(844px * var(--s)); }
+.page-hero .still-twin { top: calc(var(--ty) * 1px * var(--s)); animation: bob 3.4s ease-in-out infinite; }
+.page-hero .fish.still-twin { animation-name: bob-mirror; }
+@keyframes bob { 50% { transform: translateY(-8px) rotate(-.06rad); } }
+@keyframes bob-mirror { 50% { transform: translateY(8px) rotate(.06rad); } }
+.page-hero-copy { position: relative; z-index: 3; padding-top: calc(66px + 34px * var(--s)); }
+.page-title { font: 900 clamp(40px, 7vw, 76px)/1 Grandstander, sans-serif; color: var(--white); -webkit-text-stroke: .15em var(--ink); paint-order: stroke fill; text-shadow: 0 .09em 0 var(--ink); margin: 14px 0 14px -.03em; }
+.page-title .gold { color: var(--gold); }
+.page-hero-copy .glass-pill { letter-spacing: .12em; }
+@media (max-width: 760px) { .page-hero-copy { text-align: center; } .page-hero .macaw { --tx: 86%; } .page-hero .fish { --tx: 80%; } }
+.doc-band { padding-top: clamp(40px, 6vw, 72px); }
+.doc { max-width: 860px; margin: 0 auto; padding: clamp(24px, 5vw, 52px); }
+.doc > :first-child { margin-top: 0; }
+.doc h2 { font: 800 clamp(22px, 3vw, 27px)/1.2 Outfit, sans-serif; color: var(--gold); margin: 38px 0 10px; letter-spacing: 0; }
+.doc h3 { font-size: 19px; margin: 24px 0 6px; }
+.doc p, .doc li { color: rgba(255, 255, 255, .86); max-width: 72ch; }
+.doc p { margin: 0 0 12px; }
+.doc ul { padding-left: 22px; margin: 0 0 12px; }
+.doc li { margin: 6px 0; }
+.doc li::marker { color: var(--gold); }
+.doc strong { color: var(--white); }
+.doc a { color: var(--gold-light); text-underline-offset: 3px; }
+.doc a.pill-button { color: var(--ink); text-decoration: none; }
+.doc-summary { margin-bottom: 8px; padding: 20px 24px; border-radius: 20px; background: rgba(255, 194, 74, .08); border: 1.5px solid rgba(255, 194, 74, .38); }
+.doc-summary p:last-child { margin-bottom: 0; }
+.doc-summary .doc-summary-title { font-size: 20px; font-weight: 800; color: var(--white); }
+.doc-contact { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; }
+.doc-contact p { margin: 0; flex: 1 1 260px; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .strip, .waterline { animation: none; }
+  .strip, .waterline, .page-hero .still-twin { animation: none; }
   .pill-button, .store-button { transition: none; }
 }
 .motion-paused .strip, .motion-paused .waterline { animation-play-state: paused; }
