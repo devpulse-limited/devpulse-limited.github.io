@@ -14,7 +14,7 @@ no trackers, cookies or analytics). GitHub Pages serves each folder's `index.htm
 
 ## At launch
 
-- In `script.js`, replace the two `null`s in `storeLinks` with the App Store and Google Play URLs. The buttons then say "Download on the App Store" / "Get it on Google Play" and link there; until then they open a "coming soon" dialog.
+- The App Store link (`storeLinks` in `script.js`, and the two App Store buttons in `index.html`, so they work without JavaScript) is `https://apps.apple.com/app/id6824252556`, with no country in it: the App Store opens each player's own storefront. The pages also carry the Smart App Banner (`apple-itunes-app`). For Google Play, replace its `null` in `storeLinks` with the listing URL; until then its button opens the "coming soon" dialog.
 - In `index.html`, the JSON-LD says `"gamePlatform": "iOS"`; add Android when it ships, and update the FAQ answer "An Android version is on the way".
 - AdMob's `app-ads.txt` goes at the site root (`/app-ads.txt`), not in this folder.
 

@@ -1,9 +1,9 @@
 'use strict';
 
-// Replace these two nulls with the published listing URLs when TwinFin launches.
-// Until then every store button opens the "coming soon" message.
+// The store listings. The App Store link has no country in it: the App Store opens each player's own
+// storefront. Google Play stays null (a "coming soon" message) until the Android version is out.
 const storeLinks = {
-  'App Store': null,
+  'App Store': 'https://apps.apple.com/app/id6824252556',
   'Google Play': null,
 };
 
