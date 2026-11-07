@@ -98,12 +98,12 @@ h3 { font-size: 24px; margin-bottom: 6px; color: var(--cream); text-shadow: 0 2p
 @media (max-width: 820px) { .nav-link { display: none; } }
 @media (max-width: 420px) { .brand span { display: none; } }
 
-/* ---- The scene: the game's shaft in game px x --s ---- */
+/* ---- The scene: a game level in game px x --s ---- */
 .scene { position: relative; width: calc(390px * var(--s)); height: calc(844px * var(--s)); overflow: hidden; background: #1A2414 var(--zone, url('/coconut-rocket/assets/images/zone-jungle.jpg')) center / 100% 100% no-repeat; }
 .scene::after { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 4;
   background: linear-gradient(to bottom, rgba(14, 8, 10, .5) 0, rgba(14, 8, 10, 0) 22%, rgba(14, 8, 10, 0) 70%, rgba(18, 8, 6, .55) 100%), radial-gradient(120% 60% at 50% 46%, rgba(0, 0, 0, 0) 55%, rgba(8, 4, 6, .35) 100%); }
 .scene > * { position: absolute; pointer-events: none; }
-.pilot { z-index: 2; left: 0; top: 0; width: calc(var(--pw) * 1px * var(--s)); height: auto; translate: -50% -29.6%; will-change: transform; filter: drop-shadow(0 calc(6px * var(--s)) calc(8px * var(--s)) rgba(0, 0, 0, .25)); }
+.pilot { z-index: 2; left: 0; top: 0; width: calc(var(--pw) * 1px * var(--s)); height: auto; translate: -50% -29.6%; transform: translate(calc(195px * var(--s)), calc(420px * var(--s))); will-change: transform; filter: drop-shadow(0 calc(6px * var(--s)) calc(8px * var(--s)) rgba(0, 0, 0, .25)); }
 .monster { z-index: 3; left: 50%; bottom: calc(-280px * var(--s)); width: calc(var(--mw) * 1px * var(--s)); height: auto; translate: -50% 0; will-change: transform; }
 /* A coin is one cell of the game's coin sheet; script.js steps through its frames. */
 .coin { z-index: 1; left: 0; top: 0; width: calc(34px * var(--s)); height: calc(34px * var(--s)); translate: -50% -50%; background: var(--coin-img) 0 0 no-repeat; will-change: transform; }
@@ -111,15 +111,6 @@ h3 { font-size: 24px; margin-bottom: 6px; color: var(--cream); text-shadow: 0 2p
 @keyframes coinGot { to { opacity: 0; scale: 1.8; } }
 .mote { z-index: 1; width: calc(4px * var(--s)); height: calc(4px * var(--s)); border-radius: 50%; background: #FFD08A; box-shadow: 0 0 calc(6px * var(--s)) #FFB238; opacity: .7; animation: moteRise linear infinite; }
 @keyframes moteRise { from { transform: translateY(0); opacity: 0; } 15% { opacity: .75; } to { transform: translateY(calc(-420px * var(--s))); opacity: 0; } }
-.hud { z-index: 5; left: 0; right: 0; top: calc(64px * var(--s)); display: flex; flex-direction: column; align-items: center; gap: 2px; font-family: var(--display); color: var(--cream); text-shadow: 0 3px 0 var(--ink); transition: opacity .4s; }
-.hud .metres { font-size: calc(46px * var(--s)); line-height: 1; -webkit-text-stroke: calc(2px * var(--s)) var(--ink); paint-order: stroke fill; }
-.hud .metres small { font-size: .5em; }
-.hud .coins { display: inline-flex; align-items: center; gap: calc(6px * var(--s)); font-size: calc(26px * var(--s)); color: #FFE7B8; -webkit-text-stroke: calc(1.5px * var(--s)) var(--ink); paint-order: stroke fill; }
-.hud .coins i { width: calc(28px * var(--s)); height: calc(28px * var(--s)); background: var(--coin-img) 0 0 no-repeat; }
-.scene.caught .monster { animation: chomp .5s ease-out; }
-@keyframes chomp { 30% { translate: -50% calc(-40px * var(--s)); } }
-.scene.shake { animation: shake .4s; }
-@keyframes shake { 20% { transform: translate(-4px, 2px); } 40% { transform: translate(4px, -2px); } 60% { transform: translate(-3px, 1px); } 80% { transform: translate(2px, 0); } }
 
 /* ---- Hero ---- */
 .hero { position: relative; overflow: hidden; padding: 86px 0 40px; background: var(--night); }
@@ -131,11 +122,8 @@ h3 { font-size: 24px; margin-bottom: 6px; color: var(--cream); text-shadow: 0 2p
 .hero-lede { margin: 0; max-width: 34ch; font-size: 20px; font-weight: 700; color: rgba(255, 241, 214, .9); }
 .hero-lede strong { color: var(--ember); font-weight: 900; }
 .hero-pills { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
-.try-hint { display: inline-flex; align-items: center; gap: 8px; margin: 0; padding: 6px 14px 6px 10px; border-radius: 999px; background: rgba(40, 20, 12, .66); font-weight: 800; font-size: 15px; color: var(--wallet); transition: opacity .6s; }
-.try-hint svg { width: 22px; height: 22px; color: var(--ember); }
-.try-hint.done { opacity: 0; }
 .hero-stage { position: relative; }
-.hero-stage .scene { border-radius: calc(44px * var(--s)); box-shadow: 0 0 0 calc(10px * var(--s)) #0C0709, 0 0 0 calc(12px * var(--s)) rgba(255, 226, 190, .12), 0 30px 70px rgba(0, 0, 0, .6); cursor: pointer; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+.hero-stage .scene { border-radius: calc(44px * var(--s)); box-shadow: 0 0 0 calc(10px * var(--s)) #0C0709, 0 0 0 calc(12px * var(--s)) rgba(255, 226, 190, .12), 0 30px 70px rgba(0, 0, 0, .6); touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
 .stage-logo, .stage-cta { display: none; }
 
 @media (max-width: 860px) {
@@ -152,8 +140,7 @@ h3 { font-size: 24px; margin-bottom: 6px; color: var(--cream); text-shadow: 0 2p
   .stage-cta .store-button { flex: 1 1 0; min-width: 0; padding: 8px 10px; }
   .stage-cta .store-button strong { font-size: 21px; white-space: nowrap; }
   .stage-cta .store-button small { font-size: 12px; white-space: nowrap; }
-  .hud { top: calc(260px * var(--s)); }
-}
+  }
 
 /* ---- Bands ---- */
 .band { position: relative; padding: clamp(64px, 9vw, 110px) 0; }
@@ -214,7 +201,7 @@ h3 { font-size: 24px; margin-bottom: 6px; color: var(--cream); text-shadow: 0 2p
 .faq-list details[open] summary svg { transform: rotate(45deg); }
 .faq-list p { margin: 0; padding: 0 22px 20px; color: var(--muted); font-weight: 700; }
 
-/* The closing scene: the shaft at a fixed scale behind the card. */
+/* The closing scene: the level at a fixed scale behind the card. */
 .cta-band { position: relative; overflow: hidden; padding: clamp(70px, 10vw, 120px) 0; background: var(--night); }
 .cta-band .hero-ambient { background-image: url('/coconut-rocket/assets/images/zone-magma-sm.jpg'); filter: blur(22px) saturate(1.15) brightness(.5); }
 .cta-card { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; padding: clamp(28px, 5vw, 46px); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px; }
@@ -240,7 +227,7 @@ dialog .cta { margin-top: 6px; }
 .dialog-close { position: absolute; top: 12px; right: 12px; display: grid; place-items: center; width: 38px; height: 38px; border: 0; border-radius: 13px; cursor: pointer; color: var(--cream); background: linear-gradient(var(--tile-hi), var(--tile-lo)); box-shadow: 0 3px 0 var(--tile-lip), var(--rim); }
 .dialog-close svg { width: 18px; height: 18px; }
 
-/* ---- Sub pages (privacy, support): a short shaft band with the title, then the text on a carved panel ---- */
+/* ---- Sub pages (privacy, support): a short level band with the title, then the text on a carved panel ---- */
 .page-hero { position: relative; overflow: hidden; height: clamp(300px, 42vw, 420px); background: #1A2414 url('/coconut-rocket/assets/images/zone-jungle.jpg') center 38% / cover; }
 .page-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(18, 11, 16, .55), rgba(18, 11, 16, .15) 45%, var(--night)); }
 .page-hero-copy { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 14px; padding-top: 50px; }

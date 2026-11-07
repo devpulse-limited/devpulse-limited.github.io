@@ -48,7 +48,7 @@ motion.addEventListener('change', updateMotion);
 document.addEventListener('visibilitychange', updateMotion);
 updateMotion();
 
-// ---- The hero scene: the game's shaft in game px (390 x 844), scaled to fit ----
+// ---- The hero scene: a jungle level in game px (390 x 844), scaled to fit ----
 const scene = document.querySelector('#scene');
 if (scene) {
   const W = 390, H = 844;
@@ -72,12 +72,6 @@ if (scene) {
   const SHEET = { frames: 96, cols: 16, rows: 12 };
   scene.style.setProperty('--coin-img', 'url(/coconut-rocket/assets/images/coins.png)');
   const framePos = f => `${(f % SHEET.cols) / (SHEET.cols - 1) * 100}% ${Math.floor(f / SHEET.cols) / (SHEET.rows - 1) * 100}%`;
-  const hudCoin = scene.querySelector('.hud .coins i');
-  if (hudCoin) {
-    hudCoin.style.backgroundSize = `${SHEET.cols * 100}% ${SHEET.rows * 100}%`;
-    hudCoin.style.backgroundPosition = framePos(0);
-  }
-
   const rand = (a, b) => a + Math.random() * (b - a);
   const coins = [];
   for (let i = 0; i < 6; i++) {
@@ -85,7 +79,7 @@ if (scene) {
     el.className = 'coin';
     el.style.backgroundSize = `${SHEET.cols * 100}% ${SHEET.rows * 100}%`;
     scene.prepend(el);
-    coins.push({ el, x: rand(80, 310), y: rand(-80, 520), ph: Math.floor(rand(0, 96)), got: false });
+    coins.push({ el, x: rand(80, 310), y: rand(-80, 520), ph: Math.floor(rand(0, 96)) });
   }
   for (let i = 0; i < 16; i++) {
     const el = document.createElement('i');
@@ -97,7 +91,8 @@ if (scene) {
     scene.prepend(el);
   }
 
-  // Kiko's rocket, with the game's four flame frames swapped in turn.
+  // Kiko hovers as on the home screen, with the game's four flame frames swapped in turn. The scene is only a
+  // picture: nothing on it responds to taps or the pointer.
   const pilot = scene.querySelector('#pilot');
   const monster = scene.querySelector('#monster');
   const flames = [1, 2, 3, 4].map(n => {
@@ -105,113 +100,33 @@ if (scene) {
     img.src = `/coconut-rocket/assets/images/pilot-kiko-flame-${n}.png`;
     return img.src;
   });
-  const metresEl = document.querySelector('#metres');
-  const coinCountEl = document.querySelector('#coin-count');
-  const hint = document.querySelector('#try-hint');
-
-  // Flight, in game px per second (the pilot's centre). Home is where the home screen hovers it.
-  const HOME_X = W / 2, HOME_Y = 420, TOP = 190, CAUGHT = 690;
-  const LIFT = 1500, GRAVITY = 900, MAX_UP = 420, MAX_DOWN = 480;
-  let x = HOME_X, y = HOME_Y, v = 0, targetX = HOME_X;
-  let held = false, lastInput = -Infinity, time = 0, last = performance.now();
-  let metres = 0, coinCount = 0, flameFrame = 0, flameClock = 0, safeUntil = 0;
-
-  const toGameX = event => {
-    const box = scene.getBoundingClientRect();
-    return Math.max(70, Math.min(W - 70, (event.clientX - box.left) / scale));
-  };
-  scene.addEventListener('pointerdown', event => {
-    if (event.button > 0) return;
-    held = true;
-    targetX = toGameX(event);
-    lastInput = performance.now();
-    hint?.classList.add('done');
-  });
-  scene.addEventListener('pointermove', event => {
-    if (held) targetX = toGameX(event);
-  });
-  for (const type of ['pointerup', 'pointercancel', 'pointerleave']) {
-    scene.addEventListener(type, () => { held = false; lastInput = performance.now(); });
-  }
-  window.addEventListener('blur', () => { held = false; });
-  scene.addEventListener('contextmenu', event => event.preventDefault());
-
-  function caught(now) {
-    safeUntil = now + 1200;
-    scene.classList.remove('caught', 'shake');
-    void scene.offsetWidth;
-    scene.classList.add('caught', 'shake');
-    metres = 0;
-    coinCount = 0;
-    v = -MAX_UP;
-    held = false;
-  }
+  const HOME_X = W / 2, HOME_Y = 420, DRIFT = 70;
+  let time = 0, last = performance.now(), flameFrame = 0, flameClock = 0;
 
   function frame(now) {
     const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
     const still = motion.matches;
     if (!document.hidden) {
-      time += dt;
-      const active = held || now - lastInput < 1800;
-      if (still) {
-        x = HOME_X; y = HOME_Y; v = 0;
-      } else if (active) {
-        v += (held ? -LIFT : GRAVITY) * dt;
-        v = Math.max(-MAX_UP, Math.min(MAX_DOWN, v));
-        y += v * dt;
-        if (y < TOP) { y = TOP; v = Math.max(v, 0); }
-        if (y > CAUGHT) {
-          if (now > safeUntil) caught(now);
-          y = CAUGHT;
-        }
-        x += (targetX - x) * Math.min(1, dt * 8);
-      } else {
-        // The home screen's hover: ease back to the middle and bob there.
-        const target = HOME_Y + Math.sin(time * 1.7) * 10;
-        v += ((target - y) * 3.2 - v * 2.4) * dt * 4;
-        y += v * dt;
-        x += (HOME_X - x) * Math.min(1, dt * 2);
-        targetX = x;
-      }
-
-      // The shaft scrolls past: coins drift down faster while the thrusters fire.
-      const climb = still ? 0 : (active ? (held ? 260 : 110) : 60);
-      if (active && !still) metres += dt * (held ? 9 : 3);
+      if (!still) time += dt;
       for (const c of coins) {
-        if (!still) c.y += climb * dt;
-        if (c.y > H + 40) {
-          c.y = rand(-260, -40);
-          c.x = rand(80, 310);
-          c.got = false;
-          c.el.classList.remove('got');
-        }
-        if (!c.got && !still && Math.hypot(c.x - x, c.y - y) < 48) {
-          c.got = true;
-          coinCount++;
-          c.el.classList.add('got');
-        }
+        if (!still) c.y += DRIFT * dt;
+        if (c.y > H + 40) { c.y = rand(-260, -40); c.x = rand(80, 310); }
         const f = (Math.floor(time * 60 * 1.2) + c.ph) % SHEET.frames;
-        c.el.style.backgroundPosition = framePos(still ? c.ph : f);
+        c.el.style.backgroundPosition = framePos(f);
         c.el.style.transform = `translate(${(c.x * scale).toFixed(1)}px, ${(c.y * scale).toFixed(1)}px)`;
       }
-
       flameClock += dt;
       if (flameClock > 0.07 && !still) {
         flameClock = 0;
         flameFrame = (flameFrame + 1) % flames.length;
         pilot.src = flames[flameFrame];
       }
-      const tilt = Math.max(-0.25, Math.min(0.25, (targetX - x) / 300 + v / 4000));
+      const x = HOME_X + Math.sin(time * 0.6) * 14;
+      const y = HOME_Y + Math.sin(time * 1.7) * 10;
+      const tilt = Math.cos(time * 0.6) * 0.05;
       pilot.style.transform = `translate(${(x * scale).toFixed(1)}px, ${(y * scale).toFixed(1)}px) rotate(${tilt.toFixed(3)}rad)`;
-
-      // Scissorjaw falls behind while you climb and closes in as you drop, breathing as it waits.
-      const lag = Math.max(-30, Math.min(110, (HOME_Y - y) * 0.45));
-      const breathe = still ? 0 : Math.sin(time * 2.2) * 5;
-      monster.style.transform = `translateY(${((lag + breathe) * scale).toFixed(1)}px)`;
-
-      metresEl.textContent = Math.floor(metres);
-      coinCountEl.textContent = coinCount;
+      monster.style.transform = `translateY(${(Math.sin(time * 2.2) * 5 * scale).toFixed(1)}px)`;
     }
     requestAnimationFrame(frame);
   }
