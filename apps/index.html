@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <!-- ============ SEO ============ -->
-  <title>Apps by Devpulse. Mac Utilities, Kids Paint and TwinFin.</title>
-  <meta name="description" content="Explore apps made by Devpulse. Free Mac utilities for cooling and display controls, Kids Paint, our drawing and colouring app for kids, and TwinFin, a one-thumb arcade game.">
+  <title>Apps by Devpulse. Mac Utilities, Kids Paint, TwinFin and Coconut Rocket.</title>
+  <meta name="description" content="Explore apps made by Devpulse. Free Mac utilities for cooling and display controls, Kids Paint, our drawing and colouring app for kids, and two arcade games, TwinFin and Coconut Rocket.">
   <meta name="author" content="Devpulse">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://devpulse.co.uk/apps/">
@@ -16,8 +16,8 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Devpulse">
-  <meta property="og:title" content="Apps by Devpulse. Mac Utilities, Kids Paint and TwinFin.">
-  <meta property="og:description" content="Discover FannyBoost, ScreenBoost, Kids Paint and TwinFin. Practical Mac tools, a playful colouring app for kids and a one-thumb arcade game.">
+  <meta property="og:title" content="Apps by Devpulse. Mac Utilities, Kids Paint, TwinFin and Coconut Rocket.">
+  <meta property="og:description" content="Discover FannyBoost, ScreenBoost, Kids Paint, TwinFin and Coconut Rocket. Practical Mac tools, a playful colouring app for kids and two arcade games.">
   <meta property="og:url" content="https://devpulse.co.uk/apps/">
   <meta property="og:locale" content="en_GB">
   <meta property="og:image" content="https://devpulse.co.uk/og.png">
@@ -27,8 +27,8 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Apps by Devpulse. Mac Utilities, Kids Paint and TwinFin.">
-  <meta name="twitter:description" content="Discover FannyBoost, ScreenBoost, Kids Paint and TwinFin. Practical Mac tools, a playful colouring app for kids and a one-thumb arcade game.">
+  <meta name="twitter:title" content="Apps by Devpulse. Mac Utilities, Kids Paint, TwinFin and Coconut Rocket.">
+  <meta name="twitter:description" content="Discover FannyBoost, ScreenBoost, Kids Paint, TwinFin and Coconut Rocket. Practical Mac tools, a playful colouring app for kids and two arcade games.">
   <meta name="twitter:image" content="https://devpulse.co.uk/og.png">
 
   <!-- Favicon (inline, no extra request) + iOS home-screen icon -->
@@ -995,6 +995,28 @@
     @media(max-width:1180px) { .tf-twin { display:none; } } /* below this the text column has no room beside the panel */
     @media(max-width:700px) { .twin-feature { grid-template-columns:1fr; grid-template-rows:auto auto auto; } .twin-sea { grid-row:2 / 4; } .twin-top { padding-right:var(--pad); } .twin-bottom { padding-right:var(--pad); padding-bottom:8px; } .twin-art { grid-row:3; grid-column:1; max-width:280px; margin:8px auto var(--pad); } }
     @media(prefers-reduced-motion:reduce) { .twin-link { transition:none; } .tf-strip, .tf-wave, .tf-twin { animation:none; } }
+    /* Coconut Rocket's card is the game's own front end: the jungle shaft behind a carved basalt panel, the Lilita One
+       logo with its warm extruded edge, the green Play style button and Kiko hovering in the coconut rocket. */
+    @font-face { font-family: CoconutDisplay; src: url('../coconut-rocket/assets/fonts/LilitaOne-Regular.ttf') format('truetype'); font-display: swap; }
+    .cr-feature { position:relative; overflow:hidden; isolation:isolate; display:grid; grid-template-columns:1.15fr 1fr; gap:40px; align-items:center; margin-top:28px; padding:clamp(24px,5vw,56px); border-radius:var(--radius,24px); background:#120b10; box-shadow:0 0 0 1px #ffe2be24; }
+    .cr-feature::before { content:""; position:absolute; inset:-30px; z-index:-2; background:url('../coconut-rocket/assets/images/zone-jungle-sm.jpg') center 35% / cover; filter:blur(18px) brightness(.5) saturate(1.1); }
+    .cr-feature::after { content:""; position:absolute; inset:0; z-index:-1; background:radial-gradient(ellipse at 20% 0%,#ffb2381f,transparent 60%),linear-gradient(90deg,#120b10e6 0%,#120b1099 55%,#120b1033 100%); }
+    .cr-label { display:inline-block; margin:0; padding:6px 14px; border-radius:999px; background:linear-gradient(#4a3230,#33221f); box-shadow:0 3px 0 #1f1517,inset 0 1px 0 #ffe2be1f; color:#f0bf86; font-size:12px; font-weight:800; letter-spacing:.06em; }
+    .cr-brand { display:flex; align-items:center; gap:14px; margin:16px 0 14px; font-family:CoconutDisplay,sans-serif; font-size:clamp(40px,5vw,60px); font-weight:400; line-height:1.05; }
+    .cr-brand img { width:52px; height:52px; border-radius:13px; box-shadow:0 3px 0 #1f1517; }
+    .cr-word { background:linear-gradient(#fff2a8 8%,#ffd04a 38%,#ff9a22 70%,#f06a12); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; filter:drop-shadow(0 2px 0 #e0661a) drop-shadow(0 2px 0 #b8460e) drop-shadow(0 3px 0 #8a2e0a); }
+    .cr-word .co { background:linear-gradient(#fffaf0 30%,#ffe2b0); -webkit-background-clip:text; background-clip:text; }
+    .cr-feature p { max-width:480px; margin:0; color:#e9d6bf; line-height:1.75; }
+    .cr-link { display:inline-flex; align-items:center; margin-top:22px; padding:13px 24px; border-radius:18px; background:linear-gradient(#b4ec72,#7cc04a 55%,#4f9a2a); color:#1d3a0c; font-family:CoconutDisplay,sans-serif; font-size:20px; letter-spacing:.02em; text-decoration:none; box-shadow:0 5px 0 #2f6a17,inset 0 2px 0 #ffffff73; transition:transform .15s,filter .15s; }
+    .cr-link:hover { filter:brightness(1.06); transform:translateY(-2px); }
+    .cr-link:focus-visible { outline:3px solid #ffb238; outline-offset:5px; }
+    .cr-art { position:relative; display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:center; max-width:340px; margin:auto; padding:10px; }
+    .cr-art img.shot { width:100%; height:auto; border-radius:20px; border:4px solid #0c0709; box-shadow:0 16px 32px #0008; transform:rotate(-5deg); }
+    .cr-art img.shot:last-of-type { transform:rotate(5deg) translateY(12px); }
+    .cr-pilot { position:absolute; z-index:1; left:50%; top:-6%; width:120px; height:auto; translate:-50% 0; filter:drop-shadow(0 8px 10px #0006); animation:cr-hover 3.2s ease-in-out infinite; pointer-events:none; }
+    @keyframes cr-hover { 50% { transform:translateY(-10px) rotate(-3deg); } }
+    @media(max-width:700px) { .cr-feature { grid-template-columns:1fr; gap:24px; } .cr-art { max-width:390px; } }
+    @media(prefers-reduced-motion:reduce) { .cr-link { transition:none; } .cr-pilot { animation:none; } }
   </style>
   <noscript>
     <style>
@@ -1062,7 +1084,7 @@
           Useful tools. <span class="grad-text">Playful possibilities.</span>
         </h1>
         <p class="hero-sub reveal" style="--d:.16s">
-          The same care we put into client work goes into our own apps. Discover practical Mac utilities, a colourful new space for kids to create, and a fiendishly simple one-thumb game.
+          The same care we put into client work goes into our own apps. Discover practical Mac utilities, a colourful new space for kids to create, and two arcade games made for one thumb.
         </p>
       </div>
     </section>
@@ -1118,6 +1140,19 @@
           <div class="twin-art">
             <img src="../twinfin/assets/images/shot-hero.jpg" width="508" height="1100" loading="lazy" alt="TwinFin mid run. The macaw flies between ruin pillars above the waterline while the clownfish swims between coral below.">
             <img src="../twinfin/assets/images/shot-card.jpg" width="508" height="1100" loading="lazy" alt="The TwinFin score card, showing 52 and a gold medal.">
+          </div>
+        </article>
+        <article class="cr-feature reveal" id="coconut-rocket">
+          <div>
+            <p class="cr-label">Made by Devpulse. Coming soon to iPhone and Android.</p>
+            <h3 class="cr-brand"><img src="../coconut-rocket/assets/app-icon.png" width="52" height="52" alt=""><span class="cr-word"><span class="co">Coconut</span> Rocket</span></h3>
+            <p>Hold to fly, slide to steer and climb as high as you dare, with Scissorjaw, a very hungry monster, right behind you. An endless arcade climber through jungle, caves and magma, with a new daily shaft every day and a whole crew of pilots and rockets to collect.</p>
+            <a class="cr-link" href="../coconut-rocket/">Explore Coconut Rocket <svg class="twin-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          <div class="cr-art">
+            <img class="shot" src="../coconut-rocket/assets/images/shot-flight.jpg" width="508" height="1104" loading="lazy" alt="Coconut Rocket mid run. Kiko the lemur weaves between spiked logs and coins, with the monster Scissorjaw below.">
+            <img class="shot" src="../coconut-rocket/assets/images/shot-shop.jpg" width="508" height="1104" loading="lazy" alt="The Coconut Rocket shop, with characters to collect.">
+            <img class="cr-pilot" src="../coconut-rocket/assets/images/pilot-kiko-flame-1.png" width="278" height="589" alt="">
           </div>
         </article>
       </div>
