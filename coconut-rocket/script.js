@@ -94,7 +94,7 @@ if (scene) {
   // Kiko hovers as on the home screen, with the game's four flame frames swapped in turn. The scene is only a
   // picture: nothing on it responds to taps or the pointer.
   const pilot = scene.querySelector('#pilot');
-  const monster = scene.querySelector('#monster');
+  const poison = scene.querySelector('#poison');
   const flames = [1, 2, 3, 4].map(n => {
     const img = new Image();
     img.src = `/coconut-rocket/assets/images/pilot-kiko-flame-${n}.png`;
@@ -126,7 +126,7 @@ if (scene) {
       const y = HOME_Y + Math.sin(time * 1.7) * 10;
       const tilt = Math.cos(time * 0.6) * 0.05;
       pilot.style.transform = `translate(${(x * scale).toFixed(1)}px, ${(y * scale).toFixed(1)}px) rotate(${tilt.toFixed(3)}rad)`;
-      monster.style.transform = `translateY(${(Math.sin(time * 2.2) * 5 * scale).toFixed(1)}px)`;
+      poison.style.transform = `translateY(${(Math.sin(time * 1.3) * 4 * scale).toFixed(1)}px)`;
     }
     requestAnimationFrame(frame);
   }

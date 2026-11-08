@@ -6,9 +6,9 @@ no trackers, cookies or analytics). GitHub Pages serves each folder's `index.htm
 
 | Path | What |
 |---|---|
-| `index.html`, `styles.css`, `script.js` | The page. The hero is a jungle level at game scale (390 x 844 game px, `--s` sets the scale) with Kiko hovering, coins drifting and Scissorjaw below. It is a picture, not playable: the owner does not want the game playable on the site. Phones get a full-bleed copy of the home screen, desktops a framed phone beside the copy. |
+| `index.html`, `styles.css`, `script.js` | The page. The hero is a jungle level at game scale (390 x 844 game px, `--s` sets the scale) with Kiko hovering, coins drifting and the poison rising below. It is a picture, not playable: the owner does not want the game playable on the site. Phones get a full-bleed copy of the home screen, desktops a framed phone beside the copy. |
 | `privacy/`, `support/` | The privacy policy and the support page, in the same design. The plain text draft of the policy lives in `docs/store/privacy-policy.md` in the CoconutRocket repo; keep the two in step. |
-| `assets/images/` | Art drawn by the game itself: Kiko (still and four flame frames), eight crew pilots, Scissorjaw, the three zones, the coin sheet, store screenshots and the social preview. |
+| `assets/images/` | Art drawn by the game itself: Kiko (still and four flame frames), eight crew pilots, the poison (lined up with the jungle zone walls) and its portrait, the three zones, the coin sheet, store screenshots and the social preview. |
 | `assets/fonts/`, `assets/licences/` | Lilita One and Nunito (SIL OFL 1.1), as in the game. |
 
 ## Regenerating the art
