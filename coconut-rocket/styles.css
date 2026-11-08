@@ -105,6 +105,7 @@ h3 { font-size: 24px; margin-bottom: 6px; color: var(--cream); text-shadow: 0 2p
 .scene > * { position: absolute; pointer-events: none; }
 .pilot { z-index: 2; left: 0; top: 0; width: calc(var(--pw) * 1px * var(--s)); height: auto; translate: -50% -29.6%; transform: translate(calc(195px * var(--s)), calc(420px * var(--s))); will-change: transform; filter: drop-shadow(0 calc(6px * var(--s)) calc(8px * var(--s)) rgba(0, 0, 0, .25)); }
 .poison { z-index: 3; left: 0; bottom: calc(-8px * var(--s)); width: 100%; height: auto; will-change: transform; }
+.poison-live { z-index: 3; left: 0; top: calc(220px * var(--s)); width: 100%; height: calc(624px * var(--s)); }
 /* A coin is one cell of the game's coin sheet; script.js steps through its frames. */
 .coin { z-index: 1; left: 0; top: 0; width: calc(34px * var(--s)); height: calc(34px * var(--s)); translate: -50% -50%; background: var(--coin-img) 0 0 no-repeat; will-change: transform; }
 .coin.got { animation: coinGot .35s ease-out forwards; }

@@ -65,7 +65,6 @@ if (scene) {
     scene.parentElement.style.setProperty('--s', scale.toFixed(4));
   }
   layout();
-  window.addEventListener('resize', layout);
 
   // The coin sheet from the game (assets/art/coins.json): 96 frames of one turn, 16 to a row, 112 px cells, the big
   // coin's frames after them. The sheet is 16 x 12 cells.
@@ -79,7 +78,7 @@ if (scene) {
     el.className = 'coin';
     el.style.backgroundSize = `${SHEET.cols * 100}% ${SHEET.rows * 100}%`;
     scene.prepend(el);
-    coins.push({ el, x: rand(80, 310), y: rand(-80, 520), ph: Math.floor(rand(0, 96)) });
+    coins.push({ el, x: rand(80, 310), y: rand(-80, 520), r: 17, ph: Math.floor(rand(0, 96)) });
   }
   for (let i = 0; i < 16; i++) {
     const el = document.createElement('i');
@@ -94,7 +93,32 @@ if (scene) {
   // Kiko hovers as on the home screen, with the game's four flame frames swapped in turn. The scene is only a
   // picture: nothing on it responds to taps or the pointer.
   const pilot = scene.querySelector('#pilot');
-  const poison = scene.querySelector('#poison');
+  // The poison is live (poison.js): it swaps in for the still image, which stays as the fallback without scripts.
+  // WALLS are the jungle zone's inner rock edges every 4 game px from y 300 down, read off the exported image.
+  const WALLS = {
+    y0: 300, step: 4,
+    L: [11,12,12,13,13,14,14,14,14,13,13,12,11,11,10,10,10,10,10,11,11,12,13,14,14,14,15,15,15,15,15,15,15,15,15,15,15,16,16,17,17,18,18,19,20,21,21,22,22,22,22,22,22,21,21,21,20,20,19,19,18,18,17,17,17,16,16,16,16,16,17,17,17,18,18,17,16,16,14,13,12,11,10,10,10,10,11,12,12,13,14,14,14,14,13,13,13,12,12,12,12,12,13,13,14,14,15,15,16,16,16,15,15,14,14,14,14,13,14,14,13,13,13,12,12,11,11,10,10,10,10,10,11,11,11,12,12],
+    R: [381,380,379,378,377,377,376,376,376,376,376,376,376,376,376,376,376,376,376,376,376,376,376,376,376,375,375,375,376,376,377,378,378,379,380,381,381,380,380,379,378,376,375,374,373,373,373,373,373,373,374,374,375,375,376,377,377,378,379,380,381,382,382,382,381,381,379,377,374,372,371,369,368,368,369,370,371,373,374,376,378,379,379,379,379,378,378,377,376,375,375,375,375,376,377,378,379,380,381,381,381,381,381,380,379,378,377,376,376,376,376,377,378,379,379,380,380,380,380,380,379,378,378,377,377,376,376,377,377,377,377,377,377,376,375,375,374],
+  };
+  let tide = null;
+  const stillImg = scene.querySelector('#poison');
+  if (window.createPoison && document.createElement('canvas').getContext) {
+    const canvas = document.createElement('canvas');
+    canvas.className = 'poison-live';
+    canvas.setAttribute('aria-hidden', 'true');
+    tide = window.createPoison(canvas, { W, H, top: 220, rest: 640, walls: WALLS });
+    stillImg.replaceWith(canvas);
+  }
+  let inView = true;
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(entries => { inView = entries[0].isIntersecting; }).observe(scene);
+  }
+  function relayout() {
+    layout();
+    if (tide) { tide.resize(scale); tide.draw(); }
+  }
+  relayout();
+  window.addEventListener('resize', relayout);
   const flames = [1, 2, 3, 4].map(n => {
     const img = new Image();
     img.src = `/coconut-rocket/assets/images/pilot-kiko-flame-${n}.png`;
@@ -126,7 +150,11 @@ if (scene) {
       const y = HOME_Y + Math.sin(time * 1.7) * 10;
       const tilt = Math.cos(time * 0.6) * 0.05;
       pilot.style.transform = `translate(${(x * scale).toFixed(1)}px, ${(y * scale).toFixed(1)}px) rotate(${tilt.toFixed(3)}rad)`;
-      poison.style.transform = `translateY(${(Math.sin(time * 1.3) * 4 * scale).toFixed(1)}px)`;
+      if (tide && inView && !still) {
+        tide.feed(coins);
+        tide.update(dt);
+        tide.draw();
+      }
     }
     requestAnimationFrame(frame);
   }
