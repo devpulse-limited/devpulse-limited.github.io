@@ -12,13 +12,24 @@ web fonts, no trackers, cookies or analytics). GitHub Pages serves each folder's
 
 The Apps page (`../apps/index.html`) has AuthSome's card (`.as-feature`) and names it in its title and descriptions.
 
+## Being found
+
+- **Search engines.** Each page has its own title, description, canonical URL, Open Graph tags and JSON-LD: the home
+  page describes the app (`SoftwareApplication`, with its features and screenshots), the support page lists its
+  questions (`FAQPage`, made from the questions on the page, so change both together), and all three carry
+  breadcrumbs. The site-wide `/sitemap.xml` lists these pages and `/robots.txt` points to it. Update a page's
+  `lastmod` there, and `dateModified` in its JSON-LD, when its text changes.
+- **AI agents.** `/llms.txt` at the site root is a plain summary of DevPulse's apps with AuthSome's facts in full
+  (price, platforms, features, privacy, status). Keep it true: it is what an agent will quote.
+
 ## At launch
 
 - Put the App Store URL in `storeLinks` in `script.js` (`https://apps.apple.com/app/id…`, with no country in it), and
   set the `href` of the App Store button in `index.html` to it with "Download on the" as its small line, so
   it works without JavaScript. Until then the button opens the "coming soon" dialog.
 - Add the Smart App Banner to the three pages: `<meta name="apple-itunes-app" content="app-id=…">`.
-- In `index.html`, add `installUrl` to the JSON-LD.
+- In `index.html`, add `installUrl` and `sameAs` (the App Store URL) to the app's JSON-LD, and consider a
+  `downloadUrl`. Change "Status: coming soon" in `/llms.txt`.
 - In `../apps/index.html`, change the card's "Coming soon to iPhone, iPad and Mac".
 - The app has no link to these pages yet. The App Store listing needs the privacy policy URL
   (`https://devpulse.co.uk/authsome/privacy`) and the support URL (`https://devpulse.co.uk/authsome/support`).

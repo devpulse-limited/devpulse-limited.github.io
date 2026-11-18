@@ -112,6 +112,7 @@ h1 { font-size: clamp(40px, 5.6vw, 68px); font-weight: 700; line-height: 1.02; l
 .capture { border-radius: 14px; box-shadow: 0 0 0 1px var(--line); }
 
 /* ---- What it does, in the app's own words ---- */
+h2 { margin-bottom: 18px; font-size: clamp(26px, 3.4vw, 34px); font-weight: 700; letter-spacing: -.025em; }
 .facts { margin-block: 0 clamp(48px, 7vw, 80px); }
 .facts div { display: grid; grid-template-columns: 200px 1fr; gap: 6px 24px; padding: 22px 0; border-top: 1px solid var(--line); }
 .facts div:last-child { border-bottom: 1px solid var(--line); }
