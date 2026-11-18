@@ -180,6 +180,20 @@ if (screen) {
   let shownCounter = -1;
 
   const logo = entry => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${LOGOS[entry.brand]}"/></svg>`;
+  // The grain over the hero, as the app's GrainTexture makes it: one 256 pixel tile of noise, a pixel of it to a pixel
+  // of the screen, repeated across the hero and blended as overlay at a tenth strength.
+  const grain = (() => {
+    const tile = document.createElement('canvas');
+    tile.width = tile.height = 256;
+    const context = tile.getContext('2d');
+    const noise = context.createImageData(256, 256);
+    for (let at = 0; at < noise.data.length; at += 4) {
+      noise.data[at] = noise.data[at + 1] = noise.data[at + 2] = Math.floor(Math.random() * 256);
+      noise.data[at + 3] = 255;
+    }
+    context.putImageData(noise, 0, 0);
+    return `url(${tile.toDataURL()}) 0 0 / ${256 / (window.devicePixelRatio || 1)}px`;
+  })();
   const paletteOf = entry => brandPalette(entry.colour, darkScheme.matches);
   // A Brand icon, as the app's BrandIconView draws it.
   const iconStyle = palette => `--ink:${css(palette.text)};--fill:linear-gradient(135deg, ${css(palette.top)}, ${css(palette.bottom)});--shadow:${css(palette.bottom, 0.35)};--ring:${css(palette.accent)}`;
@@ -201,7 +215,7 @@ if (screen) {
     const sphere = (tone, size, x, y) => `<span class="sphere" style="--tone:${css(tone)};--size:${size};--x:${x};--y:${y}"></span>`;
     colour.innerHTML = sphere(palette.secondTone, 95, 85, 80) + sphere(mix(palette.top, WHITE, 0.12), 85, 15, 20)
       + sphere(mix(palette.bottom, palette.secondTone, 0.4), 65, 50, 55) + sphere(mix(palette.secondTone, palette.top, 0.5), 50, 25, 85)
-      + `<span class="light"></span><span class="watermark">${logo(shown)}</span>`;
+      + `<span class="light"></span><span class="watermark">${logo(shown)}</span><span class="grain" style="background:${grain}"></span>`;
     if (!band.children.length) colour.style.animation = 'none';   // the first one is simply there
     band.append(colour);
     while (band.children.length > 2) band.firstChild.remove();

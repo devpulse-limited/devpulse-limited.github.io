@@ -36,8 +36,9 @@ button { font: inherit; color: inherit; }
 :focus-visible { outline: 3px solid currentColor; outline-offset: 3px; border-radius: 6px; }
 
 /* ---- The screen: the band in the Brand colour, and its wash behind the tiles ---- */
-/* The wash is the app's AppBackground: the Brand colour fading down the screen, with a little more in the top corner. */
-.screen { background: radial-gradient(520px circle at 100% 0, color-mix(in srgb, var(--tint) var(--wash-corner), transparent), transparent), linear-gradient(color-mix(in srgb, var(--tint) var(--wash-top), transparent), color-mix(in srgb, var(--tint) 4%, transparent)), var(--base); transition: --tint .6s; }
+/* The wash is the app's AppBackground: the Brand colour fading down the screen, with a little more in the top corner.
+   Its last stretch fades into the page, so the screen has no hard edge where the rest of the page begins. */
+.screen { background: linear-gradient(transparent calc(100% - 140px), var(--base)), radial-gradient(520px circle at 100% 0, color-mix(in srgb, var(--tint) var(--wash-corner), transparent), transparent), linear-gradient(color-mix(in srgb, var(--tint) var(--wash-top), transparent), color-mix(in srgb, var(--tint) 4%, transparent)), var(--base); transition: --tint .6s; }
 .band { position: relative; overflow: hidden; isolation: isolate; color: var(--on-brand, #fff); background: #FF4500; }
 /* The hero's colour, as the app's HeroBackground builds it: the Brand's shades (drawn by script.js), soft spheres in
    its tones, a glow from the top corner, a shade along the bottom edge and a large faded logo. */
@@ -53,6 +54,8 @@ button { font: inherit; color: inherit; }
 @media (prefers-color-scheme: dark) { .light { background-color: rgb(0 0 0 / .12); } }
 .watermark { position: absolute; right: max(-70px, (100% - 1000px) / 2 - 210px); bottom: -47px; width: 280px; height: 280px; rotate: -14deg; opacity: .1; }
 .watermark svg { width: 100%; height: 100%; fill: currentColor; }
+/* The app's GrainTexture: a tile of fine noise over the whole hero, the logo too, so it reads as one printed surface. */
+.grain { position: absolute; inset: 0; mix-blend-mode: overlay; opacity: .1; }
 .bar { position: relative; display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
 .brand { display: inline-flex; align-items: center; gap: 10px; color: inherit; font-size: 19px; font-weight: 700; letter-spacing: -.02em; text-decoration: none; }
 .bar nav { display: flex; gap: 22px; }
@@ -112,6 +115,7 @@ h1 { font-size: clamp(40px, 5.6vw, 68px); font-weight: 700; line-height: 1.02; l
 .capture { border-radius: 14px; box-shadow: 0 0 0 1px var(--line); }
 
 /* ---- What it does, in the app's own words ---- */
+.what { margin-top: clamp(40px, 6vw, 72px); }
 h2 { margin-bottom: 18px; font-size: clamp(26px, 3.4vw, 34px); font-weight: 700; letter-spacing: -.025em; }
 .facts { margin-block: 0 clamp(48px, 7vw, 80px); }
 .facts div { display: grid; grid-template-columns: 200px 1fr; gap: 6px 24px; padding: 22px 0; border-top: 1px solid var(--line); }
