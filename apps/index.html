@@ -1027,21 +1027,42 @@
     @keyframes cr-hover { 50% { transform:translateY(-10px) rotate(-3deg); } }
     @media(max-width:700px) { .cr-feature { grid-template-columns:1fr; gap:24px; } .cr-art { max-width:390px; } }
     @media(prefers-reduced-motion:reduce) { .cr-link { transition:none; } .cr-pilot { animation:none; } }
-    /* AuthSome's card is the app's main screen: a band in the chosen Account's Brand colour (the orange its own page
-       opens on), white text in the system font, a squircle icon and two of the app's screens. */
-    .as-feature { position:relative; overflow:hidden; display:grid; grid-template-columns:1.15fr 1fr; gap:40px; align-items:center; margin-top:28px; padding:clamp(24px,5vw,56px); border-radius:var(--radius,24px); color:#fff; font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,"Segoe UI",Roboto,sans-serif; background:linear-gradient(135deg,#e96f4b 0%,#e4572e 45%,#b24424 100%); }
+    /* AuthSome's card is the app's hero in AuthSome's own violet: the colour turns slowly while soft spheres in its
+       tones drift over it, under the fine grain the app lays over its hero (GrainTexture.swift: a 256 pixel tile of
+       noise, blended as overlay at a tenth strength, drawn by the script below). The app icon sits inside its
+       countdown ring above a sample 2FA code, which counts 000 000 to 999 999 and turns each time the ring runs
+       out, every 10 seconds, so it is seen to turn. */
+    @property --as-turn { syntax:"<angle>"; inherits:false; initial-value:120deg; }
+    .as-feature { position:relative; overflow:hidden; isolation:isolate; display:grid; grid-template-columns:1.15fr 1fr; gap:40px; align-items:center; margin-top:28px; padding:clamp(24px,5vw,56px); border-radius:var(--radius,24px); color:#fff; font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,"Segoe UI",Roboto,sans-serif; background:linear-gradient(var(--as-turn),#2a0f7d 0%,#5b2ee0 50%,#8a1fd6 100%); box-shadow:0 24px 60px -20px #631fdb99,inset 0 0 0 1px #ffffff1f; animation:as-turn 26s linear infinite; }
+    @keyframes as-turn { to { --as-turn:480deg; } }
+    .as-sphere { position:absolute; z-index:-2; left:var(--x); top:var(--y); width:var(--size); aspect-ratio:1; translate:-50% -50%; border-radius:50%; background:radial-gradient(closest-side,var(--tone) 0%,color-mix(in srgb,var(--tone) 65%,transparent) 35%,transparent 100%); animation:as-drift 17s ease-in-out infinite alternate; }
+    .as-sphere:nth-of-type(2) { animation-name:as-drift-2; animation-duration:23s; animation-delay:-9s; }
+    .as-sphere:nth-of-type(3) { animation-duration:19s; animation-delay:-14s; animation-direction:alternate-reverse; }
+    .as-sphere:nth-of-type(4) { animation-name:as-drift-2; animation-duration:29s; animation-delay:-4s; }
+    @keyframes as-drift { 0% { transform:translate(-38%,22%) scale(.85); } 50% { transform:translate(30%,-26%) scale(1.15); } 100% { transform:translate(46%,30%) scale(1); } }
+    @keyframes as-drift-2 { 0% { transform:translate(34%,-30%) scale(1.1); } 50% { transform:translate(-28%,18%) scale(.9); } 100% { transform:translate(-50%,-22%) scale(1.2); } }
+    .as-grain { position:absolute; inset:0; z-index:-1; mix-blend-mode:overlay; opacity:.1; pointer-events:none; }
     .as-label { margin:0; color:#ffffffd9; font-size:14px; font-weight:600; }
-    .as-brand { display:flex; align-items:center; gap:14px; margin:14px 0 14px; font-size:clamp(38px,5vw,56px); font-weight:700; letter-spacing:-.035em; line-height:1.05; }
-    .as-brand img { width:56px; height:56px; -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C88 0 100 12 100 50S88 100 50 100 0 88 0 50 12 0 50 0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C88 0 100 12 100 50S88 100 50 100 0 88 0 50 12 0 50 0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
-    .as-feature p { max-width:480px; margin:0; color:#ffffffdb; line-height:1.7; }
-    .as-link { display:inline-flex; align-items:center; margin-top:22px; padding:13px 24px; border-radius:999px; background:#000; color:#fff; font-size:16px; font-weight:600; text-decoration:none; transition:transform .15s; }
+    .as-brand { margin:12px 0 14px; font-size:clamp(40px,5vw,60px); font-weight:700; letter-spacing:-.04em; line-height:1.05; }
+    .as-feature p { max-width:440px; margin:0; color:#ffffffe0; line-height:1.7; }
+    .as-link { display:inline-flex; align-items:center; margin-top:22px; padding:13px 24px; border-radius:999px; background:#fff; color:#4a1ec8; font-size:16px; font-weight:700; text-decoration:none; box-shadow:0 10px 26px #2a0c7a66; transition:transform .15s; }
     .as-link:hover { transform:translateY(-2px); }
     .as-link:focus-visible { outline:3px solid #fff; outline-offset:4px; }
-    .as-art { display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:center; max-width:340px; margin:auto; padding:10px; }
-    .as-art img { width:100%; height:auto; border-radius:22px; box-shadow:0 18px 36px #5a1e0c80,0 0 0 1px #ffffff2e; transform:rotate(-5deg); }
-    .as-art img:last-of-type { transform:rotate(5deg) translateY(12px); }
-    @media(max-width:700px) { .as-feature { grid-template-columns:1fr; gap:24px; } .as-art { max-width:390px; } }
-    @media(prefers-reduced-motion:reduce) { .as-link { transition:none; } }
+    .as-hero { display:grid; justify-items:center; gap:6px; padding:clamp(10px,2vw,20px) 0; }
+    .as-ringed { position:relative; width:clamp(96px,12vw,128px); aspect-ratio:1; margin-bottom:10px; }
+    .as-timer { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+    .as-timer path { fill:none; stroke:#fff; stroke-width:5; stroke-linecap:round; }
+    .as-timer .as-track { opacity:.22; }
+    .as-ringed img { position:absolute; inset:12%; width:76%; height:76%; -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C88 0 100 12 100 50S88 100 50 100 0 88 0 50 12 0 50 0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C88 0 100 12 100 50S88 100 50 100 0 88 0 50 12 0 50 0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; transition:transform .3s; }
+    .as-ringed.ending img { transform:scale(1.07); }
+    .as-ringed img { box-shadow:0 0 0 0 #fff0; filter:drop-shadow(0 10px 22px #12043a99); }
+    .as-code { font-size:clamp(46px,6.2vw,76px); font-weight:700; line-height:1; letter-spacing:-.015em; font-variant-numeric:tabular-nums; white-space:nowrap; text-shadow:0 6px 24px #1a063f80; }
+    .as-code.turning { animation:as-rise .5s cubic-bezier(.2,.9,.3,1.15); }
+    @keyframes as-rise { from { opacity:0; transform:translateY(40%) scale(.8); } }
+    .as-next { font-size:16px; font-weight:600; font-variant-numeric:tabular-nums; opacity:.6; transition:opacity .3s; }
+    .as-next.soon { opacity:1; }
+    @media(max-width:700px) { .as-feature { grid-template-columns:1fr; gap:28px; } }
+    @media(prefers-reduced-motion:reduce) { .as-link,.as-ringed img,.as-next { transition:none; } .as-feature,.as-sphere,.as-code.turning { animation:none; } }
   </style>
   <noscript>
     <style>
@@ -1181,15 +1202,21 @@
           </div>
         </article>
         <article class="as-feature reveal" id="authsome">
+          <span class="as-sphere" style="--tone:#9d6bff;--size:75%;--x:14%;--y:20%" aria-hidden="true"></span>
+          <span class="as-sphere" style="--tone:#c026d3;--size:70%;--x:90%;--y:88%" aria-hidden="true"></span>
+          <span class="as-sphere" style="--tone:#2a0f7d;--size:66%;--x:50%;--y:58%" aria-hidden="true"></span>
+          <span class="as-sphere" style="--tone:#6d5bff;--size:52%;--x:76%;--y:22%" aria-hidden="true"></span>
+          <span class="as-grain" id="as-grain" aria-hidden="true"></span>
           <div>
             <p class="as-label">Made by Devpulse. Coming soon to iPhone, iPad and Mac.</p>
-            <h3 class="as-brand"><img src="../authsome/assets/app-icon.png" width="56" height="56" alt=""><span>AuthSome</span></h3>
+            <h3 class="as-brand">AuthSome</h3>
             <p>Every 2FA code in its place. A free two factor authenticator app that keeps personal and work 2FA codes apart in Profiles. No ads, no account and nothing collected.</p>
             <a class="as-link" href="../authsome/">Explore AuthSome <svg class="twin-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
-          <div class="as-art">
-            <img src="../authsome/assets/images/shot-personal.jpg" width="540" height="1173" loading="lazy" alt="AuthSome on iPhone. The Personal Profile, with one 2FA code across the top and the other Accounts in a grid.">
-            <img src="../authsome/assets/images/shot-work-list-dark.jpg" width="540" height="1173" loading="lazy" alt="The Work Profile as a list in the Dark Theme, each Account with its live 2FA code.">
+          <div class="as-hero" role="img" aria-label="The AuthSome app icon inside a countdown ring, above a sample 2FA code.">
+            <span class="as-ringed" id="as-ringed"><svg class="as-timer" viewBox="-4 -4 108 108" aria-hidden="true"><path class="as-track" d="M50 0C12 0 0 12 0 50C0 88 12 100 50 100C88 100 100 88 100 50C100 12 88 0 50 0Z"/><path id="as-ring" pathLength="100" stroke-dasharray="100" d="M50 0C12 0 0 12 0 50C0 88 12 100 50 100C88 100 100 88 100 50C100 12 88 0 50 0Z"/></svg><img src="../authsome/assets/app-icon.png" width="512" height="512" loading="lazy" alt=""></span>
+            <span class="as-code" id="as-code" aria-hidden="true">111 111</span>
+            <span class="as-next" id="as-next" aria-hidden="true">Next 222 222</span>
           </div>
         </article>
       </div>
@@ -1555,6 +1582,53 @@
         revealables.forEach(function (el) { io.observe(el); });
       } else {
         revealables.forEach(function (el) { el.classList.add("in"); });
+      }
+
+      /* ---------- AuthSome's card: the countdown ring and a sample 2FA code ---------- */
+      /* One digit repeated, 000 000 to 999 999, turning each time the ring runs out. Not a real code. */
+      var asRing = document.getElementById("as-ring");
+      if (asRing) {
+        var asPeriod = 10;
+        var asCode = document.getElementById("as-code");
+        var asNext = document.getElementById("as-next");
+        var asRinged = document.getElementById("as-ringed");
+        var asShown = -1;
+        var asSample = function (counter) { var digit = String(counter % 10); return digit + digit + digit + " " + digit + digit + digit; };
+        var asTick = function () {
+          var seconds = Date.now() / 1000;
+          var counter = Math.floor(seconds / asPeriod);
+          var left = asPeriod - seconds % asPeriod;
+          /* The ring's path runs anticlockwise from the top, so hiding its end empties it clockwise, as in the app. */
+          asRing.style.strokeDashoffset = ((1 - (reduced ? Math.ceil(left) : left) / asPeriod) * 100).toFixed(2);
+          asNext.classList.toggle("soon", left < 3);
+          asRinged.classList.toggle("ending", left < 3);
+          if (counter !== asShown) {
+            asCode.textContent = asSample(counter);
+            asNext.textContent = "Next " + asSample(counter + 1);
+            if (asShown !== -1 && !reduced) {
+              asCode.classList.remove("turning");
+              void asCode.offsetWidth;
+              asCode.classList.add("turning");
+            }
+            asShown = counter;
+          }
+        };
+        /* The grain: one tile of noise, a pixel of it to a pixel of the screen, repeated across the card. */
+        var asGrain = document.getElementById("as-grain");
+        var asTile = document.createElement("canvas");
+        asTile.width = asTile.height = 256;
+        var asInk = asTile.getContext("2d");
+        var asNoise = asInk.createImageData(256, 256);
+        for (var at = 0; at < asNoise.data.length; at += 4) {
+          asNoise.data[at] = asNoise.data[at + 1] = asNoise.data[at + 2] = Math.floor(Math.random() * 256);
+          asNoise.data[at + 3] = 255;
+        }
+        asInk.putImageData(asNoise, 0, 0);
+        asGrain.style.background = "url(" + asTile.toDataURL() + ") 0 0 / " + (256 / (window.devicePixelRatio || 1)) + "px";
+
+        asTick();
+        if (reduced) setInterval(asTick, 1000);
+        else (function asFrame() { asTick(); requestAnimationFrame(asFrame); })();
       }
 
       /* ---------- Footer year ---------- */
