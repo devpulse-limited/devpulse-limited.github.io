@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#E4572E">
+  <meta name="description" content="AuthSome is a free authenticator app for iPhone, iPad and Mac. Keep personal and work 2FA codes apart in Profiles. No account, no ads, nothing collected.">
+  <title>AuthSome. Every 2FA Code in Its Place.</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="accounts.js" defer></script>
+  <script src="script.js" defer></script>
+
+  <link rel="canonical" href="https://devpulse.co.uk/authsome/">
+  <meta property="og:title" content="AuthSome. Every 2FA Code in Its Place.">
+  <meta property="og:description" content="A free authenticator for iPhone, iPad and Mac. Keep personal and work 2FA codes apart in Profiles.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devpulse.co.uk/authsome/">
+  <meta property="og:site_name" content="AuthSome">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:image" content="https://devpulse.co.uk/authsome/assets/images/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AuthSome on five iPhones, each showing a different Profile in the colour of its chosen Account.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AuthSome. Every 2FA Code in Its Place.">
+  <meta name="twitter:description" content="A free authenticator for iPhone, iPad and Mac. Keep personal and work 2FA codes apart in Profiles.">
+  <meta name="twitter:image" content="https://devpulse.co.uk/authsome/assets/images/social-preview.jpg">
+  <meta name="twitter:image:alt" content="AuthSome on five iPhones, each showing a different Profile in the colour of its chosen Account.">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "AuthSome", "url": "https://devpulse.co.uk/authsome/", "description": "A free authenticator app for iPhone, iPad and Mac. Keep personal and work 2FA codes apart in Profiles.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "iOS 26, iPadOS 26, macOS 26", "image": "https://devpulse.co.uk/authsome/assets/app-icon.png", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}, "publisher": {"@type": "Organization", "name": "DevPulse", "url": "https://devpulse.co.uk/"}}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <main id="main">
+    <!-- The top of the page is the app's main screen: the chosen Account and its 2FA code on its Brand colour, the
+         other Accounts as tiles below, and the whole screen taking the colour of whichever Account is chosen. -->
+    <div class="screen" id="screen">
+      <div class="band">
+        <div class="band-colours" id="band-colour" aria-hidden="true"></div>
+        <header class="col bar">
+          <a class="brand" href="#main"><img class="squircle" src="assets/app-icon.png" width="34" height="34" alt="">AuthSome</a>
+          <nav aria-label="Main navigation">
+            <a href="privacy/">Privacy</a>
+            <a href="support/">Support</a>
+          </nav>
+        </header>
+        <div class="col band-grid">
+          <div class="pitch">
+            <h1>Every 2FA code in its place.</h1>
+            <p>A free authenticator for iPhone, iPad and Mac.</p>
+            <a class="store-button" href="#coming-soon" data-store="App Store"><small>Coming soon to the</small><strong>App Store</strong></a>
+          </div>
+          <div class="account" id="account"></div>
+        </div>
+      </div>
+      <div class="col tiles-area" id="tiles">
+        <noscript><img class="capture" src="assets/images/mac-personal.jpg" width="1600" height="1000" alt="AuthSome on a Mac. The chosen Account and its 2FA code across the top, and the other Accounts in a grid below."></noscript>
+      </div>
+    </div>
+
+    <dl class="col facts">
+      <div><dt>Profiles</dt><dd>Keep personal and work 2FA codes apart in Profiles. Only one Profile shows at a time, so nothing gets mixed up.</dd></div>
+      <div><dt>AutoFill</dt><dd>AuthSome suggests your 2FA code above the keyboard. You confirm with Face ID.</dd></div>
+      <div><dt>iCloud</dt><dd>Your Accounts sync through your own private iCloud. Secrets, recovery codes and everything you type are end to end encrypted.</dd></div>
+      <div><dt>Import</dt><dd>Bring your Accounts from Google Authenticator, 2FAS or Aegis, and take them away again whenever you like.</dd></div>
+      <div><dt>Privacy</dt><dd>AuthSome collects nothing. It has no servers of its own, and no account to create. <a href="privacy/">Privacy policy</a></dd></div>
+    </dl>
+
+    <div class="col shots">
+      <img src="assets/images/shot-personal.jpg" width="540" height="1173" loading="lazy" alt="AuthSome on iPhone. The Personal Profile, tinted orange by its chosen Account.">
+      <img src="assets/images/shot-work-list.jpg" width="540" height="1173" loading="lazy" alt="The Work Profile as a List, each Account with its live 2FA code.">
+      <img src="assets/images/shot-side-projects-dark.jpg" width="540" height="1173" loading="lazy" alt="The Side Projects Profile in the Dark Theme, tinted green by its chosen Account.">
+    </div>
+  </main>
+
+  <footer class="col site-footer">
+    <p>AuthSome is made by <a href="https://devpulse.co.uk/">DevPulse</a> in the UK.</p>
+    <p><a href="privacy/">Privacy</a><a href="support/">Support</a></p>
+    <p class="note">The services shown are examples. AuthSome is not affiliated with, sponsored by or endorsed by any of them. Their names and logos are trademarks of their owners.</p>
+  </footer>
+
+  <dialog id="coming-soon" aria-labelledby="coming-title">
+    <h2 id="coming-title">Almost Ready.</h2>
+    <p>AuthSome is coming to the App Store for iPhone, iPad and Mac. Check back soon!</p>
+    <button class="button" type="button" data-close-dialog>Got It</button>
+  </dialog>
+</body>
+</html>

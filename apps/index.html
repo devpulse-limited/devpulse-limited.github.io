@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <!-- ============ SEO ============ -->
-  <title>Apps by Devpulse. Mac Utilities, Kids Paint, TwinFin and Coconut Rocket.</title>
-  <meta name="description" content="Explore apps made by Devpulse. Free Mac utilities for cooling and display controls, Kids Paint, our drawing and colouring app for kids, and two arcade games, TwinFin and Coconut Rocket.">
+  <title>Apps by Devpulse. Mac Utilities, Kids Paint, TwinFin, Coconut Rocket and AuthSome.</title>
+  <meta name="description" content="Explore apps made by Devpulse. Free Mac utilities for cooling and display controls, Kids Paint, our drawing and colouring app for kids, two arcade games, TwinFin and Coconut Rocket, and AuthSome, a free authenticator for iPhone, iPad and Mac.">
   <meta name="author" content="Devpulse">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://devpulse.co.uk/apps/">
@@ -16,8 +16,8 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Devpulse">
-  <meta property="og:title" content="Apps by Devpulse. Mac Utilities, Kids Paint, TwinFin and Coconut Rocket.">
-  <meta property="og:description" content="Discover FannyBoost, ScreenBoost, Kids Paint, TwinFin and Coconut Rocket. Practical Mac tools, a playful colouring app for kids and two arcade games.">
+  <meta property="og:title" content="Apps by Devpulse. Mac Utilities, Kids Paint, TwinFin, Coconut Rocket and AuthSome.">
+  <meta property="og:description" content="Discover FannyBoost, ScreenBoost, Kids Paint, TwinFin, Coconut Rocket and AuthSome. Practical Mac tools, a playful colouring app for kids, two arcade games and a free authenticator.">
   <meta property="og:url" content="https://devpulse.co.uk/apps/">
   <meta property="og:locale" content="en_GB">
   <meta property="og:image" content="https://devpulse.co.uk/og.png">
@@ -27,8 +27,8 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Apps by Devpulse. Mac Utilities, Kids Paint, TwinFin and Coconut Rocket.">
-  <meta name="twitter:description" content="Discover FannyBoost, ScreenBoost, Kids Paint, TwinFin and Coconut Rocket. Practical Mac tools, a playful colouring app for kids and two arcade games.">
+  <meta name="twitter:title" content="Apps by Devpulse. Mac Utilities, Kids Paint, TwinFin, Coconut Rocket and AuthSome.">
+  <meta name="twitter:description" content="Discover FannyBoost, ScreenBoost, Kids Paint, TwinFin, Coconut Rocket and AuthSome. Practical Mac tools, a playful colouring app for kids, two arcade games and a free authenticator.">
   <meta name="twitter:image" content="https://devpulse.co.uk/og.png">
 
   <!-- Favicon (inline, no extra request) + iOS home-screen icon -->
@@ -1017,6 +1017,21 @@
     @keyframes cr-hover { 50% { transform:translateY(-10px) rotate(-3deg); } }
     @media(max-width:700px) { .cr-feature { grid-template-columns:1fr; gap:24px; } .cr-art { max-width:390px; } }
     @media(prefers-reduced-motion:reduce) { .cr-link { transition:none; } .cr-pilot { animation:none; } }
+    /* AuthSome's card is the app's main screen: a band in the chosen Account's Brand colour (the orange its own page
+       opens on), white text in the system font, a squircle icon and two of the app's screens. */
+    .as-feature { position:relative; overflow:hidden; display:grid; grid-template-columns:1.15fr 1fr; gap:40px; align-items:center; margin-top:28px; padding:clamp(24px,5vw,56px); border-radius:var(--radius,24px); color:#fff; font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,"Segoe UI",Roboto,sans-serif; background:linear-gradient(135deg,#e96f4b 0%,#e4572e 45%,#b24424 100%); }
+    .as-label { margin:0; color:#ffffffd9; font-size:14px; font-weight:600; }
+    .as-brand { display:flex; align-items:center; gap:14px; margin:14px 0 14px; font-size:clamp(38px,5vw,56px); font-weight:700; letter-spacing:-.035em; line-height:1.05; }
+    .as-brand img { width:56px; height:56px; -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C88 0 100 12 100 50S88 100 50 100 0 88 0 50 12 0 50 0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C88 0 100 12 100 50S88 100 50 100 0 88 0 50 12 0 50 0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+    .as-feature p { max-width:480px; margin:0; color:#ffffffdb; line-height:1.7; }
+    .as-link { display:inline-flex; align-items:center; margin-top:22px; padding:13px 24px; border-radius:999px; background:#000; color:#fff; font-size:16px; font-weight:600; text-decoration:none; transition:transform .15s; }
+    .as-link:hover { transform:translateY(-2px); }
+    .as-link:focus-visible { outline:3px solid #fff; outline-offset:4px; }
+    .as-art { display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:center; max-width:340px; margin:auto; padding:10px; }
+    .as-art img { width:100%; height:auto; border-radius:22px; box-shadow:0 18px 36px #5a1e0c80,0 0 0 1px #ffffff2e; transform:rotate(-5deg); }
+    .as-art img:last-of-type { transform:rotate(5deg) translateY(12px); }
+    @media(max-width:700px) { .as-feature { grid-template-columns:1fr; gap:24px; } .as-art { max-width:390px; } }
+    @media(prefers-reduced-motion:reduce) { .as-link { transition:none; } }
   </style>
   <noscript>
     <style>
@@ -1153,6 +1168,18 @@
             <img class="shot" src="../coconut-rocket/assets/images/shot-flight.jpg" width="508" height="1104" loading="lazy" alt="Coconut Rocket mid run. Kiko the lemur weaves between spiked logs and coins, with the poison rising below.">
             <img class="shot" src="../coconut-rocket/assets/images/shot-shop.jpg" width="508" height="1104" loading="lazy" alt="The Coconut Rocket shop, with characters to collect.">
             <img class="cr-pilot" src="../coconut-rocket/assets/images/pilot-kiko-flame-1.png" width="278" height="589" alt="">
+          </div>
+        </article>
+        <article class="as-feature reveal" id="authsome">
+          <div>
+            <p class="as-label">Made by Devpulse. Coming soon to iPhone, iPad and Mac.</p>
+            <h3 class="as-brand"><img src="../authsome/assets/app-icon.png" width="56" height="56" alt=""><span>AuthSome</span></h3>
+            <p>Every 2FA code in its place. A free authenticator that keeps personal and work 2FA codes apart in Profiles. No ads, no account and nothing collected.</p>
+            <a class="as-link" href="../authsome/">Explore AuthSome <svg class="twin-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          <div class="as-art">
+            <img src="../authsome/assets/images/shot-personal.jpg" width="540" height="1173" loading="lazy" alt="AuthSome on iPhone. The Personal Profile, with one 2FA code across the top and the other Accounts in a grid.">
+            <img src="../authsome/assets/images/shot-work-list-dark.jpg" width="540" height="1173" loading="lazy" alt="The Work Profile as a list in the Dark Theme, each Account with its live 2FA code.">
           </div>
         </article>
       </div>
