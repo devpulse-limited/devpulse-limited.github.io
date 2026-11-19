@@ -185,6 +185,9 @@ dialog { width: min(380px, 100% - 32px); padding: 30px 26px 24px; border: 0; bor
 dialog::backdrop { background: rgba(0, 0, 0, .4); }
 dialog h2 { font-size: 24px; letter-spacing: -.02em; }
 dialog p { margin: 10px 0 20px; color: var(--muted); }
+/* The way on from the dialog, under its button, which comes first so that it is what opens with the focus. */
+dialog .dialog-more { margin: 6px 0 -8px; }
+dialog .dialog-more a { display: inline-flex; align-items: center; min-height: 44px; font-size: 16px; font-weight: 600; text-underline-offset: 3px; }
 
 @media (max-width: 760px) {
   /* One column on a phone. The pitch gives up its box so the chosen Account can sit above the App Store badge, which
@@ -228,6 +231,12 @@ dialog p { margin: 10px 0 20px; color: var(--muted); }
 .sub .bar, .sub .site-footer { width: min(720px, 100% - 40px); color: var(--ink); }
 .sub .site-footer { color: var(--muted); }
 .doc { width: min(720px, 100% - 40px); margin: 0 auto; padding: clamp(28px, 6vw, 56px) 0 72px; }
+/* The trail above a page's heading, on the privacy and support pages and on every guide. The mark between its
+   links is drawn, so it is not read out as a word. */
+.trail ol { display: flex; flex-wrap: wrap; gap: 0 8px; margin: 0 0 10px; padding: 0; list-style: none; color: var(--muted); font-size: 15px; }
+.trail li { display: flex; align-items: center; gap: 8px; }
+.trail li + li::before { content: ""; width: 6px; height: 6px; border: solid currentColor; border-width: 1.5px 1.5px 0 0; rotate: 45deg; opacity: .7; }
+.trail a { display: inline-flex; align-items: center; min-height: 32px; color: inherit; }
 .doc h1 { font-size: clamp(36px, 6vw, 52px); }
 .doc-lede { margin: 12px 0 30px; color: var(--muted); font-size: 19px; }
 /* The support page's sections, as one line of links under the lede, so a visitor with one question need not scroll
@@ -241,7 +250,7 @@ dialog p { margin: 10px 0 20px; color: var(--muted); }
 .plate { padding: 18px 20px; border-radius: 20px; background: var(--plate); }
 .plate > :last-child { margin-bottom: 0; }
 .plate p { margin-bottom: 12px; }
-.plate h3 { margin: 18px 0 4px; font-size: 17px; }
+.plate h3 { margin: 18px 0 4px; font-size: 17px; scroll-margin-top: 16px; }
 .plate h3:first-child { margin-top: 0; }
 .plate ul, .plate ol { margin: 0 0 12px; padding-inline-start: 22px; }
 .plate li { margin-bottom: 6px; }

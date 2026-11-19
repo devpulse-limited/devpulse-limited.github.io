@@ -9,16 +9,24 @@ Each content file:
   "slug": "...", "title": "H1 in title case", "meta_title": "... (<= 60 chars, no full stop at the end)",
   "description": "<= 155 chars", "lede": "plain text", "published": "2026-11-19", "modified": "2026-11-19", "order": 1,
   "card": "one line for the guides list",
-  "sections": [{"h2": "...", "nav": "short name for the list of sections", "html": "<p>...</p>"}],
+  "sections": [{"h2": "...", "nav": "short name for the list of sections", "id": "optional, see Ids", "html": "<p>...</p>"}],
   "faq": [{"q": "...", "a": "plain text"}],
   "sources": ["a key from sources.json", ...],
   "related": ["slug", ...]
 }
 
 Words. A guide says "secret key" and "entry" for the things AuthSome calls a Secret and an Account, because a
-reader of another app has never met AuthSome's words. The first paragraph that uses either one carries
-{{secret-key}} or {{entry}}, which becomes the same defining sentence in every guide (TERMS below). Secret and
-Account, with capitals, are kept for sentences about AuthSome itself.
+reader of another app has never met AuthSome's words. A guide that uses either word explains it in its own
+sentence, where the word is first needed, and marks that first use <dfn>secret key</dfn> or <dfn>entry</dfn>. The
+build fails if the word is used with no such mark or before it. Secret and Account, with capitals, are kept for
+sentences about AuthSome itself.
+
+Cautions. The one paragraph in a guide that warns before a step that could lock the reader out is written
+<p class="caution">...</p>. This script sets it on a plate with a visible label and role="note". One a guide at
+most, so it keeps its weight.
+
+Ids. A section's id comes from its heading. Give a section an "id" when another page links to it, so rewording
+the heading does not break the link.
 
 Tables. A table is written as <div class="table-scroll"><table><caption>...</caption><thead>... and its headings
 are in sentence case. This script adds the header scopes, and makes a table of five or more columns a named region
@@ -50,12 +58,10 @@ AUTHOR = {"@type": "Person", "@id": "https://devpulse.co.uk/#junaid-younus", "na
 # enough of it for the reference to mean something. These values are copied from ../../index.html.
 APP = {"@type": "SoftwareApplication", "@id": BASE + "#app", "name": "AuthSome", "url": BASE,
        "applicationCategory": "UtilitiesApplication", "operatingSystem": "iOS 26, iPadOS 26, macOS 26"}
-TERMS = {
-    "secret-key": "An authenticator app makes each 2FA code from a secret key, which the service gives it inside a QR code when you turn on 2FA. Apple calls it a setup key, and AuthSome calls it a Secret.",
-    "entry": "This guide calls the line in an authenticator app for one service an entry. Makers call it an account, a token or a code, and AuthSome calls it an Account.",
-}
-# A guide that uses one of these words must define it with the token of the same name.
-TERM_WORDS = {"secret-key": r"\bsecret keys?\b", "entry": r"\bentr(?:y|ies)\b"}
+# A guide that uses one of these words must explain it where it first appears, inside <dfn>.
+TERM_WORDS = {"secret key": r"\bsecret keys?\b", "entry": r"\bentr(?:y|ies)\b"}
+CAUTION_LABEL = "Caution"
+LLMS = "https://devpulse.co.uk/llms.txt"
 ABOUT = "AuthSome is a free authenticator app for iPhone, iPad and Mac, made by DevPulse. It keeps personal and work Accounts apart in Profiles and backs up to your own iCloud. It is coming soon to the App Store."
 ABOUT_SHORT = "A free authenticator app for iPhone, iPad and Mac, coming soon to the App Store."
 INDEX_TITLE = "AuthSome Guides. Help With 2FA Codes and Authenticator Apps"
@@ -87,8 +93,8 @@ def anchor(text, taken):
 
 def anchors(g):
     """The ids of a guide's sections and questions, in page order. Other guides may link to them."""
-    taken = {"main", "common-questions", "app-title", "more-guides", "sources"}
-    sections = [anchor(s["h2"], taken) for s in g["sections"]]
+    taken = {"main", "common-questions", "app-title", "more-guides", "sources"} | {s["id"] for s in g["sections"] if s.get("id")}
+    sections = [s.get("id") or anchor(s["h2"], taken) for s in g["sections"]]
     questions = [anchor(f["q"], taken) for f in g.get("faq", [])]
     return sections, questions
 
@@ -141,6 +147,7 @@ def head(title, description, url, og_type, graph, depth, dates=None):
   <link rel="canonical" href="{url}">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="Junaid Younus">
+  <link rel="alternate" type="text/plain" href="{LLMS}" title="Summary for AI agents">
   <meta property="og:title" content="{esc(title)}">
   <meta property="og:description" content="{esc(description)}">
   <meta property="og:type" content="{og_type}">
@@ -245,33 +252,27 @@ def render_guide(g, guides, sources, problems):
         <ol>{jump_links}</ol>
       </nav>
 """)
-    used = {name: 0 for name in TERMS}
-    body_text = ""
-    # A definition must not split a one word answer from its reason ("No. {{entry}} A help page says"), and the
-    # word must not be used before the sentence that defines it.
-    in_order = g["lede"] + " " + " ".join(s["html"] for s in g["sections"])
+    # The word must be explained where it is first used: in <dfn>, once, with no use of it before that.
+    body = " ".join(s["html"] for s in g["sections"])
+    everything = lint.strip(g["lede"] + " " + body) + " " + " ".join(f["a"] for f in g.get("faq", []))
     for name, pattern in TERM_WORDS.items():
-        token = "{{" + name + "}}"
-        if re.search(r"<p>\s*\w+\.\s*" + re.escape(token), in_order):
-            problems.append(f'{g["slug"]}: {token} sits straight after a one word sentence')
-        if token in in_order and re.search(pattern, lint.strip(in_order[:in_order.index(token)]), re.I):
-            problems.append(f'{g["slug"]}: uses the word for {token} before defining it')
+        marks = list(re.finditer(r"<dfn>\s*" + pattern.replace(r"\b", "") + r"\s*</dfn>", body, re.I))
+        if len(marks) > 1:
+            problems.append(f'{g["slug"]}: "{name}" is marked as defined {len(marks)} times, once is enough')
+        if not marks and re.search(pattern, everything, re.I):
+            problems.append(f'{g["slug"]}: uses "{name}" without explaining it in <dfn>')
+        if marks and re.search(pattern, lint.strip(g["lede"] + " " + body[:marks[0].start()]), re.I):
+            problems.append(f'{g["slug"]}: uses "{name}" before the sentence that explains it')
+    if body.count('<p class="caution">') > 1:
+        problems.append(f'{g["slug"]}: more than one caution, keep it for the one step that can lock a reader out')
     for i, s in enumerate(g["sections"]):
         text = s["html"].strip()
-        for name, sentence in TERMS.items():
-            used[name] += text.count("{{" + name + "}}")
-            text = text.replace("{{" + name + "}}", sentence)
         if "{{" in text:
             problems.append(f'{g["slug"]}: unknown token in {s["h2"]}')
-        body_text += " " + lint.strip(s["html"])
+        text = re.sub(r'<p class="caution">(.*?)</p>',
+                      rf'<div class="caution" role="note"><p class="caution-label">{CAUTION_LABEL}</p><p>\1</p></div>', text, flags=re.S)
         text = tables(text, g["slug"], problems)
         out.append(f'      <section class="prose" id="{section_ids[i]}">\n        <h2>{esc(s["h2"])}</h2>\n        {text}\n      </section>\n')
-    body_text += " " + " ".join(f["a"] for f in g.get("faq", [])) + " " + g["lede"]
-    for name, pattern in TERM_WORDS.items():
-        if used[name] > 1:
-            problems.append(f'{g["slug"]}: {{{{{name}}}}} is used {used[name]} times, once is enough')
-        if used[name] == 0 and re.search(pattern, body_text, re.I):
-            problems.append(f'{g["slug"]}: uses the word for {{{{{name}}}}} without defining it')
     if g.get("faq"):
         out.append('      <section class="prose" id="common-questions">\n        <h2>Common Questions</h2>\n')
         for i, f in enumerate(g["faq"]):
@@ -279,15 +280,16 @@ def render_guide(g, guides, sources, problems):
         out.append('      </section>\n')
     out.append(about_box("../../", short=any("AuthSome" in s["h2"] for s in g["sections"])))
     by_slug = {other["slug"]: other for other in guides}
-    first = [by_slug[s] for s in g.get("related", []) if s in by_slug]
-    others = first + [other for other in guides if other is not g and other not in first]
-    out.append('      <section class="plate" id="more-guides">\n        <h2>More Guides</h2>\n' + guide_list(others, "../", cards=False) + '\n      </section>\n')
+    # Only the guides this one names as related, then the way to the rest, so the list stays short as guides are added.
+    related = [by_slug[s] for s in g.get("related", []) if s in by_slug]
+    out.append('      <section class="plate" id="more-guides">\n        <h2>More Guides</h2>\n' + guide_list(related, "../", cards=False)
+               + '\n        <p class="all-guides"><a href="../">See All Guides</a></p>\n      </section>\n')
     if listed:
         rows = "\n".join(f'          <li><a href="{esc(s["url"])}">{esc(s["name"])}</a></li>' for s in listed)
         out.append(f'      <section class="plate sources" id="sources">\n        <h2>Sources</h2>\n        <ul>\n{rows}\n        </ul>\n      </section>\n')
     out.append("    </article>\n  </main>\n")
     out.append(foot(2))
-    write(OUT / g["slug"] / "index.html", "".join(out), g["slug"], problems)
+    return check(OUT / g["slug"] / "index.html", "".join(out), g["slug"], problems)
 
 
 def render_index(guides, problems):
@@ -313,23 +315,22 @@ def render_index(guides, problems):
   </main>
 """)
     out.append(foot(1))
-    write(OUT / "index.html", "".join(out), "index", problems)
+    return check(OUT / "index.html", "".join(out), "index", problems)
 
 
-def write(target, page, name, problems):
-    """Saves a page, after holding the words build.py added to the same copy rules as the content files."""
+def check(target, page, name, problems):
+    """Holds the words build.py added to the same copy rules as the content files, and hands the page back unsaved."""
     body = re.sub(r"<script.*?</script>", "", page[page.index("<body"):], flags=re.S)
     for issue in lint.issues(body):
         problems.append(f"{name}: rendered page | {issue}")
-    target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(page)
+    return target, page
 
 
 def main():
     guides = sorted((json.loads(p.read_text()) for p in (HERE / "content").glob("*.json")), key=lambda g: g["order"])
     sources = json.loads((HERE / "sources.json").read_text())
     ids = {g["slug"]: set(sum(anchors(g), [])) | {"common-questions", "sources"} for g in guides}
-    problems = []
+    problems, pages = [], []
     for title, description, name in [(g["meta_title"], g["description"], g["slug"]) for g in guides] + [(INDEX_TITLE, INDEX_DESCRIPTION, "index")]:
         if len(title) > TITLE_LIMIT:
             problems.append(f"{name}: title is {len(title)} characters")
@@ -349,12 +350,19 @@ def main():
                 problems.append(f'{g["slug"]}: links to missing guide {link}')
             elif fragment and fragment not in ids[link]:
                 problems.append(f'{g["slug"]}: links to missing section {link}#{fragment}')
-        render_guide(g, guides, sources, problems)
-    render_index(guides, problems)
-    print(f"rendered {len(guides)} guides")
+        pages.append(render_guide(g, guides, sources, problems))
+    pages.append(render_index(guides, problems))
     for p in problems:
         print("PROBLEM", p)
-    return 1 if problems else 0
+    if problems:
+        print("nothing written")
+        return 1
+    # Pages are saved only when every one of them is clean, so a failed build leaves the committed pages alone.
+    for target, page in pages:
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(page)
+    print(f"rendered {len(guides)} guides")
+    return 0
 
 
 if __name__ == "__main__":

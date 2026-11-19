@@ -47,5 +47,10 @@
   "1password-otp": {"name": "1Password Support, Use 1Password as an Authenticator", "url": "https://support.1password.com/one-time-passwords/"},
   "bitwarden-authenticator": {"name": "Bitwarden Help, Integrated Authenticator", "url": "https://bitwarden.com/help/integrated-authenticator/"},
   "bitwarden-download": {"name": "Bitwarden, Download", "url": "https://bitwarden.com/download/"},
-  "rfc-6238": {"name": "IETF, RFC 6238, the TOTP Standard", "url": "https://datatracker.ietf.org/doc/html/rfc6238"}
+  "rfc-6238": {"name": "IETF, RFC 6238, the TOTP Standard", "url": "https://datatracker.ietf.org/doc/html/rfc6238"},
+  "aegis-releases": {"name": "Aegis Authenticator, Releases", "url": "https://github.com/beemdevelopment/Aegis/releases"},
+  "bitwarden-authenticator-app": {"name": "Bitwarden Help, Bitwarden Authenticator", "url": "https://bitwarden.com/help/bitwarden-authenticator/"},
+  "app-store-bitwarden-authenticator": {"name": "App Store, Bitwarden Authenticator", "url": "https://apps.apple.com/gb/app/bitwarden-authenticator/id6497335175"},
+  "2fas-support": {"name": "2FAS Support, 2FAS Auth Mobile App", "url": "https://2fas.com/support/2fas-auth-mobile-app/"},
+  "ente-features": {"name": "Ente Help, Ente Auth Features", "url": "https://ente.com/help/auth/features/"}
 }

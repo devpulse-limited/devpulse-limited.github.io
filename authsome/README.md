@@ -31,7 +31,8 @@ The Apps page (`../apps/index.html`) has AuthSome's card (`.as-feature`) and nam
 - **2FA codes.** They are plain samples, one digit repeated (`111 111`, then `222 222`, round to `000 000`), that
   turn every 30 seconds with the countdown ring. Each Account starts from a digit of its own, its place in its Profile, so two services show different samples at the same moment. The page does not work real codes out. The ring is run down by the
   browser's own animation, not redrawn each frame, and steps once a second with Reduce Motion.
-- **Links in the list.** The rows of What AuthSome Does link the words they already have to the guide, support answer or policy that says more. The page gets no new sections for this.
+- **Links in the list.** The rows of What AuthSome Does link the words they already have to the guide, support answer or policy that says more. The page gets no new sections for this. "recovery codes" links to the support answer that explains them (`support/#where-can-i-keep-recovery-codes`). Every question on the support page has an id made from its words, so reword a question and its links together. `check.py` finds a link whose id is gone.
+- **The dialog.** Its button comes before its link to the guides in the HTML, so the dialog opens with the focus on Got It.
 - **The line above the tiles** says the screen can be tried and the 2FA codes are samples. It is in the HTML, and the
   no-script style hides it.
 - **On a phone** (760px and under) the chosen Account sits above the App Store badge, by `order` in `styles.css`,
@@ -60,7 +61,7 @@ The Apps page (`../apps/index.html`) has AuthSome's card (`.as-feature`) and nam
   wash are the text colour at three quarters strength, because the muted grey measured under 4.5 to 1 in the light.
 - **Captures.** The three sit three across at every width, in line with the list above them. On a phone they are a
   strip to glance at, which keeps the page short there, and each one is a link that opens it at full size, and says so in hidden text for a screen reader. Under
-  each is a one or two word caption (Grid, List, Dark Theme), since the `alt` text is not seen.
+  each is a caption that names the Profile and how it is shown (Personal, as a Grid. Work, as a List. Side Projects, Dark Theme), since the `alt` text is not seen. At 375px a caption takes two lines.
 - Text is the system font, and light or dark follows the device.
 
 ## Guides
@@ -74,13 +75,28 @@ data that says what to write next comes from Google Search Console (the `sc-doma
   `python3 lint.py && python3 build.py` in `_source`. The rendered pages are committed, so the site still has no
   build step. GitHub Pages does not publish a folder whose name begins with an underscore.
 - **Shared pieces.** `guides/_source/sources.json` holds each source's one name and URL, and a guide lists sources
-  by key. In a guide's text, `{{secret-key}}` and `{{entry}}` expand to the sentence that defines that word, the
-  same in every guide, and the build fails if a guide uses the word without defining it, uses it before the definition, or puts the definition straight after a one word sentence. Guides say "secret key" and
-  "entry" for other apps. Secret and Account, with capitals, are only for AuthSome. The build also checks the
-  punctuation of the rendered pages and the lengths of titles and descriptions.
+  by key. Guides say "secret key" and "entry" for other apps. Secret and Account, with capitals, are only for
+  AuthSome. A guide that uses either word explains it in a sentence of its own, where the word is first needed and
+  never inside a warning or a one line answer, and marks that first use `<dfn>secret key</dfn>` or
+  `<dfn>entry</dfn>`. The build fails if the word is used with no such mark, or before it. A guide that can do
+  without the word "entry" ("each service you added") should. The build also checks the punctuation of the
+  rendered pages and the lengths of titles and descriptions, and writes nothing if it finds a problem.
+- **Cautions.** The one paragraph that warns before a step that could lock a reader out is written
+  `<p class="caution">`, and the build sets it on a plate with the label Caution and `role="note"`
+  (`.caution` in `guides.css`). One a guide at most, and none where no step can lock anyone out.
+- **Section ids** come from the heading's words. Give a section an `"id"` in its content file when another page
+  links to it, so rewording the heading does not break the link.
+- **More Guides** under a guide lists only its `related` guides, then a link to the index.
 - **Adding a guide.** Add a content file (copy an existing one for its shape, and give it the next `order`), run the
-  two scripts, then add its URL to `/sitemap.xml` and a line under "AuthSome Guides" in `/llms.txt`. Link to it from
-  two or three guides that already get visits, in their text or their `related` list.
+  two scripts, then add its URL to `/sitemap.xml` and a line under "AuthSome Guides" in `/llms.txt` (its title as
+  the link and its `card` as the text). Link to it from two or three guides that already get visits, in their text
+  or their `related` list. Then run `python3 check.py`.
+- **`check.py`** (`python3 check.py` in `_source`, plain Python, nothing to install) checks what is kept in step
+  by hand, and changes nothing: the copy rules on the home, privacy and support pages and the Apps card, every
+  JSON-LD block, titles and descriptions, the support page's `FAQPage` against its questions, canonical addresses
+  against the sitemap and its dates, the guides' lines in `/llms.txt`, the one sentence about the app on the home
+  page, its social description and the Apps card, and every link and file inside the site. Run it after any change
+  to those pages: `python3 lint.py && python3 build.py && python3 check.py`.
 - **Rules.** A guide answers one question, in its first two sentences, for someone who never installs AuthSome.
   A fact about another company's app comes from that company's own pages, read on the day, and is listed under
   Sources. Where a maker does not document something, the guide says so. Nothing claims testing that did not
@@ -99,16 +115,25 @@ data that says what to write next comes from Google Search Console (the `sc-doma
 
 - **Search engines.** Each page has its own title, description, canonical URL, Open Graph tags and JSON-LD: the home
   page describes the app (`SoftwareApplication`, with its features and screenshots), the support page lists its
-  questions (`FAQPage`, made from the questions on the page, so change both together), and all three carry
-  breadcrumbs. The `FAQPage` holds every question on the support page, with each answer's text exactly as shown.
+  questions (`FAQPage`, made from the questions on the page, so change both together, and `check.py` says when
+  they differ). The privacy and support pages carry breadcrumbs that start at AuthSome, as the guides' do, and show
+  the same trail above their heading (`.trail` in `styles.css`). The home page is the root of that trail, so it
+  has none. The `FAQPage` holds every question on the support page, with each answer's text exactly as shown.
+  DevPulse is the same `Organization` node, with its logo, on every page, and every page links to `/llms.txt`.
+  Titles have no closing full stop and fit 60 characters, and descriptions fit 155.
   The site-wide `/sitemap.xml` lists these pages and `/robots.txt` points to it. Update a page's `lastmod` there,
   and `dateModified` in its JSON-LD (all three pages have one, on the `WebPage`), when its text changes.
 - **The same facts in several places.** What the app is and the devices it needs are written by hand in
   `index.html` (the pitch, the meta and social descriptions and the JSON-LD), `guides/_source/build.py` (`ABOUT`,
   `ABOUT_SHORT` and `APP`), `/llms.txt` and the Apps page (the card and its JSON-LD entry). Change all four together.
+  One sentence says what the app does, "It makes the 2FA codes websites ask for after your password, on your
+  device, and keeps personal and work ones apart.", word for word in the pitch, the social descriptions and the
+  Apps card (`check.py` compares them). It has no "short" before "2FA codes" because that word gave the pitch a seventh line at 375px. The JSON-LD says the same in the same order, says "the short codes" and spells out two factor authentication. The devices are
+  always written "iOS 26, iPadOS 26 or macOS 26 or later", or one device at a time as on the support page.
   The home page's `featureList` names only what the visible list says.
 - **AI agents.** `/llms.txt` at the site root is a plain summary of DevPulse's apps with AuthSome's facts in full
-  (price, platforms, features, privacy, status). Keep it true: it is what an agent will quote. It follows the
+  (price, platforms, features, privacy, status), and the date those facts were last checked, which changes when
+  they are checked again. Keep it true: it is what an agent will quote. It follows the
   llms.txt layout: prose and plain bullets come before the first `##` heading, and each `##` section holds only
   links, so AuthSome's facts sit at the top and "## AuthSome" lists its three pages.
 

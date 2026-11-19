@@ -10,6 +10,7 @@
   <link rel="canonical" href="https://devpulse.co.uk/authsome/guides/export-google-authenticator-to-another-app/">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="Junaid Younus">
+  <link rel="alternate" type="text/plain" href="https://devpulse.co.uk/llms.txt" title="Summary for AI agents">
   <meta property="og:title" content="How to Export Google Authenticator to Another App on iPhone">
   <meta property="og:description" content="In Google Authenticator tap Menu, Transfer accounts, Export accounts. Scan the QR code inside the new app, then check every 2FA code before you delete.">
   <meta property="og:type" content="article">
@@ -57,7 +58,7 @@
       </nav>
       <section class="prose" id="make-the-export-qr-code-in-google-authenticator">
         <h2>Make the Export QR Code in Google Authenticator</h2>
-        <p>Google Authenticator makes the short numbers that services ask for after your password, the codes for two factor authentication, or 2FA. This guide calls the line in an authenticator app for one service an entry. Makers call it an account, a token or a code, and AuthSome calls it an Account.</p><p>These export steps are from the Google help page for iPhone and iPad, which says you need the latest version of Google Authenticator on the phone you export from.</p><ol><li>Open Google Authenticator and tap Menu.</li><li>Choose Transfer accounts, then Export accounts.</li><li>Prove it is you when the app asks, the same way you open your phone.</li><li>Select the entries you want to move.</li><li>Tap Next. The QR code appears.</li></ol><p>If you move more than one entry, the app may make more than one QR code. The new app needs every QR code in the set, so scan them all.</p><p>Treat the export QR code like a password. An authenticator app makes each 2FA code from a secret key, which the service gives it inside a QR code when you turn on 2FA. Apple calls it a setup key, and AuthSome calls it a Secret. The export QR code carries the secret key of every entry you selected, so anyone who scans it can make your 2FA codes.</p>
+        <p>Google Authenticator makes the short numbers that services ask for after your password, the codes for two factor authentication, or 2FA. This guide calls each service you added to it an <dfn>entry</dfn>.</p><p>These export steps are from the Google help page for iPhone and iPad, which says you need the latest version of Google Authenticator on the phone you export from.</p><ol><li>Open Google Authenticator and tap Menu.</li><li>Choose Transfer accounts, then Export accounts.</li><li>Prove it is you when the app asks, the same way you open your phone.</li><li>Select the entries you want to move.</li><li>Tap Next. The QR code appears.</li></ol><p>If you move more than one entry, the app may make more than one QR code. The new app needs every QR code in the set, so scan them all.</p><p>Treat the export QR code like a password. It carries the <dfn>secret key</dfn> of every entry you selected, the key that entry makes its 2FA codes from, so anyone who scans it can make your 2FA codes.</p>
       </section>
       <section class="prose" id="which-apps-can-scan-the-export-qr-code">
         <h2>Which Apps Can Scan the Export QR Code?</h2>
@@ -73,7 +74,7 @@
       </section>
       <section class="prose" id="what-to-check-before-you-delete-anything">
         <h2>What to Check Before You Delete Anything</h2>
-        <ol><li>Count the entries. The new app should show as many as you selected in Google Authenticator. If some are missing, you may have skipped one QR code of the set.</li><li>Compare one 2FA code. Open the same entry in both apps at the same moment. The two numbers should match.</li><li>Sign in somewhere with the new app. Start with the services you could least afford to lose, such as your email.</li><li>Check the names. Make sure each entry shows the right service and the right username, and correct any that came across blank.</li><li>Check that the new app is backed up, so the move does not leave you with a single copy.</li><li>Delete any screenshots of the export QR codes.</li></ol><p>Only then remove entries from Google Authenticator. Its help page does not describe the export removing anything, and treats deleting as a separate step that you confirm, so your entries should still be in the main list. It warns that if your 2FA codes are saved to your Google Account, deleting one deletes it from every device where they are synced.</p><p>If you are moving because of a new phone, read <a href="../do-authenticator-apps-transfer-to-new-iphone/">whether authenticator apps transfer to a new iPhone</a> before you wipe the old one. If the entries are on an Android phone, see <a href="../move-2fa-codes-from-android-to-iphone/">how to move 2FA codes from Android to iPhone</a>.</p>
+        <div class="caution" role="note"><p class="caution-label">Caution</p><p>Keep every entry in Google Authenticator until all six checks have passed. Until then it is your only proven way in.</p></div><ol><li>Count the entries. The new app should show as many as you selected in Google Authenticator. If some are missing, you may have skipped one QR code of the set.</li><li>Compare one 2FA code. Open the same entry in both apps at the same moment. The two numbers should match.</li><li>Sign in somewhere with the new app. Start with the services you could least afford to lose, such as your email.</li><li>Check the names. Make sure each entry shows the right service and the right username, and correct any that came across blank.</li><li>Check that the new app is backed up, so the move does not leave you with a single copy.</li><li>Delete any screenshots of the export QR codes.</li></ol><p>Only then remove entries from Google Authenticator. Its help page does not describe the export removing anything, and treats deleting as a separate step that you confirm, so your entries should still be in the main list. It warns that if your 2FA codes are saved to your Google Account, deleting one deletes it from every device where they are synced.</p><p>If you are moving because of a new phone, read <a href="../do-authenticator-apps-transfer-to-new-iphone/">whether authenticator apps transfer to a new iPhone</a> before you wipe the old one. If the entries are on an Android phone, see <a href="../move-2fa-codes-from-android-to-iphone/">how to move 2FA codes from Android to iPhone</a>.</p>
       </section>
       <section class="prose" id="common-questions">
         <h2>Common Questions</h2>
@@ -98,11 +99,8 @@
           <li><a href="../do-authenticator-apps-transfer-to-new-iphone/">Do Authenticator Apps Transfer to a New iPhone?</a></li>
           <li><a href="../move-2fa-codes-from-android-to-iphone/">How to Move 2FA Codes From Android to iPhone</a></li>
           <li><a href="../authenticator-app-on-two-devices/">Can You Use the Same Authenticator App on Two Devices?</a></li>
-          <li><a href="../authy-desktop-alternative-mac/">Authy Desktop Is Gone. What to Use on a Mac Instead</a></li>
-          <li><a href="../authenticator-app-on-mac/">Can You Use an Authenticator App on a Mac?</a></li>
-          <li><a href="../free-authenticator-app-no-ads/">Which Authenticator Apps Are Free With No Ads or Subscription?</a></li>
-          <li><a href="../autofill-2fa-codes-iphone/">How to AutoFill 2FA Codes From an Authenticator App on iPhone</a></li>
         </ul>
+        <p class="all-guides"><a href="../">See All Guides</a></p>
       </section>
       <section class="plate sources" id="sources">
         <h2>Sources</h2>
