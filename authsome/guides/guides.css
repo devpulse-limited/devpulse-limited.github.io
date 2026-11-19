@@ -45,12 +45,3 @@
   .guide .plate { padding: 18px 18px 20px; }
   .guide .plate h2 { font-size: 21px; }
 }
-
-/* Three links do not fit beside the name on a phone. Privacy stays in the footer. */
-@media (max-width: 440px) {
-  .guides .bar nav .wide-only { display: none; }
-}
-@media (max-width: 350px) {
-  .guides .bar nav { gap: 0; margin-inline-end: -8px; }
-  .guides .bar nav a { padding: 0 8px; }
-}

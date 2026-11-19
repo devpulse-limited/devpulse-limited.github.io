@@ -1,0 +1,90 @@
+{
+  "slug": "free-authenticator-app-no-ads",
+  "order": 7,
+  "title": "Which Authenticator Apps Are Free With No Ads or Subscription?",
+  "meta_title": "Free Authenticator App With No Ads or Subscription.",
+  "description": "Making 2FA codes needs no server, so you never need a subscription. Which authenticator apps are free, and how to check an app before you install it.",
+  "card": "Which authenticator apps cost nothing, and how to spot one that charges weekly before you install it.",
+  "lede": "Google Authenticator, Microsoft Authenticator, 2FAS and Ente Auth are all free on the App Store with no In App Purchases listed. Of the four, only 2FAS says in writing that its apps have no ads, so this page also shows you how to check any app yourself. Making 2FA codes needs no server run by the maker of the app, so a weekly fee is never the price of the 2FA codes themselves.",
+  "published": "2026-11-19",
+  "modified": "2026-11-19",
+  "sections": [
+    {
+      "h2": "Why Should an Authenticator App Not Need a Subscription?",
+      "html": "<p>When you turn on two factor authentication, or 2FA, a service gives your app a Secret, usually inside a QR code. From then on the app works out each 2FA code from two things, that Secret and the time.</p><p>The sum runs on your phone. Google says its own app still makes 2FA codes with no internet connection or mobile service. The maker of the app does not have to run a server each time you sign in, so a fee is not covering the cost of making your 2FA codes.</p><p>Some makers charge for extras, and that is their right. But if an app asks for a weekly payment before it will show a 2FA code at all, you are not paying for anything a free app cannot do.</p>"
+    },
+    {
+      "h2": "Which Authenticator Apps Are Free Today?",
+      "html": "<p>These are the facts on the UK App Store page of each app, read on 19 November 2026. The list is in no order and is not a ranking.</p><div class=\"table-scroll\"><table><thead><tr><th>App</th><th>Developer Name</th><th>Price</th><th>In App Purchases</th></tr></thead><tbody><tr><td>Google Authenticator</td><td>Google</td><td>Free</td><td>None listed</td></tr><tr><td>Microsoft Authenticator</td><td>Microsoft Corporation</td><td>Free</td><td>None listed</td></tr><tr><td>2FAS</td><td>Two Factor Authentication Service Inc.</td><td>Free</td><td>None listed</td></tr><tr><td>Ente Auth</td><td>Ente Technologies, Inc.</td><td>Free</td><td>None listed</td></tr></tbody></table></div><p>A page with no In App Purchases is not a promise about adverts. Of these four makers, only 2FAS states in writing that its apps have no ads or tracking, on the page where it asks for donations. The App Store pages of the other three do not mention adverts at all, which is neither a promise of none nor a sign that they show any.</p><p>The Passwords app from Apple also makes 2FA codes. <a href=\"../autofill-2fa-codes-iphone/\">How to AutoFill 2FA codes on iPhone</a> covers it.</p><p>AuthSome, our own app, is coming soon to the App Store. It is free, with no ads, no purchases and nothing to sign up for. It needs iOS 26, iPadOS 26 or macOS 26 or later, and it has no Android, Windows or Apple Watch version.</p><p>Price is only one thing to weigh. These apps differ in how they back up and move your Accounts, which matters when you change phone. See <a href=\"../do-authenticator-apps-transfer-to-new-iphone/\">which authenticator apps transfer to a new iPhone</a> before you choose.</p>"
+    },
+    {
+      "h2": "How Do You Spot an App That Charges Weekly Before You Install It?",
+      "html": "<p>Any developer can publish an app with the word Authenticator in its name, so the name and the icon tell you little. Two lines on the App Store page tell you more, and you can read both before you tap Get.</p><ol><li>Open the page of the app in the App Store.</li><li>Find the developer name on the page. For Google Authenticator it is Google. For Microsoft Authenticator it is Microsoft Corporation. If you meant to install one of those and the name is a different company, you have the wrong app.</li><li>Look near the price or the Get button for the label In App Purchases. Apple says this label marks an app that sells something inside it, and that subscriptions are one kind of In App Purchase.</li><li>If the label is there, look through the rest of the page for what is sold and for how much. A price per week is a subscription.</li></ol><p>Apple says subscriptions can renew weekly, monthly, every three months or yearly, and that they renew by themselves until you cancel. A free trial does not change that. Apple advises cancelling a trial at least 24 hours before it ends if you do not want to pay.</p><p>The label is not proof of a bad app. Many honest apps sell extras. It is your cue to read the list before you install, and to compare it with the free apps above.</p>"
+    },
+    {
+      "h2": "How Do You Cancel a Subscription You Already Started?",
+      "html": "<p>Do not delete the app yet. Your Accounts may exist only inside it, and deleting it could lock you out of every service it holds.</p><p>Cancelling stops the next payment. Apple does not say whether an app keeps working after you cancel, and what it shows once the paid time ends is up to the app. So if no payment is due in the next day or two, move your Accounts first, using the steps in the next section, then cancel. If a payment or the end of a trial is close, cancel now and move your Accounts straight after.</p><p>Apple gives these steps for iPhone and iPad.</p><ol><li>Open Settings and tap your name.</li><li>Tap Subscriptions.</li><li>Tap the subscription.</li><li>Tap Cancel Subscription. You may need to scroll down to find it.</li></ol><p>If there is no Cancel button, or you see an expiry message in red, Apple says the subscription is already cancelled. If the subscription is not in the list, search your email for a receipt from Apple and check which Apple Account it names. It may be a different Apple Account of yours, or a family member who has to cancel it themself.</p>"
+    },
+    {
+      "h2": "How Do You Move Away Safely?",
+      "html": "<p>Move while the old app still shows your 2FA codes, and keep it until the last step.</p><ol><li>Install the app you are moving to, and keep the old app on your phone.</li><li>Look in the old app for an export or transfer option. If it has one, check that your new app can read it. Google Authenticator, for example, has its own export, covered in <a href=\"../export-google-authenticator-to-another-app/\">how to export Google Authenticator to another app</a>.</li><li>If there is no export, move one Account at a time. Sign in to each service, open its security settings, and set up the authenticator app again so that it shows a new QR code. Scan that with the new app and type in the 2FA code it shows.</li><li>Sign out of each service and back in with a 2FA code from the new app.</li><li>Delete the old app only when every Account works in the new one.</li></ol><p>While you are in each service, save the recovery codes it offers. They are your way back in if a phone is ever lost.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is There an Authenticator App Without Ads?",
+      "a": "2FAS states that its apps have no ads or tracking, and AuthSome, which is coming soon, has none. The App Store pages of Google Authenticator, Microsoft Authenticator and Ente Auth do not mention adverts either way."
+    },
+    {
+      "q": "Is There an Authenticator App You Can Use Without a Login?",
+      "a": "Yes. Google has a help section on using Google Authenticator without a Google Account, and 2FAS says on its App Store page that no account is required. AuthSome has nothing to sign up for."
+    },
+    {
+      "q": "Why Does My Authenticator App Charge Weekly?",
+      "a": "Because it sells a subscription as an In App Purchase, and Apple lets subscriptions renew as often as weekly. You can see it under Subscriptions in Settings, after you tap your name, and cancel it there."
+    },
+    {
+      "q": "Are Free Authenticator Apps Safe to Use?",
+      "a": "Price does not tell you. Any authenticator app works out the same 2FA codes from the same Secret, so look at who the developer is, how the app backs up your Accounts and whether you can export them."
+    }
+  ],
+  "sources": [
+    {
+      "name": "Apple Support, Cancel a Subscription From Apple",
+      "url": "https://support.apple.com/en-gb/118428"
+    },
+    {
+      "name": "Apple Support, Buy Additional App Features With In App Purchases and Subscriptions",
+      "url": "https://support.apple.com/en-gb/102383"
+    },
+    {
+      "name": "Google Account Help, Get Verification Codes With Google Authenticator",
+      "url": "https://support.google.com/accounts/answer/1066447?hl=en-GB&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "name": "App Store, Google Authenticator",
+      "url": "https://apps.apple.com/gb/app/google-authenticator/id388497605"
+    },
+    {
+      "name": "App Store, Microsoft Authenticator",
+      "url": "https://apps.apple.com/gb/app/microsoft-authenticator/id983156458"
+    },
+    {
+      "name": "App Store, 2FA Authenticator, 2FAS",
+      "url": "https://apps.apple.com/gb/app/2fa-authenticator-2fas/id1217793794"
+    },
+    {
+      "name": "2FAS, Donate to 2FAS",
+      "url": "https://2fas.com/donate/"
+    },
+    {
+      "name": "App Store, Ente Auth",
+      "url": "https://apps.apple.com/gb/app/ente-auth-2fa-authenticator/id6444121398"
+    }
+  ],
+  "related": [
+    "export-google-authenticator-to-another-app",
+    "do-authenticator-apps-transfer-to-new-iphone",
+    "autofill-2fa-codes-iphone"
+  ]
+}

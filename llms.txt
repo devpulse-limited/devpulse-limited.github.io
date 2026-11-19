@@ -35,6 +35,20 @@ The service names and logos shown on the AuthSome page are examples. AuthSome is
 - [Privacy policy](https://devpulse.co.uk/authsome/privacy/): what stays on the device, what goes to iCloud, and what is not collected.
 - [Support](https://devpulse.co.uk/authsome/support/): what the app does, what it costs and which devices it works on, then how to add Accounts, use a 2FA code, set up AutoFill, import from another app, back up and move to a new device.
 
+## AuthSome Guides
+
+Plain guides to 2FA codes and authenticator apps on iPhone, iPad and Mac. Facts about other apps come from the pages of their makers, which each guide lists.
+
+- [All guides](https://devpulse.co.uk/authsome/guides/)
+- [How to Export Google Authenticator to Another App on iPhone](https://devpulse.co.uk/authsome/guides/export-google-authenticator-to-another-app/): Move your accounts out of Google Authenticator with its export QR code, and what to check afterwards.
+- [Do Authenticator Apps Transfer to a New iPhone?](https://devpulse.co.uk/authsome/guides/do-authenticator-apps-transfer-to-new-iphone/): It depends on the app. What each maker says, what to turn on first, and a safe order for switching.
+- [How to Move 2FA Codes From Android to iPhone](https://devpulse.co.uk/authsome/guides/move-2fa-codes-from-android-to-iphone/): Export from Aegis or 2FAS on Android, get the file to your iPhone and import it without losing an account.
+- [Authy Desktop Is Gone. What to Use on a Mac Instead](https://devpulse.co.uk/authsome/guides/authy-desktop-alternative-mac/): Authy Desktop ended in March 2024. What a Mac user can do now, and what leaving Authy really costs.
+- [Can You Use an Authenticator App on a Mac?](https://devpulse.co.uk/authsome/guides/authenticator-app-on-mac/): Yes. Use the Passwords app from Apple, or a separate authenticator app that has a Mac version.
+- [Can You Use the Same Authenticator App on Two Devices?](https://devpulse.co.uk/authsome/guides/authenticator-app-on-two-devices/): Yes. Use an app that syncs, or scan the same QR code on both devices when you set up 2FA.
+- [Which Authenticator Apps Are Free With No Ads or Subscription?](https://devpulse.co.uk/authsome/guides/free-authenticator-app-no-ads/): Which authenticator apps cost nothing, and how to spot one that charges weekly before you install it.
+- [How to AutoFill 2FA Codes From an Authenticator App on iPhone](https://devpulse.co.uk/authsome/guides/autofill-2fa-codes-iphone/): An authenticator app can fill its 2FA codes above the iPhone keyboard. How to turn it on.
+
 ## Optional
 
 - [Sitemap](https://devpulse.co.uk/sitemap.xml)

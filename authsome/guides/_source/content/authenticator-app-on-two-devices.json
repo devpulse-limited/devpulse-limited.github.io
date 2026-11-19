@@ -1,0 +1,94 @@
+{
+  "slug": "authenticator-app-on-two-devices",
+  "order": 6,
+  "title": "Can You Use the Same Authenticator App on Two Devices?",
+  "meta_title": "Can You Use the Same Authenticator App on Two Devices?",
+  "description": "Yes, in two ways. Use an app that syncs your 2FA codes, or scan the same QR code on both devices at setup. Here is how, and what it costs in security.",
+  "card": "Yes. Use an app that syncs, or scan the same QR code on both devices when you set up 2FA.",
+  "lede": "Yes. Either use an authenticator app that syncs your 2FA codes between your devices, or scan the same QR code on both devices when you turn on 2FA for a service. Both devices then show the same 2FA code at the same moment, and either one will sign you in.",
+  "published": "2026-11-19",
+  "modified": "2026-11-19",
+  "sections": [
+    {
+      "h2": "Why Two Devices Can Show the Same 2FA Code",
+      "html": "<p>When you turn on two factor authentication, or 2FA, a service gives you a secret key, usually inside a QR code. This guide calls it the Secret. The standard behind most authenticator apps works out each 2FA code from the Secret and the current time, and nothing else. Any device that holds the Secret and has the right time shows the same 2FA code.</p><p>It follows that a 2FA code carries nothing about the device that made it, so the service has no way to tell two devices apart or to count them. The two devices do not even need the same app. What matters is that both hold the same Secret.</p>"
+    },
+    {
+      "h2": "Way One, Use an App That Syncs",
+      "html": "<p>A syncing app copies each Secret to your other devices for you, including the ones you add later. This is what each maker says about its own app.</p><div class=\"table-scroll\"><table><thead><tr><th>App</th><th>Syncs through</th><th>What you do</th></tr></thead><tbody><tr><td>Google Authenticator</td><td>Google Account</td><td>Sign in to the same account in the app</td></tr><tr><td>Apple Passwords</td><td>iCloud Keychain</td><td>Same Apple Account, iCloud Keychain on</td></tr><tr><td>2FAS</td><td>iCloud on iPhone, Google Drive on Android</td><td>Turn on sync in 2FAS Backup</td></tr><tr><td>Ente Auth</td><td>Ente account</td><td>Sign in to the same account</td></tr><tr><td>Authy</td><td>Its own encrypted backup</td><td>Turn on backups, know the password</td></tr></tbody></table></div><p>Three details from those makers are worth knowing. Google says that deleting a 2FA code that is synced removes it from every device, and that choosing Use Authenticator without an account keeps your 2FA codes on one device only. 2FAS says its sync works between devices of the same kind, so between two iPhones, but not between an iPhone and an Android phone. Ente says its synced 2FA codes can also be opened on the web at auth.ente.com.</p>"
+    },
+    {
+      "h2": "Way Two, Add the Same QR Code or Secret to Both Devices",
+      "html": "<p>This works with any authenticator app, on any mix of devices, and needs no cloud account. Do it while the service is still showing the QR code.</p><ol><li>In the security settings of the service, turn on 2FA and choose the authenticator app option. It shows a QR code, and usually the Secret as a line of letters and numbers too.</li><li>Scan the QR code with the first device. Do not type the 2FA code into the service yet.</li><li>Scan the same QR code with the second device. If that device cannot scan, type the Secret in by hand.</li><li>Check that both devices show the same 2FA code.</li><li>Type that 2FA code into the service to finish, and save the recovery codes it offers.</li></ol><p>Each device now holds its own copy. Nothing syncs, so renaming or deleting on one device changes nothing on the other. Do not keep a photo or screenshot of the QR code, because anyone who has it can make your 2FA codes.</p>"
+    },
+    {
+      "h2": "What to Do for an Account You Already Set Up",
+      "html": "<p>The QR code is long gone, so you have three options. Try them in this order. <strong>The third one can lock you out if it goes wrong.</strong> A new QR code holds a new Secret, and the old 2FA codes for that service stop working once you confirm it. Have a recovery code ready, do one service at a time, and delete the old entry only after a new 2FA code has signed you in.</p><ol><li><strong>Turn on sync in the app you already use.</strong> If it is in the table above, the Account then appears on your other device.</li><li><strong>Show the Secret again.</strong> Look in the details of the Account for an option to show its QR code or Secret, and scan that with the second device. Not every app has one.</li><li><strong>Set up 2FA again at the service.</strong> Sign in, find the option to change or reset the authenticator app, and scan the new QR code with both devices before you confirm.</li></ol><p>If you are replacing a phone and not adding one, see <a href=\"../do-authenticator-apps-transfer-to-new-iphone/\">whether authenticator apps transfer to a new iPhone</a>.</p>"
+    },
+    {
+      "h2": "Is It Less Safe on Two Devices?",
+      "html": "<p>In principle, a little, and you have to weigh that against the gain. The gain is that if one device is lost, broken or stolen, the other still signs you in, and you are not left hunting for recovery codes.</p><p>The cost is that there are now two places your Secrets can be taken from. Keep both devices behind a passcode, and erase a device before you sell it or hand it on.</p><p>Sync adds one more thing to protect, the cloud account that carries the Secrets. Read what the maker says about that. Google says it encrypts 2FA codes in transit and at rest. Ente says its sync is end to end encrypted, so its servers cannot read your 2FA codes. Whichever you choose, give that cloud account a strong password, and keep its recovery codes somewhere outside the authenticator app.</p>"
+    },
+    {
+      "h2": "Where AuthSome Fits",
+      "html": "<p>AuthSome is a free authenticator app, coming soon to the App Store, that syncs your Accounts between iPhone, iPad and Mac through your own iCloud, end to end encrypted. Sign in to iCloud with the same Apple Account on each device and your Profiles, Folders and Accounts arrive by themselves. For an Account already in AuthSome, Account details can show its Secret and QR code after Face ID, Touch ID or your passcode, so you can scan it into another app or device.</p><p>It needs iOS 26, iPadOS 26 or macOS 26 or later. There is no Android, Windows or Apple Watch version, so for an iPhone and an Android phone use way two, or an app that runs on both. For 2FA codes beside your browser, see <a href=\"../authenticator-app-on-mac/\">using an authenticator app on a Mac</a>.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can I Use an Authenticator App on Two Phones?",
+      "a": "Yes, and they do not have to be the same make. Scan the same QR code on both at setup, or use an app with sync that runs on both phones."
+    },
+    {
+      "q": "Can I Scan the Same QR Code Twice?",
+      "a": "Yes, as long as the service is still showing it. The QR code holds the Secret, and every device that scans it makes the same 2FA codes. A service may not show it again once setup is finished, so scan with both devices before you close the page."
+    },
+    {
+      "q": "Can I Sync 2FA Codes Between an iPhone and an iPad?",
+      "a": "Yes. Apple Passwords does it through iCloud Keychain, and Google Authenticator and Ente Auth do it through their own accounts. Sign in to the same account on both."
+    },
+    {
+      "q": "Can I Have the Same 2FA Codes on My iPhone and My Mac?",
+      "a": "Yes. Apple says the verification codes in Passwords can be used on all your devices signed in to the same Apple Account with iCloud Keychain on, and that the Passwords app is on the Mac from macOS Sequoia. Scanning the same QR code into a Mac app at setup works too."
+    },
+    {
+      "q": "Does Removing an Account From One Device Remove It From the Other?",
+      "a": "With Google Authenticator synced to a Google Account, yes. Google says the deletion reaches every synced device, and you should expect the same from any app that syncs. If you scanned the same QR code on each device, no, each copy is separate and you remove it from each one."
+    }
+  ],
+  "sources": [
+    {
+      "name": "IETF, RFC 6238, the TOTP Standard",
+      "url": "https://datatracker.ietf.org/doc/html/rfc6238"
+    },
+    {
+      "name": "Google Account Help, Get Verification Codes With Google Authenticator",
+      "url": "https://support.google.com/accounts/answer/1066447?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "name": "iPhone User Guide, Use Passwords on iPhone",
+      "url": "https://support.apple.com/guide/iphone/use-passwords-iphd18e98624/ios"
+    },
+    {
+      "name": "Apple Support, About the Passwords App",
+      "url": "https://support.apple.com/en-us/120758"
+    },
+    {
+      "name": "2FAS Support, How to Use or Sync More Devices With 2FAS",
+      "url": "https://2fas.com/support/2fas-auth-mobile-app/how-to-use-sync-more-devices-with-2fas/"
+    },
+    {
+      "name": "Ente Help, Ente Auth FAQ",
+      "url": "https://ente.com/help/auth/faq/"
+    },
+    {
+      "name": "Authy, Features",
+      "url": "https://www.authy.com/features/"
+    }
+  ],
+  "related": [
+    "do-authenticator-apps-transfer-to-new-iphone",
+    "authenticator-app-on-mac",
+    "free-authenticator-app-no-ads"
+  ]
+}

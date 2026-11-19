@@ -69,6 +69,9 @@ button { font: inherit; color: inherit; }
 .bar nav { display: flex; gap: 8px; margin-inline-end: -14px; }
 .bar nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 99px; color: inherit; font-size: 15px; font-weight: 600; text-decoration: none; }
 .bar nav a:hover, .bar nav a[aria-current] { text-decoration: underline; text-underline-offset: 4px; }
+/* Three links do not fit beside the name on a phone. Privacy stays in the footer. */
+@media (max-width: 440px) { .bar nav .wide-only { display: none; } }
+@media (max-width: 350px) { .bar nav { gap: 0; margin-inline-end: -8px; } .bar nav a { padding: 0 8px; } }
 /* Over the band the wordmark and the links sit on glass, dark under white text and light under black (script.js sets
    --glass), so small text reads on any Brand colour and under the glow in the band's top corner. */
 .over-band nav { margin-inline-end: 0; }

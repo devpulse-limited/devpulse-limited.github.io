@@ -62,6 +62,29 @@ The Apps page (`../apps/index.html`) has AuthSome's card (`.as-feature`) and nam
   each is a one or two word caption (Grid, List, Dark Theme), since the `alt` text is not seen.
 - Text is the system font, and light or dark follows the device.
 
+## Guides
+
+`guides/` holds the guides: one page per search query ("Do Authenticator Apps Transfer to a New iPhone?"), written
+to be found on Google and quoted by AI assistants, with a box about AuthSome where the reader finishes. The search
+data that says what to write next comes from Google Search Console (the `sc-domain:devpulse.co.uk` property).
+
+- **Source.** `guides/_source/content/*.json` holds each guide's text, and `guides/_source/build.py` renders them
+  into `guides/<slug>/index.html` and the index. Change a content file, never the rendered page, then run
+  `python3 lint.py && python3 build.py` in `_source`. The rendered pages are committed, so the site still has no
+  build step. GitHub Pages does not publish a folder whose name begins with an underscore.
+- **Adding a guide.** Add a content file (copy an existing one for its shape, and give it the next `order`), run the
+  two scripts, then add its URL to `/sitemap.xml` and a line under "AuthSome Guides" in `/llms.txt`. Link to it from
+  two or three guides that already get visits, in their text or their `related` list.
+- **Rules.** A guide answers one question, in its first two sentences, for someone who never installs AuthSome.
+  A fact about another company's app comes from that company's own pages, read on the day, and is listed under
+  Sources. Where a maker does not document something, the guide says so. Nothing claims testing that did not
+  happen. A step that could lock a reader out has a warning before it. The Copy rules below apply, and a product or
+  menu name keeps the punctuation its owner gives it. `lint.py` checks the punctuation.
+- **Keeping them true.** Other companies change their apps. When a guide's facts are checked again, change its
+  `modified` date, and its `lastmod` in the sitemap.
+- **At launch.** Change "coming soon" in the About AuthSome box (`build.py`) and in each guide's own AuthSome
+  section, and make the box's button the App Store link.
+
 ## Being found
 
 - **Search engines.** Each page has its own title, description, canonical URL, Open Graph tags and JSON-LD: the home
