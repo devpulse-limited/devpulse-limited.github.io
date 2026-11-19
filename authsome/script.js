@@ -1,23 +1,30 @@
 'use strict';
 
-// The App Store listing. It stays null (a "coming soon" message) until AuthSome is out. The link needs no country in
-// it: the App Store opens each person's own storefront.
-const storeLinks = {
-  'App Store': null,
-};
-
+// Until AuthSome is out, the App Store badge is a button that opens the "coming soon" dialog. Without scripts it stays
+// a label on glass, which says the same. At launch it becomes a link in index.html and this goes (README, "At launch").
 const comingSoon = document.querySelector('#coming-soon');
-for (const link of document.querySelectorAll('[data-store]')) {
-  const url = storeLinks[link.dataset.store];
-  if (url) {
-    link.href = url;
-    link.querySelector('small').textContent = 'Download on the';
-  } else if (comingSoon) {
-    link.addEventListener('click', event => { event.preventDefault(); comingSoon.showModal(); });
-  }
+const badge = document.querySelector('[data-coming-soon]');
+if (badge && comingSoon) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = badge.className;
+  button.setAttribute('aria-haspopup', 'dialog');
+  button.append(...badge.childNodes);
+  button.addEventListener('click', () => comingSoon.showModal());
+  badge.replaceWith(button);
 }
 for (const button of document.querySelectorAll('[data-close-dialog]')) {
   button.addEventListener('click', () => button.closest('dialog').close());
+}
+// A click on the backdrop closes the dialog too. The backdrop's clicks arrive at the dialog itself, as do clicks on its
+// own padding, so the click has to fall outside its box.
+if (comingSoon) {
+  comingSoon.addEventListener('click', event => {
+    if (event.target !== comingSoon) return;
+    const box = comingSoon.getBoundingClientRect();
+    const inside = event.clientX >= box.left && event.clientX <= box.right && event.clientY >= box.top && event.clientY <= box.bottom;
+    if (!inside) comingSoon.close();
+  });
 }
 
 // ---- Brand colours, worked out as the app does (BrandPalette.swift and SRGBColor.swift in the AuthSome repo) ----
@@ -138,9 +145,21 @@ function heroColourImage(palette) {
 }
 
 // ---- The screen: a working copy of the app's Grid, showing the app's own screenshot Accounts ----
-const screen = document.querySelector('#screen');
-if (screen) {
+const screenElement = document.querySelector('#screen');
+if (screenElement && (typeof PROFILES === 'undefined' || typeof LOGOS === 'undefined')) {
+  // accounts.js did not arrive, so there are no Accounts to draw. The page stands as it does without scripts (the
+  // .no-demo rules in styles.css), with the Mac capture in place of the tiles.
+  document.documentElement.classList.add('no-demo');
+  const capture = document.createElement('img');
+  capture.className = 'capture';
+  capture.src = 'assets/images/mac-personal.jpg';
+  capture.width = 1600;
+  capture.height = 1000;
+  capture.alt = 'AuthSome on a Mac. The chosen Account and its 2FA code across the top, and the other Accounts in a grid below.';
+  document.querySelector('#tiles').after(capture);
+} else if (screenElement) {
   const PERIOD = 30;
+  const FADE = 500;   // the colour fade, colour-in in styles.css, in milliseconds
   const profiles = PROFILES;   // accounts.js
 
   // Runs anticlockwise from the top, so hiding the end of the countdown ring takes it away clockwise, as in the app.
@@ -148,7 +167,9 @@ if (screen) {
   const TICK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-  const band = document.querySelector('#band-colour');
+  const band = document.querySelector('#band-layers');
+  const root = document.documentElement;
+  const themeColour = document.querySelector('meta[name="theme-color"]');
 
   // Sample 2FA codes, plainly not real ones: one digit repeated, counting up from 000 000 to 999 999 and round again
   // with each period. Every Account shows the same one. Nothing here works a code out from a Secret.
@@ -160,12 +181,12 @@ if (screen) {
   const tiles = document.querySelector('#tiles');
   account.innerHTML = `
     <div class="profile">
-      <button class="chip" type="button" id="profile-button" aria-haspopup="menu" aria-expanded="false"><span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <ul class="profile-menu" role="menu" aria-label="Profiles" hidden>${profiles.map((profile, index) => `<li role="none"><button type="button" role="menuitemradio" data-profile="${index}">${TICK}${profile.name}</button></li>`).join('')}</ul>
+      <button class="chip" type="button" id="profile-button" aria-haspopup="menu" aria-expanded="false" aria-controls="profile-menu"><span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <ul class="profile-menu" id="profile-menu" role="menu" aria-label="Profiles" hidden>${profiles.map((profile, index) => `<li role="none"><button type="button" role="menuitemradio" tabindex="-1" data-profile="${index}">${TICK}${profile.name}</button></li>`).join('')}</ul>
     </div>
     <div class="who">
       <span class="ringed"><svg viewBox="-4 -4 108 108" aria-hidden="true"><path class="ring-track" d="${SQUIRCLE}"/><path class="ring-time" pathLength="100" stroke-dasharray="100" d="${SQUIRCLE}"/></svg><span class="icon squircle"></span></span>
-      <div><p class="issuer"></p><p class="account-name"></p></div>
+      <div role="status"><p class="issuer"></p><p class="account-name"></p></div>
     </div>
     <div class="code-row">
       <p class="code"></p>
@@ -178,6 +199,7 @@ if (screen) {
   const chosen = profiles.map(() => 0);   // each Profile remembers the Account it last showed
   let open = 0;
   let shownCounter = -1;
+  let shownColour = '';
 
   const logo = entry => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${LOGOS[entry.brand]}"/></svg>`;
   // The grain over the hero, as the app's GrainTexture makes it: one 256 pixel tile of noise, a pixel of it to a pixel
@@ -194,38 +216,77 @@ if (screen) {
     context.putImageData(noise, 0, 0);
     return `url(${tile.toDataURL()}) 0 0 / ${256 / (window.devicePixelRatio || 1)}px`;
   })();
+  // Laid once over the colour layers, not inside each one, so its image is not parsed again with every Account.
+  const grainLayer = document.createElement('div');
+  grainLayer.className = 'grain';
+  grainLayer.setAttribute('aria-hidden', 'true');
+  grainLayer.style.background = grain;
+  band.after(grainLayer);
   const paletteOf = entry => brandPalette(entry.colour, darkScheme.matches);
   // A Brand icon, as the app's BrandIconView draws it.
   const iconStyle = palette => `--ink:${css(palette.text)};--fill:linear-gradient(135deg, ${css(palette.top)}, ${css(palette.bottom)});--shadow:${css(palette.bottom, 0.35)};--ring:${css(palette.accent)}`;
   const current = () => profiles[open].accounts[chosen[open]];
 
-  function showAccount(codeChanged) {
-    const shown = current();
-    const counter = counterNow();
-    const code = sampleCode(counter);
-    const next = sampleCode(counter + 1);
-    const palette = paletteOf(shown);
-    // The wash down the screen takes the Brand's own colour, fainter for a yellow in the dark, which turns olive.
-    screen.style.setProperty('--tint', css(palette.base, darkScheme.matches && isStrongYellow(palette.base) ? 0.45 : 1));
-    screen.style.setProperty('--on-brand', css(palette.text));
-    // The hero's background is laid over the last one and fades in, so the colour changes softly.
+  // The hero's background for an Account: laid over the last one and faded in, so the colour changes softly. The
+  // layers beneath go once it has faded in, never before, so the band's plain fallback colour cannot show through.
+  // A timer settles it as well as the end of the fade, because a browser that is not painting never ends the fade and
+  // would be left showing the last Account's colour and logo.
+  function showColour(shown, palette) {
+    const key = `${shown.brand} ${shown.colour} ${darkScheme.matches}`;
+    if (key === shownColour) return;
+    shownColour = key;
+    // The wash down the screen takes the Brand's own colour, fainter for a yellow in the dark, which turns olive. It
+    // fades by a transition, which the timer below turns off once the fade is over, so that is put back first.
+    screenElement.style.transition = '';
+    screenElement.style.setProperty('--tint', css(palette.base, darkScheme.matches && isStrongYellow(palette.base) ? 0.45 : 1));
+    // The header lies outside the screen, so the text colour and the glass under its wordmark and links are set on the
+    // page. The headline's soft shade is for white letters only.
+    root.style.setProperty('--on-brand', css(palette.text));
+    root.style.setProperty('--glass', palette.text === WHITE ? 'rgb(0 0 0 / .3)' : 'rgb(255 255 255 / .4)');
+    if (palette.text === WHITE) root.style.removeProperty('--headline-shade'); else root.style.setProperty('--headline-shade', 'none');
+    if (themeColour) themeColour.content = css(palette.top);
     const colour = document.createElement('div');
     colour.className = 'band-colour';
     colour.style.backgroundImage = `url(${heroColourImage(palette)})`;
     const sphere = (tone, size, x, y) => `<span class="sphere" style="--tone:${css(tone)};--size:${size};--x:${x};--y:${y}"></span>`;
     colour.innerHTML = sphere(palette.secondTone, 95, 85, 80) + sphere(mix(palette.top, WHITE, 0.12), 85, 15, 20)
       + sphere(mix(palette.bottom, palette.secondTone, 0.4), 65, 50, 55) + sphere(mix(palette.secondTone, palette.top, 0.5), 50, 25, 85)
-      + `<span class="light"></span><span class="watermark">${logo(shown)}</span><span class="grain" style="background:${grain}"></span>`;
-    if (!band.children.length) colour.style.animation = 'none';   // the first one is simply there
+      + `<span class="light"></span><span class="watermark">${logo(shown)}</span>`;
+    const settle = () => {
+      if (!colour.isConnected) return;   // a later Account's colour has already cleared this one away
+      colour.style.animation = 'none';
+      while (colour.previousSibling) colour.previousSibling.remove();
+    };
+    const first = !band.children.length;
     band.append(colour);
-    while (band.children.length > 2) band.firstChild.remove();
+    if (first || reducedMotion.matches) {
+      settle();   // the first one is simply there
+    } else {
+      colour.addEventListener('animationend', settle, { once: true });
+      // The wash's fade is a little longer, and is ended the same way unless a later colour is fading in over this one.
+      setTimeout(() => {
+        settle();
+        if (colour.isConnected && !colour.nextSibling) screenElement.style.transition = 'none';
+      }, FADE + 200);
+    }
+  }
+
+  function showAccount(codeChanged) {
+    const shown = current();
+    const counter = counterNow();
+    const palette = paletteOf(shown);
+    showColour(shown, palette);
     const icon = account.querySelector('.ringed .icon');
     icon.style.cssText = iconStyle(palette);
     icon.innerHTML = logo(shown);
-    account.querySelector('.issuer').textContent = shown.issuer;
-    account.querySelector('.account-name').textContent = shown.name;
-    account.querySelector('.code').textContent = code;
-    account.querySelector('.next').textContent = `Next ${next}`;
+    // The Issuer and Account name are a status, read out when another Account is chosen. They are written only when
+    // they change, so the same Account is not read out again with every new 2FA code.
+    const issuer = account.querySelector('.issuer');
+    const name = account.querySelector('.account-name');
+    if (issuer.textContent !== shown.issuer) issuer.textContent = shown.issuer;
+    if (name.textContent !== shown.name) name.textContent = shown.name;
+    account.querySelector('.code').textContent = sampleCode(counter);
+    account.querySelector('.next').textContent = `Next ${sampleCode(counter + 1)}`;
     tiles.querySelectorAll('.tile').forEach((tile, index) => tile.setAttribute('aria-pressed', String(index === chosen[open])));
     if (codeChanged) {
       account.classList.remove('code-changing');
@@ -245,31 +306,56 @@ if (screen) {
       if ((entry.folder || '') !== folder) {
         if (folder !== null) html += '</ul>';
         folder = entry.folder || '';
-        html += `${folder ? `<p class="folder">${folder}</p>` : ''}<ul class="tiles">`;
+        // Folder names are headings, as in the app, and each list of tiles is named after its Folder.
+        html += folder ? `<h3 class="folder" id="folder-${at}">${folder}</h3><ul class="tiles" aria-labelledby="folder-${at}">` : '<ul class="tiles" aria-label="Accounts">';
       }
-      html += `<li><button class="tile" type="button" data-account="${at}" aria-pressed="false" ><span class="tile-icon" style="${iconStyle(paletteOf(entry))}"><svg viewBox="-3 -3 106 106" aria-hidden="true"><path d="${SQUIRCLE}"/></svg><span class="icon squircle">${logo(entry)}</span></span>${entry.issuer}</button></li>`;
+      html += `<li><button class="tile" type="button" data-account="${at}" aria-pressed="false"><span class="tile-icon" style="${iconStyle(paletteOf(entry))}"><svg viewBox="-3 -3 106 106" aria-hidden="true"><path d="${SQUIRCLE}"/></svg><span class="icon squircle">${logo(entry)}</span></span>${entry.issuer}</button></li>`;
     });
     tiles.innerHTML = `${html}</ul>`;
     showAccount(false);
   }
 
-  function closeMenu() {
+  // The Profile menu works as a menu does: opening it puts the keyboard on the open Profile, the arrow keys, Home and
+  // End move through it, and Escape or Tab closes it. Focus goes back to the button unless it has moved on elsewhere.
+  const menuItems = [...profileMenu.querySelectorAll('button')];
+  function openMenu() {
+    profileMenu.hidden = false;
+    profileButton.setAttribute('aria-expanded', 'true');
+    menuItems[open].focus();
+  }
+  function closeMenu(returnFocus) {
+    if (profileMenu.hidden) return;
+    const focusWasInside = profileMenu.contains(document.activeElement);
     profileMenu.hidden = true;
     profileButton.setAttribute('aria-expanded', 'false');
+    if (returnFocus || focusWasInside) profileButton.focus();
   }
-  profileButton.addEventListener('click', () => {
-    profileMenu.hidden = !profileMenu.hidden;
-    profileButton.setAttribute('aria-expanded', String(!profileMenu.hidden));
+  profileButton.addEventListener('click', () => { if (profileMenu.hidden) openMenu(); else closeMenu(true); });
+  profileButton.addEventListener('keydown', event => {
+    if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+    event.preventDefault();
+    openMenu();
   });
   profileMenu.addEventListener('click', event => {
     const choice = event.target.closest('[data-profile]');
     if (!choice) return;
-    closeMenu();
+    closeMenu(true);
     showProfile(Number(choice.dataset.profile));
-    profileButton.focus();
   });
-  document.addEventListener('click', event => { if (!event.target.closest('.profile')) closeMenu(); });
-  document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
+  profileMenu.addEventListener('keydown', event => {
+    const at = menuItems.indexOf(document.activeElement);
+    const last = menuItems.length - 1;
+    const to = { ArrowDown: at === last ? 0 : at + 1, ArrowUp: at <= 0 ? last : at - 1, Home: 0, End: last }[event.key];
+    if (to !== undefined) {
+      event.preventDefault();
+      menuItems[to].focus();
+    } else if (event.key === 'Tab') {
+      // Tab leaves the menu. Closing it first sends focus on from the button, in the page's own order.
+      closeMenu(true);
+    }
+  });
+  document.addEventListener('click', event => { if (!event.target.closest('.profile')) closeMenu(false); });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(true); });
 
   tiles.addEventListener('click', event => {
     const tile = event.target.closest('.tile');
@@ -278,22 +364,49 @@ if (screen) {
     showAccount(false);
   });
 
-  // The countdown ring is full when a 2FA code starts and empties as its time runs out.
-  const drawRing = () => { ring.style.strokeDashoffset = ((1 - secondsLeft() / PERIOD) * 100).toFixed(2); };
+  // The countdown ring is full when a 2FA code starts and empties as its time runs out. The browser's own animation
+  // runs it down, so nothing here draws each frame. With Reduce Motion it steps once a second instead, as in the app.
+  let ringRun = null;
+  function runRing() {
+    if (ringRun) ringRun.cancel();
+    ringRun = null;
+    if (reducedMotion.matches || !ring.animate) return;
+    ringRun = ring.animate({ strokeDashoffset: [0, 100] }, { duration: PERIOD * 1000, iterations: Infinity });
+    ringRun.currentTime = (PERIOD - secondsLeft()) * 1000;
+  }
   function everySecond() {
     if (counterNow() !== shownCounter) showAccount(true);
-    const ending = secondsLeft() < 5;
+    const left = secondsLeft();
+    const ending = left < 5;
     account.querySelector('.next').classList.toggle('soon', ending);
     account.querySelector('.ringed').classList.toggle('ending', ending);
-    drawRing();
+    if (!ringRun) {
+      ring.style.strokeDashoffset = ((1 - Math.ceil(left) / PERIOD) * 100).toFixed(2);
+    } else if (Math.abs(ringRun.currentTime % (PERIOD * 1000) - (PERIOD - left) * 1000) > 250) {
+      // Back in step with the clock, after the device slept or the tab was held back.
+      ringRun.currentTime = (PERIOD - left) * 1000;
+    }
   }
-  // Reduce Motion steps the ring once a second, as the app does, rather than running it down smoothly.
-  (function everyFrame() {
-    if (!reducedMotion.matches) drawRing();
-    requestAnimationFrame(everyFrame);
-  })();
 
   showProfile(0);
-  darkScheme.addEventListener('change', () => showProfile(open));
+  runRing();
+  everySecond();
+  // The tiles are drawn again in the new scheme's colours, so a tile that had the keyboard is given it back.
+  darkScheme.addEventListener('change', () => {
+    const focused = document.activeElement && document.activeElement.closest('.tile');
+    const at = focused ? focused.dataset.account : null;
+    showProfile(open);
+    if (at !== null) tiles.querySelector(`[data-account="${at}"]`).focus();
+  });
+  reducedMotion.addEventListener('change', () => { ring.style.strokeDashoffset = ''; runRing(); everySecond(); });
   setInterval(everySecond, 500);
+
+  // The spheres rest while the band is off screen, as the app's do. They run until an observer says otherwise, so a
+  // browser without one loses nothing.
+  if ('IntersectionObserver' in window) {
+    const bandElement = document.querySelector('.band');
+    new IntersectionObserver(entries => {
+      bandElement.classList.toggle('resting', !entries[entries.length - 1].isIntersecting);
+    }).observe(bandElement);
+  }
 }

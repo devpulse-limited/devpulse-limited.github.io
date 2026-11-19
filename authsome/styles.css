@@ -16,6 +16,7 @@
   --muted: #6B6878;
   --line: rgba(20, 16, 40, .12);
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --bar-height: 76px;     /* the header's height, which the band leaves clear at its top on the home page */
   --squircle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C88 0 100 12 100 50S88 100 50 100 0 88 0 50 12 0 50 0Z'/%3E%3C/svg%3E");
 }
 @media (prefers-color-scheme: dark) {
@@ -33,55 +34,77 @@ button { font: inherit; color: inherit; }
 .squircle { -webkit-mask: var(--squircle) center / 100% 100% no-repeat; mask: var(--squircle) center / 100% 100% no-repeat; }
 .skip-link { position: absolute; left: 16px; top: -60px; z-index: 10; padding: 10px 16px; border-radius: 12px; background: var(--ink); color: var(--base); font-weight: 600; text-decoration: none; }
 .skip-link:focus { top: 12px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 :focus-visible { outline: 3px solid currentColor; outline-offset: 3px; border-radius: 6px; }
+/* A violet button's own text is white, which would not show as a ring on a white plate. */
+.button:focus-visible { outline-color: var(--accent); }
 
 /* ---- The screen: the band in the Brand colour, and its wash behind the tiles ---- */
 /* The wash is the app's AppBackground: the Brand colour fading down the screen, with a little more in the top corner.
    Its last stretch fades into the page, so the screen has no hard edge where the rest of the page begins. */
 .screen { background: linear-gradient(transparent calc(100% - 140px), var(--base)), radial-gradient(520px circle at 100% 0, color-mix(in srgb, var(--tint) var(--wash-corner), transparent), transparent), linear-gradient(color-mix(in srgb, var(--tint) var(--wash-top), transparent), color-mix(in srgb, var(--tint) 4%, transparent)), var(--base); transition: --tint .6s; }
-.band { position: relative; overflow: hidden; isolation: isolate; color: var(--on-brand, #fff); background: #FF4500; }
+.band { position: relative; overflow: hidden; isolation: isolate; padding-top: var(--bar-height); color: var(--on-brand, #fff); background: #FF4500; }
 /* The hero's colour, as the app's HeroBackground builds it: the Brand's shades (drawn by script.js), soft spheres in
    its tones, a glow from the top corner, a shade along the bottom edge and a large faded logo. */
-.band-colours, .band-colour { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
-.band-colour { background-size: 100% 100%; animation: colour-in .5s ease both; }
+.band-layers, .band-colour { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+.band-colour { background-size: 100% 100%; animation: colour-in .5s ease both; }   /* FADE in script.js is this .5s */
 @keyframes colour-in { from { opacity: 0; } }
 .sphere { position: absolute; left: calc(var(--x) * 1%); top: calc(var(--y) * 1%); width: calc(var(--size) * 1.3%); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; background: radial-gradient(closest-side, var(--tone) 0%, color-mix(in srgb, var(--tone) 70%, transparent) 30%, transparent 100%); animation: drift 47s ease-in-out infinite alternate; }
 .sphere:nth-child(2) { animation-duration: 61s; animation-delay: -17s; }
 .sphere:nth-child(3) { animation-duration: 53s; animation-delay: -31s; }
 .sphere:nth-child(4) { animation-duration: 71s; animation-delay: -46s; }
+/* script.js rests the spheres while the band is off screen, where nobody can see them move. */
+.band.resting .sphere { animation-play-state: paused; }
 @keyframes drift { 0% { transform: translate(-14%, 8%) scale(.94); } 50% { transform: translate(10%, -12%) scale(1.06); } 100% { transform: translate(16%, 12%) scale(1); } }
 .light { position: absolute; inset: 0; background: linear-gradient(transparent 70%, rgb(0 0 0 / .14)), radial-gradient(380px circle at 0 0, rgb(255 255 255 / .22), transparent); }
 @media (prefers-color-scheme: dark) { .light { background-color: rgb(0 0 0 / .12); } }
 .watermark { position: absolute; right: max(-70px, (100% - 1000px) / 2 - 210px); bottom: -47px; width: 280px; height: 280px; rotate: -14deg; opacity: .1; }
 .watermark svg { width: 100%; height: 100%; fill: currentColor; }
 /* The app's GrainTexture: a tile of fine noise over the whole hero, the logo too, so it reads as one printed surface. */
-.grain { position: absolute; inset: 0; mix-blend-mode: overlay; opacity: .1; }
-.bar { position: relative; display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
-.brand { display: inline-flex; align-items: center; gap: 10px; color: inherit; font-size: 19px; font-weight: 700; letter-spacing: -.02em; text-decoration: none; }
-.bar nav { display: flex; gap: 22px; }
-.bar nav a { color: inherit; font-size: 15px; font-weight: 500; text-decoration: none; opacity: .86; }
-.bar nav a:hover, .bar nav a[aria-current] { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+.grain { position: absolute; inset: 0; z-index: -1; mix-blend-mode: overlay; opacity: .1; pointer-events: none; }
+.bar { position: relative; display: flex; align-items: center; justify-content: space-between; height: var(--bar-height); }
+/* On the home page the header is outside main, laid over the top of the band in the band's text colour. */
+.over-band { position: absolute; z-index: 2; top: 0; left: 0; right: 0; color: var(--on-brand, #fff); }
+.brand { flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: inherit; font-size: 19px; font-weight: 700; letter-spacing: -.02em; text-decoration: none; }
+.bar nav { display: flex; gap: 8px; margin-inline-end: -14px; }
+.bar nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 99px; color: inherit; font-size: 15px; font-weight: 600; text-decoration: none; }
+.bar nav a:hover, .bar nav a[aria-current] { text-decoration: underline; text-underline-offset: 4px; }
+/* Over the band the wordmark and the links sit on glass, dark under white text and light under black (script.js sets
+   --glass), so small text reads on any Brand colour and under the glow in the band's top corner. */
+.over-band nav { margin-inline-end: 0; }
+.over-band nav a, .over-band .brand { background: var(--glass, rgb(0 0 0 / .3)); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .2); }
+.over-band .brand { padding: 0 14px 0 5px; border-radius: 99px; }
 
 .band-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end; padding: clamp(40px, 8vw, 96px) 0 clamp(32px, 5vw, 52px); }
 h1 { font-size: clamp(40px, 5.6vw, 68px); font-weight: 700; line-height: 1.02; letter-spacing: -.035em; text-wrap: balance; }
-.pitch p { margin: 18px 0 26px; font-size: 20px; opacity: .88; }
-.store-button { display: inline-grid; padding: 9px 22px 10px; border-radius: 14px; background: #000; color: #fff; line-height: 1.15; text-decoration: none; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22); }
+/* The glow in the band's top corner lightens the colour under the headline, at any width to under 3 to 1 for some
+   Brands. A soft shade behind white letters gives that back (script.js sets it to none under black text). */
+.pitch h1 { text-shadow: var(--headline-shade, 0 1px 14px rgb(0 0 0 / .3)); }
+/* 24px, so it counts as large text: the Brand's own shades hold white to 3 to 1, which is enough for large text only. */
+.pitch p { margin: 18px 0 26px; font-size: 24px; line-height: 1.3; letter-spacing: -.01em; text-wrap: pretty; }
+.store-button { display: inline-grid; padding: 9px 22px 10px; border: 0; border-radius: 14px; background: #000; color: #fff; font: inherit; line-height: 1.15; text-align: start; text-decoration: none; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22); }
+button.store-button { cursor: pointer; }
 .store-button small { font-size: 12px; opacity: .8; }
 .store-button strong { font-size: 21px; font-weight: 600; letter-spacing: -.01em; }
 
 /* The chosen Account, as the app's hero shows it */
-.chip { display: inline-flex; align-items: center; gap: 7px; height: 36px; padding: 0 15px; border: 0; border-radius: 99px; background: rgba(0, 0, 0, .18); color: inherit; font-size: 15px; font-weight: 600; cursor: pointer; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .26), inset 0 1px 0 rgba(255, 255, 255, .2); -webkit-backdrop-filter: blur(12px) saturate(1.4); backdrop-filter: blur(12px) saturate(1.4); }
+.chip { display: inline-flex; align-items: center; gap: 7px; height: 44px; padding: 0 15px; border: 0; border-radius: 99px; background: rgba(0, 0, 0, .18); color: inherit; font-size: 15px; font-weight: 600; cursor: pointer; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .26), inset 0 1px 0 rgba(255, 255, 255, .2); -webkit-backdrop-filter: blur(12px) saturate(1.4); backdrop-filter: blur(12px) saturate(1.4); }
 .chip:hover { background: rgba(0, 0, 0, .26); }
 .chip svg { width: 14px; height: 14px; }
 .profile { position: relative; margin-bottom: 22px; }
-.profile-menu { position: absolute; z-index: 5; top: 44px; left: 0; min-width: 200px; margin: 0; padding: 6px; list-style: none; border-radius: 18px; background: var(--plate); color: var(--ink); box-shadow: 0 18px 44px rgba(0, 0, 0, .28), 0 0 0 1px var(--line); }
+.profile-menu { position: absolute; z-index: 5; top: 52px; left: 0; min-width: 200px; margin: 0; padding: 6px; list-style: none; border-radius: 18px; background: var(--plate); color: var(--ink); box-shadow: 0 18px 44px rgba(0, 0, 0, .28), 0 0 0 1px var(--line); }
 .profile-menu[hidden] { display: none; }
-.profile-menu button { display: flex; align-items: center; gap: 8px; width: 100%; padding: 9px 12px; border: 0; border-radius: 12px; background: none; font-size: 16px; text-align: start; cursor: pointer; }
-.profile-menu button:hover, .profile-menu button:focus-visible { background: color-mix(in srgb, var(--ink) 8%, transparent); outline: none; }
+.profile-menu button { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 44px; padding: 9px 12px; border: 0; border-radius: 12px; background: none; font-size: 16px; text-align: start; cursor: pointer; }
+.profile-menu button:hover, .profile-menu button:focus-visible { background: color-mix(in srgb, var(--ink) 8%, transparent); }
+.profile-menu button:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; border-radius: 12px; }
 .profile-menu svg { width: 15px; height: 15px; visibility: hidden; }
 .profile-menu [aria-checked="true"] svg { visibility: visible; }
-.account:empty { display: none; }   /* without scripts the pitch stands alone */
+.account { min-width: 0; }
+/* Until script.js draws the chosen Account, its room is kept (the Profile button, the icon, the 2FA code and the
+   Next line, added up), so nothing below moves down when it arrives. The no-script style in index.html gives it up. */
+.account:empty { min-height: calc(170px + clamp(52px, 6.4vw, 80px)); }
 .who { display: flex; align-items: center; gap: 14px; }
+.who > div { min-width: 0; }
 .ringed { position: relative; flex: none; width: 58px; height: 58px; }
 .ringed > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .ringed > svg path { fill: none; stroke: currentColor; stroke-width: 5; stroke-linecap: round; }
@@ -91,17 +114,25 @@ h1 { font-size: clamp(40px, 5.6vw, 68px); font-weight: 700; line-height: 1.02; l
 .icon { display: grid; place-items: center; background: var(--fill); color: var(--ink); }
 .icon svg { width: 56%; height: 56%; fill: currentColor; }
 .issuer { font-size: 20px; font-weight: 700; line-height: 1.2; }
-.account-name { font-size: 15px; opacity: .82; }
+/* The Account name and the Next line are small text, so they keep the whole text colour. The Next line is a little
+   fainter until its last five seconds in the dark only, where it still measures above 4.5 to 1. A long Account name
+   is cut short with an ellipsis, as in the app. */
+.account-name { overflow: hidden; font-size: 15px; text-overflow: ellipsis; white-space: nowrap; }
 .code-row { margin-top: 14px; }
 .code { font-size: clamp(52px, 6.4vw, 80px); font-weight: 700; line-height: 1; letter-spacing: -.015em; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.next { margin-top: 8px; font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; opacity: .6; transition: opacity .3s; }
-.next.soon { opacity: 1; }
+.next { margin-top: 8px; font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; transition: opacity .3s; }
+@media (prefers-color-scheme: dark) { .next:not(.soon) { opacity: .9; } }
 .code-changing .code { animation: code-rise .45s ease; }
 @keyframes code-rise { from { opacity: 0; transform: translateY(35%) scale(.85); } }
 
 /* The other Accounts, as the Grid's tiles */
 .tiles-area { padding: 30px 0 clamp(48px, 7vw, 80px); }
-.folder { margin: 6px 0 12px; color: var(--muted); font-size: 16px; font-weight: 600; }
+.demo-note { margin: 0 0 24px; font-size: 15px; }
+/* The first Profile's tiles are this tall, here and in the phone layout below, so the room is kept until script.js
+   draws them and the page below does not move down. Measure again if that Profile's Accounts or Folders change. */
+#tiles:empty { min-height: 284px; margin-bottom: 22px; }   /* 22px is the last list of tiles' own margin */
+/* Folder headings are small text on the wash, where the muted grey measured under 4.5 to 1 in the light. */
+.folder { margin: 6px 0 12px; color: color-mix(in srgb, var(--ink) 75%, transparent); font-size: 16px; font-weight: 600; letter-spacing: normal; }
 .tiles { display: grid; grid-template-columns: repeat(6, 1fr); gap: 22px 8px; margin: 0 0 22px; padding: 0; list-style: none; }
 .tile { display: grid; justify-items: center; gap: 8px; width: 100%; padding: 0; border: 0; background: none; font-size: 14px; font-weight: 500; cursor: pointer; }
 .tile-icon { position: relative; width: 84px; padding: 5px; filter: drop-shadow(0 3px 7px var(--shadow)); transition: transform .2s; }
@@ -113,8 +144,12 @@ h1 { font-size: clamp(40px, 5.6vw, 68px); font-weight: 700; line-height: 1.02; l
 .tile[aria-pressed="true"] .tile-icon > svg { opacity: 1; }
 .tile[aria-pressed="true"] .tile-icon .icon { transform: scale(.9); }
 .capture { border-radius: 14px; box-shadow: 0 0 0 1px var(--line); }
+/* If accounts.js does not arrive there is nothing to draw, so script.js sets no-demo and the page stands as it does
+   without scripts (the style in the head of index.html): the pitch alone, no room kept, and the Mac capture. */
+.no-demo .band-grid { grid-template-columns: minmax(0, 620px); }
+.no-demo .account, .no-demo .demo-note, .no-demo #tiles { display: none; }
 
-/* ---- What it does, in the app's own words ---- */
+/* ---- What it does ---- */
 .what { margin-top: clamp(40px, 6vw, 72px); }
 h2 { margin-bottom: 18px; font-size: clamp(26px, 3.4vw, 34px); font-weight: 700; letter-spacing: -.025em; }
 .facts { margin-block: 0 clamp(48px, 7vw, 80px); }
@@ -123,12 +158,21 @@ h2 { margin-bottom: 18px; font-size: clamp(26px, 3.4vw, 34px); font-weight: 700;
 .facts dt { font-size: 20px; font-weight: 700; letter-spacing: -.015em; }
 .facts dd { max-width: 34em; margin: 0; color: var(--muted); font-size: 19px; }
 
-.shots { display: grid; max-width: 760px; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 3vw, 32px); margin-bottom: clamp(48px, 7vw, 80px); }
-.shots img { border-radius: clamp(18px, 3.4vw, 38px); box-shadow: 0 0 0 1px var(--line); }
+/* Three across at every width. On a phone they are a strip to glance at, as the screen above shows the detail. */
+.shots { display: grid; grid-template-columns: repeat(3, minmax(0, 232px)); gap: clamp(12px, 3vw, 32px); margin-bottom: clamp(48px, 7vw, 80px); }
+.shots figure { margin: 0; }
+.shots figcaption { margin-top: 8px; color: var(--muted); font-size: 14px; text-align: center; }
+/* The Work capture is there twice, light and dark, each in a link to its own file, and one of the two is shown. */
+.shots .in-dark { display: none; }
+@media (prefers-color-scheme: dark) { .shots .in-light { display: none; } .shots .in-dark { display: block; } }
+.shots a { display: block; border-radius: clamp(18px, 3.4vw, 38px); }
+.shots a:focus-visible { outline-color: var(--accent); }
+.shots img { width: 100%; border-radius: clamp(18px, 3.4vw, 38px); box-shadow: 0 0 0 1px var(--line); }
 
 .site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding: 0 0 44px; color: var(--muted); font-size: 15px; }
 .site-footer a { color: inherit; }
-.site-footer p:nth-child(2) { display: flex; gap: 22px; }
+.site-footer p:nth-child(2) { display: flex; gap: 22px; margin-block: -10px; }
+.site-footer p:nth-child(2) a { display: inline-flex; align-items: center; min-height: 44px; }
 .site-footer .note { flex-basis: 100%; max-width: 46em; font-size: 13px; }
 
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 24px; border: 0; border-radius: 99px; background: #5B2EE0; color: #fff; font-size: 16px; font-weight: 600; text-decoration: none; cursor: pointer; }
@@ -138,22 +182,54 @@ dialog h2 { font-size: 24px; letter-spacing: -.02em; }
 dialog p { margin: 10px 0 20px; color: var(--muted); }
 
 @media (max-width: 760px) {
-  .band-grid { grid-template-columns: 1fr; gap: 40px; }
+  /* One column on a phone. The pitch gives up its box so the chosen Account can sit above the App Store badge, which
+     brings the 2FA code up the page. Measured at 375 by 812, the 2FA code ends 585px down and the line above the
+     tiles 791px down. At 320 by 640 the 2FA code is still cut by the first screen's edge. Tab reaches the badge
+     before the Profile button, as in the HTML. */
+  .band-grid { grid-template-columns: 1fr; gap: 0; padding: 16px 0 28px; }
+  .pitch { display: contents; }
+  .account { order: 1; margin-bottom: 22px; }
+  .store-button { order: 2; justify-self: start; }
+  .over-band .brand { gap: 8px; padding-inline-end: 12px; }
+  .over-band nav { gap: 6px; }
+  .over-band nav a { padding: 0 12px; }
+  .pitch p { margin: 14px 0 20px; }
+  .tiles-area { padding-top: 22px; }
+  #tiles:empty { min-height: 351px; }
   .tiles { grid-template-columns: repeat(4, 1fr); gap: 18px 4px; }
-  .tile { font-size: 12px; }
+  .tile { font-size: 13px; }
   .tile-icon { width: 64px; padding: 4px; }
   .facts div { grid-template-columns: 1fr; }
   .facts dd { font-size: 17px; }
 }
 
+/* At the narrowest phones the wordmark, which never shrinks, and the two links do not fit the column side by side.
+   So the links take less padding on all three pages, and the header over the band, whose wordmark and links are
+   wider for their glass, takes a little of the page's margin as well. */
+@media (max-width: 359px) {
+  .brand { gap: 6px; }
+  .bar nav { gap: 4px; margin-inline-end: -9px; }
+  .bar nav a { padding: 0 9px; }
+  .over-band.bar { width: calc(100% - 24px); }
+  .over-band nav { margin-inline-end: 0; }
+  .over-band nav a { padding: 0 8px; font-size: 14px; }
+  .over-band .brand { gap: 6px; padding-inline-end: 10px; }
+}
+
 /* ---- Privacy and Support: the app's sub-screens, the system's grouped background with plain plates ---- */
 .sub { --base: #F2F2F7; }
 @media (prefers-color-scheme: dark) { .sub { --base: #000; } }
-.sub .bar { color: var(--ink); }
+/* The header and footer keep to the same column as the page between them. */
+.sub .bar, .sub .site-footer { width: min(720px, 100% - 40px); color: var(--ink); }
+.sub .site-footer { color: var(--muted); }
 .doc { width: min(720px, 100% - 40px); margin: 0 auto; padding: clamp(28px, 6vw, 56px) 0 72px; }
 .doc h1 { font-size: clamp(36px, 6vw, 52px); }
 .doc-lede { margin: 12px 0 30px; color: var(--muted); font-size: 19px; }
-.doc section { margin-top: 28px; }
+/* The support page's sections, as one line of links under the lede, so a visitor with one question need not scroll
+   past the rest. Each link is as tall as a touch target. */
+.doc-jump { display: flex; flex-wrap: wrap; gap: 0 20px; margin: -20px 0 22px; font-size: 15px; font-weight: 600; }
+.doc-jump a { display: inline-flex; align-items: center; min-height: 44px; }
+.doc section { margin-top: 28px; scroll-margin-top: 16px; }
 .doc section > h2 { margin: 0 0 8px 20px; color: var(--muted); font-size: 15px; font-weight: 600; }
 .plate { padding: 18px 20px; border-radius: 20px; background: var(--plate); }
 .plate > :last-child { margin-bottom: 0; }
@@ -164,7 +240,8 @@ dialog p { margin: 10px 0 20px; color: var(--muted); }
 .plate li { margin-bottom: 6px; }
 .plate .button { margin-top: 4px; }
 .doc kbd { padding: 1px 6px; border-radius: 6px; background: var(--base); font: inherit; }
-.doc .updated { margin-top: 30px; color: var(--muted); font-size: 14px; text-align: center; }
+/* The date sits straight under the lede, where a careful reader looks for it first. */
+.doc .updated { margin: -20px 0 30px; color: var(--muted); font-size: 14px; }
 
 @media (prefers-reduced-motion: reduce) {
   .screen, .tile-icon, .tile-icon .icon, .ringed .icon { transition: none; }

@@ -2,9 +2,28 @@
 
 > DevPulse (Devpulse Limited) is a UK studio that builds iOS and Android apps for clients and publishes its own apps and games. This file summarises the site for AI agents and language models.
 
+AuthSome is a free authenticator app made by DevPulse. It makes the short codes that websites and apps ask for after your password when you sign in. This is two factor authentication, also called 2FA or two step verification. These are time based one time codes, known as TOTP. AuthSome keeps personal and work Accounts apart in Profiles. An Account is one service the user has added, such as Google or GitHub.
+
+- Price: free. No ads, no subscription, no purchases and no sign up.
+- Platforms: iPhone with iOS 26 or later, iPad with iPadOS 26 or later and Mac with macOS 26 or later. One app for all three. There is no Android or Apple Watch version.
+- Status: coming soon to the App Store. It is not available to download yet.
+- Profiles: each Profile, such as Personal or Work, holds its own Accounts, and the user sees only the Profile they are in. Inside a Profile, Accounts can be sorted into Folders.
+- AutoFill: AuthSome suggests the 2FA code above the keyboard when a sign in page asks for one. The user confirms with Face ID or Touch ID.
+- Backup and sync: Accounts are backed up to the private iCloud of the user and appear on their other devices, so a new device signed in to the same Apple Account already has them. Everything the user adds is end to end encrypted, including Secrets and recovery codes. Apple cannot read it and neither can DevPulse.
+- Import and export: imports from Google Authenticator, 2FAS, Aegis, a text file of otpauth setup links and AuthSome backups. Accounts can be exported to a file protected with a password.
+- Security: the app is locked, and the user unlocks it with Face ID, Touch ID or the device passcode, or the login password on a Mac. Secrets, the keys that 2FA codes are made from, are kept in the device Keychain.
+- Recovery codes: the backup codes a service hands out can be kept with its Account. Viewing them needs Face ID, Touch ID or the passcode each time.
+- Mac menu bar: on a Mac, a menu bar panel lists the Accounts with their 2FA codes, and a click copies one.
+- Privacy: AuthSome collects nothing. It has no servers of its own, no tracking and no code from other companies.
+- Languages: 44.
+- Maker: DevPulse, United Kingdom.
+- Contact: support@devpulse.co.uk
+
+The service names and logos shown on the AuthSome page are examples. AuthSome is not affiliated with, sponsored by or endorsed by any of them.
+
 ## Apps
 
-- [AuthSome](https://devpulse.co.uk/authsome/): A free two factor authenticator app for iPhone, iPad and Mac. Details below.
+- [AuthSome](https://devpulse.co.uk/authsome/): A free authenticator app for iPhone, iPad and Mac that makes 2FA codes. Coming soon to the App Store. Its facts are above.
 - [Kids Paint](https://devpulse.co.uk/kidspaint/): A drawing and colouring app for kids on iPhone, iPad and Android.
 - [TwinFin](https://devpulse.co.uk/twinfin/): A one thumb arcade game for iPhone with a new level every day.
 - [Coconut Rocket](https://devpulse.co.uk/coconut-rocket/): An endless arcade climber for iPhone.
@@ -12,27 +31,9 @@
 
 ## AuthSome
 
-AuthSome is a free authenticator app. It makes the time based 2FA codes (one time codes, TOTP) that websites and apps ask for during two factor authentication, and keeps personal and work codes apart.
-
-- Price: free. No ads, no subscription, no purchases and no account to create.
-- Platforms: iPhone (iOS 26 or later), iPad (iPadOS 26 or later) and Mac (macOS 26 or later). One app for all three. There is no Android or Apple Watch version.
-- Status: coming soon to the App Store. It is not available to download yet.
-- Profiles: each Profile, such as Personal or Work, holds its own Accounts, and only one Profile shows at a time. Profiles can be sorted into Folders.
-- AutoFill: AuthSome suggests the 2FA code above the keyboard when a sign in page asks for one. The user confirms with Face ID.
-- Backup and sync: Accounts sync through the user's own private iCloud. Secrets, recovery codes and everything the user types are end to end encrypted. Accounts can also be exported to a file protected with a password.
-- Import: from Google Authenticator, 2FAS, Aegis, setup links (otpauth) and AuthSome backups.
-- Security: the app locks with Face ID, Touch ID or the device passcode. Secrets are kept in the device Keychain.
-- Privacy: AuthSome collects nothing. It has no servers of its own, no tracking and no code from other companies.
-- Languages: 44.
-- Maker: DevPulse, United Kingdom. Contact: support@devpulse.co.uk
-
-Pages:
-
 - [AuthSome home](https://devpulse.co.uk/authsome/): what the app is and what it does.
 - [Privacy policy](https://devpulse.co.uk/authsome/privacy/): what stays on the device, what goes to iCloud, and what is not collected.
-- [Support](https://devpulse.co.uk/authsome/support/): how to add Accounts, set up AutoFill, import from another app, back up and move to a new device.
-
-The service names and logos shown on the AuthSome page are examples. AuthSome is not affiliated with, sponsored by or endorsed by any of them.
+- [Support](https://devpulse.co.uk/authsome/support/): what the app does, what it costs and which devices it works on, then how to add Accounts, use a 2FA code, set up AutoFill, import from another app, back up and move to a new device.
 
 ## Optional
 

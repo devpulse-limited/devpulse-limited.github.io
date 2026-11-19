@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <!-- ============ SEO ============ -->
-  <title>Apps by Devpulse. Mac Utilities, Kids Paint, TwinFin, Coconut Rocket and AuthSome.</title>
-  <meta name="description" content="Explore apps made by Devpulse. Free Mac utilities for cooling and display controls, Kids Paint, our drawing and colouring app for kids, two arcade games, TwinFin and Coconut Rocket, and AuthSome, a free authenticator for iPhone, iPad and Mac.">
+  <title>Apps by Devpulse. AuthSome, Kids Paint, TwinFin and More.</title>
+  <meta name="description" content="Apps by Devpulse. A free authenticator called AuthSome, Kids Paint, the arcade games TwinFin and Coconut Rocket, and free Mac utilities.">
   <meta name="author" content="Devpulse">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://devpulse.co.uk/apps/">
@@ -16,8 +16,8 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Devpulse">
-  <meta property="og:title" content="Apps by Devpulse. Mac Utilities, Kids Paint, TwinFin, Coconut Rocket and AuthSome.">
-  <meta property="og:description" content="Discover FannyBoost, ScreenBoost, Kids Paint, TwinFin, Coconut Rocket and AuthSome. Practical Mac tools, a playful colouring app for kids, two arcade games and a free authenticator.">
+  <meta property="og:title" content="Apps by Devpulse. AuthSome, Kids Paint, TwinFin and More.">
+  <meta property="og:description" content="Discover AuthSome, Kids Paint, TwinFin, Coconut Rocket, FannyBoost and ScreenBoost. A free authenticator, a playful colouring app for kids, two arcade games and practical Mac tools.">
   <meta property="og:url" content="https://devpulse.co.uk/apps/">
   <meta property="og:locale" content="en_GB">
   <meta property="og:image" content="https://devpulse.co.uk/og.png">
@@ -27,8 +27,8 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Apps by Devpulse. Mac Utilities, Kids Paint, TwinFin, Coconut Rocket and AuthSome.">
-  <meta name="twitter:description" content="Discover FannyBoost, ScreenBoost, Kids Paint, TwinFin, Coconut Rocket and AuthSome. Practical Mac tools, a playful colouring app for kids, two arcade games and a free authenticator.">
+  <meta name="twitter:title" content="Apps by Devpulse. AuthSome, Kids Paint, TwinFin and More.">
+  <meta name="twitter:description" content="Discover AuthSome, Kids Paint, TwinFin, Coconut Rocket, FannyBoost and ScreenBoost. A free authenticator, a playful colouring app for kids, two arcade games and practical Mac tools.">
   <meta name="twitter:image" content="https://devpulse.co.uk/og.png">
 
   <!-- Favicon (inline, no extra request) + iOS home-screen icon -->
@@ -60,13 +60,14 @@
       },
       {
         "@type": "SoftwareApplication",
+        "@id": "https://devpulse.co.uk/authsome/#app",
         "name": "AuthSome",
         "url": "https://devpulse.co.uk/authsome/",
-        "description": "A free two factor authenticator app for iPhone, iPad and Mac that keeps personal and work 2FA codes apart in Profiles.",
+        "description": "A free authenticator app for iPhone, iPad and Mac. It makes the short codes that websites ask for after your password, a step known as two factor authentication or 2FA, and keeps personal and work Accounts apart in Profiles. Coming soon to the App Store.",
         "operatingSystem": "iOS 26, iPadOS 26, macOS 26",
         "applicationCategory": "UtilitiesApplication",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
-        "author": { "@type": "Organization", "name": "Devpulse", "url": "https://devpulse.co.uk/" }
+        "isAccessibleForFree": true,
+        "author": { "@type": "Organization", "@id": "https://devpulse.co.uk/#organization", "name": "DevPulse", "url": "https://devpulse.co.uk/" }
       }
     ]
   }
@@ -1031,9 +1032,11 @@
        tones drift over it, under the fine grain the app lays over its hero (GrainTexture.swift: a 256 pixel tile of
        noise, blended as overlay at a tenth strength, drawn by the script below). The app icon sits inside its
        countdown ring above a sample 2FA code, which counts 000 000 to 999 999 and turns each time the ring runs
-       out, every 10 seconds, so it is seen to turn. */
+       out, every 10 seconds, so it is seen to turn. The label and the paragraph are small text that can lie over
+       the lightest sphere, so they are full white with a soft shade behind the letters. The turning colour and the
+       spheres rest while the card is off screen (the script below sets as-resting). */
     @property --as-turn { syntax:"<angle>"; inherits:false; initial-value:120deg; }
-    .as-feature { position:relative; overflow:hidden; isolation:isolate; display:grid; grid-template-columns:1.15fr 1fr; gap:40px; align-items:center; margin-top:28px; padding:clamp(24px,5vw,56px); border-radius:var(--radius,24px); color:#fff; font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,"Segoe UI",Roboto,sans-serif; background:linear-gradient(var(--as-turn),#2a0f7d 0%,#5b2ee0 50%,#8a1fd6 100%); box-shadow:0 24px 60px -20px #631fdb99,inset 0 0 0 1px #ffffff1f; animation:as-turn 26s linear infinite; }
+    .as-feature { position:relative; overflow:hidden; isolation:isolate; scroll-margin-top:90px; display:grid; grid-template-columns:1.15fr 1fr; gap:40px; align-items:center; margin-top:28px; padding:clamp(24px,5vw,56px); border-radius:var(--radius,24px); color:#fff; font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,"Segoe UI",Roboto,sans-serif; background:linear-gradient(var(--as-turn),#2a0f7d 0%,#5b2ee0 50%,#8a1fd6 100%); box-shadow:0 24px 60px -20px #631fdb99,inset 0 0 0 1px #ffffff1f; animation:as-turn 26s linear infinite; }
     @keyframes as-turn { to { --as-turn:480deg; } }
     .as-sphere { position:absolute; z-index:-2; left:var(--x); top:var(--y); width:var(--size); aspect-ratio:1; translate:-50% -50%; border-radius:50%; background:radial-gradient(closest-side,var(--tone) 0%,color-mix(in srgb,var(--tone) 65%,transparent) 35%,transparent 100%); animation:as-drift 17s ease-in-out infinite alternate; }
     .as-sphere:nth-of-type(2) { animation-name:as-drift-2; animation-duration:23s; animation-delay:-9s; }
@@ -1042,9 +1045,10 @@
     @keyframes as-drift { 0% { transform:translate(-38%,22%) scale(.85); } 50% { transform:translate(30%,-26%) scale(1.15); } 100% { transform:translate(46%,30%) scale(1); } }
     @keyframes as-drift-2 { 0% { transform:translate(34%,-30%) scale(1.1); } 50% { transform:translate(-28%,18%) scale(.9); } 100% { transform:translate(-50%,-22%) scale(1.2); } }
     .as-grain { position:absolute; inset:0; z-index:-1; mix-blend-mode:overlay; opacity:.1; pointer-events:none; }
-    .as-label { margin:0; color:#ffffffd9; font-size:14px; font-weight:600; }
+    .as-feature.as-resting, .as-feature.as-resting .as-sphere { animation-play-state:paused; }
+    .as-label { margin:0; color:#fff; font-size:14px; font-weight:600; text-shadow:0 0 2px #1a063f99,0 1px 10px #1a063f99; }
     .as-brand { margin:12px 0 14px; font-size:clamp(40px,5vw,60px); font-weight:700; letter-spacing:-.04em; line-height:1.05; }
-    .as-feature p { max-width:440px; margin:0; color:#ffffffe0; line-height:1.7; }
+    .as-feature p { max-width:440px; margin:0; color:#fff; line-height:1.7; text-shadow:0 0 2px #1a063f99,0 1px 10px #1a063f99; }
     .as-link { display:inline-flex; align-items:center; margin-top:22px; padding:13px 24px; border-radius:999px; background:#fff; color:#4a1ec8; font-size:16px; font-weight:700; text-decoration:none; box-shadow:0 10px 26px #2a0c7a66; transition:transform .15s; }
     .as-link:hover { transform:translateY(-2px); }
     .as-link:focus-visible { outline:3px solid #fff; outline-offset:4px; }
@@ -1053,13 +1057,12 @@
     .as-timer { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
     .as-timer path { fill:none; stroke:#fff; stroke-width:5; stroke-linecap:round; }
     .as-timer .as-track { opacity:.22; }
-    .as-ringed img { position:absolute; inset:12%; width:76%; height:76%; -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C88 0 100 12 100 50S88 100 50 100 0 88 0 50 12 0 50 0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C88 0 100 12 100 50S88 100 50 100 0 88 0 50 12 0 50 0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; transition:transform .3s; }
+    .as-ringed img { --as-squircle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C88 0 100 12 100 50S88 100 50 100 0 88 0 50 12 0 50 0Z'/%3E%3C/svg%3E"); position:absolute; inset:12%; width:76%; height:76%; -webkit-mask:var(--as-squircle) center / 100% 100% no-repeat; mask:var(--as-squircle) center / 100% 100% no-repeat; transition:transform .3s; }
     .as-ringed.ending img { transform:scale(1.07); }
-    .as-ringed img { box-shadow:0 0 0 0 #fff0; filter:drop-shadow(0 10px 22px #12043a99); }
     .as-code { font-size:clamp(46px,6.2vw,76px); font-weight:700; line-height:1; letter-spacing:-.015em; font-variant-numeric:tabular-nums; white-space:nowrap; text-shadow:0 6px 24px #1a063f80; }
     .as-code.turning { animation:as-rise .5s cubic-bezier(.2,.9,.3,1.15); }
     @keyframes as-rise { from { opacity:0; transform:translateY(40%) scale(.8); } }
-    .as-next { font-size:16px; font-weight:600; font-variant-numeric:tabular-nums; opacity:.6; transition:opacity .3s; }
+    .as-next { font-size:16px; font-weight:600; font-variant-numeric:tabular-nums; opacity:.85; transition:opacity .3s; }
     .as-next.soon { opacity:1; }
     @media(max-width:700px) { .as-feature { grid-template-columns:1fr; gap:28px; } }
     @media(prefers-reduced-motion:reduce) { .as-link,.as-ringed img,.as-next { transition:none; } .as-feature,.as-sphere,.as-code.turning { animation:none; } }
@@ -1130,7 +1133,7 @@
           Useful tools. <span class="grad-text">Playful possibilities.</span>
         </h1>
         <p class="hero-sub reveal" style="--d:.16s">
-          The same care we put into client work goes into our own apps. Discover practical Mac utilities, a colourful new space for kids to create, and two arcade games made for one thumb.
+          The same care we put into client work goes into our own apps. Discover practical Mac utilities, a colourful new space for kids to create, two arcade games made for one thumb, and a free authenticator.
         </p>
       </div>
     </section>
@@ -1210,11 +1213,11 @@
           <div>
             <p class="as-label">Made by Devpulse. Coming soon to iPhone, iPad and Mac.</p>
             <h3 class="as-brand">AuthSome</h3>
-            <p>Every 2FA code in its place. A free two factor authenticator app that keeps personal and work 2FA codes apart in Profiles. No ads, no account and nothing collected.</p>
+            <p>A free authenticator app. It makes the short 2FA codes websites ask for after your password, and keeps your personal and work ones apart. No ads, no sign up and nothing collected.</p>
             <a class="as-link" href="../authsome/">Explore AuthSome <svg class="twin-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
           <div class="as-hero" role="img" aria-label="The AuthSome app icon inside a countdown ring, above a sample 2FA code.">
-            <span class="as-ringed" id="as-ringed"><svg class="as-timer" viewBox="-4 -4 108 108" aria-hidden="true"><path class="as-track" d="M50 0C12 0 0 12 0 50C0 88 12 100 50 100C88 100 100 88 100 50C100 12 88 0 50 0Z"/><path id="as-ring" pathLength="100" stroke-dasharray="100" d="M50 0C12 0 0 12 0 50C0 88 12 100 50 100C88 100 100 88 100 50C100 12 88 0 50 0Z"/></svg><img src="../authsome/assets/app-icon.png" width="512" height="512" loading="lazy" alt=""></span>
+            <span class="as-ringed" id="as-ringed"><svg class="as-timer" viewBox="-4 -4 108 108" aria-hidden="true"><path class="as-track" d="M50 0C12 0 0 12 0 50C0 88 12 100 50 100C88 100 100 88 100 50C100 12 88 0 50 0Z"/><path id="as-ring" pathLength="100" stroke-dasharray="100" d="M50 0C12 0 0 12 0 50C0 88 12 100 50 100C88 100 100 88 100 50C100 12 88 0 50 0Z"/></svg><img src="../authsome/assets/app-icon-256.jpg" width="256" height="256" loading="lazy" alt=""></span>
             <span class="as-code" id="as-code" aria-hidden="true">111 111</span>
             <span class="as-next" id="as-next" aria-hidden="true">Next 222 222</span>
           </div>
@@ -1593,13 +1596,17 @@
         var asNext = document.getElementById("as-next");
         var asRinged = document.getElementById("as-ringed");
         var asShown = -1;
+        /* The browser's own animation runs the ring down, so nothing here draws each frame. With Reduce Motion, or
+           without that animation, the ring steps once a second instead. */
+        var asRun = !reduced && asRing.animate ? asRing.animate({ strokeDashoffset: [0, 100] }, { duration: asPeriod * 1000, iterations: Infinity }) : null;
         var asSample = function (counter) { var digit = String(counter % 10); return digit + digit + digit + " " + digit + digit + digit; };
         var asTick = function () {
           var seconds = Date.now() / 1000;
           var counter = Math.floor(seconds / asPeriod);
           var left = asPeriod - seconds % asPeriod;
           /* The ring's path runs anticlockwise from the top, so hiding its end empties it clockwise, as in the app. */
-          asRing.style.strokeDashoffset = ((1 - (reduced ? Math.ceil(left) : left) / asPeriod) * 100).toFixed(2);
+          if (!asRun) asRing.style.strokeDashoffset = ((1 - Math.ceil(left) / asPeriod) * 100).toFixed(2);
+          else if (Math.abs(asRun.currentTime % (asPeriod * 1000) - (asPeriod - left) * 1000) > 250) asRun.currentTime = (asPeriod - left) * 1000;
           asNext.classList.toggle("soon", left < 3);
           asRinged.classList.toggle("ending", left < 3);
           if (counter !== asShown) {
@@ -1627,8 +1634,16 @@
         asGrain.style.background = "url(" + asTile.toDataURL() + ") 0 0 / " + (256 / (window.devicePixelRatio || 1)) + "px";
 
         asTick();
-        if (reduced) setInterval(asTick, 1000);
-        else (function asFrame() { asTick(); requestAnimationFrame(asFrame); })();
+        setInterval(asTick, 250);
+
+        /* The turning colour repaints the whole card, so it and the spheres rest while the card is off screen. They
+           run until an observer says otherwise, so a browser without one loses nothing. */
+        if ("IntersectionObserver" in window) {
+          var asCard = document.getElementById("authsome");
+          new IntersectionObserver(function (entries) {
+            asCard.classList.toggle("as-resting", !entries[entries.length - 1].isIntersecting);
+          }).observe(asCard);
+        }
       }
 
       /* ---------- Footer year ---------- */

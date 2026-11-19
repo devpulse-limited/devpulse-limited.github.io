@@ -1,6 +1,6 @@
 // The Accounts the live screen shows: the app's own screenshot Accounts (ScreenshotAccounts.swift in the AuthSome repo),
 // with each Brand's colour and logo from the app's bundled catalogue. The logos are Simple Icons (simpleicons.org, CC0).
-// `colour` is the Brand's own colour; script.js works out the shades the app draws it in. Generated; see README.md.
+// `colour` is the Brand's own colour; script.js works out the shades the app draws it in. Made from those two sources; README.md says how.
 const PROFILES = [
  {
   "name": "Personal",
