@@ -72,6 +72,11 @@ data that says what to write next comes from Google Search Console (the `sc-doma
   into `guides/<slug>/index.html` and the index. Change a content file, never the rendered page, then run
   `python3 lint.py && python3 build.py` in `_source`. The rendered pages are committed, so the site still has no
   build step. GitHub Pages does not publish a folder whose name begins with an underscore.
+- **Shared pieces.** `guides/_source/sources.json` holds each source's one name and URL, and a guide lists sources
+  by key. In a guide's text, `{{secret-key}}` and `{{entry}}` expand to the sentence that defines that word, the
+  same in every guide, and the build fails if a guide uses the word without defining it. Guides say "secret key" and
+  "entry" for other apps. Secret and Account, with capitals, are only for AuthSome. The build also checks the
+  punctuation of the rendered pages and the lengths of titles and descriptions.
 - **Adding a guide.** Add a content file (copy an existing one for its shape, and give it the next `order`), run the
   two scripts, then add its URL to `/sitemap.xml` and a line under "AuthSome Guides" in `/llms.txt`. Link to it from
   two or three guides that already get visits, in their text or their `related` list.

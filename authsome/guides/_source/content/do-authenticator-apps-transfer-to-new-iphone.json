@@ -3,7 +3,7 @@
   "order": 2,
   "title": "Do Authenticator Apps Transfer to a New iPhone?",
   "meta_title": "Do Authenticator Apps Transfer to a New iPhone?",
-  "description": "It depends on the app. See what Google, Microsoft, Apple, 2FAS, Ente and Authy say, what to turn on first, and how to check before you wipe the old one.",
+  "description": "It depends on the app. What Google, Microsoft, Apple, 2FAS, Ente, Authy and work apps say, what to turn on first, and how to check before you wipe.",
   "card": "It depends on the app. What each maker says, what to turn on first, and a safe order for switching.",
   "lede": "It depends on the app. The app itself will install again on a new iPhone, but your 2FA codes only come with it if that app syncs or backs them up, and several apps need a setting turned on before you switch. Keep the old iPhone, unwiped, until every 2FA code works on the new one.",
   "published": "2026-11-19",
@@ -11,22 +11,32 @@
   "sections": [
     {
       "h2": "Why the Answer Depends on the App",
-      "html": "<p>An authenticator app makes each code for two factor authentication, or 2FA, from a secret key that the service gave you when you first scanned its QR code. This guide calls it the Secret. Moving to a new iPhone only works if the Secrets move too, and each app keeps and moves them in its own way.</p><p>So there is no single rule for Quick Start or for restoring from an iCloud backup. Most makers do not say what a phone to phone transfer carries, and this guide does not guess. Go by what the maker of your app says, then check on the new iPhone.</p>"
+      "nav": "Why It Depends",
+      "html": "<p>Two factor authentication, or 2FA, is the short code a service asks for after your password. {{secret-key}} Moving to a new iPhone only works if the secret keys move too, and each app keeps and moves them in its own way.</p><p>So there is no single rule for Quick Start or for restoring from an iCloud backup. Most makers do not say what a phone to phone transfer carries, and this guide does not guess. Microsoft and 2FAS do cover iCloud Backup, as set out below. Go by what the maker of your app says, then check on the new iPhone.</p>"
     },
     {
       "h2": "What Each App Maker Says",
-      "html": "<div class=\"table-scroll\"><table><thead><tr><th>App</th><th>How it moves</th><th>Turn on beforehand</th></tr></thead><tbody><tr><td>Google Authenticator</td><td>Google Account sync, or export QR codes</td><td>Sign in to a Google Account in the app</td></tr><tr><td>Microsoft Authenticator</td><td>iCloud</td><td>iCloud Drive, iCloud Keychain, iCloud Backup</td></tr><tr><td>Apple Passwords</td><td>iCloud Keychain</td><td>iCloud Keychain</td></tr><tr><td>2FAS</td><td>iCloud sync, or an iPhone backup</td><td>iCloud sync in 2FAS, or iCloud Backup</td></tr><tr><td>Ente Auth</td><td>Your Ente account</td><td>Sign in to an Ente account</td></tr><tr><td>Authy</td><td>Encrypted backup</td><td>Backups, with a password you know</td></tr></tbody></table></div><h3>Google Authenticator</h3><p>Google says that if you are signed in to a Google Account in the app, your 2FA codes are saved to that account. On the new iPhone, install the app, tap Get Started and sign in to the same Google Account. If the 2FA codes were synced, they appear.</p><p>If you use it without an account, the 2FA codes are only on the old phone and you move them by QR code. Make the export QR codes on the old phone, as set out in <a href=\"../export-google-authenticator-to-another-app/\">how to export Google Authenticator to another app</a>. On the new iPhone, open the menu, choose Transfer accounts, then Import accounts, and scan each one.</p><h3>Microsoft Authenticator</h3><p>Microsoft says the old iPhone needs iCloud Drive, iCloud Keychain and iCloud Backup turned on, and Authenticator switched on in your Saved to iCloud list. It also says to update the app to version 6.8.33 or later and to open it at least once before you switch.</p><p>Not everything returns. Microsoft says the 30 second 2FA codes for personal Microsoft accounts and for other services are restored. A personal account that uses passwordless sign in comes back as a name only, and you must sign in again. So does a work or school account, which you must also register again. A backup made on an iPhone cannot be restored on Android.</p><h3>Apple Passwords</h3><p>Apple says the passwords, passkeys and verification codes in the Passwords app are available on every device where you sign in to the same Apple Account and turn on iCloud Keychain in iCloud settings. If your 2FA codes live in Passwords, check that iCloud Keychain is on before you switch.</p><h3>2FAS</h3><p>2FAS says that if iCloud Backup is on for the iPhone, 2FAS is stored in that backup and restored with it. It also recommends its own iCloud sync. Moving between Android and iPhone uses an export file instead, covered in <a href=\"../move-2fa-codes-from-android-to-iphone/\">moving 2FA codes from Android to iPhone</a>.</p><h3>Ente Auth</h3><p>Ente says that 2FA codes kept under Use without backups are never synced to Ente and cannot be restored from its servers, and that device transfers and system backups are not supported ways to recover them. If that is how you use it, make an encrypted export from the Data settings before you switch. If you use an Ente account, Ente says your 2FA codes sync to every device where you sign in to it.</p><h3>Authy</h3><p>Authy says its backups are encrypted with a password that only you know, and that it cannot recover that password. So Authy needs backups turned on, and you need to know that password. That page does not give the steps for a new phone, so follow the prompts in the app.</p>"
+      "nav": "What Each Maker Says",
+      "html": "<div class=\"table-scroll\"><table><caption>How each authenticator app moves to a new iPhone, from the pages of its maker</caption><thead><tr><th>App</th><th>How it moves</th><th>Turn on beforehand</th></tr></thead><tbody><tr><td>Google Authenticator</td><td>Google Account sync, or export QR codes</td><td>Sign in to a Google Account in the app</td></tr><tr><td>Microsoft Authenticator</td><td>iCloud</td><td>iCloud Drive, iCloud Keychain, iCloud Backup</td></tr><tr><td>Apple Passwords</td><td>iCloud Keychain</td><td>Passwords &amp; Keychain in iCloud settings</td></tr><tr><td>2FAS</td><td>iCloud sync, or an iPhone backup</td><td>iCloud sync in 2FAS, or iCloud Backup</td></tr><tr><td>Ente Auth</td><td>Your Ente account</td><td>Sign in to an Ente account</td></tr><tr><td>Authy</td><td>Encrypted backup</td><td>Backups, with a password you know</td></tr></tbody></table></div><h3>Google Authenticator</h3><p>These points are from the Google help page. If you are signed in to a Google Account in the app, your 2FA codes are saved to that account. On the new iPhone, install the app, tap Get Started and sign in to the same Google Account. If the 2FA codes were synced, they appear.</p><p>If you use it without an account, the 2FA codes are only on the old phone and you move them by QR code. Make the export QR codes on the old phone, as set out in <a href=\"../export-google-authenticator-to-another-app/\">how to export Google Authenticator to another app</a>. On the new iPhone, open the menu, choose Transfer accounts, then Import accounts, and scan each one.</p><h3>Microsoft Authenticator</h3><p>These points are from the Microsoft backup page. The old iPhone needs iCloud Drive, iCloud Keychain and iCloud Backup turned on, and Authenticator switched on in your Saved to iCloud list. Update the app to version 6.8.33 or later and open it at least once before you switch.</p><p>Not everything returns. The 30 second 2FA codes for personal Microsoft accounts and for other services are restored. A personal account that uses passwordless sign in comes back as a name only, and you must sign in again. So does a work or school account, which you must also register again. A backup made on an iPhone cannot be restored on Android.</p><h3>Apple Passwords</h3><p>The iPhone User Guide says the passwords, passkeys and verification codes in the Passwords app can be used on all your devices where you sign in to the same Apple Account and turn on Passwords &amp; Keychain in iCloud settings. Verification codes is the name Apple gives 2FA codes. If yours live in Passwords, check that setting before you switch.</p><h3>2FAS</h3><p>2FAS says that if iCloud Backup is on for the iPhone, 2FAS is stored in that backup and restored with it. It also recommends its own iCloud sync. Moving between Android and iPhone uses an export file instead, covered in <a href=\"../move-2fa-codes-from-android-to-iphone/\">moving 2FA codes from Android to iPhone</a>.</p><h3>Ente Auth</h3><p>With an Ente account, Ente says your 2FA codes sync to every device where you sign in to it. Without one, under Use without backups, Ente says they are never synced to its servers and cannot be restored from them, and that device transfers and system backups are not supported ways to recover them. If that is how you use it, make an encrypted export from the Data settings before you switch.</p><h3>Authy</h3><p>Authy says its backups are encrypted with a password that only you know, and that it cannot recover that password. So Authy needs backups turned on, and you need to know that password. That page does not give the steps for a new phone, so follow the prompts in the app.</p>"
+    },
+    {
+      "h2": "Work Apps Usually Need Your IT Team",
+      "nav": "Work Apps",
+      "html": "<p>An app your employer chose is registered with your employer, so it may not move like the apps above. Microsoft work or school accounts, as said above, have to be registered again.</p><ul><li><strong>Duo Mobile.</strong> Duo says whether a work account can be restored depends on its Duo Restore feature being turned on by the administrator at your employer, and that on iPhone it restores from a backup of the phone, such as iCloud Backup. Where it is not turned on, Duo says to contact your IT help desk. The 2FA codes for other services need a separate backup option in Duo Mobile, with a recovery password that Duo cannot reset.</li><li><strong>Okta Verify.</strong> Okta describes copying what is in Okta Verify from the old phone to a new iPhone over Bluetooth, with Okta FastPass turned on for your Okta account. That needs the old phone, so do it before you erase anything.</li></ul><p>If you are not sure, ask your IT team before you wipe the old iPhone.</p>"
     },
     {
       "h2": "A Safe Order for Switching iPhones",
-      "html": "<p><strong>Do not erase, trade in or give away the old iPhone until step 6.</strong> If the 2FA codes did not come across and the old phone is wiped, you have to recover each service one by one.</p><ol><li>On the old iPhone, turn on what your app needs from the table, then open the app once.</li><li>Save the recovery codes for the services you could least afford to lose, such as your email. Most services offer them in their security settings.</li><li>Set up the new iPhone in whichever way you prefer. Leave the old one switched on and untouched.</li><li>Open the authenticator app on the new iPhone and sign in if it asks.</li><li>Check that every Account is listed. Then hold the two phones side by side. Where both show the same 2FA code at the same moment, that Secret came across. Sign in to one service with a 2FA code from the new iPhone to be sure.</li><li>Only when every Account passes, erase the old iPhone.</li></ol><p>To keep your 2FA codes on both phones for good, see <a href=\"../authenticator-app-on-two-devices/\">using the same authenticator app on two devices</a>.</p>"
+      "nav": "A Safe Order",
+      "html": "<p><strong>Do not erase, trade in or give away the old iPhone until step 6.</strong> If the 2FA codes did not come across and the old phone is wiped, you have to recover each service one by one.</p><p>{{entry}}</p><ol><li>On the old iPhone, turn on what your app needs from the table, then open the app once.</li><li>Save the recovery codes for the services you could least afford to lose, such as your email. Most services offer them in their security settings.</li><li>Set up the new iPhone in whichever way you prefer. Leave the old one switched on and untouched.</li><li>Open the authenticator app on the new iPhone and sign in if it asks.</li><li>Check that every entry is listed. Then hold the two phones side by side. Where both show the same 2FA code at the same moment, that secret key came across. Sign in to one service with a 2FA code from the new iPhone to be sure.</li><li>Only when every entry passes, erase the old iPhone.</li></ol><p>To keep your 2FA codes on both phones for good, see <a href=\"../authenticator-app-on-two-devices/\">using the same authenticator app on two devices</a>.</p>"
     },
     {
       "h2": "If 2FA Codes Are Missing on the New iPhone",
-      "html": "<p>Stop and keep the old iPhone as it is. Then work through these.</p><ul><li><strong>Google Authenticator.</strong> Google says to tap the profile picture and check that you are still signed in, and that the 2FA codes were not saved under a different Google Account.</li><li><strong>Microsoft Authenticator.</strong> Microsoft says that if the backup does not appear, delete the app from the new iPhone and install it again. Work or school accounts always need registering again.</li><li><strong>Any app, with the old iPhone still working.</strong> Go back to the old phone, turn on the setting you missed, or use the export in the app.</li><li><strong>The old iPhone is gone.</strong> For 2FA codes in Google Authenticator that were not synced, Google says to visit each site where you set it up, remove the old 2FA codes and link the new device. Expect the same with any app that kept no backup. You sign in with a recovery code, or go through the account recovery of that service, then set up 2FA again.</li></ul>"
+      "nav": "If 2FA Codes Are Missing",
+      "html": "<p>Stop and keep the old iPhone as it is. Then work through these.</p><ul><li><strong>Google Authenticator.</strong> Google says to tap the profile icon and check that you are still signed in, and that the 2FA codes were not saved under a different Google Account.</li><li><strong>Microsoft Authenticator.</strong> Microsoft says that if the backup does not appear, delete the app from the new iPhone and install it again.</li><li><strong>Any app, with the old iPhone still working.</strong> Go back to the old phone, turn on the setting you missed, or use the export in the app.</li><li><strong>The old iPhone is gone.</strong> For 2FA codes in Google Authenticator that were not synced, Google says to visit each site where you set it up, remove the old 2FA codes and link the new device. Expect the same with any app that kept no backup. You sign in with a recovery code, or go through the recovery steps of that service, then set up 2FA again.</li></ul>"
     },
     {
       "h2": "Where AuthSome Fits",
+      "nav": "Where AuthSome Fits",
       "html": "<p>AuthSome is a free authenticator app for iPhone, iPad and Mac, coming soon to the App Store. It syncs your Profiles, Folders and Accounts through your own iCloud, end to end encrypted. On a new device you sign in to iCloud with the same Apple Account, install AuthSome and open it, and they arrive by themselves. If AuthSome says Not backed up, your Accounts are only on that device, so fix that before you switch.</p><p>AuthSome needs iOS 26, iPadOS 26 or macOS 26 or later, and has no Android version. It imports Google Authenticator export QR codes and backup files from 2FAS and Aegis. It cannot import from Authy or Microsoft Authenticator, or bring back 2FA codes that are already lost.</p>"
     }
   ],
@@ -37,50 +47,24 @@
     },
     {
       "q": "Can I Transfer My Authenticator App Without the Old Phone?",
-      "a": "Only if the app synced or backed up your 2FA codes before the old phone was lost. If it did not, use your recovery codes or the account recovery of each service, then set up 2FA again on the new iPhone."
-    },
-    {
-      "q": "Does Microsoft Authenticator Transfer From Android to a New iPhone?",
-      "a": "No. Microsoft says a backup can only be restored on the same type of device, so each account has to be added again on the iPhone."
+      "a": "Only if the app synced or backed up your 2FA codes before the old phone was lost. If it did not, use your recovery codes or the recovery steps of each service, then set up 2FA again on the new iPhone."
     },
     {
       "q": "Should I Delete the Authenticator App From My Old iPhone?",
-      "a": "Not yet. Deleting the app can delete the only copy of your 2FA codes, so wait until every Account has worked on the new iPhone."
+      "a": "Not yet. Deleting the app can delete the only copy of your 2FA codes, so wait until every entry has worked on the new iPhone."
     }
   ],
   "sources": [
-    {
-      "name": "Google Account Help, Get Verification Codes With Google Authenticator",
-      "url": "https://support.google.com/accounts/answer/1066447?hl=en&co=GENIE.Platform%3DiOS"
-    },
-    {
-      "name": "Microsoft Support, Back Up Your Accounts in Microsoft Authenticator",
-      "url": "https://support.microsoft.com/en-us/authenticator/back-up-your-accounts-in-microsoft-authenticator"
-    },
-    {
-      "name": "iPhone User Guide, Use Passwords on iPhone",
-      "url": "https://support.apple.com/guide/iphone/use-passwords-iphd18e98624/ios"
-    },
-    {
-      "name": "Apple Support, About the Passwords App",
-      "url": "https://support.apple.com/en-us/120758"
-    },
-    {
-      "name": "2FAS Support, Does iOS Backup Work With 2FAS?",
-      "url": "https://2fas.com/support/2fas-auth-mobile-app/does-ios-backup-work-with-2fas/"
-    },
-    {
-      "name": "Ente Help, Using Ente Auth Without an Account",
-      "url": "https://ente.com/help/auth/features/offline-mode"
-    },
-    {
-      "name": "Ente Help, Ente Auth FAQ",
-      "url": "https://ente.com/help/auth/faq/"
-    },
-    {
-      "name": "Authy, Features",
-      "url": "https://www.authy.com/features/"
-    }
+    "google-authenticator",
+    "microsoft-backup",
+    "apple-iphone-passwords",
+    "apple-passwords-devices",
+    "2fas-ios-backup",
+    "ente-offline",
+    "ente-faq",
+    "authy-features",
+    "duo-restore",
+    "okta-bluetooth-ios"
   ],
   "related": [
     "export-google-authenticator-to-another-app",

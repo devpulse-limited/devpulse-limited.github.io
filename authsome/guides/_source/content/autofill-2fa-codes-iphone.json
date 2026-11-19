@@ -2,46 +2,47 @@
   "slug": "autofill-2fa-codes-iphone",
   "order": 8,
   "title": "How to AutoFill 2FA Codes From an Authenticator App on iPhone",
-  "meta_title": "AutoFill 2FA Codes From an Authenticator App on iPhone.",
-  "description": "An authenticator app can offer its 2FA codes above the iPhone keyboard. How to turn it on, how Apple Passwords does it, and why a code may not show.",
-  "card": "An authenticator app can fill its 2FA codes above the iPhone keyboard. How to turn it on.",
-  "lede": "Yes, an authenticator app on iPhone can offer its 2FA codes above the keyboard, so you do not have to switch apps and copy them. The app has to support it, and you turn it on in Settings, under General, then AutoFill & Passwords. The Passwords app from Apple fills the 2FA codes it holds in the same place.",
+  "meta_title": "How to AutoFill 2FA Codes From an Authenticator on iPhone",
+  "description": "An authenticator app can offer its 2FA codes above the iPhone keyboard. How to turn it on, which apps say they do it, and why a code may not show.",
+  "card": "How to turn it on in Settings, which apps say they fill 2FA codes, and why a code may not show.",
+  "lede": "An authenticator app on iPhone can offer its 2FA codes above the keyboard, so you do not have to switch apps and copy them. The app has to support it, and you turn it on in Settings, under General, then AutoFill & Passwords. The Passwords app from Apple fills the 2FA codes it holds in the same place.",
   "published": "2026-11-19",
   "modified": "2026-11-19",
   "sections": [
     {
-      "h2": "Can a Third Party Authenticator App Fill 2FA Codes on iPhone?",
-      "html": "<p>Yes. Apple tells developers that an app can supply one time codes to AutoFill, so that people can fill them in apps and on websites without typing. These are the short codes used for two factor authentication, or 2FA. Apple also says you can set up more than one app in Settings, so one app can supply your passwords and another your 2FA codes.</p><p>So this is not limited to the Passwords app. The Apple reference page for this feature lists it as available from iOS 18 and macOS 15.</p><p>It is up to each app to build it. Having an authenticator app does not mean it can fill 2FA codes, so check the help pages of your own app.</p>"
+      "h2": "How Do You Turn On AutoFill for an Authenticator App?",
+      "nav": "Turn It On",
+      "html": "<p>The short codes used for two factor authentication, or 2FA, can be filled in for you. Apple gives this path on its support pages.</p><ol><li>Open Settings on your iPhone.</li><li>Tap General.</li><li>Tap AutoFill &amp; Passwords.</li><li>Check that AutoFill Passwords and Passkeys is turned on.</li><li>Turn on your authenticator app on the same screen.</li></ol><p>Apple confirms the path and the first switch, and says you can fill from up to three passwords apps. Its support pages do not describe the last step, so if your app is not on that screen, its maker has the answer. The next section shows what some makers say.</p><p>This is the path on the Apple pages for iOS 18, iOS 26 and iOS 27. For an older iPhone, choose your iOS version in the menu at the top of the Apple page.</p><p>On a Mac the same screen is in System Settings, under General. If you want your 2FA codes there too, see <a href=\"../authenticator-app-on-mac/\">using an authenticator app on a Mac</a>.</p>"
     },
     {
-      "h2": "How Do You Turn On AutoFill for an Authenticator App?",
-      "html": "<p>Apple gives this path on its support pages.</p><ol><li>Open Settings on your iPhone.</li><li>Tap General.</li><li>Tap AutoFill &amp; Passwords.</li><li>Check that AutoFill Passwords and Passkeys is turned on.</li><li>Turn on your authenticator app, following the steps its maker gives for this screen.</li></ol><p>Apple confirms the path and the first switch, and says you can fill from up to three passwords apps. Its support pages do not describe how to turn on another app there, which is why the last step points you to the maker of your app.</p><p>The path above is the one on the Apple pages for iOS 18, iOS 26 and iOS 27. It may differ on older versions. The Apple page has a version menu at the top, so choose the iOS version on your iPhone and read the path there.</p><p>On a Mac the same screen is in System Settings, under General. If you want your 2FA codes there too, see <a href=\"../authenticator-app-on-mac/\">using an authenticator app on a Mac</a>.</p>"
+      "h2": "Which Apps Say They Fill 2FA Codes on iPhone?",
+      "nav": "Apps That Say They Do",
+      "html": "<p>Apple tells developers that an app can supply one time codes to AutoFill, so that people can fill them in apps and on websites without typing. The Apple reference page lists the feature as available from iOS 18 and macOS 15, and it is up to each app to build it.</p><div class=\"table-scroll\"><table><caption>What each maker says about filling 2FA codes on iPhone, read on 19 November 2026</caption><thead><tr><th>App</th><th>What its maker says</th></tr></thead><tbody><tr><td>Apple Passwords</td><td>Fills the verification codes it holds, from iOS 18</td></tr><tr><td>1Password</td><td>Fills one time passwords with AutoFill on iOS 18 or later</td></tr><tr><td>Bitwarden Password Manager</td><td>Fills 2FA codes on iOS 18.0 or later. Making them needs a paid plan</td></tr><tr><td>AuthSome, coming soon</td><td>Fills 2FA codes on iOS 26 or later</td></tr><tr><td>Google Authenticator</td><td>Not mentioned on its App Store page</td></tr><tr><td>Microsoft Authenticator</td><td>Not mentioned on its App Store page</td></tr><tr><td>2FAS</td><td>Not mentioned on its App Store page</td></tr><tr><td>Ente Auth</td><td>Not mentioned on its App Store page</td></tr><tr><td>Proton Authenticator</td><td>Not mentioned on its App Store page</td></tr></tbody></table></div><p>Not mentioned means only that the UK App Store page of that app says nothing about it. It does not prove the app cannot do it, so check the help pages of your own app. The first three in the table are password managers that also hold 2FA codes. Apple says you can set up more than one app in Settings, so one app can supply your passwords and another your 2FA codes.</p>"
     },
     {
       "h2": "How Does Apple Passwords Fill 2FA Codes?",
-      "html": "<p>Passwords can hold the Secret for a service and make the 2FA codes itself, so you need no extra app. Apple calls them verification codes.</p><p>To set one up, turn on 2FA at the service on another device and choose the authenticator app option, so that it shows a QR code. Scan the QR code with the Camera on your iPhone and select your saved account for that website or app. If you cannot scan, the service can show a setup key to copy into the account in Passwords. The names of the buttons for that have changed between iOS versions, so follow the Apple page for yours.</p><p>To use one, sign in as normal. When the service asks for the 2FA code, tap the suggestion above the keyboard. If no suggestion appears, Apple says to open Passwords, select the account, tap the verification code, then tap Copy Verification Code and paste it.</p><p>The steps from Apple attach each 2FA code to an account saved in Passwords. If you want your 2FA codes kept apart from your passwords, or sorted your own way, a separate authenticator app does that. <a href=\"../free-authenticator-app-no-ads/\">Several authenticator apps are free</a>.</p>"
+      "nav": "Apple Passwords",
+      "html": "<p>{{secret-key}} Passwords can hold that secret key and make the 2FA codes itself, so you need no extra app. Apple calls them verification codes, and attaches each one to a login you have saved in Passwords. These are the steps on the Apple page, as read on 19 November 2026.</p><p>If the service shows its QR code on another device, such as a computer, scan it with the Camera on your iPhone and select your saved login for that service. Apple also says that where a website offers a QR code you can touch and hold it, then choose Add Verification in Passwords. Or use the setup key.</p><ol><li>At the service, turn on 2FA, choose the authenticator app option, then the option to use a setup key, and copy the key.</li><li>Open Passwords, tap All, then tap your saved login for the service.</li><li>Tap Edit, then tap Set Up Code.</li><li>Enter the setup key, then tap Use Setup Key.</li></ol><p>To use a 2FA code, sign in as normal. When the service asks for it, tap the suggestion above the keyboard. If no suggestion appears, Apple says to open Passwords, select your saved login, tap the verification code, then tap Copy Verification Code and paste it.</p><p>If you want your 2FA codes kept apart from your passwords, or sorted your own way, a separate authenticator app does that. <a href=\"../free-authenticator-app-no-ads/\">Several authenticator apps are free</a>.</p>"
     },
     {
       "h2": "How Does AuthSome Fill 2FA Codes?",
+      "nav": "AuthSome",
       "html": "<p>AuthSome is our own authenticator app, coming soon to the App Store for iOS 26, iPadOS 26 and macOS 26 or later. It fills 2FA codes through AutoFill on all three.</p><ol><li>In AuthSome, open Settings, then AutoFill, then tap Open Settings. This opens Settings on your device.</li><li>Turn on AuthSome.</li><li>Under Set Up Codes In, choose AuthSome.</li></ol><p>From then on, when a sign in page asks for your 2FA code, AuthSome offers it above the keyboard. It matches by the Website saved with the Account, and it offers Accounts from every Profile. You confirm with Face ID or Touch ID each time, whatever lock settings you use in the app. A 2FA code with fewer than five seconds left is not filled. AuthSome waits and fills the next one as soon as it starts.</p><p>AuthSome fills 2FA codes only. It is not a password manager, so your passwords stay in Passwords or the app you already use.</p>"
     },
     {
       "h2": "Why Is My 2FA Code Not Offered Above the Keyboard?",
-      "html": "<ul><li><strong>The app is not turned on.</strong> Go back to Settings, General, AutoFill &amp; Passwords and check both the main switch and your app.</li><li><strong>The app does not support it.</strong> Not every authenticator app has built this. Its help pages will say.</li><li><strong>The Account has no Website to match.</strong> AuthSome matches by the Website saved with the Account. Open the Account details and check that Website is the address you sign in at, for example example.com. Other apps may match in their own way, so check their help.</li><li><strong>The field is not marked for one time codes.</strong> Apple gives websites and apps a way to mark the box where the code goes as a one time code field, and says a custom made code box cannot show AutoFill at all. Apple does not say what happens when the mark is missing, but a suggestion may not appear, and nothing in your settings can change how a site is built.</li></ul><p>In every case the 2FA code still works. Open your authenticator app, copy the 2FA code and paste it in.</p>"
+      "nav": "When No 2FA Code Is Offered",
+      "html": "<ul><li><strong>The app is not turned on.</strong> Go back to Settings, General, AutoFill &amp; Passwords and check both the main switch and your app.</li><li><strong>The app does not support it.</strong> Not every authenticator app has built this. Its help pages will say.</li><li><strong>The app has no website to match.</strong> AuthSome matches by the Website saved with the Account. Open the Account details and check that Website is the address you sign in at, for example example.com. Other apps may match in their own way, so check their help.</li><li><strong>The field is not marked for one time codes.</strong> Apple gives websites and apps a way to mark the box where the code goes as a one time code field, and says a custom made code box cannot show AutoFill at all. Apple does not say what happens when the mark is missing, but a suggestion may not appear, and nothing in your settings can change how a site is built.</li></ul><p>In every case the 2FA code still works. Open your authenticator app, copy the 2FA code and paste it in.</p>"
     }
   ],
   "faq": [
     {
       "q": "Why Is My Apple Passwords Verification Code Not Working?",
-      "a": "If the suggestion does not appear above the keyboard, Apple says to open Passwords, select the account, copy the verification code and paste it into the sign in page."
+      "a": "If no suggestion appears above the keyboard, Apple says to open Passwords, select your saved login, copy the verification code and paste it into the sign in page. If the service rejects the code, check that it belongs to the login you are using and that the date and time on your iPhone are right, because each code is worked out from the time."
     },
     {
       "q": "Can You AutoFill 2FA Codes on a Mac?",
       "a": "Yes. Apple puts the same AutoFill settings in System Settings on a Mac, under General, and the Passwords app fills verification codes there. AuthSome fills 2FA codes on macOS 26 or later."
-    },
-    {
-      "q": "Do You Have to Stop Using Apple Passwords to Use Another App for 2FA Codes?",
-      "a": "No. Apple says different apps can supply passwords and one time codes to AutoFill, so Passwords can keep your passwords while an authenticator app fills the 2FA codes."
     },
     {
       "q": "Which iOS Version Do You Need to AutoFill 2FA Codes From a Third Party App?",
@@ -49,38 +50,25 @@
     },
     {
       "q": "Does iPhone Delete 2FA Codes After Filling Them?",
-      "a": "Apple has a switch called Delete After Use under Verification Codes on the AutoFill settings screen. Apple describes it as deleting verification codes after AutoFill enters them, and you can turn it on or off."
+      "a": "Not the ones an authenticator app makes. Delete After Use, a switch in the AutoFill & Passwords settings, is about codes that were sent to you. Apple describes it as deleting verification codes in Messages or Mail once AutoFill has used them."
     }
   ],
   "sources": [
-    {
-      "name": "Apple Developer, Providing One Time Passcodes to AutoFill",
-      "url": "https://developer.apple.com/documentation/authenticationservices/providing-one-time-passcodes-to-autofill"
-    },
-    {
-      "name": "Apple Developer, ASOneTimeCodeCredentialIdentity",
-      "url": "https://developer.apple.com/documentation/authenticationservices/asonetimecodecredentialidentity"
-    },
-    {
-      "name": "Apple Support, Automatically Fill In One Time Verification Codes on iPhone",
-      "url": "https://support.apple.com/guide/iphone/automatically-fill-in-verification-codes-ipha6173c19f/ios"
-    },
-    {
-      "name": "Apple Support, Automatically Fill In Strong Passwords on iPhone",
-      "url": "https://support.apple.com/guide/iphone/automatically-fill-in-strong-passwords-iphf9219d8c9/ios"
-    },
-    {
-      "name": "Apple Support, Use the Passwords App Across Apple Devices",
-      "url": "https://support.apple.com/en-gb/120758"
-    },
-    {
-      "name": "Apple Developer, Enabling Password AutoFill on an HTML Input Element",
-      "url": "https://developer.apple.com/documentation/security/enabling-password-autofill-on-an-html-input-element"
-    },
-    {
-      "name": "Apple Developer, Enabling Password AutoFill on a Text Input View",
-      "url": "https://developer.apple.com/documentation/security/enabling-password-autofill-on-a-text-input-view"
-    }
+    "apple-developer-otp-autofill",
+    "apple-developer-otp-identity",
+    "apple-iphone-verification-codes",
+    "apple-iphone-strong-passwords",
+    "apple-passwords-devices",
+    "apple-messages",
+    "apple-developer-html-autofill",
+    "apple-developer-text-autofill",
+    "1password-otp",
+    "bitwarden-authenticator",
+    "app-store-google",
+    "app-store-microsoft",
+    "app-store-2fas",
+    "app-store-ente",
+    "app-store-proton"
   ],
   "related": [
     "authenticator-app-on-mac",

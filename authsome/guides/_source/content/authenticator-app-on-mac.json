@@ -2,7 +2,7 @@
   "slug": "authenticator-app-on-mac",
   "order": 5,
   "title": "Can You Use an Authenticator App on a Mac?",
-  "meta_title": "Can You Use an Authenticator App on a Mac? Yes.",
+  "meta_title": "Can You Use an Authenticator App on a Mac?",
   "description": "Yes. A Mac can make 2FA codes with the Passwords app from Apple, or with a separate authenticator app that has a Mac version. Here is how.",
   "card": "Yes. Use the Passwords app from Apple, or a separate authenticator app that has a Mac version.",
   "lede": "Yes. A Mac can make the codes for two factor authentication, or 2FA, by itself, with no phone beside you. Use the Passwords app that comes with macOS Sequoia 15 or later, or a separate authenticator app that has a Mac version.",
@@ -11,23 +11,28 @@
   "sections": [
     {
       "h2": "Which Authenticator Apps Run on a Mac?",
-      "html": "<p>An authenticator app makes the short numbers a service asks for after your password. Most services that offer an authenticator app option work with any such app, so you are rarely tied to the one named in their instructions. A few, often work accounts, insist on their own app.</p><div class=\"table-scroll\"><table><thead><tr><th>App</th><th>Mac version</th><th>Also runs on</th></tr></thead><tbody><tr><td>Apple Passwords</td><td>Yes, macOS Sequoia 15 or later</td><td>iPhone, iPad</td></tr><tr><td>Ente Auth</td><td>Yes</td><td>iPhone, Android, Windows, Linux</td></tr><tr><td>Proton Authenticator</td><td>Yes</td><td>iPhone, iPad, Android, Windows, Linux</td></tr><tr><td>Google Authenticator</td><td>None in Google help</td><td>iPhone, iPad, Android</td></tr><tr><td>Microsoft Authenticator</td><td>No</td><td>iPhone, Android</td></tr><tr><td>AuthSome, coming soon</td><td>Yes, macOS 26 or later</td><td>iPhone, iPad</td></tr></tbody></table></div><p>The table is taken from the pages each company publishes, as read on 19 November 2026. Microsoft states outright that its Authenticator is not available for PC or Mac. Google help describes its app for Android, iPhone and iPad only. Ente and Proton both say their apps are free.</p><p>Authy had a Mac app until Twilio ended it in March 2024. If that is why you are here, read <a href=\"../authy-desktop-alternative-mac/\">Authy Desktop Is Gone. What to Use on a Mac Instead</a>.</p>"
+      "nav": "Apps That Run on a Mac",
+      "html": "<p>An authenticator app makes the short numbers a service asks for after your password. {{secret-key}} Most services that offer an authenticator app option work with any such app, so you are rarely tied to the one named in their instructions. A few, often work accounts, insist on their own app.</p><div class=\"table-scroll\"><table><caption>Authenticator apps and whether each has a Mac version</caption><thead><tr><th>App</th><th>Mac version</th><th>Also runs on</th></tr></thead><tbody><tr><td>Apple Passwords</td><td>Yes, macOS Sequoia 15 or later</td><td>iPhone, iPad</td></tr><tr><td>Ente Auth</td><td>Yes</td><td>iPhone, Android, Windows, Linux</td></tr><tr><td>Proton Authenticator</td><td>Yes</td><td>iPhone, iPad, Apple Watch, Android, Windows, Linux</td></tr><tr><td>Google Authenticator</td><td>No Mac version listed</td><td>iPhone, iPad, Android</td></tr><tr><td>Microsoft Authenticator</td><td>No</td><td>iPhone, iPad, Android</td></tr><tr><td>AuthSome, coming soon</td><td>Yes, macOS 26 or later</td><td>iPhone, iPad</td></tr></tbody></table></div><p>The table is taken from the pages each company publishes and from their App Store pages, as read on 19 November 2026. Microsoft states outright that its Authenticator is not available for PC or Mac. Google help describes its app for Android, iPhone and iPad only. Ente and Proton both say their apps are free.</p><p>Authy had a Mac app until Twilio ended it in March 2024. If that is why you are here, read <a href=\"../authy-desktop-alternative-mac/\">Authy Desktop Is Gone. What to Use on a Mac Instead</a>.</p><h3>What About a Password Manager?</h3><p>If you already use a password manager with a Mac app, it may make your 2FA codes too. 1Password says it stores one time passwords, its name for 2FA codes, and fills them when you sign in, and its help page has steps for the Mac. Bitwarden says its password manager makes 2FA codes inside each saved login, that making them needs a paid plan, and that it has a desktop app for macOS. Your password and your 2FA code then sit in one place, which is the trade off set out further down this page.</p>"
     },
     {
       "h2": "How to Set Up 2FA Codes in the Passwords App on a Mac",
-      "html": "<p>Passwords comes with macOS Sequoia 15 and later, and for many people it is all they need. Apple calls 2FA codes verification codes. These are the steps Apple gives for a Mac.</p><ol><li>Sign in to the service in your browser and open its security settings. Turn on 2FA and choose the authenticator app option.</li><li>Choose the option to set up by hand with a setup key, then copy the key.</li><li>Open Passwords on your Mac and select your account for that service.</li><li>Click Edit, then click Set Up Code.</li><li>Paste the key into Setup Key, then click Use Setup Key.</li><li>Click the verification code to copy it, go back to the service and paste it in to finish.</li></ol><p>The next time that service asks for a 2FA code, Apple says to click the suggestion that appears. If nothing is suggested, open Passwords, select the account and click the verification code to copy it.</p><p>Apple says the passwords, passkeys and verification codes in Passwords can be used on all your devices that are signed in to the same Apple Account with Passwords turned on in iCloud settings. So a 2FA code you set up on the Mac is there on your iPhone too.</p><p>Before you finish with a service, save the recovery codes it offers. They are your way in if you ever lose access to your 2FA codes.</p>"
+      "nav": "Set Up Passwords",
+      "html": "<p>Passwords comes with macOS Sequoia 15 and later, and for many people it is all they need. Apple calls 2FA codes verification codes. Passwords attaches each one to a saved login, so save your login for the service in Passwords first if it is not there already. These are the steps Apple gives for a Mac.</p><ol><li>Sign in to the service in your browser and open its security settings. Turn on 2FA and choose the authenticator app option.</li><li>Choose the option to set up by hand, then copy the secret key it shows, which may be labelled setup key.</li><li>Open Passwords on your Mac and select the saved login for that service.</li><li>Click Edit, then click Set Up Code.</li><li>Paste the secret key into Setup Key, then click Use Setup Key.</li><li>Click the verification code to copy it, go back to the service and paste it in to finish.</li></ol><p>The next time that service asks for a 2FA code, Apple says to click the suggestion that appears. If nothing is suggested, open Passwords, select the saved login and click the verification code to copy it.</p><p>Apple says the passwords, passkeys and verification codes in Passwords can be used on all your devices that are signed in to the same Apple Account with Passwords turned on in iCloud settings. So a 2FA code you set up on the Mac is there on your iPhone too.</p><p>Before you finish with a service, save the recovery codes it offers. They are your way in if you ever lose access to your 2FA codes.</p>"
     },
     {
       "h2": "Is It Still Two Factors If the 2FA Codes Are on the Same Mac?",
-      "html": "<p>Mostly yes, and it helps to be exact about what 2FA protects you from.</p><p>The common danger is that your password leaks, is guessed, or was reused on a site that was broken into. Someone far away then tries it. They have your password but not your Mac, so they cannot make the 2FA code, and they are stopped. That protection is the same whether the 2FA code comes from a phone or from the Mac you are signing in on.</p><p>What changes is the case where someone has your Mac itself, unlocked, or has harmful software running on it. If your password and your 2FA code both live on that Mac, both can be reached from one place. A phone in your pocket would have been a second thing to get hold of.</p><p>You can narrow that gap.</p><ul><li>Give your Mac a strong login password and set it to lock when you step away.</li><li>Check that the app holding your 2FA codes asks for Touch ID or your password before it shows them.</li><li>Keeping passwords in one app and 2FA codes in another means there are two things to open, not one.</li><li>For the few accounts that matter most, such as your main email or your bank, you can keep 2FA on your phone only, or use a hardware security key if the service offers one.</li></ul><p>2FA codes on your Mac are far better than no 2FA.</p>"
+      "nav": "Is It Still Two Factors",
+      "html": "<p>Mostly yes. The common danger is that your password leaks, is guessed, or was reused on a site that was broken into. Someone far away then tries it. They have your password but not your Mac, so they cannot make the 2FA code, and they are stopped. That protection is the same whether the 2FA code comes from a phone or from the Mac you are signing in on.</p><p>What changes is the case where someone has your Mac itself, unlocked, or has harmful software running on it. If your password and your 2FA code both live on that Mac, both can be reached from one place. A phone in your pocket would have been a second thing to get hold of.</p><p>You can narrow that gap.</p><ul><li>Give your Mac a strong login password and set it to lock when you step away.</li><li>Check that the app holding your 2FA codes asks for Touch ID or your password before it shows them.</li><li>Keeping passwords in one app and 2FA codes in another means there are two things to open, not one.</li><li>For the few services that matter most, such as your main email or your bank, you can keep 2FA on your phone only, or use a hardware security key if the service offers one.</li></ul><p>2FA codes on your Mac are far better than no 2FA.</p>"
     },
     {
       "h2": "When Does a Separate Authenticator App Make Sense?",
-      "html": "<p>Passwords suits you if all your devices are Apple ones and you are happy for 2FA codes to sit beside your passwords. A separate app is worth a look in these cases.</p><ul><li>You also use Android or Windows. Ente Auth and Proton Authenticator list apps for both, and say they sync with end to end encryption once you sign in to an account with them.</li><li>You want your 2FA codes kept apart from your passwords, for the reason given above.</li><li>You have many services, or work and personal ones mixed together, and want them organised.</li></ul><p>AuthSome, our own app, is built for the last two. It is coming soon to the App Store, and it is free with no ads. On a Mac it is a native app with a menu bar icon. The icon opens a small panel with a Profile switcher, a search field and your Accounts with their live 2FA codes, and clicking a row copies its 2FA code. The panel follows the same lock as the app, and you can turn it off in Settings. Profiles keep work and personal Accounts apart, and everything syncs to your iPhone and iPad through iCloud with end to end encryption. It can also fill 2FA codes into sign in pages through AutoFill, after Touch ID.</p><p>AuthSome needs macOS 26 or later and has no Android or Windows version, so it is not the answer if you use those. It also has no password manager. It holds 2FA codes only.</p>"
+      "nav": "When to Use a Separate App",
+      "html": "<p>Passwords suits you if all your devices are Apple ones and you are happy for 2FA codes to sit beside your passwords. A separate app is worth a look in these cases.</p><ul><li>You also use Android or Windows. Ente Auth and Proton Authenticator list apps for both, and say they sync with end to end encryption once you sign in to an account with them.</li><li>You want your 2FA codes kept apart from your passwords, for the reason given above.</li><li>You have many services, or work and personal ones mixed together, and want them organised.</li></ul><p>AuthSome, our own app, is built for the last two. It is coming soon to the App Store, and it is free with no ads. On a Mac its menu bar panel lists your Accounts with their 2FA codes, and a click copies one. Profiles keep work and personal Accounts apart, and everything syncs to your iPhone and iPad through iCloud with end to end encryption.</p><p>AuthSome needs macOS 26 or later and has no Android or Windows version, so it is not the answer if you use those. It also has no password manager. It holds 2FA codes only.</p>"
     },
     {
       "h2": "How Do You Add a Service When the QR Code Is on the Same Screen?",
-      "html": "<p>Setup instructions usually say to scan a QR code with your phone. On a Mac the QR code is on the screen you are working at, so you add the service another way.</p><ul><li><strong>Use the setup key.</strong> Most services show the key in letters and numbers next to the QR code, often behind a link with words like cannot scan. Copy it and paste it into your app. This is the route Apple describes for Passwords.</li><li><strong>Use a screenshot of the QR code.</strong> Some Mac apps read a QR code from an image. In AuthSome you choose QR Code Image, or drag the image on to the window. You can also use Paste Link or Enter Manually.</li></ul><p>If the Mac is the only place your 2FA codes live, a lost or broken Mac could lock you out. Keep the recovery codes from each service, and think about an app that syncs to a second device. <a href=\"../authenticator-app-on-two-devices/\">Can You Use the Same Authenticator App on Two Devices?</a> explains how that works. If your 2FA codes are in Google Authenticator on your phone today, <a href=\"../export-google-authenticator-to-another-app/\">exporting them to another app</a> is the way to get them on to a Mac.</p>"
+      "nav": "QR Code on the Same Screen",
+      "html": "<p>Setup instructions usually say to scan a QR code with your phone. On a Mac the QR code is on the screen you are working at, so you add the service another way.</p><ul><li><strong>Use the secret key.</strong> Most services show it in letters and numbers next to the QR code, often behind a link with words like cannot scan. Copy it and paste it into your app. This is the route Apple describes for Passwords.</li><li><strong>Use a screenshot of the QR code.</strong> Some Mac apps read a QR code from an image. In AuthSome you choose QR Code Image, then choose the screenshot or drag it in. You can also use Paste Link or Enter Manually.</li></ul><p>If the Mac is the only place your 2FA codes live, a lost or broken Mac could lock you out. Keep the recovery codes from each service, and think about an app that syncs to a second device. <a href=\"../authenticator-app-on-two-devices/\">Can You Use the Same Authenticator App on Two Devices?</a> explains how that works. If your 2FA codes are in Google Authenticator on your phone today, <a href=\"../export-google-authenticator-to-another-app/\">exporting them to another app</a> is the way to get them on to a Mac.</p>"
     }
   ],
   "faq": [
@@ -41,42 +46,23 @@
     },
     {
       "q": "Can I Get 2FA Codes on a Mac Without a Phone?",
-      "a": "Yes. Set up each service on the Mac with its setup key, and the Mac makes the 2FA codes from then on. The phone is not involved, so keep your recovery codes in case the Mac is lost."
+      "a": "Yes. Set up each service on the Mac with its secret key, and the Mac makes the 2FA codes from then on. The phone is not involved, so keep your recovery codes in case the Mac is lost."
     }
   ],
   "sources": [
-    {
-      "name": "Apple Passwords User Guide for Mac, Verification Codes",
-      "url": "https://support.apple.com/guide/passwords/verification-codes-mchl873a6e72/mac"
-    },
-    {
-      "name": "Apple Passwords User Guide for Mac, The Passwords App",
-      "url": "https://support.apple.com/guide/passwords/the-passwords-app-mchl901b1b95/mac"
-    },
-    {
-      "name": "Apple Support, Use the Passwords App Across Apple Devices",
-      "url": "https://support.apple.com/en-us/120758"
-    },
-    {
-      "name": "Google Account Help, Get Verification Codes With Google Authenticator",
-      "url": "https://support.google.com/accounts/answer/1066447?hl=en"
-    },
-    {
-      "name": "Microsoft Support, Download Microsoft Authenticator",
-      "url": "https://support.microsoft.com/en-us/account-billing/download-microsoft-authenticator-351498fc-850a-45da-b7b6-27e523b8702a"
-    },
-    {
-      "name": "Ente Auth",
-      "url": "https://ente.com/auth/"
-    },
-    {
-      "name": "Proton Authenticator",
-      "url": "https://proton.me/authenticator"
-    },
-    {
-      "name": "Twilio Changelog, End of Life of Twilio Authy Desktop Apps",
-      "url": "https://www.twilio.com/en-us/changelog/end-of-life--eol--of-twilio-authy-desktop-apps"
-    }
+    "apple-mac-verification-codes",
+    "apple-mac-passwords",
+    "apple-passwords-devices",
+    "google-authenticator",
+    "microsoft-download",
+    "app-store-microsoft",
+    "ente-auth",
+    "proton-authenticator",
+    "app-store-proton",
+    "1password-otp",
+    "bitwarden-authenticator",
+    "bitwarden-download",
+    "twilio-changelog"
   ],
   "related": [
     "authy-desktop-alternative-mac",

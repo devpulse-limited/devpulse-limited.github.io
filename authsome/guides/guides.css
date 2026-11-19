@@ -1,47 +1,98 @@
 /* AuthSome guides. Loaded after ../styles.css, which gives the sub-screen look (.sub, .doc, .plate).
-   A guide is an article, so its headings are read as headings, not as the small labels of a settings screen. */
+   A guide is an article, so its text is set open on the page, at a width that reads well, and its headings are read
+   as headings. Plates are kept for what is a block of its own: a table, the box about AuthSome, the list of other
+   guides and the sources. */
 
-.guide .trail { margin: 0 0 10px; color: var(--muted); font-size: 15px; }
-.guide .trail a { color: inherit; }
+/* The trail above the heading. The mark between its links is drawn, so it is not read out as a word. */
+.guide .trail ol { display: flex; flex-wrap: wrap; gap: 0 8px; margin: 0 0 10px; padding: 0; list-style: none; color: var(--muted); font-size: 15px; }
+.guide .trail li { display: flex; align-items: center; gap: 8px; }
+.guide .trail li + li::before { content: ""; width: 6px; height: 6px; border: solid currentColor; border-width: 1.5px 1.5px 0 0; rotate: 45deg; opacity: .7; }
+.guide .trail a { display: inline-flex; align-items: center; min-height: 32px; color: inherit; }
+
 .guide h1 { font-size: clamp(32px, 5.4vw, 46px); line-height: 1.08; text-wrap: balance; }
-.guide .doc-lede { margin-bottom: 14px; color: var(--ink); }
-.guide .byline { margin: 0 0 30px; color: var(--muted); font-size: 14px; }
-.guide section { margin-top: 16px; }
-.guide .plate { padding: 22px 22px 24px; }
-.guide .plate h2 { margin: 0 0 10px; color: var(--ink); font-size: 23px; font-weight: 700; line-height: 1.2; letter-spacing: -.01em; text-wrap: balance; }
-.guide .plate h3 { margin-top: 20px; }
-.guide .plate p, .guide .plate li { font-size: 17px; line-height: 1.55; }
-.guide .plate a { color: var(--accent); text-underline-offset: 3px; }
-.guide .plate ol li { margin-bottom: 8px; padding-inline-start: 4px; }
-.guide .plate strong { font-weight: 600; }
+.guide .doc-lede { max-width: 31em; margin-bottom: 14px; color: var(--ink); }
+.guide .byline { margin: 0 0 22px; color: var(--muted); font-size: 14px; }
+.guide .byline a { color: inherit; text-underline-offset: 3px; }
 
-/* A table scrolls sideways inside its plate on a narrow screen, so the page itself never does. */
-.guide .table-scroll { margin: 4px 0 14px; overflow-x: auto; }
-.guide table { width: 100%; min-width: 460px; border-collapse: collapse; font-size: 15px; line-height: 1.4; }
-.guide th, .guide td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); text-align: start; vertical-align: top; }
-.guide th { color: var(--muted); font-weight: 600; }
-.guide tr:last-child td { border-bottom: 0; }
+/* The sections of the page, as links under the byline, so a reader with one question need not scroll past the rest. */
+.guide-jump { padding-top: 14px; border-top: 1px solid var(--line); }
+.guide-jump h2 { color: var(--muted); font-size: 14px; font-weight: 600; }
+.guide-jump ol { display: flex; flex-wrap: wrap; gap: 0 20px; margin: 0; padding: 0; list-style: none; }
+.guide-jump a { display: inline-flex; align-items: center; min-height: 40px; font-size: 15px; font-weight: 600; text-decoration: none; }
+.guide-jump a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* The article's own text. */
+.guide .prose { margin-top: 44px; }
+.guide .prose > h2 { margin: 0 0 12px; color: var(--ink); font-size: 26px; font-weight: 700; line-height: 1.2; letter-spacing: -.01em; text-wrap: balance; }
+.guide .prose h3 { margin: 28px 0 6px; font-size: 19px; line-height: 1.3; scroll-margin-top: 16px; }
+.guide .prose p, .guide .prose ul, .guide .prose ol { max-width: 34em; margin: 0 0 14px; }   /* about 68 characters a line */
+.guide .prose p, .guide .prose li { font-size: 17px; line-height: 1.6; }
+.guide .prose ul, .guide .prose ol { padding-inline-start: 22px; }
+.guide .prose li { margin-bottom: 8px; padding-inline-start: 4px; }
+.guide .prose > :last-child { margin-bottom: 0; }
+.guide .prose a { text-underline-offset: 3px; }
+.guide .prose strong { font-weight: 600; }
+.guide .prose kbd { background: var(--plate); }
+
+/* A table sits on a plate. Its cells wrap, so a table of two or three columns fits a phone. One of four or more
+   columns may be wider than a small phone, and then scrolls sideways inside its plate, so the page itself never
+   does. build.py makes that plate a region the keyboard can reach. The shade at an edge shows there is more that
+   way, and goes when that edge is reached. */
+.guide .table-scroll { margin: 6px 0 18px; padding: 4px 18px 6px; border-radius: 20px; background: var(--plate); overflow-x: auto; }
+.guide .table-scroll[tabindex] {
+  --shade: color-mix(in srgb, var(--ink) 30%, transparent);
+  background:
+    linear-gradient(to right, var(--plate) 50%, transparent) left / 36px 100% no-repeat local,
+    linear-gradient(to left, var(--plate) 50%, transparent) right / 36px 100% no-repeat local,
+    linear-gradient(to right, var(--shade), transparent) left / 16px 100% no-repeat scroll,
+    linear-gradient(to left, var(--shade), transparent) right / 16px 100% no-repeat scroll,
+    var(--plate);
+}
+.guide .table-scroll:focus-visible { outline-color: var(--accent); outline-offset: 2px; border-radius: 20px; }
+.guide table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.4; }
+.guide caption { caption-side: top; padding: 10px 0 2px; color: var(--muted); font-size: 13px; text-align: start; }
+.guide th, .guide td { padding: 10px 14px 10px 0; border-bottom: 1px solid var(--line); text-align: start; vertical-align: top; }
+.guide th:last-child, .guide td:last-child { padding-inline-end: 0; }
+.guide thead th { color: var(--muted); font-weight: 600; }
+.guide tbody th { font-weight: 600; }
+.guide tbody tr:last-child > * { border-bottom: 0; }
+
+/* The plates under the article. */
+.guide .plate { margin-top: 16px; padding: 22px 22px 24px; }
+.guide .prose + .plate { margin-top: 48px; }
+.guide .plate h2 { margin: 0 0 10px; color: var(--ink); font-size: 20px; font-weight: 700; line-height: 1.2; letter-spacing: -.01em; }
+.guide .plate p, .guide .plate li { font-size: 17px; line-height: 1.55; }
 
 /* Where a reader finishes: what AuthSome is, and the way to it. */
 .guide .app-plate { display: grid; grid-template-columns: 56px 1fr; gap: 6px 16px; align-items: start; }
 .guide .app-plate img { grid-row: span 3; width: 56px; height: 56px; }
-.guide .app-plate h2 { margin: 2px 0 0; font-size: 20px; }
+.guide .app-plate h2 { margin: 2px 0 0; }
 .guide .app-plate p { margin: 0; }
 .guide .app-plate .button { justify-self: start; margin-top: 10px; color: #fff; text-decoration: none; }
 
-.guide .sources { color: var(--muted); }
 .guide .sources li { font-size: 15px; overflow-wrap: anywhere; }
+.guide .sources a { text-underline-offset: 3px; }
 
-/* The list of guides, on the index and under each guide. */
+/* The list of guides, on the index and under each guide. A title is in the text colour and turns violet under the pointer. */
 .plate .guide-list { margin: 0; padding: 0; list-style: none; }
 .guide-list li { margin: 0; padding: 14px 0; border-bottom: 1px solid var(--line); }
 .guide-list li:first-child { padding-top: 0; }
 .guide-list li:last-child { padding-bottom: 0; border-bottom: 0; }
-.guide-list a { display: block; color: var(--ink); font-size: 18px; font-weight: 600; line-height: 1.3; text-decoration: none; }
-.guide-list a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.guide .plate .guide-list a { display: block; color: var(--ink); font-size: 18px; font-weight: 600; line-height: 1.3; text-decoration: none; }
+.guide .plate .guide-list a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 .guide-list span { display: block; margin-top: 4px; color: var(--muted); font-size: 15px; line-height: 1.45; }
 
+/* The index is a list, not an article. */
+.guide-index .doc-lede { margin-bottom: 26px; }
+
 @media (max-width: 520px) {
+  .guide .prose { margin-top: 38px; }
+  .guide .prose > h2 { font-size: 23px; }
   .guide .plate { padding: 18px 18px 20px; }
-  .guide .plate h2 { font-size: 21px; }
+  .guide .table-scroll { padding-inline: 14px; }
+}
+@media (max-width: 360px) {
+  .guide table { font-size: 14px; }
+  .guide th, .guide td { padding-inline-end: 6px; }
+  .guide .table-scroll { padding-inline: 12px; }
 }

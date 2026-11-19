@@ -2,36 +2,42 @@
   "slug": "move-2fa-codes-from-android-to-iphone",
   "order": 3,
   "title": "How to Move 2FA Codes From Android to iPhone",
-  "meta_title": "Move 2FA Codes From Android to iPhone. Aegis and 2FAS.",
-  "description": "Export a backup file from Aegis or 2FAS on Android, move it to your iPhone and import it into an app that reads it. Keep the Android phone until it works.",
-  "card": "Export from Aegis or 2FAS on Android, get the file to your iPhone and import it without losing an account.",
-  "lede": "Your 2FA codes do not follow you from Android to iPhone by themselves. With Aegis or 2FAS you export a backup file on the Android phone, move that file to the iPhone and import it into an authenticator app that reads it. Keep the Android phone until every account works on the iPhone.",
+  "meta_title": "How to Move 2FA Codes From Android to iPhone",
+  "description": "It depends on your Android app. Google Authenticator syncs, Aegis and 2FAS move by a backup file, and Microsoft Authenticator starts again. Steps for each.",
+  "card": "It depends on your Android app. The route for Google Authenticator, Aegis, 2FAS and Microsoft Authenticator.",
+  "lede": "It depends on the app you use on Android. Google Authenticator brings synced 2FA codes across when you sign in, Aegis and 2FAS move by a backup file that you export on Android and import on the iPhone, and Microsoft Authenticator has to be set up again. Keep the Android phone until every 2FA code works on the iPhone.",
   "published": "2026-11-19",
   "modified": "2026-11-19",
   "sections": [
     {
       "h2": "What Moves and What Does Not",
-      "html": "<p>Two factor authentication, or 2FA, depends on a secret key held inside your authenticator app. Moving to an iPhone means moving those keys. How you do it depends on the app you use on Android.</p><div class=\"table-scroll\"><table><thead><tr><th>App on Android</th><th>Route to iPhone</th></tr></thead><tbody><tr><td>Aegis</td><td>Export a file, import it into another app</td></tr><tr><td>2FAS</td><td>Export a file, import it on the iPhone</td></tr><tr><td>Google Authenticator</td><td>Sign in to Google, or use the export QR code</td></tr><tr><td>Microsoft Authenticator</td><td>Set up each account again</td></tr></tbody></table></div><p>Aegis has no iPhone app, and its developers say they have no plans to bring it to other platforms. So an Aegis user also has to choose a new app. 2FAS has an iPhone app, but its cloud backup uses Google Drive on Android and iCloud on iPhone, and 2FAS gives the backup file as the way across.</p><p>Google says that if your 2FA codes are saved to your Google Account, they arrive when you sign in to that account in Google Authenticator on the new phone. To leave Google Authenticator as well, see <a href=\"../export-google-authenticator-to-another-app/\">how to export Google Authenticator to another app</a>. Microsoft says its backup only restores on the same type of device, so those accounts have to be set up again at each service.</p>"
+      "nav": "What Moves",
+      "html": "<p>Two factor authentication, or 2FA, is the short code a service asks for after your password. {{secret-key}} Moving to an iPhone means moving those secret keys. {{entry}}</p><div class=\"table-scroll\"><table><caption>The route to iPhone for each Android authenticator app</caption><thead><tr><th>App on Android</th><th>Route to iPhone</th></tr></thead><tbody><tr><td>Google Authenticator</td><td>Sign in to Google, or use the export QR code</td></tr><tr><td>Aegis</td><td>Export a file, import it into another app</td></tr><tr><td>2FAS</td><td>Export a file, import it on the iPhone</td></tr><tr><td>Microsoft Authenticator</td><td>Set up each service again</td></tr></tbody></table></div><p>Google says that if your 2FA codes are saved to your Google Account, they arrive when you sign in to that account in Google Authenticator on the new phone. To leave Google Authenticator as well, see <a href=\"../export-google-authenticator-to-another-app/\">how to export Google Authenticator to another app</a>.</p><p>Aegis has no iPhone app, and its developers say they have no plans to bring it to other platforms. So an Aegis user also has to choose a new app. 2FAS has an iPhone app, but its cloud backup uses Google Drive on Android and iCloud on iPhone, and 2FAS gives the backup file as the way across.</p><p>Microsoft says its backup only restores on the same type of device, so each service has to be set up again. For Authy, see what its maker says in <a href=\"../do-authenticator-apps-transfer-to-new-iphone/#what-each-app-maker-says\">Do Authenticator Apps Transfer to a New iPhone?</a></p>"
     },
     {
-      "h2": "Export Your Accounts From Aegis",
-      "html": "<p>The Aegis FAQ explains what an export is, but it does not list the steps. The steps below are read from the source code of version 3.4.3, released in September 2026, not from a help page. If your version looks different, look in its settings for the word Export.</p><ol><li>Open Aegis on the Android phone and open Settings.</li><li>Choose Import & Export, then Export.</li><li>Under Export format, choose the Aegis one, which makes a JSON file.</li><li>Make sure Encrypt the vault is ticked.</li><li>Save the file somewhere you can find it again.</li></ol><p>The Aegis FAQ says the file is protected by the same password as your Aegis vault, which is why Aegis does not ask you to choose one. The app also has a setting in Security for a separate export password. If you turned that on, that is the password you will need on the iPhone.</p><p>You can untick Encrypt the vault, but Aegis warns against it and asks you to accept the risk. Only do that if the app you are moving to cannot read the encrypted file.</p><p>The Import & Export screen also has Export for Google Authenticator. It shows QR codes in the format Google Authenticator uses, for an app that imports those instead of files. Aegis says it leaves out any account that does not use SHA1 and 6 digit 2FA codes, so count what arrives.</p>"
+      "h2": "Export Your Entries From Aegis",
+      "nav": "Export From Aegis",
+      "html": "<p>The Aegis FAQ explains what an export is, but it does not list the steps. The steps below are read from the source code of version 3.4.3, released in September 2026. Aegis is open source, so its developers publish the exact wording of every screen, and the names below are copied from there. If your version looks different, look in its settings for the word Export.</p><ol><li>Open Aegis on the Android phone and open Settings.</li><li>Choose Import &amp; Export, then Export.</li><li>Under Export format, choose the Aegis one, which makes a JSON file.</li><li>Make sure Encrypt the vault is ticked.</li><li>Save the file somewhere you can find it again.</li></ol><p>The Aegis FAQ says the file is protected by the same password as your Aegis vault, which is why Aegis does not ask you to choose one. The app also has a setting in Security for a separate export password. If you turned that on, that is the password you will need on the iPhone.</p><p>You can untick Encrypt the vault, but Aegis warns against it and asks you to accept the risk. Only do that if the app you are moving to cannot read the encrypted file.</p><p>The Import &amp; Export screen also has Export for Google Authenticator. It shows QR codes in the format Google Authenticator uses, for an app that imports those instead of files. Aegis says it leaves out any entry that does not use SHA1 and 6 digit 2FA codes, so count what arrives.</p>"
     },
     {
-      "h2": "Export Your Accounts From 2FAS",
+      "h2": "Export Your Entries From 2FAS",
+      "nav": "Export From 2FAS",
       "html": "<p><strong>Decide about the password before you export.</strong> 2FAS recommends exporting with one. Its tutorial says the file ends in .2fas, that a password makes it unreadable in a text editor, and that without one everything in it can be read, the secret keys included. Anyone who gets a file with no password can make your 2FA codes.</p><p>If you are staying with 2FAS on the iPhone, use a password. AuthSome reads only a 2FAS backup with no password. For any other app, check its help pages before you export.</p><p>These steps are from the 2FAS support page on moving between iPhone and Android.</p><ol><li>Open 2FAS on the Android phone and open its settings or menu.</li><li>Choose 2FAS Backup.</li><li>Tap Export.</li><li>Set the password, or leave it out if the new app needs that, then save the file on the phone.</li></ol>"
     },
     {
       "h2": "Get the File to the iPhone",
-      "html": "<p>Aegis does not say how to move the file. 2FAS says only that you can save its backup to a USB stick or a computer. Any way of moving a file works, but the file holds the keys to your accounts, so choose with care.</p><ul><li><strong>By cable through a computer.</strong> Copy the file from the Android phone to a computer you own, then on to the iPhone. Nothing is sent over the internet.</li><li><strong>Through a storage service you already use on both phones.</strong> Upload it on Android, then save it into the Files app on the iPhone. Never do this with a file that has no password.</li><li><strong>By email to yourself.</strong> A copy stays in your mailbox until you delete it. Never email a file that has no password.</li></ul><p>However you move it, delete every copy once the import has worked. That means the copy on the Android phone, on the computer, in the storage service and in the Files app, and any email it was attached to.</p>"
+      "nav": "Get the File Across",
+      "html": "<p>Aegis does not say how to move the file. 2FAS says only that you can save its backup to a USB stick or a computer. Any way of moving a file works, but the file holds your secret keys, so choose with care.</p><ul><li><strong>By cable through a computer.</strong> Copy the file from the Android phone to a computer you own, then on to the iPhone. Nothing is sent over the internet.</li><li><strong>Through a storage service you already use on both phones.</strong> Upload it on Android, then save it into the Files app on the iPhone. Never do this with a file that has no password.</li><li><strong>By email to yourself.</strong> A copy stays in your mailbox until you delete it. Never email a file that has no password.</li></ul><p>However you move it, delete every copy once the import has worked. That means the copy on the Android phone, on the computer, in the storage service and in the Files app, and any email it was attached to.</p>"
     },
     {
       "h2": "Import the File on the iPhone",
-      "html": "<p>Use an app that says in its own help pages that it reads your file.</p><ul><li><strong>2FAS.</strong> Open its settings or menu, choose 2FAS Backup, then tap Import. Its tutorial also lists Aegis under Import Tokens, without saying on which phones, so check that the iPhone app shows it.</li><li><strong>AuthSome.</strong> Coming soon to the App Store, for iOS 26 or later. Tap <kbd>+</kbd>, then Import Accounts, then Choose a Backup File.</li></ul><p>AuthSome reads an Aegis file whether it is encrypted or not, so leave Encrypt the vault ticked and type your Aegis password when asked. It does not read a 2FAS backup that has a password. A 2FAS backup has to be exported without a password, and AuthSome tells you so if you choose a protected one. That goes against what 2FAS recommends, and the file shows every secret key as plain text. Move it by cable, keep it out of email and storage services, and delete every copy as soon as the import has worked. In AuthSome you choose the Profile, and you see everything that was found before anything is added. An Account that cannot be imported is listed with the reason.</p><p>AuthSome has no Android app, and it cannot import from Microsoft Authenticator or Authy.</p>"
+      "nav": "Import on the iPhone",
+      "html": "<p>Use an app that says on its own pages that it reads your file.</p><ul><li><strong>2FAS.</strong> Open its settings or menu, choose 2FAS Backup, then tap Import. Its tutorial also lists Aegis under Import Tokens, without saying on which phones, so check that the iPhone app shows it.</li><li><strong>Proton Authenticator.</strong> Proton lists Aegis and 2FAS among the apps it imports from. Open Settings, choose Import and pick the app, and it shows the steps. Check there whether it wants the file with or without a password before you export.</li><li><strong>AuthSome.</strong> Coming soon to the App Store, for iOS 26 or later. Tap <kbd>+</kbd>, then Import Accounts, then Choose a Backup File.</li></ul><p>AuthSome reads an Aegis file whether it is encrypted or not, so leave Encrypt the vault ticked and type your Aegis password when asked. It does not read a 2FAS backup that has a password. A 2FAS backup has to be exported without a password, and AuthSome tells you so if you choose a protected one. That goes against what 2FAS recommends, and the file shows every secret key as plain text, so move it by cable and delete every copy as soon as the import has worked. In AuthSome you choose the Profile, and you see everything that was found before anything is added. An Account that cannot be imported is listed with the reason.</p><p>AuthSome has no Android app, and it cannot import from Microsoft Authenticator or Authy.</p>"
     },
     {
       "h2": "Check Everything Before You Wipe the Android Phone",
-      "html": "<p>Do not reset, sell or trade in the Android phone yet. Until you have checked the iPhone, the Android phone is your only proven way in.</p><ol><li>Count the accounts on both phones. The numbers should match.</li><li>Open the same account on both phones at the same moment. The two 2FA codes should be the same number.</li><li>Sign in to your most important services using the iPhone, starting with your email.</li><li>Set up again any account that did not come across. With a recovery code to hand, sign in to that service, turn 2FA off and on, and scan the new QR code with the iPhone.</li><li>Delete every copy of the backup file.</li></ol><p>The accounts keep working on the Android phone after the move, because both phones now hold the same keys. <a href=\"../authenticator-app-on-two-devices/\">Using the same authenticator app on two devices</a> explains why. Before the Android phone leaves your hands, remove the accounts from it or erase it. If you are also setting up the iPhone from an older iPhone, read <a href=\"../do-authenticator-apps-transfer-to-new-iphone/\">whether authenticator apps transfer to a new iPhone</a>.</p>"
+      "nav": "Check Before You Wipe",
+      "html": "<p>Do not reset, sell or trade in the Android phone yet. Until you have checked the iPhone, the Android phone is your only proven way in.</p><ol><li>Count the entries on both phones. The numbers should match.</li><li>Open the same entry on both phones at the same moment. The two 2FA codes should be the same number.</li><li>Sign in to your most important services using the iPhone, starting with your email.</li><li>Set up again any entry that did not come across. With a recovery code to hand, sign in to that service, turn 2FA off and on, and scan the new QR code with the iPhone.</li><li>Delete every copy of the backup file.</li></ol><p>The entries keep working on the Android phone after the move, because both phones now hold the same secret keys. <a href=\"../authenticator-app-on-two-devices/\">Using the same authenticator app on two devices</a> explains why. Before the Android phone leaves your hands, remove the entries from it or erase it. If you are also setting up the iPhone from an older iPhone, read <a href=\"../do-authenticator-apps-transfer-to-new-iphone/\">whether authenticator apps transfer to a new iPhone</a>.</p>"
     }
   ],
   "faq": [
@@ -53,38 +59,15 @@
     }
   ],
   "sources": [
-    {
-      "name": "Aegis Authenticator FAQ",
-      "url": "https://github.com/beemdevelopment/Aegis/blob/master/FAQ.md"
-    },
-    {
-      "name": "Aegis Authenticator 3.4.3 Source, Text of the App",
-      "url": "https://github.com/beemdevelopment/Aegis/blob/v3.4.3/app/src/main/res/values/strings.xml"
-    },
-    {
-      "name": "Aegis Authenticator 3.4.3 Source, Export Screen",
-      "url": "https://github.com/beemdevelopment/Aegis/blob/v3.4.3/app/src/main/res/layout/dialog_export.xml"
-    },
-    {
-      "name": "2FAS Support, Move Tokens Between iOS and Android",
-      "url": "https://2fas.com/support/2fas-auth-mobile-app/i-want-to-move-copy-transfer-tokens-codes-between-ios-and-android/"
-    },
-    {
-      "name": "2FAS Support, 2FAS Auth App Tutorial",
-      "url": "https://2fas.com/support/2fas-auth-mobile-app/2fas-auth-app-tutorial/"
-    },
-    {
-      "name": "2FAS Support, How to Use or Sync More Devices With 2FAS",
-      "url": "https://2fas.com/support/2fas-auth-mobile-app/how-to-use-sync-more-devices-with-2fas/"
-    },
-    {
-      "name": "Microsoft Support, Back Up Your Accounts in Microsoft Authenticator",
-      "url": "https://support.microsoft.com/en-us/authenticator/back-up-your-accounts-in-microsoft-authenticator"
-    },
-    {
-      "name": "Google Account Help, Get Verification Codes With Google Authenticator",
-      "url": "https://support.google.com/accounts/answer/1066447?hl=en&co=GENIE.Platform%3DiOS"
-    }
+    "aegis-faq",
+    "aegis-strings",
+    "aegis-export-screen",
+    "2fas-ios-android",
+    "2fas-tutorial",
+    "2fas-more-devices",
+    "microsoft-backup",
+    "google-authenticator",
+    "proton-import"
   ],
   "related": [
     "export-google-authenticator-to-another-app",
