@@ -160,6 +160,8 @@ h2 { margin-bottom: 18px; font-size: clamp(26px, 3.4vw, 34px); font-weight: 700;
 .facts div:last-child { border-bottom: 1px solid var(--line); }
 .facts dt { font-size: 20px; font-weight: 700; letter-spacing: -.015em; }
 .facts dd { max-width: 34em; margin: 0; color: var(--muted); font-size: 19px; }
+/* Links in the list keep the sentence's colour, as the footer's do, and are told apart by their underline. */
+.facts dd a { color: inherit; text-underline-offset: 3px; }
 
 /* Three across at every width. On a phone they are a strip to glance at, as the screen above shows the detail. */
 .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 232px)); gap: clamp(12px, 3vw, 32px); margin-bottom: clamp(48px, 7vw, 80px); }
@@ -232,6 +234,8 @@ dialog p { margin: 10px 0 20px; color: var(--muted); }
    past the rest. Each link is as tall as a touch target. */
 .doc-jump { display: flex; flex-wrap: wrap; gap: 0 20px; margin: -20px 0 22px; font-size: 15px; font-weight: 600; }
 .doc-jump a { display: inline-flex; align-items: center; min-height: 44px; }
+/* A note on how to read the answers, under the links to them, so the paragraph above can say what the page covers. */
+.doc-note { margin: -10px 0 24px; font-size: 15px; }
 .doc section { margin-top: 28px; scroll-margin-top: 16px; }
 .doc section > h2 { margin: 0 0 8px 20px; color: var(--muted); font-size: 15px; font-weight: 600; }
 .plate { padding: 18px 20px; border-radius: 20px; background: var(--plate); }

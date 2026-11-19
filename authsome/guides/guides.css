@@ -34,9 +34,9 @@
 .guide .prose strong { font-weight: 600; }
 .guide .prose kbd { background: var(--plate); }
 
-/* A table sits on a plate. Its cells wrap, so a table of two or three columns fits a phone. One of four or more
-   columns may be wider than a small phone, and then scrolls sideways inside its plate, so the page itself never
-   does. build.py makes that plate a region the keyboard can reach. The shade at an edge shows there is more that
+/* A table sits on a plate. Its cells wrap, so a table of up to four columns fits a phone, down to 320px. One of
+   five or more columns may be wider than a small phone, and then scrolls sideways inside its plate, so the page
+   itself never does. build.py makes that plate a region the keyboard can reach. The shade at an edge shows there is more that
    way, and goes when that edge is reached. */
 .guide .table-scroll { margin: 6px 0 18px; padding: 4px 18px 6px; border-radius: 20px; background: var(--plate); overflow-x: auto; }
 .guide .table-scroll[tabindex] {
@@ -68,7 +68,9 @@
 .guide .app-plate img { grid-row: span 3; width: 56px; height: 56px; }
 .guide .app-plate h2 { margin: 2px 0 0; }
 .guide .app-plate p { margin: 0; }
-.guide .app-plate .button { justify-self: start; margin-top: 10px; color: #fff; text-decoration: none; }
+.guide .app-plate .app-links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; margin-top: 10px; }
+.guide .app-plate .app-links a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; }
+.guide .app-plate .button { color: #fff; text-decoration: none; }
 
 .guide .sources li { font-size: 15px; overflow-wrap: anywhere; }
 .guide .sources a { text-underline-offset: 3px; }
@@ -93,6 +95,6 @@
 }
 @media (max-width: 360px) {
   .guide table { font-size: 14px; }
-  .guide th, .guide td { padding-inline-end: 6px; }
+  .guide th, .guide td { padding-inline-end: 5px; }
   .guide .table-scroll { padding-inline: 12px; }
 }

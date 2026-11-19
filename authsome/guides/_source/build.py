@@ -21,8 +21,9 @@ reader of another app has never met AuthSome's words. The first paragraph that u
 Account, with capitals, are kept for sentences about AuthSome itself.
 
 Tables. A table is written as <div class="table-scroll"><table><caption>...</caption><thead>... and its headings
-are in sentence case. This script adds the header scopes, and makes a table of four or more columns a named region
-that the keyboard can reach and scroll.
+are in sentence case. This script adds the header scopes, and makes a table of five or more columns a named region
+that the keyboard can reach and scroll. Tables of up to four columns of short cells wrap to fit a 320px phone
+(measured), so they are not a stop for the keyboard. Measure again before writing a wider one.
 
 Sources. sources.json holds one name and one address for each page a guide relies on, so the same page is never
 listed under two names or two addresses.
@@ -114,7 +115,7 @@ def tables(text, slug, problems):
         columns = len(re.findall(r"<th>", body))
         body = body.replace("<th>", '<th scope="col">')
         body = re.sub(r"<tr><td>(.*?)</td>", r'<tr><th scope="row">\1</th>', body)
-        if columns < 4:
+        if columns < 5:
             return f'<div class="table-scroll"><table>{body}</table></div>'
         label = esc(lint.strip(caption.group(1)).strip()) if caption else ""
         return f'<div class="table-scroll" role="region" aria-label="{label}" tabindex="0"><table>{body}</table></div>'
@@ -192,10 +193,10 @@ def about_box(up, short=False):
     """Where a reader finishes. A guide with its own section about AuthSome gets the short box, so it is not said twice."""
     text = ABOUT_SHORT if short else ABOUT
     return f"""      <section class="plate app-plate" aria-labelledby="app-title">
-        <img class="squircle" src="{up}assets/apple-touch-icon.png" width="56" height="56" alt="" loading="lazy" decoding="async">
+        <img class="squircle" src="{up}assets/app-icon-112.png" width="56" height="56" alt="" loading="lazy" decoding="async">
         <h2 id="app-title">About AuthSome</h2>
         <p>{text}</p>
-        <a class="button" href="{up}">See AuthSome</a>
+        <p class="app-links"><a class="button" href="{up}">See AuthSome</a> <a href="{up}support/">Read the Support Page</a></p>
       </section>
 """
 
@@ -228,9 +229,8 @@ def render_guide(g, guides, sources, problems):
     if g.get("faq"):
         jump.append(("Common Questions", "common-questions"))
     jump_links = "".join(f'<li><a href="#{name}">{esc(label)}</a></li>' for label, name in jump)
-    dates = f'Published {time_tag(g["published"])}.'
-    if g["modified"] != g["published"]:
-        dates += f' Updated {time_tag(g["modified"])}.'
+    # A guide's modified date is the day its facts were last read on the makers' pages (README, "Keeping them true").
+    dates = f'Published {time_tag(g["published"])}. Facts last checked {time_tag(g["modified"])}.'
 
     out = [head(g["meta_title"], g["description"], url, "article", graph, 2, (g["published"], g["modified"]))]
     out.append(f"""
@@ -247,6 +247,15 @@ def render_guide(g, guides, sources, problems):
 """)
     used = {name: 0 for name in TERMS}
     body_text = ""
+    # A definition must not split a one word answer from its reason ("No. {{entry}} A help page says"), and the
+    # word must not be used before the sentence that defines it.
+    in_order = g["lede"] + " " + " ".join(s["html"] for s in g["sections"])
+    for name, pattern in TERM_WORDS.items():
+        token = "{{" + name + "}}"
+        if re.search(r"<p>\s*\w+\.\s*" + re.escape(token), in_order):
+            problems.append(f'{g["slug"]}: {token} sits straight after a one word sentence')
+        if token in in_order and re.search(pattern, lint.strip(in_order[:in_order.index(token)]), re.I):
+            problems.append(f'{g["slug"]}: uses the word for {token} before defining it')
     for i, s in enumerate(g["sections"]):
         text = s["html"].strip()
         for name, sentence in TERMS.items():

@@ -172,7 +172,8 @@ if (screenElement && (typeof PROFILES === 'undefined' || typeof LOGOS === 'undef
   const themeColour = document.querySelector('meta[name="theme-color"]');
 
   // Sample 2FA codes, plainly not real ones: one digit repeated, counting up from 000 000 to 999 999 and round again
-  // with each period. Every Account shows the same one. Nothing here works a code out from a Secret.
+  // with each period. Each Account starts from a digit of its own (its place in its Profile), so two services show
+  // different samples at the same moment, as real ones would. Nothing here works a code out from a Secret.
   const sampleCode = counter => { const digit = String(counter % 10); return `${digit.repeat(3)} ${digit.repeat(3)}`; };
   const counterNow = () => Math.floor(Date.now() / 1000 / PERIOD);
   const secondsLeft = () => PERIOD - (Date.now() / 1000 % PERIOD);
@@ -285,8 +286,8 @@ if (screenElement && (typeof PROFILES === 'undefined' || typeof LOGOS === 'undef
     const name = account.querySelector('.account-name');
     if (issuer.textContent !== shown.issuer) issuer.textContent = shown.issuer;
     if (name.textContent !== shown.name) name.textContent = shown.name;
-    account.querySelector('.code').textContent = sampleCode(counter);
-    account.querySelector('.next').textContent = `Next ${sampleCode(counter + 1)}`;
+    account.querySelector('.code').textContent = sampleCode(counter + chosen[open]);
+    account.querySelector('.next').textContent = `Next ${sampleCode(counter + chosen[open] + 1)}`;
     tiles.querySelectorAll('.tile').forEach((tile, index) => tile.setAttribute('aria-pressed', String(index === chosen[open])));
     if (codeChanged) {
       account.classList.remove('code-changing');
@@ -299,6 +300,8 @@ if (screenElement && (typeof PROFILES === 'undefined' || typeof LOGOS === 'undef
   function showProfile(index) {
     open = index;
     profileButton.querySelector('span').textContent = profiles[index].name;
+    // The button shows only the Profile's name, so its accessible name says what it is as well.
+    profileButton.setAttribute('aria-label', `Profile, ${profiles[index].name}`);
     for (const item of profileMenu.querySelectorAll('button')) item.setAttribute('aria-checked', String(Number(item.dataset.profile) === index));
     let html = '';
     let folder = null;

@@ -8,7 +8,7 @@ web fonts, no trackers, cookies or analytics). GitHub Pages serves each folder's
 |---|---|
 | `index.html`, `styles.css`, `script.js`, `accounts.js` | The page, kept short on purpose: the app's main screen, a six-row list of what it does, three captures and a footer. "How the home page works" below has the detail. |
 | `privacy/`, `support/` | The privacy policy and the support page, as the app's sub-screens look: the system's grouped background with plain plates. They load no script. |
-| `assets/` | `favicon.png` (64px), `header-logo.png` (102px, the header's logo on all three pages, shown at 34px and sharp on a 3x screen), `apple-touch-icon.png` (180px), `app-icon.png` (512px, named in the JSON-LD) and `app-icon-256.jpg`, which the Apps page's card shows. The last two were made from the published icons with `sips`. |
+| `assets/` | `favicon.png` (64px), `header-logo.png` (102px, the header's logo on all three pages, shown at 34px and sharp on a 3x screen), `apple-touch-icon.png` (180px), `app-icon.png` (512px, named in the JSON-LD), `app-icon-112.png` (the About AuthSome box on the guides, shown at 56px) and `app-icon-256.jpg`, which the Apps page's card shows. The last three were made from the published icons with `sips`. |
 | `assets/images/` | Captures of the app on iPhone (`shot-*.jpg`, 540 x 1173) and Mac, taken with its screenshot Accounts, and `social-preview.jpg`, the link preview. The page uses `shot-personal`, `shot-work-list` (`shot-work-list-dark` when the device is in dark mode, each inside a link to its own file, with `styles.css` showing one of the two), `shot-side-projects-dark` and `mac-personal`. Only files a page uses are kept here. Others can be captured again from the app. |
 
 The Apps page (`../apps/index.html`) has AuthSome's card (`.as-feature`) and names it in its title and descriptions. Its JSON-LD entry for AuthSome carries the same `@id` as the home page's (`https://devpulse.co.uk/authsome/#app`), so the two describe one app. The card's turning colour and spheres rest while it is off screen. Its label and paragraph are full white with a soft shade behind the letters, because they can lie over the lightest sphere (`#9d6bff`), where white alone measures about 3.5 to 1. The shade is not counted in that figure.
@@ -29,8 +29,9 @@ The Apps page (`../apps/index.html`) has AuthSome's card (`.as-feature`) and nam
 - **Screen readers.** The chosen Account's Issuer and Account name are a `role="status"`, written only when they
   change, so a screen reader hears the choice and not every new 2FA code.
 - **2FA codes.** They are plain samples, one digit repeated (`111 111`, then `222 222`, round to `000 000`), that
-  turn every 30 seconds with the countdown ring. The page does not work real codes out. The ring is run down by the
+  turn every 30 seconds with the countdown ring. Each Account starts from a digit of its own, its place in its Profile, so two services show different samples at the same moment. The page does not work real codes out. The ring is run down by the
   browser's own animation, not redrawn each frame, and steps once a second with Reduce Motion.
+- **Links in the list.** The rows of What AuthSome Does link the words they already have to the guide, support answer or policy that says more. The page gets no new sections for this.
 - **The line above the tiles** says the screen can be tried and the 2FA codes are samples. It is in the HTML, and the
   no-script style hides it.
 - **On a phone** (760px and under) the chosen Account sits above the App Store badge, by `order` in `styles.css`,
@@ -38,7 +39,7 @@ The Apps page (`../apps/index.html`) has AuthSome's card (`.as-feature`) and nam
   791px down, so that line shows only when the browser's bars are out of the way. Tab still reaches the badge before
   the Profile button there, as in the HTML. At 359px and under the header's links take less padding on all three pages, and on
   the home page the header also takes a little of the page's margin and its links are 14px, so the wordmark, which
-  never shrinks, and the two links fit side by side.
+  never shrinks, and the two links fit side by side. The line under the headline is worded to take six lines at 375px. A seventh pushes the 2FA code and the tiles down by 31px, so measure again if it changes.
 - **Folder names** are `h3` headings, as in the app, under a visually hidden `h2` ("Sample Accounts") in the HTML.
 - **Resting.** The spheres stop drifting while the band is off screen (`script.js` sets `resting` on `.band`).
 - **Room kept for the script.** `.account:empty` and `#tiles:empty` in `styles.css` hold the height of what
@@ -58,7 +59,7 @@ The Apps page (`../apps/index.html`) has AuthSome's card (`.as-feature`) and nam
   still measured above 4.5 to 1 there. In the light .9 measured under it, so it is not used. Folder headings on the
   wash are the text colour at three quarters strength, because the muted grey measured under 4.5 to 1 in the light.
 - **Captures.** The three sit three across at every width, in line with the list above them. On a phone they are a
-  strip to glance at, which keeps the page short there, and each one is a link that opens it at full size. Under
+  strip to glance at, which keeps the page short there, and each one is a link that opens it at full size, and says so in hidden text for a screen reader. Under
   each is a one or two word caption (Grid, List, Dark Theme), since the `alt` text is not seen.
 - Text is the system font, and light or dark follows the device.
 
@@ -74,7 +75,7 @@ data that says what to write next comes from Google Search Console (the `sc-doma
   build step. GitHub Pages does not publish a folder whose name begins with an underscore.
 - **Shared pieces.** `guides/_source/sources.json` holds each source's one name and URL, and a guide lists sources
   by key. In a guide's text, `{{secret-key}}` and `{{entry}}` expand to the sentence that defines that word, the
-  same in every guide, and the build fails if a guide uses the word without defining it. Guides say "secret key" and
+  same in every guide, and the build fails if a guide uses the word without defining it, uses it before the definition, or puts the definition straight after a one word sentence. Guides say "secret key" and
   "entry" for other apps. Secret and Account, with capitals, are only for AuthSome. The build also checks the
   punctuation of the rendered pages and the lengths of titles and descriptions.
 - **Adding a guide.** Add a content file (copy an existing one for its shape, and give it the next `order`), run the
@@ -86,9 +87,13 @@ data that says what to write next comes from Google Search Console (the `sc-doma
   happen. A step that could lock a reader out has a warning before it. The Copy rules below apply, and a product or
   menu name keeps the punctuation its owner gives it. `lint.py` checks the punctuation.
 - **Keeping them true.** Other companies change their apps. When a guide's facts are checked again, change its
-  `modified` date, and its `lastmod` in the sitemap.
-- **At launch.** Change "coming soon" in the About AuthSome box (`build.py`) and in each guide's own AuthSome
-  section, and make the box's button the App Store link.
+  `modified` date, and its `lastmod` in the sitemap. The byline shows that date as "Facts last checked". An App
+  Store privacy label is read in a browser, on the app's UK page, since a text fetch does not show it reliably.
+- **Links both ways.** The About AuthSome box links to the home page and the support page, and three support
+  answers link to the guide that is the long form of the same answer. Keep those in step when a guide is renamed.
+- **At launch.** Change "coming soon" in the About AuthSome box (`build.py`, `ABOUT` and `ABOUT_SHORT`), in each
+  guide's own AuthSome section and in the table rows that say "AuthSome, coming soon", make the box's button the
+  App Store link, and give `APP` in `build.py` the same `offers` as the home page.
 
 ## Being found
 
@@ -98,6 +103,10 @@ data that says what to write next comes from Google Search Console (the `sc-doma
   breadcrumbs. The `FAQPage` holds every question on the support page, with each answer's text exactly as shown.
   The site-wide `/sitemap.xml` lists these pages and `/robots.txt` points to it. Update a page's `lastmod` there,
   and `dateModified` in its JSON-LD (all three pages have one, on the `WebPage`), when its text changes.
+- **The same facts in several places.** What the app is and the devices it needs are written by hand in
+  `index.html` (the pitch, the meta and social descriptions and the JSON-LD), `guides/_source/build.py` (`ABOUT`,
+  `ABOUT_SHORT` and `APP`), `/llms.txt` and the Apps page (the card and its JSON-LD entry). Change all four together.
+  The home page's `featureList` names only what the visible list says.
 - **AI agents.** `/llms.txt` at the site root is a plain summary of DevPulse's apps with AuthSome's facts in full
   (price, platforms, features, privacy, status). Keep it true: it is what an agent will quote. It follows the
   llms.txt layout: prose and plain bullets come before the first `##` heading, and each `##` section holds only
@@ -134,7 +143,7 @@ data that says what to write next comes from Google Search Console (the `sc-doma
   confirm AutoFill, the lock with Face ID, Touch ID or the passcode (the login password on a Mac, which the support
   page and `/llms.txt` say), 30 days in Recently Deleted, the five seconds before the next 2FA code is copied, the
   import sources (Google Authenticator, 2FAS, Aegis, setup links, AuthSome backups), and, on the support page, how a
-  2FA code is copied in the Grid, the List and the Mac menu bar, and recovery codes kept in the Account details.
+  2FA code is copied in the Grid, the List and the Mac menu bar, and recovery codes kept in the Account details. The home page names the Mac menu bar and recovery codes as well, and says there is no Android version.
 - Only what v1 has is claimed. No Apple Watch, Android, widgets or scanning a QR code on a Mac's screen.
 
 ## Copy rules

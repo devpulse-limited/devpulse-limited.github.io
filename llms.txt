@@ -2,7 +2,7 @@
 
 > DevPulse (Devpulse Limited) is a UK studio that builds iOS and Android apps for clients and publishes its own apps and games. This file summarises the site for AI agents and language models.
 
-AuthSome is a free authenticator app made by DevPulse. It makes the short codes that websites and apps ask for after your password when you sign in. This is two factor authentication, also called 2FA or two step verification. These are time based one time codes, known as TOTP. AuthSome keeps personal and work Accounts apart in Profiles. An Account is one service the user has added, such as Google or GitHub.
+AuthSome is a free authenticator app made by DevPulse. It makes the short codes that websites and apps ask for after your password when you sign in, and it makes them on the device. This is two factor authentication, also called 2FA or two step verification. These are time based one time codes, known as TOTP. AuthSome keeps personal and work Accounts apart in Profiles. An Account is one service the user has added, such as Google or GitHub.
 
 - Price: free. No ads, no subscription, no purchases and no sign up.
 - Platforms: iPhone with iOS 26 or later, iPad with iPadOS 26 or later and Mac with macOS 26 or later. One app for all three. There is no Android or Apple Watch version.
@@ -40,14 +40,14 @@ The service names and logos shown on the AuthSome page are examples. AuthSome is
 Plain guides to 2FA codes and authenticator apps on iPhone, iPad and Mac. Facts about other apps come from the pages of their makers, which each guide lists.
 
 - [All guides](https://devpulse.co.uk/authsome/guides/)
-- [How to Export Google Authenticator to Another App on iPhone](https://devpulse.co.uk/authsome/guides/export-google-authenticator-to-another-app/): Make the export QR code, scan it inside the new app, and what to check before you delete anything.
+- [How to Export Google Authenticator to Another App on iPhone](https://devpulse.co.uk/authsome/guides/export-google-authenticator-to-another-app/): Tap Menu, Transfer accounts, Export accounts, scan the QR code in the new app, and check before you delete.
 - [Do Authenticator Apps Transfer to a New iPhone?](https://devpulse.co.uk/authsome/guides/do-authenticator-apps-transfer-to-new-iphone/): It depends on the app. What each maker says, what to turn on first, and a safe order for switching.
 - [How to Move 2FA Codes From Android to iPhone](https://devpulse.co.uk/authsome/guides/move-2fa-codes-from-android-to-iphone/): It depends on your Android app. The route for Google Authenticator, Aegis, 2FAS and Microsoft Authenticator.
 - [Authy Desktop Is Gone. What to Use on a Mac Instead](https://devpulse.co.uk/authsome/guides/authy-desktop-alternative-mac/): Authy Desktop ended in March 2024. Which Mac apps replace it, and how to move when Authy has no export.
 - [Can You Use an Authenticator App on a Mac?](https://devpulse.co.uk/authsome/guides/authenticator-app-on-mac/): Yes. Use the Passwords app from Apple, or a separate authenticator app that has a Mac version.
 - [Can You Use the Same Authenticator App on Two Devices?](https://devpulse.co.uk/authsome/guides/authenticator-app-on-two-devices/): Yes. Use an app that syncs, or scan the same QR code on both devices when you set up 2FA.
-- [Which Authenticator Apps Are Free With No Ads or Subscription?](https://devpulse.co.uk/authsome/guides/free-authenticator-app-no-ads/): Which authenticator apps are free, which say they have no ads, and how to spot one that charges weekly.
-- [How to AutoFill 2FA Codes From an Authenticator App on iPhone](https://devpulse.co.uk/authsome/guides/autofill-2fa-codes-iphone/): How to turn it on in Settings, which apps say they fill 2FA codes, and why a code may not show.
+- [Which Authenticator Apps Are Free With No Ads or Subscription?](https://devpulse.co.uk/authsome/guides/free-authenticator-app-no-ads/): 2FAS and Proton say they have no ads. Which apps are free, and how to spot one that charges weekly.
+- [How to AutoFill 2FA Codes From an Authenticator App on iPhone](https://devpulse.co.uk/authsome/guides/autofill-2fa-codes-iphone/): Turn it on in Settings, General, AutoFill & Passwords. Which apps say they fill 2FA codes.
 
 ## Optional
 

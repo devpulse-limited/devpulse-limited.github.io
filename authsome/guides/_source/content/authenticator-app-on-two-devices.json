@@ -69,7 +69,9 @@
     "ente-auth",
     "authy-features",
     "microsoft-backup",
-    "duo-restore"
+    "duo-restore",
+    "app-store-google",
+    "app-store-ente"
   ],
   "related": [
     "do-authenticator-apps-transfer-to-new-iphone",

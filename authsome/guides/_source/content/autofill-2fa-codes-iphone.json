@@ -4,7 +4,7 @@
   "title": "How to AutoFill 2FA Codes From an Authenticator App on iPhone",
   "meta_title": "How to AutoFill 2FA Codes From an Authenticator on iPhone",
   "description": "An authenticator app can offer its 2FA codes above the iPhone keyboard. How to turn it on, which apps say they do it, and why a code may not show.",
-  "card": "How to turn it on in Settings, which apps say they fill 2FA codes, and why a code may not show.",
+  "card": "Turn it on in Settings, General, AutoFill & Passwords. Which apps say they fill 2FA codes.",
   "lede": "An authenticator app on iPhone can offer its 2FA codes above the keyboard, so you do not have to switch apps and copy them. The app has to support it, and you turn it on in Settings, under General, then AutoFill & Passwords. The Passwords app from Apple fills the 2FA codes it holds in the same place.",
   "published": "2026-11-19",
   "modified": "2026-11-19",

@@ -4,7 +4,7 @@
   "title": "How to Export Google Authenticator to Another App on iPhone",
   "meta_title": "How to Export Google Authenticator to Another App on iPhone",
   "description": "In Google Authenticator tap Menu, Transfer accounts, Export accounts. Scan the QR code inside the new app, then check every 2FA code before you delete.",
-  "card": "Make the export QR code, scan it inside the new app, and what to check before you delete anything.",
+  "card": "Tap Menu, Transfer accounts, Export accounts, scan the QR code in the new app, and check before you delete.",
   "lede": "Google Authenticator can show what it holds as an export QR code, and other authenticator apps on iPhone can scan it. In Google Authenticator tap Menu, then Transfer accounts, then Export accounts, and scan the QR code from inside the new app, not with the Camera app. Keep Google Authenticator until every 2FA code works in the new app.",
   "published": "2026-11-19",
   "modified": "2026-11-19",
@@ -12,7 +12,7 @@
     {
       "h2": "Make the Export QR Code in Google Authenticator",
       "nav": "Make the Export QR Code",
-      "html": "<p>Google Authenticator makes the short numbers that services ask for after your password, the codes for two factor authentication, or 2FA. {{entry}}</p><p>These export steps are from the Google help page for iPhone and iPad, which says you need the latest version of Google Authenticator on the phone you export from.</p><ol><li>Open Google Authenticator and tap Menu.</li><li>Choose Transfer accounts, then Export accounts.</li><li>Prove it is you when the app asks, the same way you open your phone.</li><li>Select the entries you want to move.</li><li>Tap Next. The QR code appears.</li></ol><p>If you move more than one entry, the app may make more than one QR code. The help page gives no number of entries for each one. The new app needs every QR code in the set, so scan them all.</p><p>Treat the export QR code like a password. {{secret-key}} The export QR code carries the secret key of every entry you selected, so anyone who scans it can make your 2FA codes.</p>"
+      "html": "<p>Google Authenticator makes the short numbers that services ask for after your password, the codes for two factor authentication, or 2FA. {{entry}}</p><p>These export steps are from the Google help page for iPhone and iPad, which says you need the latest version of Google Authenticator on the phone you export from.</p><ol><li>Open Google Authenticator and tap Menu.</li><li>Choose Transfer accounts, then Export accounts.</li><li>Prove it is you when the app asks, the same way you open your phone.</li><li>Select the entries you want to move.</li><li>Tap Next. The QR code appears.</li></ol><p>If you move more than one entry, the app may make more than one QR code. The new app needs every QR code in the set, so scan them all.</p><p>Treat the export QR code like a password. {{secret-key}} The export QR code carries the secret key of every entry you selected, so anyone who scans it can make your 2FA codes.</p>"
     },
     {
       "h2": "Which Apps Can Scan the Export QR Code?",
@@ -22,7 +22,7 @@
     {
       "h2": "Why Not Scan It With the iPhone Camera?",
       "nav": "Why Not the Camera",
-      "html": "<p>The export QR code is not a web address and it is not the usual QR code a website shows when you turn on 2FA. The Google help page does not say what is inside it. The source code of Aegis, an open source authenticator app for Android, reads it as a link that begins otpauth-migration:// with the entries packed inside. The QR code a website shows when you turn on 2FA holds a different link, one that begins otpauth:// and carries a single entry.</p><p>Apple says the Camera app shows a link to tap when it sees a QR code, for things such as websites, apps and tickets. Neither Apple nor Google says the Camera app can open an export from Google Authenticator, so do not expect it to. Open the new authenticator app first and use the scanner inside its import screen.</p>"
+      "html": "<p>The export QR code is not a web address and it is not the usual QR code a website shows when you turn on 2FA. Google does not document what is inside it, but the source code of Aegis, an open source authenticator app for Android, reads it as a link that begins otpauth-migration:// with the entries packed inside. The QR code a website shows when you turn on 2FA holds a different link, one that begins otpauth:// and carries a single entry.</p><p>Apple says the Camera app shows a link to tap when it sees a QR code, for things such as websites, apps and tickets. Neither Apple nor Google says the Camera app can open an export from Google Authenticator, so do not expect it to. Open the new authenticator app first and use the scanner inside its import screen.</p>"
     },
     {
       "h2": "What If Both Apps Are on the Same iPhone?",
@@ -30,14 +30,9 @@
       "html": "<p>A phone cannot point its camera at its own screen. You have two choices.</p><ul><li>Take a screenshot of each export QR code, then give the screenshots to the new app. AuthSome does this from the same import step, where you choose each screenshot from Photos. 2FAS says its iPhone app can do the same, with Choose QR code on its Import tokens screen. Proton says its app can take a QR code from an image as well as from the camera. With another app, check that its import screen can read a QR code from an image.</li><li>Install the new app on a second device, such as an iPad, and scan the iPhone screen with it. This suits an app that keeps your devices in step. <a href=\"../authenticator-app-on-two-devices/\">Using the same authenticator app on two devices</a> explains which apps do that.</li></ul><p>A screenshot of an export QR code is as sensitive as the QR code itself. Delete each one as soon as the import is done, and do not leave them where your photos are shared or backed up.</p>"
     },
     {
-      "h2": "Does Exporting Remove Anything From Google Authenticator?",
-      "nav": "Does Exporting Remove Anything",
-      "html": "<p>The Google help page does not describe the export removing anything, and it treats deleting as a separate action that you confirm one entry at a time. It does not say in so many words that the entries stay, so look at the main list after the export. If the app ever offers to remove what you exported, keep it, because the same entry in two apps for a few days costs you nothing.</p>"
-    },
-    {
       "h2": "What to Check Before You Delete Anything",
       "nav": "Check Before You Delete",
-      "html": "<ol><li>Count the entries. The new app should show as many as you selected in Google Authenticator. If some are missing, you may have skipped one QR code of the set.</li><li>Compare one 2FA code. Open the same entry in both apps at the same moment. The two numbers should match.</li><li>Sign in somewhere with the new app. Start with the services you could least afford to lose, such as your email.</li><li>Check the names. Make sure each entry shows the right service and the right username, and correct any that came across blank.</li><li>Check that the new app is backed up, so the move does not leave you with a single copy.</li><li>Delete any screenshots of the export QR codes.</li></ol><p>Only then remove entries from Google Authenticator. Its help page warns that if your 2FA codes are saved to your Google Account, deleting one deletes it from every device where they are synced.</p><p>If you are moving because of a new phone, read <a href=\"../do-authenticator-apps-transfer-to-new-iphone/\">whether authenticator apps transfer to a new iPhone</a> before you wipe the old one. If the entries are on an Android phone, see <a href=\"../move-2fa-codes-from-android-to-iphone/\">how to move 2FA codes from Android to iPhone</a>.</p>"
+      "html": "<ol><li>Count the entries. The new app should show as many as you selected in Google Authenticator. If some are missing, you may have skipped one QR code of the set.</li><li>Compare one 2FA code. Open the same entry in both apps at the same moment. The two numbers should match.</li><li>Sign in somewhere with the new app. Start with the services you could least afford to lose, such as your email.</li><li>Check the names. Make sure each entry shows the right service and the right username, and correct any that came across blank.</li><li>Check that the new app is backed up, so the move does not leave you with a single copy.</li><li>Delete any screenshots of the export QR codes.</li></ol><p>Only then remove entries from Google Authenticator. Its help page does not describe the export removing anything, and treats deleting as a separate step that you confirm, so your entries should still be in the main list. It warns that if your 2FA codes are saved to your Google Account, deleting one deletes it from every device where they are synced.</p><p>If you are moving because of a new phone, read <a href=\"../do-authenticator-apps-transfer-to-new-iphone/\">whether authenticator apps transfer to a new iPhone</a> before you wipe the old one. If the entries are on an Android phone, see <a href=\"../move-2fa-codes-from-android-to-iphone/\">how to move 2FA codes from Android to iPhone</a>.</p>"
     }
   ],
   "faq": [
@@ -47,7 +42,7 @@
     },
     {
       "q": "Can You Export the Secret Key From Google Authenticator?",
-      "a": "The Google help page describes no way to show the secret key of an entry as text. The export QR code is the only route it documents. If you need the secret key itself, ask the service for a new one, which means turning 2FA off and on again there. Have a recovery code ready before you do."
+      "a": "The export QR code is the only route the Google help page gives, and it does not show the secret key of an entry as text. If you need the secret key itself, have a recovery code ready first. Then ask the service for a new one, which means turning 2FA off and on again there."
     },
     {
       "q": "Why Is Google Authenticator Export Not Working?",
@@ -55,7 +50,7 @@
     },
     {
       "q": "What Is an otpauth-migration:// Link?",
-      "a": "It is the link inside the export QR code from Google Authenticator. It carries the secret key of every entry you selected, which is why the QR code has to be treated like a password. Google does not document the link. Its name is known from the source code of Aegis, an open source authenticator app that reads it."
+      "a": "It is the link inside the export QR code from Google Authenticator. It carries the secret key of every entry you selected, which is why the QR code has to be treated like a password. Its name comes from the source code of Aegis, an open source authenticator app that reads it."
     }
   ],
   "sources": [
