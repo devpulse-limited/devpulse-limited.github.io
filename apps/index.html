@@ -954,7 +954,7 @@
     }
 
     /* Kids Paint keeps the studio card layout with its own playful palette. */
-    @font-face { font-family: KidsChewy; src: url('../kidspaint/assets/fonts/Chewy-Regular.ttf') format('truetype'); font-display: swap; }
+    @font-face { font-family: KidsChewy; src: url('../kidspaint/assets/fonts/Chewy-Regular.woff2') format('woff2'); font-display: swap; }
     .kids-feature { display:grid; grid-template-columns:1.15fr 1fr; gap:48px; align-items:center; padding:clamp(24px,5vw,60px); border:1px solid #b1d7bc40; border-radius:var(--radius,24px); background:radial-gradient(ellipse at top right,#b39bdb22,transparent 65%),linear-gradient(120deg,#112820,#101322); }
     .kids-feature .kids-brand { display:flex; align-items:center; gap:12px; margin:14px 0; font-family:KidsChewy,sans-serif; font-size:clamp(38px,5vw,58px); font-weight:400; color:#d5edda; line-height:1.1; }
     .kids-brand img { border-radius:10px; width:46px; height:46px; }
@@ -962,6 +962,7 @@
     .kids-feature .kids-label { color:#d5c5ed; font-size:13px; font-weight:700; letter-spacing:.06em; }
     .kids-feature .kids-link { display:inline-flex; align-items:center; margin-top:24px; padding:13px 23px; border-radius:99px; background:#c4e3cd; color:#173a28; font-weight:700; text-decoration:none; transition:background .2s,transform .2s; }
     .kids-link:hover { background:#deefe3; transform:translateY(-2px); }
+    .kids-link+.kids-link { margin-left:10px; background:transparent; box-shadow:inset 0 0 0 2px #c4e3cd; color:inherit; }
     .kids-link:focus-visible { outline:3px solid #d5c5ed; outline-offset:5px; }
     .kids-art { display:grid; grid-template-columns:1fr 1fr; gap:12px; align-items:center; padding:10px; }
     .kids-art img { width:100%; height:auto; border-radius:18px; background:white; box-shadow:0 14px 30px #0003; transform:rotate(-5deg); }
@@ -1145,10 +1146,11 @@
         <h2 id="mobile-apps-title" style="margin-bottom:24px">Mobile &amp; Tablet Apps</h2>
         <article class="kids-feature reveal" id="kidspaint">
           <div>
-            <p class="kids-label">Made by Devpulse. Coming to iOS and Android.</p>
+            <p class="kids-label">Made by Devpulse. On the App Store for iPhone and iPad.</p>
             <h3 class="kids-brand"><img src="../kidspaint/assets/brand-icon.png" width="46" height="46" alt="">Kids Paint</h3>
             <p>A little space for big imaginations. Colour dinosaurs, princesses, and whole new worlds with simple tools made for little fingers. Free pictures to get started, more to explore with a subscription, and no ads.</p>
             <a class="kids-link" href="../kidspaint/">Explore Kids Paint <span aria-hidden="true">&nbsp;↗</span></a>
+             <a class="kids-link" href="../kidspaint/guides/">Guides for Parents <span aria-hidden="true">&nbsp;↗</span></a>
           </div>
           <div class="kids-art">
             <img src="../kidspaint/assets/images/dinosaur-day-colour.webp" width="900" height="900" loading="lazy" alt="Friendly green and orange dinosaurs to colour in Kids Paint.">

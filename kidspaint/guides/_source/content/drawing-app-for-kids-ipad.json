@@ -1,0 +1,66 @@
+{
+  "slug": "drawing-app-for-kids-ipad",
+  "order": 3,
+  "query": "drawing app for kids ipad",
+  "title": "How to Set Up an iPad for a Child to Draw and Colour",
+  "meta_title": "Drawing App for Kids on iPad. How to Set It Up",
+  "description": "Choose a drawing app for kids on iPad, block In-App Purchases with Screen Time, lock the iPad to one app with Guided Access, and keep their pictures.",
+  "card": "Choose the app, block purchases with Screen Time, lock the iPad to one app, and keep their pictures safe.",
+  "lede": "Choose a drawing app made for children, then use what is already on the iPad. Screen Time can block In-App Purchases, Ask to Buy sends purchase requests to a parent, and Guided Access keeps the iPad in one app until you end the session.",
+  "sections": [
+    {
+      "h2": "Choose a Drawing App Made for Children",
+      "nav": "Choose the App",
+      "html": "<p>The iPad is a lovely size for drawing. A good drawing or colouring app for a child paints with a finger, fills a shape with one tap, has an easy undo, and asks a grown up before anything is bought or shared. Our guides to <a href=\"../colouring-app-for-toddlers/\">colouring apps for toddlers</a> and <a href=\"../colouring-app-for-kids-no-ads/\">apps with no ads</a> go through what to look for.</p>{{app}}"
+    },
+    {
+      "h2": "Block In-App Purchases With Screen Time",
+      "nav": "Block Purchases",
+      "id": "block-purchases",
+      "html": "<p>These are the steps Apple gives for an iPhone or iPad.</p><ol><li>Open Settings and tap Screen Time. Turn it on if it is off.</li><li>Tap Apps and Websites, then App Store.</li><li>Tap In-app Purchases and choose Blocked.</li></ol><p>Apple adds that you can also require a password for purchases. If your child has their own iPad in your Family Sharing group, Ask to Buy is the better tool.</p>"
+    },
+    {
+      "h2": "Use Ask to Buy for a Child's Own Apple Account",
+      "nav": "Ask to Buy",
+      "html": "<p>With Ask to Buy, when a child asks for an app or an in app purchase, the family organiser or a parent gets a notification to approve or decline it. Apple says it applies whatever the app's age rating, and depending on where you live it may already be on for children under 18.</p><ol><li>Open Settings and tap Family.</li><li>Tap your child's name, then Apps and Websites.</li><li>Tap Restrictions, then Ask to Buy, and turn on Require Purchase Approval.</li></ol>"
+    },
+    {
+      "h2": "Lock the iPad to One App With Guided Access",
+      "nav": "Guided Access",
+      "id": "guided-access",
+      "html": "<p>Guided Access keeps the iPad in one app. You can also set a time limit and turn off parts of the screen or the buttons. To set it up, open Settings, then Accessibility, then Guided Access, and turn it on. Choose a passcode there, or use Face ID or Touch ID.</p><p>To start a session, Apple gives these steps.</p><ol><li>Open the drawing app.</li><li>Triple click the top button on iPad, or the Home button on an iPad that has one.</li><li>Tap Guided Access if a menu appears, and circle any part of the screen you want to turn off.</li><li>Tap Options to set a time limit, then tap Start.</li></ol><p>To end it, triple click the same button, then use your passcode, Face ID, or Touch ID, and tap End. Apple notes that on iPadOS 18 or earlier you double click instead. Guided Access is also handy on a long journey. Our guide to <a href=\"../colouring-app-offline/\">colouring offline</a> has more travel tips.</p>"
+    },
+    {
+      "h2": "Keep Their Pictures Safe",
+      "nav": "Keep Their Pictures",
+      "html": "<p>Most children's drawing apps, Kids Paint among them, keep pictures on the iPad itself. That keeps them private, but it means they live with the app.</p><p class=\"caution\">Deleting a drawing app usually deletes the pictures saved inside it. Export or share the favourites you want to keep before you delete the app or reset the iPad.</p><p>In Kids Paint, finished pictures are kept in My Art, and a grown up can share or export one as a PNG image through the share sheet.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "What is a good free drawing app for kids on iPad?",
+      "a": "Look for one with free pictures or blank paper, finger painting, tap to fill, an easy undo, no adverts, and a grown up check before buying. Kids Paint is free on the App Store with free pictures and blank paper, and no adverts."
+    },
+    {
+      "q": "Does my child need an Apple Pencil to draw on an iPad?",
+      "a": "No. Apps made for young children, Kids Paint among them, are designed for painting with a finger, which suits small hands."
+    },
+    {
+      "q": "How do I stop my child leaving the drawing app?",
+      "a": "Use Guided Access. Turn it on in Settings, Accessibility, Guided Access, then triple click the top button or Home button in the app and tap Start. Only your passcode, Face ID, or Touch ID ends the session."
+    }
+  ],
+  "sources": [
+    "apple-block-purchases",
+    "apple-ask-to-buy",
+    "apple-guided-access",
+    "apple-kids-apps"
+  ],
+  "related": [
+    "colouring-app-offline",
+    "free-colouring-app-no-subscription",
+    "colouring-app-for-toddlers"
+  ],
+  "published": "2026-11-19",
+  "modified": "2026-11-19"
+}

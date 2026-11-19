@@ -1,0 +1,64 @@
+{
+  "slug": "colouring-app-for-kids-no-ads",
+  "order": 1,
+  "query": "colouring app for kids no ads",
+  "title": "How to Find a Colouring App for Kids With No Ads",
+  "meta_title": "Colouring App for Kids With No Ads. How to Check",
+  "description": "How to tell whether a colouring app for kids has ads before you download it, what the App Store and Google Play show, and what else to look for.",
+  "card": "Read the store page first. What Apple and Google show about ads and purchases, and what to check inside the app.",
+  "lede": "Check the store page before you download, then check the app itself. Google Play labels apps that contain ads. The App Store shows In-App Purchases and a privacy label, and Apple sets stricter ad rules for apps in its Kids category. A few minutes of looking saves a lot of pop ups later.",
+  "sections": [
+    {
+      "h2": "What the App Store Tells You",
+      "nav": "The App Store",
+      "id": "app-store",
+      "html": "<p>Apple does not describe a label that says whether an app shows adverts, so you read three other things on the product page.</p><ul><li><strong>In-App Purchases.</strong> Apple says to look for these words near the price or the Get button. They mean the app sells something inside it, such as extra pictures or a subscription.</li><li><strong>The privacy label.</strong> Every product page lists what data the developer says the app collects. A section called Data Used to Track You means data from the app may be combined with data from other companies for advertising. Data Not Collected means the developer says it collects nothing. Apple notes that this information is reported by the developer.</li><li><strong>The category.</strong> Apple's rules say apps in the Kids category should not include third party advertising or third party analytics. The narrow exception is contextual adverts from a provider whose kids policy includes human review of every advert.</li></ul><p>Apple's rules also say Kids category apps must keep links out of the app and chances to buy behind a parental gate, which Apple describes as an adult level task. An app outside the Kids category can still be calm and free of adverts, so treat the category as one signal, not the only one.</p>"
+    },
+    {
+      "h2": "What Google Play Tells You",
+      "nav": "Google Play",
+      "id": "google-play",
+      "html": "<p>On Google Play, an app with adverts shows a Contains ads label on its listing. Google counts adverts from other companies and house adverts that promote the developer's own apps. Google says the label is not meant to cover offers to buy something inside the app. Those show separately, next to the price or the Install button.</p><p>So an app with no Contains ads label can still sell things inside. Check both.</p>"
+    },
+    {
+      "h2": "Adverts Are Not the Only Interruption",
+      "nav": "Other Interruptions",
+      "html": "<p>A colouring app can be free of adverts and still pull a child out of their picture. Spend five minutes with the app yourself before handing it over, and look for these.</p><ul><li>Offers to buy that appear in the middle of play, with no grown up check before the payment screen.</li><li>Rewards for watching a video, such as extra colours or stickers.</li><li>Buttons that open a web page, a social network, or another app.</li><li>Timers, streaks, or reminders that push a child to keep going.</li><li>Pictures that are shown to tempt but cannot be opened, mixed in with the free ones.</li></ul><p>If a purchase does appear, a grown up check should come first. On an iPhone or iPad you can also send every purchase to a parent for approval. Our guide to <a href=\"../drawing-app-for-kids-ipad/#block-purchases\">setting up an iPad for a child</a> shows how.</p>"
+    },
+    {
+      "h2": "How Kids Paint Handles Ads",
+      "nav": "Kids Paint and Ads",
+      "html": "<p>Kids Paint, our own app, has no adverts and no behavioural profiling. There are no public profiles and no chat. The free pictures and blank paper come with every painting tool, and nothing in them is locked behind a video.</p><p>Buying the optional subscription and sharing a finished picture both sit behind a grown up check. Kids Paint is on the App Store for iPhone and iPad. It is not on Google Play yet.</p>{{app}}"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Are there colouring apps for kids with no ads?",
+      "a": "Yes. Some make money from a one off price or a subscription instead. Check the store page for a Contains ads label on Google Play, and the privacy label and In-App Purchases note on the App Store, then try the app yourself before your child does."
+    },
+    {
+      "q": "Does the App Store show if an app has ads?",
+      "a": "Apple does not describe an ads label. Read the privacy label, especially any Data Used to Track You section, check for In-App Purchases near the Get button, and look at the category, since Apple's Kids category rules limit advertising."
+    },
+    {
+      "q": "Is a colouring app in the Kids category always ad free?",
+      "a": "Not always. Apple's rules say Kids category apps should not include third party advertising, with a narrow exception for contextual adverts that are reviewed by people. So it is still worth a look."
+    }
+  ],
+  "sources": [
+    "apple-in-app-purchases",
+    "apple-privacy-info",
+    "apple-privacy-labels",
+    "apple-review-guidelines",
+    "apple-kids-apps",
+    "play-contains-ads",
+    "play-in-app-purchases"
+  ],
+  "related": [
+    "free-colouring-app-no-subscription",
+    "colouring-app-for-toddlers",
+    "drawing-app-for-kids-ipad"
+  ],
+  "published": "2026-11-19",
+  "modified": "2026-11-19"
+}

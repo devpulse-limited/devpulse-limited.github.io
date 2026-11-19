@@ -1,0 +1,66 @@
+{
+  "slug": "free-colouring-app-no-subscription",
+  "order": 4,
+  "query": "free colouring app for kids no subscription",
+  "title": "Free Colouring Apps for Kids. What Free Really Means",
+  "meta_title": "Free Colouring App for Kids. What Free Really Means",
+  "description": "Most free colouring apps for kids earn money from ads, purchases, or subscriptions. How to tell which, and how to stop surprise charges on iPhone or iPad.",
+  "card": "Free apps earn money from ads, purchases, or subscriptions. How to tell which, and how to avoid surprise charges.",
+  "lede": "Free to download rarely means free for good. A free colouring app usually earns money from adverts, from things to buy inside it, or from a subscription. Check the store page, decide which kind you are happy with, and turn on purchase approval before your child plays.",
+  "sections": [
+    {
+      "h2": "Three Ways a Free App Pays for Itself",
+      "nav": "How Free Apps Pay",
+      "html": "<div class=\"table-scroll\"><table><caption>How free colouring apps usually make money</caption><thead><tr><th>Model</th><th>What your child sees</th><th>What to check</th></tr></thead><tbody><tr><td>Adverts</td><td>Videos or banners between pictures, sometimes rewards for watching</td><td>Contains ads on Google Play, and the privacy label on the App Store</td></tr><tr><td>One off purchases</td><td>Packs of pictures or tools to buy once</td><td>In-App Purchases on the store page, and a grown up check in the app</td></tr><tr><td>Subscription</td><td>Some pictures free, the rest shown as premium</td><td>The price and how often it renews, shown before you pay</td></tr></tbody></table></div><p>Apple explains that subscriptions renew automatically unless you cancel them. None of these models is wrong. What matters is that you know which one you are choosing, and that your child cannot choose it for you.</p>"
+    },
+    {
+      "h2": "How to Check Before You Download",
+      "nav": "Check Before You Download",
+      "html": "<ul><li><strong>App Store.</strong> Apple says to look for In-App Purchases near the price or the Get button.</li><li><strong>Google Play.</strong> In app purchases are shown next to the price or the Install button, and apps with adverts show Contains ads.</li><li><strong>In the app.</strong> Count how many pictures can be opened for free, and check whether the free ones come with every tool or only a few.</li></ul><p>Our guide to <a href=\"../colouring-app-for-kids-no-ads/\">finding a colouring app with no ads</a> goes further on the store labels.</p>"
+    },
+    {
+      "h2": "Stop Surprise Charges",
+      "nav": "Stop Surprise Charges",
+      "html": "<p>On an iPhone or iPad, you can block In-App Purchases in Screen Time, require a password for every purchase, or use Ask to Buy so each request comes to you. The steps are in our guide to <a href=\"../drawing-app-for-kids-ipad/#block-purchases\">setting up an iPad for a child</a>.</p>"
+    },
+    {
+      "h2": "How to Cancel a Subscription on iPhone or iPad",
+      "nav": "Cancel a Subscription",
+      "html": "<ol><li>Open Settings and tap your name.</li><li>Tap Subscriptions, then the subscription.</li><li>Tap Cancel Subscription. You may need to scroll down.</li></ol><p>Apple says that if there is no Cancel button, or you see an expiry message in red, the subscription is already cancelled. A free trial should be cancelled at least 24 hours before it ends.</p><p class=\"caution\">Deleting an app does not cancel its subscription. Kids Paint says so on its App Store page, and the same is true of other apps. Cancel it in Settings, even if the app is already gone.</p>"
+    },
+    {
+      "h2": "How Kids Paint Is Free",
+      "nav": "Kids Paint",
+      "html": "<p>Kids Paint is free to download and has no adverts. The free pictures and blank paper come with every painting tool, and a child can use them without anyone ever subscribing.</p><p>An optional subscription, weekly or yearly, unlocks the premium pictures while it is active. The price and renewal details are shown in the app before you buy, and buying needs a grown up check first.</p>{{app}}"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is there a free colouring app for kids with no subscription?",
+      "a": "Yes. Some apps are paid for once, some are free with adverts, and some, like Kids Paint, have free pictures that can be used without ever subscribing. Check the store page for In-App Purchases before you download."
+    },
+    {
+      "q": "Does deleting an app cancel the subscription?",
+      "a": "No. Cancel it in Settings, then your name, then Subscriptions."
+    },
+    {
+      "q": "How do I stop my child buying things in an app?",
+      "a": "On iPhone and iPad, set In-app Purchases to Blocked in Screen Time, or use Ask to Buy so a parent approves each request."
+    }
+  ],
+  "sources": [
+    "apple-in-app-purchases",
+    "apple-cancel-subscription",
+    "apple-block-purchases",
+    "apple-ask-to-buy",
+    "play-in-app-purchases",
+    "play-contains-ads"
+  ],
+  "related": [
+    "colouring-app-for-kids-no-ads",
+    "drawing-app-for-kids-ipad",
+    "colouring-app-for-toddlers"
+  ],
+  "published": "2026-11-19",
+  "modified": "2026-11-19"
+}

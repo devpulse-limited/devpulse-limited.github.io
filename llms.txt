@@ -25,7 +25,7 @@ The service names and logos shown on the AuthSome page are examples. AuthSome is
 ## Apps
 
 - [AuthSome](https://devpulse.co.uk/authsome/): A free authenticator app for iPhone, iPad and Mac that makes 2FA codes. Coming soon to the App Store. Its facts are above.
-- [Kids Paint](https://devpulse.co.uk/kidspaint/): A drawing and colouring app for kids on iPhone, iPad and Android.
+- [Kids Paint](https://devpulse.co.uk/kidspaint/): A colouring and drawing app for kids on iPhone and iPad, with no ads. Free on the App Store. Its facts are below.
 - [TwinFin](https://devpulse.co.uk/twinfin/): A one thumb arcade game for iPhone with a new level every day.
 - [Coconut Rocket](https://devpulse.co.uk/coconut-rocket/): An endless arcade climber for iPhone.
 - [All apps](https://devpulse.co.uk/apps/): Every DevPulse app, including the free Mac utilities FannyBoost and ScreenBoost.
@@ -49,6 +49,37 @@ Plain guides to 2FA codes and authenticator apps on iPhone, iPad and Mac. Facts 
 - [Can You Use the Same Authenticator App on Two Devices?](https://devpulse.co.uk/authsome/guides/authenticator-app-on-two-devices/): Yes. Use an app that syncs, or scan the same QR code on both devices when you set up 2FA.
 - [Which Authenticator Apps Are Free With No Ads or Subscription?](https://devpulse.co.uk/authsome/guides/free-authenticator-app-no-ads/): 2FAS and Proton say they have no ads. Which apps are free, and how to spot one that charges weekly.
 - [How to AutoFill 2FA Codes From an Authenticator App on iPhone](https://devpulse.co.uk/authsome/guides/autofill-2fa-codes-iphone/): Turn it on in Settings, General, AutoFill & Passwords. Which apps say they fill 2FA codes.
+
+## Kids Paint
+
+Kids Paint is a colouring and drawing app for children, made by DevPulse in the UK. Children paint with a finger, tap to fill a shape with colour, and save their pictures on the device.
+
+- Price: free to download, with free pictures, blank paper and every painting tool. An optional weekly or yearly subscription unlocks the premium pictures while it is active. The price is shown in the app before buying.
+- Platforms: iPhone and iPad with iOS or iPadOS 15 or later. An Android version is in progress and not available yet.
+- App Store: https://apps.apple.com/app/kids-paint-colouring-art-book/id6810289526 (listed as Kids Paint: Colouring Art Book, rated 4+).
+- Pictures: original pictures of dinosaurs, animals, princesses, mermaids, space, vehicles and nature scenes, plus blank paper for free drawing.
+- Tools: finger painting with crayon colours, brush size, tap to fill, eraser, undo and redo, and zoom.
+- Saving and sharing: pictures save in My Art on the device. A grown up can share or export a picture as a PNG.
+- Safety: no ads, no behavioural profiling, no public profiles and no chat. Buying and sharing sit behind a grown up check.
+- Works offline: the pictures are part of the app, so painting, filling and saving work without a connection. Buying or restoring a subscription needs one.
+- Maker: DevPulse, United Kingdom.
+- Facts last checked: 19 November 2026.
+
+- [Kids Paint home](https://devpulse.co.uk/kidspaint/): what the app is, the pictures and the common questions.
+- [Support](https://devpulse.co.uk/kidspaint/support/), [Privacy policy](https://devpulse.co.uk/kidspaint/privacy/) and [Terms](https://devpulse.co.uk/kidspaint/terms/).
+
+## Kids Paint Guides
+
+Plain guides for parents about colouring and drawing apps, screen time and early drawing. Facts about Apple, Google, the WHO, the CDC and UK guidance come from the pages each guide lists.
+
+- [All guides](https://devpulse.co.uk/kidspaint/guides/)
+- [How to Find a Colouring App for Kids With No Ads](https://devpulse.co.uk/kidspaint/guides/colouring-app-for-kids-no-ads/): Read the store page first. What Apple and Google show about ads and purchases, and what to check inside the app.
+- [What Makes a Good Colouring App for Toddlers?](https://devpulse.co.uk/kidspaint/guides/colouring-app-for-toddlers/): Tap to fill, big pictures, easy undo, and no ads. What matters for little hands, and how long to play.
+- [How to Set Up an iPad for a Child to Draw and Colour](https://devpulse.co.uk/kidspaint/guides/drawing-app-for-kids-ipad/): Choose the app, block purchases with Screen Time, lock the iPad to one app, and keep their pictures safe.
+- [Free Colouring Apps for Kids. What Free Really Means](https://devpulse.co.uk/kidspaint/guides/free-colouring-app-no-subscription/): Free apps earn money from ads, purchases, or subscriptions. How to tell which, and how to avoid surprise charges.
+- [Colouring Apps That Work Offline, for Planes and Car Journeys](https://devpulse.co.uk/kidspaint/guides/colouring-app-offline/): Test it in Airplane Mode at home first. What usually needs a connection, and a checklist for the night before.
+- [What Age Can Kids Start Colouring?](https://devpulse.co.uk/kidspaint/guides/what-age-can-kids-start-colouring/): Most children scribble by 18 months and draw a circle by 3. What to expect at each age, and how to start.
+- [How Much Screen Time for Toddlers? What the Guidance Says](https://devpulse.co.uk/kidspaint/guides/screen-time-for-toddlers/): UK guidance from 2026 says no more than an hour a day from 2 to 5, and shared activities only under 2.
 
 ## Optional
 

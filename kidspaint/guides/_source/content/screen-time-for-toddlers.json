@@ -1,0 +1,67 @@
+{
+  "slug": "screen-time-for-toddlers",
+  "order": 7,
+  "query": "screen time for toddlers",
+  "title": "How Much Screen Time for Toddlers? What the Guidance Says",
+  "meta_title": "Screen Time for Toddlers. What UK Guidance Says",
+  "description": "UK guidance from 2026 says under 2s should avoid screens except shared activities, and 2 to 5 year olds should have no more than an hour a day.",
+  "card": "UK guidance from 2026 says no more than an hour a day from 2 to 5, and shared activities only under 2.",
+  "lede": "UK guidance published in March 2026 says children under 2 should avoid screen time other than shared activities that encourage bonding, interaction, and conversation. Children aged 2 to 5 should have no more than one hour a day. The WHO gives the same hour for 2 to 4 year olds, and says less is better.",
+  "sections": [
+    {
+      "h2": "The Guidance at a Glance",
+      "nav": "At a Glance",
+      "html": "<div class=\"table-scroll\"><table><caption>Screen time guidance for under 5s</caption><thead><tr><th>Age</th><th>UK guidance, 2026</th><th>WHO, 2019</th></tr></thead><tbody><tr><td>Under 1</td><td>Avoid, other than shared activities with family</td><td>Not recommended</td></tr><tr><td>1 year</td><td>Avoid, other than shared activities with family</td><td>Sedentary screen time not recommended</td></tr><tr><td>2 years</td><td>No more than one hour a day</td><td>No more than one hour, less is better</td></tr><tr><td>3 and 4 years</td><td>No more than one hour a day</td><td>No more than one hour, less is better</td></tr></tbody></table></div><p>The UK guidance came from an expert panel led by the Children's Commissioner, Dame Rachel de Souza, and Professor Russell Viner. The Royal College of Paediatrics and Child Health supports the WHO limit of one hour a day for 2 to 4 year olds.</p>"
+    },
+    {
+      "h2": "Not All Screen Time Is the Same",
+      "nav": "Not All the Same",
+      "html": "<p>The UK guidance looks at what is on the screen as well as how long. Best Start in Life, the UK government site for parents, says slow paced, predictable content is better for young brains, and that fast paced videos in the style of social media may affect concentration. It says watching together supports development.</p><p>In the United States, the American Academy of Pediatrics replaced its earlier media guidance in January 2026. Its new advice puts more weight on the quality of what children use, not only the time.</p>"
+    },
+    {
+      "h2": "Keep Some Times Screen Free",
+      "nav": "Screen Free Times",
+      "html": "<p>The UK guidance says to avoid screens at mealtimes and in the hour before bed. Best Start in Life suggests swaps for those times, and colouring is one of them. Paper and crayons at the table work well.</p>"
+    },
+    {
+      "h2": "Making the Hour Count",
+      "nav": "Making It Count",
+      "html": "<ul><li><strong>Sit together.</strong> Shared use is what the guidance favours, especially under 2.</li><li><strong>Choose calm and slow.</strong> Pick things your child controls, at their own pace, over fast videos that play one after another.</li><li><strong>Talk while they play.</strong> Name colours, ask questions, and let them explain what they made.</li><li><strong>Finish on your terms.</strong> A timer or Guided Access time limit makes the end predictable.</li></ul><p>The guidance does not name types of app. A colouring app can fit this kind of use, because nothing happens until your child chooses a colour and taps. Kids Paint has no adverts, no autoplay, and no scores to chase.</p>{{app}}"
+    },
+    {
+      "h2": "Tools That Help You Keep to It",
+      "nav": "Helpful Tools",
+      "html": "<p>On an iPhone or iPad, Guided Access can keep the device in one app and end the session after a time limit you choose. Screen Time can block purchases. Our guide to <a href=\"../drawing-app-for-kids-ipad/\">setting up an iPad for a child</a> has the steps for both.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "How much screen time should a 2 year old have?",
+      "a": "UK guidance from 2026 says no more than one hour a day for children aged 2 to 5, with no screens at mealtimes or in the hour before bed. The WHO also says no more than one hour, and less is better."
+    },
+    {
+      "q": "Is any screen time OK for under 2s?",
+      "a": "UK guidance says children under 2 should avoid screen time other than shared activities that encourage bonding, interaction, and conversation."
+    },
+    {
+      "q": "Does a colouring app count as screen time?",
+      "a": "Yes. The UK guidance covers screen use in general and does not set apart creative apps. Keep it within the hour, and do it together when you can."
+    }
+  ],
+  "sources": [
+    "gov-uk-screen-time",
+    "best-start-screen-time",
+    "gov-uk-screen-report",
+    "who-under-5",
+    "rcpch-consultation",
+    "aap-2026-media",
+    "apple-guided-access"
+  ],
+  "related": [
+    "colouring-app-for-toddlers",
+    "what-age-can-kids-start-colouring",
+    "colouring-app-offline"
+  ],
+  "published": "2026-11-19",
+  "modified": "2026-11-19"
+}

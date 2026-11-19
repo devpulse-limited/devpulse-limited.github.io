@@ -1,0 +1,57 @@
+{
+  "slug": "colouring-app-offline",
+  "order": 5,
+  "query": "coloring app for kids offline",
+  "title": "Colouring Apps That Work Offline, for Planes and Car Journeys",
+  "meta_title": "Offline Colouring App for Kids. Planes and Car Trips",
+  "description": "Which kids colouring apps work without Wi-Fi, how to test one at home before you travel, and how to set up an iPhone or iPad for a calm journey.",
+  "card": "Test it in Airplane Mode at home first. What usually needs a connection, and a checklist for the night before.",
+  "lede": "Test it at home before you travel. Turn on Airplane Mode, open the app, and colour a picture. An app that keeps its pictures on the device will work on a plane or a motorway. One that downloads pictures or shows adverts may not.",
+  "sections": [
+    {
+      "h2": "How to Test an App Offline",
+      "nav": "Test It at Home",
+      "html": "<p>Apple says Airplane Mode turns off all the radios except Bluetooth, including Wi-Fi and mobile data. That makes it a quick test.</p><ol><li>Open Control Centre and tap the Airplane Mode button.</li><li>Open the colouring app and start a new picture.</li><li>Colour it, save it, and open it again.</li><li>Try a few different pictures, not only the last one you used.</li></ol><p>If something fails, the app needs a connection for that part. Turn Airplane Mode off again when you are done.</p>"
+    },
+    {
+      "h2": "What Usually Needs a Connection",
+      "nav": "What Needs a Connection",
+      "html": "<ul><li>Pictures that are downloaded when opened, rather than stored in the app.</li><li>Adverts, which often stop an app working smoothly when there is no signal.</li><li>Signing in to an account, or syncing pictures between devices.</li><li>Buying, restoring, or checking a subscription.</li></ul>"
+    },
+    {
+      "h2": "A Checklist for the Night Before",
+      "nav": "The Night Before",
+      "html": "<ul><li>Charge the iPhone or iPad, and pack the cable.</li><li>Update the apps on Wi-Fi at home, so nothing asks to update on the way.</li><li>Open each app once with a connection, so any subscription is confirmed on the device.</li><li>Do the Airplane Mode test above.</li><li>Set up Guided Access, so a child stays in one app. Our guide to <a href=\"../drawing-app-for-kids-ipad/#guided-access\">setting up an iPad for a child</a> has the steps.</li><li>Pack paper and crayons too. They never run out of battery.</li></ul>"
+    },
+    {
+      "h2": "Kids Paint Without the Internet",
+      "nav": "Kids Paint Offline",
+      "html": "<p>The pictures in Kids Paint are part of the app, not downloaded when you open them. Painting, tap to fill, and saving to My Art all work in Airplane Mode, and there are no adverts to load.</p><p>Buying or restoring a subscription needs a connection, so open the app once at home before you go. Kids Paint is on the App Store for iPhone and iPad.</p>{{app}}"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Do colouring apps work on a plane?",
+      "a": "Many do, if their pictures are stored on the device. Test the app in Airplane Mode at home before you travel."
+    },
+    {
+      "q": "Will my child's pictures save without the internet?",
+      "a": "In apps that save on the device, yes. Kids Paint saves pictures in My Art on the iPhone or iPad, with or without a connection."
+    },
+    {
+      "q": "How do I keep my child in one app on a long journey?",
+      "a": "Use Guided Access on iPhone or iPad. It keeps the device in one app, can set a time limit, and only your passcode, Face ID, or Touch ID ends it."
+    }
+  ],
+  "sources": [
+    "apple-airplane-mode",
+    "apple-guided-access"
+  ],
+  "related": [
+    "drawing-app-for-kids-ipad",
+    "colouring-app-for-toddlers",
+    "screen-time-for-toddlers"
+  ],
+  "published": "2026-11-19",
+  "modified": "2026-11-19"
+}

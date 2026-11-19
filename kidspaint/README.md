@@ -4,8 +4,7 @@ Copy this **whole KidsPaint folder** into the destination website repository. It
 
 ## Publish checklist
 
-- In `script.js`, replace the two `null` entries in `storeLinks` with the real App Store and Google Play listing URLs. The four buttons update their labels and destinations automatically. Until then they explicitly say “Coming soon” and open an accessible announcement dialog.
-- Update the coming-soon language in the HTML description/Open Graph tags when launched.
+- The App Store link is live in `script.js` and in each App Store button's `href`. `script.js` keeps a button's `href` when it already starts with the `storeLinks` address, so each button's campaign link survives (see App Store campaign links below). When Kids Paint reaches Google Play, put its listing URL in `storeLinks` and in the Google Play buttons' `href`, change the Google Play button labels from “Coming soon”, and update `operatingSystem` in `guides/_source/build.py` and the home page JSON LD, the device note, the FAQ, and `/llms.txt`.
 - Publish at `https://devpulse.co.uk/kidspaint/`. Copy this folder as lowercase `kidspaint` in the destination repository. Canonicals, sitemap URLs, and social images use that confirmed URL.
 - Terms, Privacy and Support are included as `terms/index.html`, `privacy/index.html`, and `support/index.html`, linked from every footer. Before publishing, confirm the policy details against the deployed hosting/email/billing providers, retention practices and legal business identity.
 - Keep both `assets/licences/` files. Font credits link to them from the footer.
@@ -13,6 +12,7 @@ Copy this **whole KidsPaint folder** into the destination website repository. It
 ## Content and assets
 
 - Chewy headings: Apache 2.0, commercially usable. Nunito Sans supporting text: SIL OFL 1.1, commercially usable. Both fonts are served locally, without a request to Google Fonts. The font files and original licence notices are bundled.
+- `assets/fonts/Chewy-Regular.woff2` and `assets/fonts/NunitoSans.woff2` are subsetted WOFF2 conversions of the bundled original TTFs (removed from the folder, recoverable from git history), under the same licences in `assets/licences/`. The subset keeps Basic Latin, Latin 1 Supplement, Latin Extended A, General Punctuation, €, ™ and the arrows block, with every OpenType layout feature. Nunito Sans stays a variable font with all its axes (weight 200 to 1000). The Apache licence and the OFL both permit modified versions. The OFL's Reserved Font Name rule does not apply here, because the Nunito Sans copyright line (`Copyright 2016 The Nunito Sans Project Authors`) names no Reserved Font Name. To regenerate, run `pyftsubset <original>.ttf --unicodes="U+0020-007E,U+00A0-00FF,U+0100-017F,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2661,U+2726" --layout-features='*' --flavor=woff2` from fonttools and brotli installed outside the repository, after checking that new copy uses no characters outside that list.
 - Images are optimised WebP marketing recolourings of six existing final app templates. The natural colour palettes were created with the built-in image-generation tool; see `IMAGE-PROMPTS.md`. They illustrate possible colours, not app screenshots. Original app/archive files were not modified. The gallery uses marketing captions, with the real categories alongside them.
 - There are no trackers, analytics SDKs, cookies, signup forms, external embeds or network-loaded libraries in this website. The DevPulse footer link is an ordinary external link.
 - The app description reflects current features: a collection of free templates, blank paper, paid premium collection, finger painting, fill, undo, zoom, local saving, parent-protected purchases/sharing.
@@ -63,15 +63,9 @@ The slider handle uses a centred SVG rather than font glyphs. The painting illus
 
 ## Search and social sharing
 
-Each page has a unique descriptive title, meta description, absolute canonical URL, Open Graph metadata, Twitter card metadata, and JSON LD. The homepage describes the app without fabricated reviews, ratings, purchase offers, or download links. Crawlable HTML navigation, a single main heading per page, image dimensions, lazy loaded gallery images, local fonts, and responsive layouts remain in place.
+Each page has a unique descriptive title, meta description, absolute canonical URL, Open Graph metadata, Twitter card metadata, and JSON LD. The app is on the App Store (iPhone and iPad, iOS 15 or later, free with an optional subscription) and not yet on Google Play. The App Store link is written into each button's `href`, so crawlers and readers without scripts get it too, and the page carries Apple's Smart App Banner tag. The home page's JSON LD describes the app (`MobileApplication`, with a free offer and the App Store install link) and its visible questions (`FAQPage`). It has no rating markup, because the app has no ratings yet. Never add reviews or ratings that are not real.
 
-`sitemap.xml` lists the four canonical public URLs. After publishing, submit `https://devpulse.co.uk/kidspaint/sitemap.xml` through the verified Google Search Console property. If the domain has a root robots file, add this line there without replacing its existing rules.
-
-```text
-Sitemap: https://devpulse.co.uk/kidspaint/sitemap.xml
-```
-
-A robots file inside this subdirectory would not control domain crawling. No parent website files have been modified. Configure permanent redirects from explicit index.html URLs to the corresponding directory URLs on the production host if desired. Canonical metadata already points to the clean URLs. Check the published HTTPS pages, social preview, and field performance after deployment. Local checks do not guarantee search indexing, rankings, or rich results. Guidance follows Google Search Central at https://developers.google.com/search/docs/fundamentals/seo-starter-guide.
+Every Kids Paint page is listed in the root `/sitemap.xml`, which `/robots.txt` names and Search Console reads. The old `kidspaint/sitemap.xml` was removed, so there is one list to keep current. `/llms.txt` carries a Kids Paint facts block and the list of guides. A robots file inside this subdirectory would not control domain crawling. Configure permanent redirects from explicit index.html URLs to the corresponding directory URLs on the production host if desired. Canonical metadata already points to the clean URLs. Check the published HTTPS pages, social preview, and field performance after deployment. Local checks do not guarantee search indexing, rankings, or rich results. Guidance follows Google Search Central at https://developers.google.com/search/docs/fundamentals/seo-starter-guide.
 
 Banner stars rotate and pulse with varied randomly selected speeds and phases. The duplicate scrolling group shares those values to keep its loop seamless. Reduced motion and background pausing still apply.
 
@@ -82,3 +76,65 @@ The parent `Website/apps/index.html` includes the Kids Paint feature card. The h
 ## Selected brand icon
 
 Colour Crew is the approved icon. All website headers, footers, favicon links, Apple touch icons, and the parent Apps card use the new PNG derivatives in `assets/`. The app master and regeneration instructions are documented in `design/brand-icon.md` in the app repository. The former three stroke SVG logo has been removed.
+
+## Guides
+
+`guides/` holds one page per search a parent makes ("colouring app for kids no ads", "what age can kids start colouring"). Each guide answers its question first, cites the pages its facts come from, and ends with the Kids Paint card and the App Store button. It also places one small Kids Paint card (`{{app}}`) in the section where the app honestly fits, so a reader who stops halfway still sees the next step. The same idea, adapted from the AuthSome guides, keeps the content small and good rather than plentiful.
+
+The pages are made from `guides/_source/content/*.json` by `guides/_source/build.py`. GitHub Pages does not publish `_source`. After changing a content file:
+
+```sh
+cd kidspaint/guides/_source
+python3 lint.py && python3 build.py && python3 check.py
+```
+
+### App Store campaign links
+
+Every App Store link in an `href` is an Apple App Analytics campaign link, `build.APP_STORE` plus `?pt=127329907&ct=<campaign>&mt=8` (written `&amp;` in HTML). `build.py` makes them with `store_link()`. The campaign names are:
+
+- Home page, written by hand in `index.html`: `kp-home-hero` (hero button) and `kp-home-download` (download section button).
+- Guides index: `kp-guides-index-header` (Get the App in the header) and `kp-guides-index-end` (the Meet Kids Paint card).
+- Each guide: `kp-guide-<short>-header`, `kp-guide-<short>-inline` (the `{{app}}` card) and `kp-guide-<short>-end` (the Meet Kids Paint card). `<short>` is the slug without filler words (`CAMPAIGN_FILLER`), so `no-ads`, `toddlers`, `drawing-ipad`, `free-no-subscription`, `offline`, `age-start` and `screen-time-toddlers`.
+
+Apple keeps 40 characters of a campaign name. `build.py` fails if a name is longer or two guides share a short name, and `check.py` fails if any App Store link has no `ct`, repeats a `ct` on its page, or has an unescaped `&`. JSON-LD (`installUrl`, `sameAs`) and `/llms.txt` keep the bare `APP_STORE` address.
+
+The provider token is set to `127329907` in `APP_STORE_PROVIDER_TOKEN` at the top of `guides/_source/build.py`, and every link starts its query with `pt=127329907&amp;`. It comes from App Store Connect, App Analytics, Campaigns, where a generated campaign link shows it as `pt`. If it ever changes, update that constant and rebuild, then change `pt=` in the two App Store links in `index.html`. `check.py` fails until every App Store link carries the value set in `build.py`. Once the site is published, App Store page views and downloads from these links appear per campaign in App Store Connect App Analytics.
+
+`lint.py` holds the copy style above. `build.py` writes nothing unless every page is clean. `check.py` keeps the home page, the sitemap, `/llms.txt`, canonicals, FAQ markup, and internal links in step, and fails if any page offers the app on Android or as coming soon.
+
+### Facts
+
+Say only what is true of the App Store version. iPhone and iPad, no Android yet, no template count and no prices in guide copy. Facts about Apple, Google, the WHO and anyone else come from the pages in `sources.json`, read on the guide's `modified` date. When a fact is checked again, update `modified`, the sitemap `lastmod`, and nothing else.
+
+### Adding a guide each day, from Search Console
+
+This is the loop that finds the next guide. It uses `gum` (https://gumcli.dev) against the verified domain property. Note the argument shape. The request body goes inside `body`.
+
+```sh
+# Queries and pages over the last 28 days, with impressions, clicks and position
+gum read searchconsole.searchanalytics.query --output json --args '{
+  "siteUrl": "sc-domain:devpulse.co.uk",
+  "body": {"startDate": "2026-10-22", "endDate": "2026-11-18", "dimensions": ["query", "page"], "rowLimit": 1000,
+           "dimensionFilterGroups": [{"filters": [{"dimension": "page", "operator": "contains", "expression": "/kidspaint/"}]}]}
+}'
+
+# Is a page indexed yet?
+gum read searchconsole.urlInspection.index.inspect --output json --args '{
+  "body": {"inspectionUrl": "https://devpulse.co.uk/kidspaint/guides/", "siteUrl": "sc-domain:devpulse.co.uk"}}'
+
+# Sitemaps Google has read, and how many of their pages are indexed
+gum read searchconsole.sitemaps.list --output json --args '{"siteUrl": "sc-domain:devpulse.co.uk"}'
+```
+
+1. Pull the query and page report. Look for queries with impressions and few or no clicks, at an average position of about 8 to 60. Those are searches Google already connects with the site.
+2. If an existing guide is the page shown, improve that guide first. Answer the query in its lede or a heading, and add a common question.
+3. If no page answers the query, write one new guide for it, only where the honest answer involves a colouring or drawing app. One good guide a day at most.
+4. Link to the new guide from the pages that already get impressions. That means the home page's guide list, two or three related guides' `related` lists, and a sentence in a guide's text where it helps.
+5. Run the three scripts, publish, and ask Search Console to index the new address (URL Inspection, Request Indexing). Google usually takes a few days.
+6. Two to four weeks later, read the report again for that page and adjust its title and lede to the words people actually searched.
+
+Keyword Planner volumes need a Google Ads account. After `gum config set googleads.customer_id=<10 digit id>` and a developer token, run `gum read googleads.keywordPlanIdeas.generateKeywordIdeas --args '{"keywords":["colouring app for kids"],"url":"https://devpulse.co.uk/kidspaint/"}' --output json`. Until then, Google's own search suggestions and App Store popularity (ASO Atlas) are the demand signals, and Search Console takes over once the site has impressions.
+
+### The first guides
+
+The first batch, published 19 November 2026, was chosen before Search Console had any Kids Paint data. Topics came from Google search suggestions and App Store keyword popularity for the UK (for example "drawing app for kids" 46 out of 100, "colouring app for kids" 23, "colouring for toddlers" 23). Revisit each one against real Search Console queries once it has a month of impressions.

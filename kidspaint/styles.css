@@ -1,13 +1,13 @@
 @font-face {
   font-family:Chewy;
-  src:url('assets/fonts/Chewy-Regular.ttf') format('truetype');
+  src:url('assets/fonts/Chewy-Regular.woff2') format('woff2');
   font-weight:400;
   font-style:normal;
   font-display:swap;
 }
 @font-face {
   font-family:Nunito;
-  src:url('assets/fonts/NunitoSans.ttf') format('truetype');
+  src:url('assets/fonts/NunitoSans.woff2') format('woff2');
   font-weight:200 900;
   font-style:normal;
   font-display:swap;
@@ -1526,3 +1526,21 @@ dialog .button {
 }
 
 .brand-icon { border-radius:22%; object-fit:contain; flex-shrink:0; }
+
+/* The home page's list of guides for grown ups. Crawlable links to every guide, in the card colours of the gallery. */
+.home-guides { padding-top:10px; padding-bottom:90px; }
+.home-guide-list { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px; margin:0; padding:0; list-style:none; }
+.home-guide-list li { border-radius:24px; border:1px solid #0000000d; }
+.home-guide-list li.mint-card { background:var(--mint); }
+.home-guide-list li.peach-card { background:var(--peach); }
+.home-guide-list li.lilac-card { background:var(--lilac); }
+.home-guide-list li.blue-card { background:var(--blue); }
+.home-guide-list li.yellow-card { background:var(--yellow); }
+.home-guide-list li.pink-card { background:var(--pink); }
+.home-guide-list a { display:flex; align-items:center; min-height:96px; padding:20px 22px; font-size:17px; font-weight:800; line-height:1.35; }
+.home-guide-list a:hover { text-decoration:underline; text-underline-offset:4px; }
+.faq-list details>p a { color:var(--green); text-decoration:underline; text-underline-offset:3px; }
+@media(max-width:760px) {
+  .home-guides { padding-bottom:60px; }
+  .home-guide-list a { min-height:0; padding:18px; font-size:16px; }
+}

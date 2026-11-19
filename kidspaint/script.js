@@ -1,9 +1,10 @@
 'use strict';
 
-// Replace these two nulls with the published listing URLs when the app launches.
-// Until then, every store button opens the honest “coming soon” message.
+// A store with a null entry opens the honest “coming soon” message. The App Store link
+// is also written into each button's href, so it works for crawlers and without scripts.
+// A button whose href is already a real store address keeps it, with its own campaign (ct).
 const storeLinks = {
-  'App Store': null,
+  'App Store': 'https://apps.apple.com/app/kids-paint-colouring-art-book/id6810289526',
   'Google Play': null,
 };
 
@@ -25,8 +26,9 @@ updateMotion();
 const comingSoon = document.querySelector('#coming-soon');
 for (const link of document.querySelectorAll('[data-store]')) {
   const store = link.dataset.store;
+  const written = link.getAttribute('href') || '';
   if (storeLinks[store]) {
-    link.href = storeLinks[store];
+    if (!written.startsWith(storeLinks[store])) link.href = storeLinks[store];
     link.querySelector('small').textContent = store === 'App Store' ? 'Download on the' : 'Get it on';
   } else {
     link.addEventListener('click', event => {

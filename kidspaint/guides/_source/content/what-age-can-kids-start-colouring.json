@@ -1,0 +1,71 @@
+{
+  "slug": "what-age-can-kids-start-colouring",
+  "order": 6,
+  "query": "what age can kids start colouring",
+  "title": "What Age Can Kids Start Colouring?",
+  "meta_title": "What Age Can Kids Start Colouring? Milestones by Age",
+  "description": "Most children scribble by 18 months and draw simple shapes by 3. What to expect at each age, with milestones from the CDC and UK early years guidance.",
+  "card": "Most children scribble by 18 months and draw a circle by 3. What to expect at each age, and how to start.",
+  "lede": "Most children start making marks with a crayon at around 18 months. The CDC lists scribbling as a milestone by 18 months, drawing a circle when shown how by 3, and drawing a person with three or more body parts by 4. Every child gets there at their own pace.",
+  "sections": [
+    {
+      "h2": "Drawing and Colouring Milestones by Age",
+      "nav": "Milestones by Age",
+      "html": "<div class=\"table-scroll\"><table><caption>Drawing milestones and tips from the CDC</caption><thead><tr><th>Age</th><th>What the CDC lists</th><th>An idea to try</th></tr></thead><tbody><tr><td>18 months</td><td>Scribbles</td><td>Chunky crayons and big sheets of paper</td></tr><tr><td>2 years</td><td>No drawing milestone listed</td><td>Give crayons, or put some finger paint on paper</td></tr><tr><td>3 years</td><td>Draws a circle, when you show how</td><td>Colour and draw lines and shapes together</td></tr><tr><td>4 years</td><td>Draws a person with three or more body parts, and holds a crayon between fingers and thumb, not in a fist</td><td>Ask them to draw the family</td></tr><tr><td>5 years</td><td>Writes some letters in their name</td><td>Keep crayons, paper, paint, and child scissors to hand</td></tr></tbody></table></div><p>Milestones are what most children can do by an age. Some do them earlier and some later.</p>"
+    },
+    {
+      "h2": "What UK Early Years Guidance Says",
+      "nav": "UK Early Years Guidance",
+      "html": "<p>Development Matters, the curriculum guidance for early years settings in England, describes how mark making grows.</p><ul><li><strong>Birth to 3.</strong> Children explore different materials and tools, enjoy drawing freely, and start to make marks on purpose. The guidance suggests introducing colour names as they do.</li><li><strong>3 and 4 year olds.</strong> Children use a comfortable grip with good control when holding pens and pencils, show a preference for one hand, draw closed shapes with continuous lines, and explore colour and colour mixing.</li></ul><p>It also explains why this matters. Fine motor control and precision help with hand eye coordination, which is later linked to early literacy.</p>"
+    },
+    {
+      "h2": "How to Get Started",
+      "nav": "Getting Started",
+      "html": "<p>The NHS suggests crayons, felt tips, or powder paint from about 18 months, and showing your child how to hold the crayon or brush. Another NHS idea, for 1 to 2 year olds, is to draw simple pictures and encourage your child to add marks and colours while you talk about them.</p><ul><li>Start big. Large paper taped to a table is easier than a small colouring book.</li><li>Choose thick crayons first. Development Matters suggests moving on to smaller brushes, pencils, and felt pens once bigger movements are well coordinated.</li><li>Praise the colours and the effort, not staying inside the lines.</li><li>Talk about what they made. A scribble often has a story.</li></ul>"
+    },
+    {
+      "h2": "Where a Colouring App Fits",
+      "nav": "Colouring Apps",
+      "html": "<p>Development Matters lists tablets and computers among the ways young children can make marks. A colouring app lets a child fill a shape with one tap, long before they can colour inside a line, and undo a mistake without tears.</p><p>Keep it in proportion. UK guidance says children under 2 should avoid screen time other than shared activities, and children from 2 to 5 should have no more than one hour a day. The American Academy of Pediatrics says most apps sold as educational really are not, and that crayons and colouring books help improve fine motor skills. So paper comes first, and an app is a fun extra to share.</p>{{app}}"
+    },
+    {
+      "h2": "When to Ask for Advice",
+      "nav": "Asking for Advice",
+      "html": "<p>If you are worried about how your child is developing, or they have lost skills they used to have, talk to your health visitor or GP.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can a 2 year old colour?",
+      "a": "Yes, in their own way. The CDC lists scribbling by 18 months and suggests giving 2 year olds crayons or finger paint. Expect big, happy scribbles rather than neat colouring."
+    },
+    {
+      "q": "When do children colour inside the lines?",
+      "a": "There is no fixed age. Development Matters describes 3 and 4 year olds gaining a comfortable grip and drawing closed shapes, and that control keeps growing as they get older."
+    },
+    {
+      "q": "Should toddlers use crayons or pencils?",
+      "a": "Start with thick crayons and paint. Development Matters suggests smaller brushes, pencils, and felt pens once bigger movements are well coordinated."
+    }
+  ],
+  "sources": [
+    "cdc-18-months",
+    "cdc-2-years",
+    "cdc-3-years",
+    "cdc-4-years",
+    "cdc-5-years",
+    "development-matters",
+    "nhs-play-ideas",
+    "nhs-first-words",
+    "aap-toy-tips",
+    "aap-hand-skills-2",
+    "gov-uk-screen-time"
+  ],
+  "related": [
+    "colouring-app-for-toddlers",
+    "screen-time-for-toddlers",
+    "drawing-app-for-kids-ipad"
+  ],
+  "published": "2026-11-19",
+  "modified": "2026-11-19"
+}

@@ -1,0 +1,69 @@
+{
+  "slug": "colouring-app-for-toddlers",
+  "order": 2,
+  "query": "colouring app for toddlers",
+  "title": "What Makes a Good Colouring App for Toddlers?",
+  "meta_title": "Colouring App for Toddlers. What to Look For",
+  "description": "Tap to fill, big pictures, easy undo, and no ads. What makes a colouring app work for a toddler, and how much screen time UK guidance suggests.",
+  "card": "Tap to fill, big pictures, easy undo, and no ads. What matters for little hands, and how long to play.",
+  "lede": "A good colouring app for a toddler needs no reading, forgives every tap, and keeps buying and sharing out of reach. Tap to fill, big pictures with bold outlines, and an easy undo matter far more than a long list of tools. Keep sessions short and do them together.",
+  "sections": [
+    {
+      "h2": "What Toddlers Can Do",
+      "nav": "What Toddlers Can Do",
+      "html": "<p>The CDC lists scribbling as a milestone by 18 months. By 3, it lists drawing a circle when you show them how. In between, its tip for 2 year olds is to hand over crayons or put some finger paint on paper. So a toddler colours with big, happy movements, not careful strokes.</p><p>That is why tap to fill matters. A toddler can tap a shape and watch it fill with colour long before they can colour inside a line. Finger painting on a screen suits the same big movements as finger paint on paper. For more on what to expect at each age, read <a href=\"../what-age-can-kids-start-colouring/\">What Age Can Kids Start Colouring?</a></p>"
+    },
+    {
+      "h2": "Features That Matter for Little Hands",
+      "nav": "Features That Matter",
+      "html": "<ul><li><strong>Tap to fill.</strong> One tap colours a whole shape, which gives a toddler a finished picture they are proud of.</li><li><strong>Big pictures with bold outlines.</strong> Large shapes are easy to hit with a small finger. Zoom helps a grown up add the details.</li><li><strong>Undo that is easy to find.</strong> Toddlers tap everything. A clear undo button turns a mistake into a game.</li><li><strong>No reading needed.</strong> Pictures and colours should speak for themselves.</li><li><strong>Pictures that save by themselves.</strong> A toddler will not remember to press save.</li><li><strong>A grown up check before buying, sharing, or leaving the app.</strong> Apple describes these parental gates as adult level tasks, there to stop children buying or following links without a parent knowing.</li></ul>"
+    },
+    {
+      "h2": "Features That Get in the Way",
+      "nav": "What Gets in the Way",
+      "html": "<ul><li>Adverts, or rewards for watching them. Read <a href=\"../colouring-app-for-kids-no-ads/\">how to find a colouring app with no ads</a>.</li><li>Pop up offers in the middle of play.</li><li>Lots of small tools and menus, which toddlers tap by accident.</li><li>Loud rewards and flashing effects after every tap. UK guidance for under 5s says slow paced, predictable content is better for young brains.</li></ul>"
+    },
+    {
+      "h2": "Keep It Short and Shared",
+      "nav": "Short and Shared",
+      "id": "short-and-shared",
+      "html": "<p>UK guidance for parents of under 5s, published in March 2026, says children under 2 should avoid screen time other than shared activities that encourage bonding, interaction, and conversation. For children aged 2 to 5 it says no more than one hour a day, and no screens at mealtimes or in the hour before bed. The WHO also gives no more than one hour a day for 2 to 4 year olds, and says less is better.</p><p>A colouring app works well as something you do together. Name the colours, ask what the dinosaur is called, and let your toddler choose. Paper and crayons still matter too. The American Academy of Pediatrics says crayons and colouring books build creativity and help improve fine motor skills. There is more in our <a href=\"../screen-time-for-toddlers/\">guide to screen time for toddlers</a>.</p>"
+    },
+    {
+      "h2": "Kids Paint for Toddlers",
+      "nav": "Kids Paint",
+      "html": "<p>We built Kids Paint around these ideas. It has tap to fill, finger painting with chunky crayon colours, a brush size for bold strokes, an eraser, undo and redo, and zoom. Pictures save by themselves in My Art on the device. There are no adverts, and buying, sharing, or leaving for the App Store needs a grown up check.</p><p>The pictures include dinosaurs, animals, princesses, mermaids, space, vehicles, and nature scenes, with free pictures and blank paper to start. A toddler will need a grown up beside them at first, and that is the best way to use it anyway.</p>{{app}}"
+    }
+  ],
+  "faq": [
+    {
+      "q": "What age can a toddler use a colouring app?",
+      "a": "UK guidance says children under 2 should avoid screen time other than shared activities with family, and children aged 2 to 5 should have no more than one hour a day. So from about 2, a short colouring session with a grown up beside them fits the guidance."
+    },
+    {
+      "q": "Is a colouring app as good as crayons?",
+      "a": "It is different. Crayons and paper build grip and control, and the American Academy of Pediatrics says they help fine motor skills. An app adds tap to fill and undo, which young children enjoy. Use both, and keep paper as the everyday choice."
+    },
+    {
+      "q": "What should I avoid in a toddler colouring app?",
+      "a": "Adverts, pop up offers, buttons that leave the app, and fast, flashing rewards. Look for a grown up check before any purchase or link."
+    }
+  ],
+  "sources": [
+    "cdc-18-months",
+    "cdc-2-years",
+    "cdc-3-years",
+    "apple-kids-apps",
+    "gov-uk-screen-time",
+    "best-start-screen-time",
+    "who-under-5",
+    "aap-toy-tips"
+  ],
+  "related": [
+    "what-age-can-kids-start-colouring",
+    "screen-time-for-toddlers",
+    "colouring-app-for-kids-no-ads"
+  ],
+  "published": "2026-11-19",
+  "modified": "2026-11-19"
+}
